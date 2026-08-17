@@ -9,10 +9,15 @@
 </head>
 <body>
 
+<!-- anchor target for "back to top" links — kept separate from the sticky
+     header, since browsers skip scrolling to a position:sticky element
+     (it's always "in view" already, pinned at top:0) -->
+<div id="top"></div>
+
 <!-- ===========================================================
      Header / nav
      =========================================================== -->
-<header class="site-header" id="top">
+<header class="site-header">
   <div class="container header-inner">
     <nav class="nav-side nav-left">
       <a href="#feed">What I do</a>
@@ -84,7 +89,7 @@
     <div class="container about-inner">
       <div class="about-photo">
         <img src="public/about me.JPG" alt="The maker behind Poy" class="about-photo-img">
-        <div class="badge">Made in Prague</div>
+        <img src="branding/blue_flower_hires.png" alt="" class="badge">
       </div>
       <div class="about-text">
         <p class="kicker">meet the maker</p>
@@ -124,27 +129,35 @@
       <div class="card-grid">
 
         <article class="card">
-          <img src="public/services_collars.png" alt="Obojek pro psa na míru" class="card-img arch">
-          <h3>Obojky a vodítka na míru</h3>
-          <p class="desc">Vyrobím obojek i vodítko pro vašeho pejska přesně podle vašich představ. Kvalitní kovové komponenty. Mnoho vzorů na výběr, plně pratelný materiál ze 100% bavlny. Ručně vyšívaná jmenovka s telefonním číslem.</p>
+          <img src="public/services_collars.png" alt="Obojek pro psa na míru" class="card-img">
+          <div class="card-caption">
+            <h3>Obojky a vodítka na míru</h3>
+            <p class="desc">Vyrobím obojek i vodítko pro vašeho pejska přesně podle vašich představ. Kvalitní kovové komponenty. Mnoho vzorů na výběr, plně pratelný materiál ze 100% bavlny. Ručně vyšívaná jmenovka s telefonním číslem.</p>
+          </div>
         </article>
 
         <article class="card">
-          <img src="public/services_spravy.jpg" alt="Oprava oblečení" class="card-img arch">
-          <h3>Opravy a úpravy oblečení</h3>
-          <p class="desc">Máte oblíbený kousek, který potřebuje opravit? Díry, vytržené švy, rozbité zipy, upadlé knoflíky, s většinou věcí si dokážu poradit.</p>
+          <img src="public/services_spravy.jpg" alt="Oprava oblečení" class="card-img">
+          <div class="card-caption">
+            <h3>Opravy a úpravy oblečení</h3>
+            <p class="desc">Máte oblíbený kousek, který potřebuje opravit? Díry, vytržené švy, rozbité zipy, upadlé knoflíky, s většinou věcí si dokážu poradit.</p>
+          </div>
         </article>
 
         <article class="card">
-          <img src="public/services_alterations.jpg" alt="Úprava oblečení — před a po" class="card-img arch">
-          <h3>Úpravy oblečení</h3>
-          <p class="desc">Nebo něco stoprocentně nesedí nebo nesluší? Dokážu zkrátit, zúžit, v rámci možností i prodloužit a rozšířit, upravit rukávy, výstřih,… Společně vymyslíme co s tím.</p>
+          <img src="public/services_alterations.jpg" alt="Úprava oblečení — před a po" class="card-img">
+          <div class="card-caption">
+            <h3>Úpravy oblečení</h3>
+            <p class="desc">Nebo něco stoprocentně nesedí nebo nesluší? Dokážu zkrátit, zúžit, v rámci možností i prodloužit a rozšířit, upravit rukávy, výstřih,… Společně vymyslíme co s tím.</p>
+          </div>
         </article>
 
         <article class="card">
-          <img src="public/services_custom.jpeg" alt="Šití na míru" class="card-img arch">
-          <h3>Šití na míru</h3>
-          <p class="desc">Máte konkrétní představu unikátního oděvu nebo produktu? Ráda poskytnu konzultaci a pokud se dohodneme, tak poskytnu kompletní realizaci.</p>
+          <img src="public/services_custom.jpeg" alt="Šití na míru" class="card-img">
+          <div class="card-caption">
+            <h3>Šití na míru</h3>
+            <p class="desc">Máte konkrétní představu unikátního oděvu nebo produktu? Ráda poskytnu konzultaci a pokud se dohodneme, tak poskytnu kompletní realizaci.</p>
+          </div>
         </article>
 
       </div>
