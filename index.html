@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poy — Upcycled Dog Collars, Alterations &amp; Repairs</title>
+<meta name="description" content="Poy makes upcycled, custom dog collars, plus clothing alterations and repairs. Handmade with care, one piece at a time.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ===========================================================
+     Header / nav
+     =========================================================== -->
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <nav class="nav-side nav-left">
+      <a href="#feed">What I do</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <a href="#top" class="logo-link" aria-label="Poy — home">
+      <img src="branding/logo_horizontal.png" alt="Poy" class="logo-img">
+    </a>
+
+    <nav class="nav-side nav-right">
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- mobile dropdown: all links in one list, shown via the hamburger toggle -->
+  <nav class="mobile-nav" id="main-nav">
+    <a href="#feed">What I do</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ===========================================================
+       Hero — highlight row + headline
+       =========================================================== -->
+  <section class="hero">
+
+    <!-- PLACEHOLDER: each links to a dedicated portfolio page — not built yet -->
+    <div class="hero-highlights">
+      <a href="#" class="hero-highlight-link" aria-label="Custom collars portfolio — coming soon">
+        <img src="public/Collar.jpg" alt="Custom upcycled dog collar">
+      </a>
+      <a href="#" class="hero-highlight-link" aria-label="Alterations portfolio — coming soon">
+        <img src="public/Alterations.jpg" alt="Clothing alteration in progress">
+      </a>
+      <a href="#" class="hero-highlight-link" aria-label="Repairs portfolio — coming soon">
+        <img src="public/Fixes.jpg" alt="Garment repair in progress">
+      </a>
+    </div>
+
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <p class="kicker">handmade with heart</p>
+        <h1>Navrhuju a šiju z nechtěného domácího textilu</h1>
+        <p class="hero-sub">
+          Every Poy collar starts as fabric that's already lived a life — reworked,
+          resized, and made just for your dog. Clothes get a second chapter too,
+          with alterations and repairs done by hand, one piece at a time.
+        </p>
+        <a href="#contact" class="btn btn-navy">Get in Touch</a>
+      </div>
+    </div>
+    <div class="scallop" style="--scallop-color: var(--accent);"></div>
+  </section>
+
+  <!-- ===========================================================
+       About
+       =========================================================== -->
+  <section class="about" id="about">
+    <div class="container about-inner">
+      <div class="about-photo">
+        <img src="public/about me.JPG" alt="The maker behind Poy" class="about-photo-img">
+        <div class="badge">Made in Prague</div>
+      </div>
+      <div class="about-text">
+        <p class="kicker">meet the maker</p>
+        <h2>Hi, I'm the one behind Poy</h2>
+        <p>
+          Narodila jsem se v Přerově a do Prahy jsem přišla za studiem na FAMU.
+          Aktuálně se živím jako koordinátorka odbavení letadel na pražském
+          letišti a šití jsem se začala intenzivněji věnovat asi 2 roky
+          zpátky, z potřeby uspokojit kreativní část své osobnosti.
+        </p>
+        <p>
+          Vyrábím kvalitní psí obojky s ručně vyšívanými jmenovkami.
+        </p>
+        <p>
+          Zajímám se i o ekologická témata spojená s módou. Nejraději se proto
+          věnuji šití z přírodních materiálů, baví mě upcyklovat nechtěný
+          domácí textil, který by jinak pravděpodobně skončil na skládce.
+          Materiály nacházím v sekáčích, nebo od známých a z pozůstalostí.
+        </p>
+        <p>
+          Smysl mi dává i přešívání a opravování.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================================================
+       Services
+       =========================================================== -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-heading">
+        <p class="kicker">what I make &amp; mend</p>
+        <h2>Services</h2>
+      </div>
+
+      <div class="card-grid">
+
+        <article class="card">
+          <div class="placeholder-img arch" data-note="Photo: finished custom collar close-up">
+            <span>Photo: custom collar</span>
+          </div>
+          <p class="eyebrow">Service</p>
+          <h3>Custom Dog Collars</h3>
+          <p class="desc">Made-to-measure collars built from upcycled fabric, sized and styled for your dog alone.</p>
+          <span class="pricing-note">Message for pricing →</span>
+        </article>
+
+        <article class="card">
+          <div class="placeholder-img arch" data-note="Photo: alteration in progress or before/after">
+            <span>Photo: alteration in progress</span>
+          </div>
+          <p class="eyebrow">Service</p>
+          <h3>Clothing Alterations</h3>
+          <p class="desc">Hemming, resizing, and fit fixes so the clothes you already love actually fit.</p>
+          <span class="pricing-note">Message for pricing →</span>
+        </article>
+
+        <article class="card">
+          <div class="placeholder-img arch" data-note="Photo: mended/patched garment">
+            <span>Photo: repaired garment</span>
+          </div>
+          <p class="eyebrow">Service</p>
+          <h3>Repairs</h3>
+          <p class="desc">Mending and patching that gives worn, well-loved pieces a little more life.</p>
+          <span class="pricing-note">Message for pricing →</span>
+        </article>
+
+        <!-- PLACEHOLDER: swap for a real 4th service once she has one -->
+        <article class="card card-soon">
+          <div class="placeholder-img" data-note="Reserved for a future service photo">
+            <span>Coming soon</span>
+          </div>
+          <p class="eyebrow">More on the way</p>
+          <h3>New Service</h3>
+          <p class="desc">Something new is in the works — check back soon, or follow along on Instagram to see it first.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================================================
+       Instagram feed
+       =========================================================== -->
+  <section class="feed" id="feed">
+    <div class="container">
+      <div class="section-heading">
+        <p class="kicker">follow along</p>
+        <h2>Straight from Instagram</h2>
+      </div>
+    </div>
+    <div class="feed-widget">
+      <!-- LightWidget WIDGET -->
+      <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+      <iframe src="//lightwidget.com/widgets/eb3089e85fc15d548a76f1dff4817ac7.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+    </div>
+    <div class="scallop" style="--scallop-color: var(--primary);"></div>
+  </section>
+
+  <!-- ===========================================================
+       Contact
+       =========================================================== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <p class="kicker">say hello</p>
+      <h2>Let's make something</h2>
+      <p>
+        Got a dog who needs a collar, or clothes that need a little care?
+        Send a message and let's talk about it.
+      </p>
+      <div class="contact-actions">
+        <!-- PLACEHOLDER: swap for the real email before launch -->
+        <a href="mailto:hello@poy.com" class="btn btn-navy">Email hello@poy.com</a>
+        <!-- PLACEHOLDER: swap for the real Instagram handle before launch -->
+        <a href="https://instagram.com/poy.shop" target="_blank" rel="noopener" class="btn btn-outline">@poy.shop on Instagram</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===========================================================
+     Footer
+     =========================================================== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <img src="branding/LOGO - PROFILOVKA.png" alt="Poy" class="footer-logo">
+    <div class="footer-links">
+      <!-- PLACEHOLDER: swap for the real Instagram handle before launch -->
+      <a href="https://instagram.com/poy.shop" target="_blank" rel="noopener">Instagram</a>
+      <!-- PLACEHOLDER: swap for the real email before launch -->
+      <a href="mailto:hello@poy.com">hello@poy.com</a>
+    </div>
+    <p class="footer-note">Made in Prague · &copy; 2026 Poy · All collars one-of-a-kind</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
