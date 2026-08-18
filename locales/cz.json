@@ -1,0 +1,77 @@
+{
+  "nav": {
+    "logoAriaLabel": "Poy — home",
+    "toggleAriaLabel": "Toggle navigation",
+    "feed": "What I do",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "hero": {
+    "kicker": "handmade with heart",
+    "title": "Navrhuju a šiju z nechtěného domácího textilu",
+    "subtitle": "Every Poy collar starts as fabric that's already lived a life — reworked, resized, and made just for your dog. Clothes get a second chapter too, with alterations and repairs done by hand, one piece at a time.",
+    "cta": "Get in Touch",
+    "highlights": {
+      "collarsAriaLabel": "Custom collars portfolio — coming soon",
+      "collarsAlt": "Custom upcycled dog collar",
+      "alterationsAriaLabel": "Alterations portfolio — coming soon",
+      "alterationsAlt": "Clothing alteration in progress",
+      "repairsAriaLabel": "Repairs portfolio — coming soon",
+      "repairsAlt": "Garment repair in progress"
+    }
+  },
+  "about": {
+    "photoAlt": "The maker behind Poy",
+    "kicker": "meet the maker",
+    "title": "Hi, I'm the one behind Poy",
+    "paragraphs": [
+      "Narodila jsem se v Přerově a do Prahy jsem přišla za studiem na FAMU. Aktuálně se živím jako koordinátorka odbavení letadel na pražském letišti a šití jsem se začala intenzivněji věnovat asi 2 roky zpátky, z potřeby uspokojit kreativní část své osobnosti.",
+      "Vyrábím kvalitní psí obojky s ručně vyšívanými jmenovkami.",
+      "Zajímám se i o ekologická témata spojená s módou. Nejraději se proto věnuji šití z přírodních materiálů, baví mě upcyklovat nechtěný domácí textil, který by jinak pravděpodobně skončil na skládce. Materiály nacházím v sekáčích, nebo od známých a z pozůstalostí.",
+      "Smysl mi dává i přešívání a opravování."
+    ]
+  },
+  "services": {
+    "kicker": "what I make & mend",
+    "title": "Services",
+    "cards": [
+      {
+        "imgAlt": "Obojek pro psa na míru",
+        "title": "Obojky a vodítka na míru",
+        "desc": "Vyrobím obojek i vodítko pro vašeho pejska přesně podle vašich představ. Kvalitní kovové komponenty. Mnoho vzorů na výběr, plně pratelný materiál ze 100% bavlny. Ručně vyšívaná jmenovka s telefonním číslem."
+      },
+      {
+        "imgAlt": "Oprava oblečení",
+        "title": "Opravy a úpravy oblečení",
+        "desc": "Máte oblíbený kousek, který potřebuje opravit? Díry, vytržené švy, rozbité zipy, upadlé knoflíky, s většinou věcí si dokážu poradit."
+      },
+      {
+        "imgAlt": "Úprava oblečení — před a po",
+        "title": "Úpravy oblečení",
+        "desc": "Nebo něco stoprocentně nesedí nebo nesluší? Dokážu zkrátit, zúžit, v rámci možností i prodloužit a rozšířit, upravit rukávy, výstřih,… Společně vymyslíme co s tím."
+      },
+      {
+        "imgAlt": "Šití na míru",
+        "title": "Šití na míru",
+        "desc": "Máte konkrétní představu unikátního oděvu nebo produktu? Ráda poskytnu konzultaci a pokud se dohodneme, tak poskytnu kompletní realizaci."
+      }
+    ]
+  },
+  "feed": {
+    "kicker": "follow along",
+    "title": "Straight from Instagram"
+  },
+  "contact": {
+    "kicker": "say hello",
+    "title": "Let's make something",
+    "text": "Got a dog who needs a collar, or clothes that need a little care? Send a message and let's talk about it.",
+    "emailButton": "Email hello@atelierpoy.cz",
+    "instagramButton": "@atelier_poy on Instagram"
+  },
+  "footer": {
+    "instagramLink": "Instagram",
+    "emailLink": "hello@atelierpoy.cz",
+    "note": "Made in Prague · © 2026 Poy · All collars one-of-a-kind"
+  }
+}

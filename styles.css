@@ -110,7 +110,23 @@ button { font-family: inherit; cursor: pointer; }
   position: sticky;
   top: 0;
   z-index: 50;
+}
+
+/* Row 1 — logo only, centered, no color block */
+.header-row-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: var(--cream);
+  padding: 14px 0;
+}
+.logo-link { display: flex; }
+.logo-img { height: 68px; width: auto; }
+.logo-link-mobile { display: none; }
+
+/* Row 2 — nav links + language switcher, on the blue color block */
+.header-row-nav {
+  background: var(--secondary);
   border-bottom: 3px solid var(--secondary-deep);
 }
 .header-inner {
@@ -120,13 +136,11 @@ button { font-family: inherit; cursor: pointer; }
   padding-top: 12px;
   padding-bottom: 12px;
 }
-.logo-link { display: flex; }
-.logo-img { height: 54px; width: auto; }
 
 /* display: contents unwraps the nav-left/nav-right grouping boxes so
    each link becomes a direct flex child of .header-inner, alongside
-   the logo — that's what makes justify-content: space-between spread
-   all five items (2 links, logo, 2 links) evenly edge to edge. */
+   the language switcher — that's what makes justify-content: space-between
+   spread everything out edge to edge. */
 .nav-side { display: contents; }
 .nav-side a, .mobile-nav a {
   font-weight: 800;
@@ -134,9 +148,73 @@ button { font-family: inherit; cursor: pointer; }
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
-.nav-side a:hover, .mobile-nav a:hover { color: var(--primary-deep); }
+/* row 2 sits on the blue block, so its links need light text; the mobile
+   dropdown panel is its own cream surface and keeps the default dark text */
+.header-inner .nav-side a { color: var(--cream); }
+.header-inner .nav-side a:hover { color: var(--accent); }
+.mobile-nav a:hover { color: var(--primary-deep); }
 
 .mobile-nav { display: none; }
+
+/* language switcher — styled like a nav link (current language + arrow),
+   opens a small dropdown with the other language */
+.lang-switch { position: relative; }
+.lang-switch-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cream);
+  cursor: pointer;
+}
+.lang-switch-trigger:hover { color: var(--accent); }
+.lang-switch-trigger svg { width: 14px; height: 14px; transition: transform 0.15s ease; }
+.lang-switch.open .lang-switch-trigger svg { transform: rotate(180deg); }
+
+.lang-switch-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 12px;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(23,28,58,0.2);
+  padding: 6px;
+  min-width: 64px;
+  z-index: 10;
+}
+.lang-switch.open .lang-switch-menu { display: block; }
+.lang-switch-option {
+  display: block;
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--secondary-deep);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+}
+.lang-switch-option:hover { background: var(--primary-pale); }
+.lang-switch-option.is-current { display: none; }
+
+/* the mobile dropdown copy sits on the cream panel, not the blue bar */
+.mobile-nav .lang-switch-trigger { color: var(--text); }
+.mobile-nav .lang-switch-trigger:hover { color: var(--primary-deep); }
 
 .nav-toggle {
   display: none;
@@ -152,7 +230,7 @@ button { font-family: inherit; cursor: pointer; }
   display: block;
   height: 3px;
   border-radius: 3px;
-  background: var(--secondary-deep);
+  background: var(--cream);
 }
 
 /* ===========================================================
@@ -344,9 +422,19 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 @media (max-width: 640px) {
-  .logo-img { height: 48px; }
-  .header-inner { display: flex; justify-content: space-between; }
+  /* logo + hamburger share one row: hide the standalone logo row and
+     show the inline mobile logo inside the nav row instead */
+  .header-row-logo { display: none; }
+  .logo-link-mobile { display: flex; }
+  .logo-img { height: 44px; }
+  /* keep the lighter cream bar on mobile instead of the blue block —
+     the hamburger icon needs a dark color to stay visible against it */
+  .header-row-nav { background: var(--cream); }
+  .nav-toggle span { background: var(--secondary-deep); }
+  .header-inner { display: flex; justify-content: space-between; align-items: center; }
   .nav-side { display: none; }
+  /* the bar's own lang-switch collapses into the mobile dropdown instead */
+  .header-inner > .lang-switch { display: none; }
   .mobile-nav {
     position: absolute;
     top: 100%;
@@ -362,8 +450,22 @@ button { font-family: inherit; cursor: pointer; }
   }
   .mobile-nav.open { display: flex; }
   .nav-toggle { display: flex; }
-  .hero-highlights { grid-template-columns: 1fr; }
+
+  /* one highlight photo visible at a time, swipeable, instead of all
+     three stacked — keeps the hero headline above the fold */
+  .hero-highlights {
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-bottom: 32px;
+  }
+  .hero-highlights::-webkit-scrollbar { display: none; }
+  .hero-highlight-link { flex: 0 0 100%; scroll-snap-align: start; }
   .hero-highlight-link img { height: 220px; }
+
   .card-grid { grid-template-columns: 1fr; }
   .contact-actions { flex-direction: column; align-items: center; }
   .footer-inner { justify-content: center; text-align: center; }

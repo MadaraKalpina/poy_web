@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,33 +18,74 @@
      Header / nav
      =========================================================== -->
 <header class="site-header">
-  <div class="container header-inner">
-    <nav class="nav-side nav-left">
-      <a href="#feed">What I do</a>
-      <a href="#about">About</a>
-    </nav>
 
-    <a href="#top" class="logo-link" aria-label="Poy — home">
+  <!-- Row 1: logo only, centered, no color block -->
+  <div class="header-row header-row-logo">
+    <a href="#top" class="logo-link" aria-label="Poy — home" data-i18n-attr="aria-label:nav.logoAriaLabel">
       <img src="branding/logo_horizontal.png" alt="Poy" class="logo-img">
     </a>
-
-    <nav class="nav-side nav-right">
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
   </div>
 
-  <!-- mobile dropdown: all links in one list, shown via the hamburger toggle -->
-  <nav class="mobile-nav" id="main-nav">
-    <a href="#feed">What I do</a>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <!-- Row 2: nav links + language switcher, on the blue color block.
+       Below 640px this becomes the only header row — .logo-link-mobile
+       shows here (hidden on desktop) while .header-row-logo above hides,
+       so logo + hamburger end up sharing one row on mobile. -->
+  <div class="header-row header-row-nav">
+    <div class="container header-inner">
+      <a href="#top" class="logo-link logo-link-mobile" aria-label="Poy — home" data-i18n-attr="aria-label:nav.logoAriaLabel">
+        <img src="branding/logo_horizontal.png" alt="Poy" class="logo-img">
+      </a>
+
+      <nav class="nav-side nav-left">
+        <a href="#feed" data-i18n="nav.feed">What I do</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+      </nav>
+
+      <nav class="nav-side nav-right">
+        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <!-- language switcher: current language + arrow, opens a dropdown
+           with the other language. Plain fetch()+localStorage, see i18n.js -->
+      <div class="lang-switch">
+        <button type="button" class="lang-switch-trigger" aria-haspopup="true" aria-expanded="false">
+          <span class="lang-switch-current">CZ</span>
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="lang-switch-menu">
+          <button type="button" class="lang-switch-option" data-lang="cz">CZ</button>
+          <button type="button" class="lang-switch-option" data-lang="en">EN</button>
+        </div>
+      </div>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" data-i18n-attr="aria-label:nav.toggleAriaLabel">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- mobile dropdown: all links in one list, shown via the hamburger toggle -->
+    <nav class="mobile-nav" id="main-nav">
+      <a href="#feed" data-i18n="nav.feed">What I do</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+      <div class="lang-switch">
+        <button type="button" class="lang-switch-trigger" aria-haspopup="true" aria-expanded="false">
+          <span class="lang-switch-current">CZ</span>
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="lang-switch-menu">
+          <button type="button" class="lang-switch-option" data-lang="cz">CZ</button>
+          <button type="button" class="lang-switch-option" data-lang="en">EN</button>
+        </div>
+      </div>
+    </nav>
+  </div>
 </header>
 
 <main>
@@ -56,27 +97,27 @@
 
     <!-- PLACEHOLDER: each links to a dedicated portfolio page — not built yet -->
     <div class="hero-highlights">
-      <a href="#" class="hero-highlight-link" aria-label="Custom collars portfolio — coming soon">
-        <img src="public/Collar.jpg" alt="Custom upcycled dog collar">
+      <a href="#" class="hero-highlight-link" aria-label="Custom collars portfolio — coming soon" data-i18n-attr="aria-label:hero.highlights.collarsAriaLabel">
+        <img src="public/Collar.jpg" alt="Custom upcycled dog collar" data-i18n-attr="alt:hero.highlights.collarsAlt">
       </a>
-      <a href="#" class="hero-highlight-link" aria-label="Alterations portfolio — coming soon">
-        <img src="public/Alterations.jpg" alt="Clothing alteration in progress">
+      <a href="#" class="hero-highlight-link" aria-label="Alterations portfolio — coming soon" data-i18n-attr="aria-label:hero.highlights.alterationsAriaLabel">
+        <img src="public/Alterations.jpg" alt="Clothing alteration in progress" data-i18n-attr="alt:hero.highlights.alterationsAlt">
       </a>
-      <a href="#" class="hero-highlight-link" aria-label="Repairs portfolio — coming soon">
-        <img src="public/Fixes.jpg" alt="Garment repair in progress">
+      <a href="#" class="hero-highlight-link" aria-label="Repairs portfolio — coming soon" data-i18n-attr="aria-label:hero.highlights.repairsAriaLabel">
+        <img src="public/Fixes.jpg" alt="Garment repair in progress" data-i18n-attr="alt:hero.highlights.repairsAlt">
       </a>
     </div>
 
     <div class="container hero-inner">
       <div class="hero-text">
-        <p class="kicker">handmade with heart</p>
-        <h1>Navrhuju a šiju z nechtěného domácího textilu</h1>
-        <p class="hero-sub">
+        <p class="kicker" data-i18n="hero.kicker">handmade with heart</p>
+        <h1 data-i18n="hero.title">Navrhuju a šiju z nechtěného domácího textilu</h1>
+        <p class="hero-sub" data-i18n="hero.subtitle">
           Every Poy collar starts as fabric that's already lived a life — reworked,
           resized, and made just for your dog. Clothes get a second chapter too,
           with alterations and repairs done by hand, one piece at a time.
         </p>
-        <a href="#contact" class="btn btn-navy">Get in Touch</a>
+        <a href="#contact" class="btn btn-navy" data-i18n="hero.cta">Get in Touch</a>
       </div>
     </div>
     <div class="scallop" style="--scallop-color: var(--accent);"></div>
@@ -88,28 +129,28 @@
   <section class="about" id="about">
     <div class="container about-inner">
       <div class="about-photo">
-        <img src="public/about me.JPG" alt="The maker behind Poy" class="about-photo-img">
+        <img src="public/about me.JPG" alt="The maker behind Poy" class="about-photo-img" data-i18n-attr="alt:about.photoAlt">
         <img src="branding/blue_flower_hires.png" alt="" class="badge">
       </div>
       <div class="about-text">
-        <p class="kicker">meet the maker</p>
-        <h2>Hi, I'm the one behind Poy</h2>
-        <p>
+        <p class="kicker" data-i18n="about.kicker">meet the maker</p>
+        <h2 data-i18n="about.title">Hi, I'm the one behind Poy</h2>
+        <p data-i18n="about.paragraphs.0">
           Narodila jsem se v Přerově a do Prahy jsem přišla za studiem na FAMU.
           Aktuálně se živím jako koordinátorka odbavení letadel na pražském
           letišti a šití jsem se začala intenzivněji věnovat asi 2 roky
           zpátky, z potřeby uspokojit kreativní část své osobnosti.
         </p>
-        <p>
+        <p data-i18n="about.paragraphs.1">
           Vyrábím kvalitní psí obojky s ručně vyšívanými jmenovkami.
         </p>
-        <p>
+        <p data-i18n="about.paragraphs.2">
           Zajímám se i o ekologická témata spojená s módou. Nejraději se proto
           věnuji šití z přírodních materiálů, baví mě upcyklovat nechtěný
           domácí textil, který by jinak pravděpodobně skončil na skládce.
           Materiály nacházím v sekáčích, nebo od známých a z pozůstalostí.
         </p>
-        <p>
+        <p data-i18n="about.paragraphs.3">
           Smysl mi dává i přešívání a opravování.
         </p>
       </div>
@@ -122,41 +163,41 @@
   <section class="services" id="services">
     <div class="container">
       <div class="section-heading">
-        <p class="kicker">what I make &amp; mend</p>
-        <h2>Services</h2>
+        <p class="kicker" data-i18n="services.kicker">what I make &amp; mend</p>
+        <h2 data-i18n="services.title">Services</h2>
       </div>
 
       <div class="card-grid">
 
         <article class="card">
-          <img src="public/services_collars.png" alt="Obojek pro psa na míru" class="card-img">
+          <img src="public/services_collars.png" alt="Obojek pro psa na míru" class="card-img" data-i18n-attr="alt:services.cards.0.imgAlt">
           <div class="card-caption">
-            <h3>Obojky a vodítka na míru</h3>
-            <p class="desc">Vyrobím obojek i vodítko pro vašeho pejska přesně podle vašich představ. Kvalitní kovové komponenty. Mnoho vzorů na výběr, plně pratelný materiál ze 100% bavlny. Ručně vyšívaná jmenovka s telefonním číslem.</p>
+            <h3 data-i18n="services.cards.0.title">Obojky a vodítka na míru</h3>
+            <p class="desc" data-i18n="services.cards.0.desc">Vyrobím obojek i vodítko pro vašeho pejska přesně podle vašich představ. Kvalitní kovové komponenty. Mnoho vzorů na výběr, plně pratelný materiál ze 100% bavlny. Ručně vyšívaná jmenovka s telefonním číslem.</p>
           </div>
         </article>
 
         <article class="card">
-          <img src="public/services_spravy.jpg" alt="Oprava oblečení" class="card-img">
+          <img src="public/services_spravy.jpg" alt="Oprava oblečení" class="card-img" data-i18n-attr="alt:services.cards.1.imgAlt">
           <div class="card-caption">
-            <h3>Opravy a úpravy oblečení</h3>
-            <p class="desc">Máte oblíbený kousek, který potřebuje opravit? Díry, vytržené švy, rozbité zipy, upadlé knoflíky, s většinou věcí si dokážu poradit.</p>
+            <h3 data-i18n="services.cards.1.title">Opravy a úpravy oblečení</h3>
+            <p class="desc" data-i18n="services.cards.1.desc">Máte oblíbený kousek, který potřebuje opravit? Díry, vytržené švy, rozbité zipy, upadlé knoflíky, s většinou věcí si dokážu poradit.</p>
           </div>
         </article>
 
         <article class="card">
-          <img src="public/services_alterations.jpg" alt="Úprava oblečení — před a po" class="card-img">
+          <img src="public/services_alterations.jpg" alt="Úprava oblečení — před a po" class="card-img" data-i18n-attr="alt:services.cards.2.imgAlt">
           <div class="card-caption">
-            <h3>Úpravy oblečení</h3>
-            <p class="desc">Nebo něco stoprocentně nesedí nebo nesluší? Dokážu zkrátit, zúžit, v rámci možností i prodloužit a rozšířit, upravit rukávy, výstřih,… Společně vymyslíme co s tím.</p>
+            <h3 data-i18n="services.cards.2.title">Úpravy oblečení</h3>
+            <p class="desc" data-i18n="services.cards.2.desc">Nebo něco stoprocentně nesedí nebo nesluší? Dokážu zkrátit, zúžit, v rámci možností i prodloužit a rozšířit, upravit rukávy, výstřih,… Společně vymyslíme co s tím.</p>
           </div>
         </article>
 
         <article class="card">
-          <img src="public/services_custom.jpeg" alt="Šití na míru" class="card-img">
+          <img src="public/services_custom.jpeg" alt="Šití na míru" class="card-img" data-i18n-attr="alt:services.cards.3.imgAlt">
           <div class="card-caption">
-            <h3>Šití na míru</h3>
-            <p class="desc">Máte konkrétní představu unikátního oděvu nebo produktu? Ráda poskytnu konzultaci a pokud se dohodneme, tak poskytnu kompletní realizaci.</p>
+            <h3 data-i18n="services.cards.3.title">Šití na míru</h3>
+            <p class="desc" data-i18n="services.cards.3.desc">Máte konkrétní představu unikátního oděvu nebo produktu? Ráda poskytnu konzultaci a pokud se dohodneme, tak poskytnu kompletní realizaci.</p>
           </div>
         </article>
 
@@ -170,8 +211,8 @@
   <section class="feed" id="feed">
     <div class="container">
       <div class="section-heading">
-        <p class="kicker">follow along</p>
-        <h2>Straight from Instagram</h2>
+        <p class="kicker" data-i18n="feed.kicker">follow along</p>
+        <h2 data-i18n="feed.title">Straight from Instagram</h2>
       </div>
     </div>
     <div class="feed-widget">
@@ -187,17 +228,17 @@
        =========================================================== -->
   <section class="contact" id="contact">
     <div class="container">
-      <p class="kicker">say hello</p>
-      <h2>Let's make something</h2>
-      <p>
+      <p class="kicker" data-i18n="contact.kicker">say hello</p>
+      <h2 data-i18n="contact.title">Let's make something</h2>
+      <p data-i18n="contact.text">
         Got a dog who needs a collar, or clothes that need a little care?
         Send a message and let's talk about it.
       </p>
       <div class="contact-actions">
         <!-- PLACEHOLDER: swap for the real email before launch -->
-        <a href="mailto:hello@atelierpoy.cz" class="btn btn-navy">Email hello@atelierpoy.cz</a>
+        <a href="mailto:hello@atelierpoy.cz" class="btn btn-navy" data-i18n="contact.emailButton">Email hello@atelierpoy.cz</a>
         <!-- PLACEHOLDER: swap for the real Instagram handle before launch -->
-        <a href="https://www.instagram.com/atelier_poy" target="_blank" rel="noopener" class="btn btn-outline">@atelier_poy on Instagram</a>
+        <a href="https://www.instagram.com/atelier_poy" target="_blank" rel="noopener" class="btn btn-outline" data-i18n="contact.instagramButton">@atelier_poy on Instagram</a>
       </div>
     </div>
   </section>
@@ -212,14 +253,15 @@
     <img src="branding/LOGO - PROFILOVKA.png" alt="Poy" class="footer-logo">
     <div class="footer-links">
       <!-- PLACEHOLDER: swap for the real Instagram handle before launch -->
-      <a href="https://www.instagram.com/atelier_poy" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.instagram.com/atelier_poy" target="_blank" rel="noopener" data-i18n="footer.instagramLink">Instagram</a>
       <!-- PLACEHOLDER: swap for the real email before launch -->
-      <a href="mailto:hello@atelierpoy.cz">hello@atelierpoy.cz</a>
+      <a href="mailto:hello@atelierpoy.cz" data-i18n="footer.emailLink">hello@atelierpoy.cz</a>
     </div>
-    <p class="footer-note">Made in Prague · &copy; 2026 Poy · All collars one-of-a-kind</p>
+    <p class="footer-note" data-i18n="footer.note">Made in Prague · &copy; 2026 Poy · All collars one-of-a-kind</p>
   </div>
 </footer>
 
 <script src="script.js"></script>
+<script src="i18n.js"></script>
 </body>
 </html>
