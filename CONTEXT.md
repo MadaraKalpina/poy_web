@@ -60,7 +60,7 @@ inspo/                   reference screenshots (Cal & Lily, Lars, Friday Afterno
 2. **Hero** — full-bleed row of 3 photos (each an `<a href="#">` placeholder link, meant to eventually open per-service portfolio pages that don't exist yet), then a centered headline/subtext/CTA below.
 3. **About** — split layout: photo + decorative flower badge on one side, bio copy on the other. Background is the mustard/accent color block.
 4. **Services** — 4 cards, each an arch-shaped photo with a colored caption block (title + description) in the primary rose color.
-5. **Instagram feed** — embeds a LightWidget iframe. **Known issue**: LightWidget's free tier blocks HTTPS and shows an upsell screen instead of the feed on any HTTPS-hosted site (including GitHub Pages). This was flagged to the user and is unresolved — see "Open decisions" below.
+5. **Instagram feed** — embeds an Elfsight Instagram Feed widget (swapped in after LightWidget's free tier turned out to block HTTPS — see git history for the original LightWidget version if ever needed).
 6. **Contact** — mailto link + Instagram link, on the primary rose color block.
 7. **Footer** — logo, Instagram link, email, "Made in Prague" line.
 
@@ -102,7 +102,6 @@ Built as a lightweight vanilla-JS system, **not** React — this was originally 
 - **Email/Instagram handle are duplicated** across `contact.emailButton`, `contact.instagramButton`, `footer.emailLink`, `footer.instagramLink` (both locale files) — changing either means updating up to 4 places, not one canonical source.
 - **`<title>`/meta description are not translated** — static, English, not wired into the language switcher.
 - **Language code is `"cz"`**, not the ISO 639-1 `"cs"` — kept to match the requested file naming (`cz.json`/`en.json`); the static `<html lang="cs">` attribute is correct though, and gets updated to `"en"`/`"cs"` by JS on switch.
-- **LightWidget Instagram embed** shows a "widget add-on required" upsell instead of the feed, because the free tier blocks HTTPS. Three options were on the table when this got interrupted by other work: (a) pay for LightWidget, (b) swap to a different embed provider, (c) drop the live embed and replace the section with a plain "follow on Instagram" link/button. **Not yet decided.**
 - **Raw `.HEIC`/`.heif` originals are committed** to `public/` alongside their converted `.jpg` versions — harmless but adds repo weight; fine to remove if the client wants a leaner repo.
 - **`inspo/`** (competitor/reference screenshots) is committed to the repo too — worth reconsidering before this repo is ever made more widely visible, since those aren't Poy's own assets.
 

@@ -325,7 +325,7 @@ button { font-family: inherit; cursor: pointer; }
   background: var(--white);
   margin-bottom: 56px;
 }
-.feed-widget .lightwidget-widget { min-height: 500px; display: block; }
+.feed-widget [class*="elfsight-app-"] { min-height: 500px; display: block; }
 
 /* ===========================================================
    About
