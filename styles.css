@@ -358,12 +358,12 @@ button { font-family: inherit; cursor: pointer; }
   background: var(--cream);
   color: var(--secondary-deep);
   cursor: pointer;
-  transition: background 0.15s ease, transform 0.15s ease;
+  transition: background 0.15s ease;
 }
 .review-arrow-prev { left: 0; }
 .review-arrow-next { right: 0; }
 .review-arrow svg { width: 22px; height: 22px; }
-.review-arrow:hover { background: var(--accent); transform: translateY(-2px); }
+.review-arrow:hover { background: var(--accent); }
 
 /* fixed-height stage sized to the shorter, typical review (review 2) so
    the section doesn't jump height between slides. The one long review
@@ -377,7 +377,6 @@ button { font-family: inherit; cursor: pointer; }
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  transition: max-width 0.2s ease;
 }
 /* review 1 is much longer than the rest — give it the full available
    width plus a slightly smaller font, together enough to land at the
@@ -533,7 +532,7 @@ button { font-family: inherit; cursor: pointer; }
   .card-grid { grid-template-columns: 1fr 1fr; }
   .about-inner { grid-template-columns: 1fr; }
   .about-photo { max-width: 420px; margin: 0 auto; }
-  .badge { width: 220px; height: auto; bottom: -50px; right: -40px; }
+  .badge { width: 220px; height: auto; bottom: -30px; right: -110px; }
 }
 
 @media (max-width: 640px) {
@@ -584,4 +583,35 @@ button { font-family: inherit; cursor: pointer; }
   .card-grid { grid-template-columns: 1fr; }
   .contact-actions { flex-direction: column; align-items: center; }
   .footer-inner { justify-content: center; text-align: center; }
+
+  /* shrink further than the tablet size above; nudged left (photo size
+     itself unchanged) so the badge below has room to grow into the space
+     freed up on the right instead of sitting centered under it */
+  .about-photo { max-width: 250px; margin-bottom: -70px; transform: translateX(-20px); }
+  /* stays on the tablet's bottom-right hang (right/bottom inherited from
+     the 900px breakpoint), just sized up, so it balances the photo's
+     leftward shift; it's on the shared z-index:1 layer below .about-text
+     (see z-index note above), so it can never sit over the heading even
+     where it overlaps the photo/text column horizontally */
+  .badge { width: 180px; }
+  /* height was a fixed 523px sized for the desktop photo, which left empty
+     space above the (bottom-anchored) image at mobile widths. 390px
+     matches the image's own aspect ratio at 250px wide, so it fills the
+     box with no dead space; the bottom-bleed pull (margin above) and the
+     section's padding-bottom are scaled to match so the flush-to-edge
+     bleed effect still lines up at the new, smaller size. */
+  .about-photo-img { height: 295px; }
+  .about { padding-top: 0; padding-bottom: 70px; }
+  /* the bleed margin above cancels almost all of .about-inner's row gap,
+     leaving the heading crowding the photo — push it back down. */
+  .about-text { margin-top: 40px; }
+
+  /* smaller type + slimmer arrow gutters so the longest review (review 1)
+     doesn't force the section to towering heights on narrow screens */
+  .reviews { padding: 48px 0; }
+  .review-arrow { width: 34px; height: 34px; }
+  .review-arrow svg { width: 16px; height: 16px; }
+  .review-track { padding: 0 42px; min-height: 190px; }
+  .review-text,
+  .review-track.is-wide .review-text { font-size: 1rem; line-height: 1.45; }
 }
