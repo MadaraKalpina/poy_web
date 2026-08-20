@@ -105,6 +105,28 @@ button { font-family: inherit; cursor: pointer; }
   mask-position: center top;
 }
 
+/* Wavy borders made from tiled slices of the hand-painted wave_yelow.png
+   artwork (one seamless 2-bump period each) instead of the scalloped mask
+   above. --about leads into the About section; --contact leads from the
+   Instagram feed into the Contact section, recolored to --primary and
+   given a white backing (background-color, showing through the gaps
+   between bumps) so it reads as a continuation of the widget's white
+   background rather than the feed section's cream. */
+.wave-divider {
+  height: 70px;
+  width: 100%;
+  background-repeat: repeat-x;
+  background-position: center top;
+  background-size: auto 100%;
+}
+.wave-divider--about {
+  background-image: url('branding/wave_yelow_tile.png');
+}
+.wave-divider--contact {
+  background-color: var(--white);
+  background-image: url('branding/wave_primary_tile.png');
+}
+
 /* ===========================================================
    Header
    =========================================================== */
@@ -396,14 +418,14 @@ button { font-family: inherit; cursor: pointer; }
 .feed-widget {
   width: 100%;
   background: var(--white);
-  margin-bottom: 56px;
+  padding-bottom: 56px;
 }
 .feed-widget [class*="elfsight-app-"] { min-height: 500px; display: block; }
 
 /* ===========================================================
    About
    =========================================================== */
-.about { background: var(--accent); padding-top: 30px; padding-bottom: 94px; }
+.about { background: #ffd64c; padding-top: 30px; padding-bottom: 94px; }
 .about-inner {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
