@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Poy — Upcycled Dog Collars, Alterations &amp; Repairs</title>
 <meta name="description" content="Poy makes upcycled, custom dog collars, plus clothing alterations and repairs. Handmade with care, one piece at a time.">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
 
@@ -110,7 +110,6 @@
 
     <div class="container hero-inner">
       <div class="hero-text">
-        <p class="kicker" data-i18n="hero.kicker">handmade with heart</p>
         <h1 data-i18n="hero.title">Navrhuju a šiju z nechtěného domácího textilu</h1>
         <p class="hero-sub" data-i18n="hero.subtitle">
           Every Poy collar starts as fabric that's already lived a life — reworked,
@@ -129,7 +128,7 @@
   <section class="about" id="about">
     <div class="container about-inner">
       <div class="about-photo">
-        <img src="public/about me.JPG" alt="The maker behind Poy" class="about-photo-img" data-i18n-attr="alt:about.photoAlt">
+        <img src="public/about me transparent.png" alt="The maker behind Poy" class="about-photo-img" data-i18n-attr="alt:about.photoAlt">
         <img src="branding/blue_flower_hires.png" alt="" class="badge">
       </div>
       <div class="about-text">
@@ -170,7 +169,7 @@
       <div class="card-grid">
 
         <article class="card">
-          <img src="public/services_collars.png" alt="Obojek pro psa na míru" class="card-img" data-i18n-attr="alt:services.cards.0.imgAlt">
+          <img src="public/services picture 1.png" alt="Obojek pro psa na míru" class="card-img" data-i18n-attr="alt:services.cards.0.imgAlt">
           <div class="card-caption">
             <h3 data-i18n="services.cards.0.title">Obojky a vodítka na míru</h3>
             <p class="desc" data-i18n="services.cards.0.desc">Vyrobím obojek i vodítko pro vašeho pejska přesně podle vašich představ. Kvalitní kovové komponenty. Mnoho vzorů na výběr, plně pratelný materiál ze 100% bavlny. Ručně vyšívaná jmenovka s telefonním číslem.</p>
@@ -178,7 +177,7 @@
         </article>
 
         <article class="card">
-          <img src="public/services_spravy.jpg" alt="Oprava oblečení" class="card-img" data-i18n-attr="alt:services.cards.1.imgAlt">
+          <img src="public/services pic 2.png" alt="Oprava oblečení" class="card-img" data-i18n-attr="alt:services.cards.1.imgAlt">
           <div class="card-caption">
             <h3 data-i18n="services.cards.1.title">Opravy a úpravy oblečení</h3>
             <p class="desc" data-i18n="services.cards.1.desc">Máte oblíbený kousek, který potřebuje opravit? Díry, vytržené švy, rozbité zipy, upadlé knoflíky, s většinou věcí si dokážu poradit.</p>
@@ -186,7 +185,7 @@
         </article>
 
         <article class="card">
-          <img src="public/services_alterations.jpg" alt="Úprava oblečení — před a po" class="card-img" data-i18n-attr="alt:services.cards.2.imgAlt">
+          <img src="public/services pic 3.png" alt="Úprava oblečení — před a po" class="card-img" data-i18n-attr="alt:services.cards.2.imgAlt">
           <div class="card-caption">
             <h3 data-i18n="services.cards.2.title">Úpravy oblečení</h3>
             <p class="desc" data-i18n="services.cards.2.desc">Nebo něco stoprocentně nesedí nebo nesluší? Dokážu zkrátit, zúžit, v rámci možností i prodloužit a rozšířit, upravit rukávy, výstřih,… Společně vymyslíme co s tím.</p>
@@ -194,13 +193,60 @@
         </article>
 
         <article class="card">
-          <img src="public/services_custom.jpeg" alt="Šití na míru" class="card-img" data-i18n-attr="alt:services.cards.3.imgAlt">
+          <img src="public/services pic 4.png" alt="Šití na míru" class="card-img" data-i18n-attr="alt:services.cards.3.imgAlt">
           <div class="card-caption">
             <h3 data-i18n="services.cards.3.title">Šití na míru</h3>
             <p class="desc" data-i18n="services.cards.3.desc">Máte konkrétní představu unikátního oděvu nebo produktu? Ráda poskytnu konzultaci a pokud se dohodneme, tak poskytnu kompletní realizaci.</p>
           </div>
         </article>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================================================
+       Reviews
+       =========================================================== -->
+  <section class="reviews">
+    <div class="container">
+      <div class="reviews-carousel">
+        <button type="button" class="review-arrow review-arrow-prev" id="review-prev" aria-label="Previous review" data-i18n-attr="aria-label:reviews.prevAriaLabel">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="review-track is-wide" id="review-track">
+          <div class="review-slide is-active">
+            <p class="review-text" data-i18n="reviews.items.0.text">K druhým narozkám jsme si konečně nadělily custom zástěry. Oslovily jsme proto milou bývalou spolužačku z vejšky Báru, která právě rozjíždí svůj brand @atelier_poy, což se ukázalo jako nejlepší rozhodnutí 🧡 Ušila je evidentně s láskou - mega rychle, pečlivě, ochotně jezdila s ukázkama materiálů a testovacích verzí, a taky jsou upcyklovaný - z prostěradel a ubrusů. A ze zbytkovýho materiálu ušila ještě něco, čemu odborně říkáme „knedlíčky“ - pytlíky na zatěžkávání talířů, aby se co nejvíc omezilo kroucení výrobků během schnutí.</p>
+            <p class="review-handle" data-i18n="reviews.items.0.handle">@slikr.studio on Instagram</p>
+          </div>
+          <div class="review-slide">
+            <p class="review-text" data-i18n="reviews.items.1.text">Určitě doporučuji Poy, pokud chcete krásný psí obojek co se dá kustomizovat a prát, nelíbí se vám ty moderní ze zverimexu a nebo třeba vám vadí pořád cinkání psí známky… Můžete si nechat vyšít jakýkoli text, např. telefonní číslo na obojek. A podpoříte tím malý podnik!</p>
+            <p class="review-handle" data-i18n="reviews.items.1.handle">@eyeofthenewt on Instagram</p>
+          </div>
+          <div class="review-slide">
+            <p class="review-text" data-i18n="reviews.items.2.text">Nový perfektní obojek od Poy je naprostá kouzelnost, běžte svýmu pejskovi taky jeden udělat! Můj je ze starýho pyžámka, je pevnej, kvalitní, krásnej, ručně dokonale dělanej, Lucky je mega happy :D</p>
+            <p class="review-handle" data-i18n="reviews.items.2.handle">@leniickamr on Instagram</p>
+          </div>
+          <div class="review-slide">
+            <p class="review-text" data-i18n="reviews.items.3.text">Jugo dostal k Vánocům nový obojek od úžasné @atelier_poy. Chválí a doporučuje!</p>
+            <p class="review-handle" data-i18n="reviews.items.3.handle">@mylonakiova on Instagram</p>
+          </div>
+        </div>
+
+        <button type="button" class="review-arrow review-arrow-next" id="review-next" aria-label="Next review" data-i18n-attr="aria-label:reviews.nextAriaLabel">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="review-dots" id="review-dots" aria-hidden="true">
+        <span class="review-dot is-active"></span>
+        <span class="review-dot"></span>
+        <span class="review-dot"></span>
+        <span class="review-dot"></span>
       </div>
     </div>
   </section>
@@ -237,8 +283,6 @@
       <div class="contact-actions">
         <!-- PLACEHOLDER: swap for the real email before launch -->
         <a href="mailto:hello@atelierpoy.cz" class="btn btn-navy" data-i18n="contact.emailButton">Email hello@atelierpoy.cz</a>
-        <!-- PLACEHOLDER: swap for the real Instagram handle before launch -->
-        <a href="https://www.instagram.com/atelier_poy" target="_blank" rel="noopener" class="btn btn-outline" data-i18n="contact.instagramButton">@atelier_poy on Instagram</a>
       </div>
     </div>
   </section>
@@ -252,8 +296,27 @@
   <div class="container footer-inner">
     <img src="branding/LOGO - PROFILOVKA.png" alt="Poy" class="footer-logo">
     <div class="footer-links">
-      <!-- PLACEHOLDER: swap for the real Instagram handle before launch -->
-      <a href="https://www.instagram.com/atelier_poy" target="_blank" rel="noopener" data-i18n="footer.instagramLink">Instagram</a>
+      <div class="footer-socials">
+        <!-- PLACEHOLDER: swap for the real Instagram handle before launch -->
+        <a href="https://www.instagram.com/atelier_poy" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram" data-i18n-attr="aria-label:footer.instagramLink">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61593095477667" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook" data-i18n-attr="aria-label:footer.facebookLink">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M14.5 8.5h1.8V5.8h-2.1c-2.3 0-3.7 1.4-3.7 3.7v1.7H8.4v2.9h2.1V21h3v-6.9h2.2l.4-2.9h-2.6V9.7c0-.7.3-1.2 1-1.2Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@atelier_poy" target="_blank" rel="noopener" class="social-icon" aria-label="TikTok" data-i18n-attr="aria-label:footer.tiktokLink">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M13.5 4v10.8a3 3 0 1 1-2.3-2.9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M13.5 4c.3 2.2 1.9 3.9 4 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
       <!-- PLACEHOLDER: swap for the real email before launch -->
       <a href="mailto:hello@atelierpoy.cz" data-i18n="footer.emailLink">hello@atelierpoy.cz</a>
     </div>
@@ -261,7 +324,7 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
-<script src="i18n.js"></script>
+<script src="script.js?v=2"></script>
+<script src="i18n.js?v=2"></script>
 </body>
 </html>

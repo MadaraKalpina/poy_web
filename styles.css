@@ -85,20 +85,22 @@ button { font-family: inherit; cursor: pointer; }
 .btn-outline { background: transparent; border-color: currentColor; box-shadow: none; }
 
 /* ---------- scalloped divider ----------
-   A smooth, continuous sine-style wave (SVG mask, tiled via mask-repeat)
-   rather than a row of separate scalloped bumps. --scallop-color is set
-   per-usage to match the section the divider is leading into. Used only
-   at the top of a bold color block (max 2 per page). */
+   A continuous wave made of alternating elliptical arcs (rx 70 / ry 30)
+   — one bulging up, the next bulging down, tangent at each join. Wide,
+   gentle rhythm (280px per full cycle) rather than tight round bumps.
+   --scallop-color is set per-usage to match the section the divider is
+   leading into. Used only at the top of a bold color block (max 2 per
+   page). */
 .scallop {
-  height: 90px;
+  height: 66px;
   width: 100%;
   background-color: var(--scallop-color);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='90'%3E%3Cpath d='M0,50 C55,15 55,15 110,50 C165,85 165,85 220,50 L220,90 L0,90 Z' fill='white'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='90'%3E%3Cpath d='M0,50 C55,15 55,15 110,50 C165,85 165,85 220,50 L220,90 L0,90 Z' fill='white'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='66'%3E%3Cpath d='M0,33 A70,30 0 0 1 140,33 A70,30 0 0 0 280,33 L280,66 L0,66 Z' fill='white'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='66'%3E%3Cpath d='M0,33 A70,30 0 0 1 140,33 A70,30 0 0 0 280,33 L280,66 L0,66 Z' fill='white'/%3E%3C/svg%3E");
   -webkit-mask-repeat: repeat-x;
   mask-repeat: repeat-x;
-  -webkit-mask-size: 220px 90px;
-  mask-size: 220px 90px;
+  -webkit-mask-size: 280px 66px;
+  mask-size: 280px 66px;
   -webkit-mask-position: center top;
   mask-position: center top;
 }
@@ -112,17 +114,23 @@ button { font-family: inherit; cursor: pointer; }
   z-index: 50;
 }
 
-/* Row 1 — logo only, centered, no color block */
+/* Row 1 — logo only, centered, no color block. Shrinks to half size once
+   the page is scrolled (see script.js), freeing up vertical space; the
+   blue nav row below is untouched by this. */
 .header-row-logo {
   display: flex;
   justify-content: center;
   align-items: center;
   background: var(--cream);
-  padding: 14px 0;
+  padding: 14px 0 8px;
+  transition: padding 0.25s ease;
 }
 .logo-link { display: flex; }
-.logo-img { height: 68px; width: auto; }
+.logo-img { height: 130px; width: auto; transition: height 0.25s ease; }
 .logo-link-mobile { display: none; }
+
+.site-header.is-scrolled .header-row-logo { padding: 7px 0 4px; }
+.site-header.is-scrolled .header-row-logo .logo-img { height: 65px; }
 
 /* Row 2 — nav links + language switcher, on the blue color block */
 .header-row-nav {
@@ -270,7 +278,6 @@ button { font-family: inherit; cursor: pointer; }
   margin-left: auto;
   margin-right: auto;
 }
-.hero .kicker { color: var(--primary-deep); }
 
 /* ===========================================================
    Services
@@ -287,33 +294,99 @@ button { font-family: inherit; cursor: pointer; }
   gap: 16px;
   align-items: start;
 }
-.card {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid var(--primary);
-  border-radius: 140px 140px 0 0;
-  overflow: hidden;
-}
+/* the new service photos already have their own decorative frame baked
+   into the image itself, so no CSS border/frame here — just show them
+   at their natural (near-square) aspect ratio so nothing gets cropped. */
 .card-img {
   width: 100%;
-  height: 280px;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   display: block;
 }
-.card-caption {
-  background: var(--primary);
-  padding: 18px 16px 22px;
-  text-align: center;
-}
+.card-caption { text-align: center; margin-top: 16px; }
 .card h3 {
   font-size: 0.9rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   line-height: 1.3;
   margin: 0 0 6px;
-  color: var(--white);
+  color: var(--secondary-deep);
 }
-.card p.desc { font-size: 0.85rem; margin: 0; color: var(--white); }
+.card p.desc { font-size: 14px; margin: 0; color: var(--text); }
+
+/* ===========================================================
+   Reviews
+   =========================================================== */
+.reviews { background: var(--primary); padding: 72px 0; }
+/* arrows are pinned to the edges of this full-width wrapper, not to the
+   (narrower, variable-width) text block, so they never shift position
+   when a review's width changes. */
+.reviews-carousel { position: relative; }
+.review-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: var(--cream);
+  color: var(--secondary-deep);
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.review-arrow-prev { left: 0; }
+.review-arrow-next { right: 0; }
+.review-arrow svg { width: 22px; height: 22px; }
+.review-arrow:hover { background: var(--accent); transform: translateY(-2px); }
+
+/* fixed-height stage sized to the shorter, typical review (review 2) so
+   the section doesn't jump height between slides. The one long review
+   (review 1) gets extra width instead, via .is-wide, to help it fit. */
+.review-track {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 64px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  transition: max-width 0.2s ease;
+}
+/* review 1 is much longer than the rest — give it the full available
+   width plus a slightly smaller font, together enough to land at the
+   same section height as the other (shorter) reviews. */
+.review-track.is-wide { max-width: none; }
+.review-track.is-wide .review-text { font-size: 1.3rem; }
+.review-slide { display: none; }
+.review-slide.is-active { display: block; }
+.review-text {
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  line-height: 1.5;
+  color: var(--white);
+  margin: 0 0 18px;
+}
+.review-handle {
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--secondary-deep);
+  margin: 0;
+}
+
+.review-dots { display: flex; justify-content: center; gap: 10px; margin-top: 36px; }
+.review-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(253,246,236,0.45);
+}
+.review-dot.is-active { background: var(--cream); }
 
 /* ===========================================================
    Instagram feed
@@ -335,23 +408,25 @@ button { font-family: inherit; cursor: pointer; }
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
   gap: 52px;
-  align-items: center;
+  align-items: end;
 }
-.about-photo { position: relative; z-index: 1; }
+/* pulled down by the section's own bottom padding so the photo reaches
+   the true edge of the yellow block instead of stopping level with the
+   (shorter) text column and floating above the section's bottom edge */
+.about-photo { position: relative; z-index: 1; margin-bottom: -94px; }
 .about-text { position: relative; z-index: 2; }
 .about-photo-img {
   width: 100%;
-  height: 420px;
-  object-fit: cover;
-  border-radius: 20px;
-  box-shadow: 0 10px 0 rgba(23,28,58,0.12);
+  height: 523px;
+  object-fit: contain;
+  object-position: bottom;
 }
 
 /* bleeds past the photo into the bio text column like a stamp — sits
    above the photo but behind the text, see .about-text z-index below */
 .badge {
   position: absolute;
-  bottom: -90px;
+  bottom: -20px;
   right: -130px;
   width: 396px;
   height: auto;
@@ -396,12 +471,30 @@ button { font-family: inherit; cursor: pointer; }
 .footer-logo { height: 56px; filter: brightness(0) invert(1); opacity: 0.9; }
 .footer-links {
   display: flex;
+  align-items: center;
   gap: 20px;
   flex-wrap: wrap;
   font-weight: 700;
   font-size: 0.9rem;
 }
 .footer-links a:hover { color: var(--accent); }
+
+.footer-socials { display: flex; gap: 10px; }
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(253,246,236,0.12);
+  color: var(--cream);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.social-icon svg { width: 18px; height: 18px; }
+/* clear invert on hover: solid cream badge with a dark icon, swapping
+   which color is foreground vs background rather than fading either out */
+.footer-links a.social-icon:hover { background: var(--cream); color: var(--secondary-deep); }
 .footer-note {
   width: 100%;
   text-align: center;

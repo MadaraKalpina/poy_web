@@ -8,7 +8,6 @@
     "contact": "Contact"
   },
   "hero": {
-    "kicker": "handmade with heart",
     "title": "Navrhuju a šiju z nechtěného domácího textilu",
     "subtitle": "Every Poy collar starts as fabric that's already lived a life — reworked, resized, and made just for your dog. Clothes get a second chapter too, with alterations and repairs done by hand, one piece at a time.",
     "cta": "Get in Touch",
@@ -58,6 +57,28 @@
       }
     ]
   },
+  "reviews": {
+    "prevAriaLabel": "Previous review",
+    "nextAriaLabel": "Next review",
+    "items": [
+      {
+        "handle": "@slikr.studio on Instagram",
+        "text": "K druhým narozkám jsme si konečně nadělily custom zástěry. Oslovily jsme proto milou bývalou spolužačku z vejšky Báru, která právě rozjíždí svůj brand @atelier_poy, což se ukázalo jako nejlepší rozhodnutí 🧡 Ušila je evidentně s láskou - mega rychle, pečlivě, ochotně jezdila s ukázkama materiálů a testovacích verzí, a taky jsou upcyklovaný - z prostěradel a ubrusů. A ze zbytkovýho materiálu ušila ještě něco, čemu odborně říkáme „knedlíčky“ - pytlíky na zatěžkávání talířů, aby se co nejvíc omezilo kroucení výrobků během schnutí."
+      },
+      {
+        "handle": "@eyeofthenewt on Instagram",
+        "text": "Určitě doporučuji Poy, pokud chcete krásný psí obojek co se dá kustomizovat a prát, nelíbí se vám ty moderní ze zverimexu a nebo třeba vám vadí pořád cinkání psí známky… Můžete si nechat vyšít jakýkoli text, např. telefonní číslo na obojek. A podpoříte tím malý podnik!"
+      },
+      {
+        "handle": "@leniickamr on Instagram",
+        "text": "Nový perfektní obojek od Poy je naprostá kouzelnost, běžte svýmu pejskovi taky jeden udělat! Můj je ze starýho pyžámka, je pevnej, kvalitní, krásnej, ručně dokonale dělanej, Lucky je mega happy :D"
+      },
+      {
+        "handle": "@mylonakiova on Instagram",
+        "text": "Jugo dostal k Vánocům nový obojek od úžasné @atelier_poy. Chválí a doporučuje!"
+      }
+    ]
+  },
   "feed": {
     "kicker": "follow along",
     "title": "Straight from Instagram"
@@ -66,11 +87,12 @@
     "kicker": "say hello",
     "title": "Let's make something",
     "text": "Got a dog who needs a collar, or clothes that need a little care? Send a message and let's talk about it.",
-    "emailButton": "Email hello@atelierpoy.cz",
-    "instagramButton": "@atelier_poy on Instagram"
+    "emailButton": "Email hello@atelierpoy.cz"
   },
   "footer": {
     "instagramLink": "Instagram",
+    "facebookLink": "Facebook",
+    "tiktokLink": "TikTok",
     "emailLink": "hello@atelierpoy.cz",
     "note": "Made in Prague · © 2026 Poy · All collars one-of-a-kind"
   }
