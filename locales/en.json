@@ -1,16 +1,171 @@
 {
-  "_note": "PLACEHOLDER COPY — every string below is a straight copy of locales/cz.json, not a real translation. Standard JSON has no comment syntax, so this note lives here as a regular (unused) key instead of a // comment. Swap in real English copy (e.g. via a DeepL pass) key-by-key, keeping the same structure as cz.json, then delete this _note key. The i18n loader ignores unknown keys, so leaving it in temporarily is harmless.",
   "nav": {
     "logoAriaLabel": "Poy — home",
     "toggleAriaLabel": "Toggle navigation",
-    "feed": "What I do",
+    "home": "Home",
+    "feed": "My Work",
     "about": "About",
     "services": "Services",
     "contact": "Contact"
   },
+  "collarPage": {
+    "kicker": "order a collar",
+    "title": "Build your collar",
+    "subtitle": "Choose your options below — we'll be in touch to confirm your order and arrange payment.",
+    "steps": {
+      "step1Label": "Step 1 of 3",
+      "step2Label": "Step 2 of 3",
+      "step3Label": "Step 3 of 3",
+      "dogHeading": "Tell us about your dog",
+      "collarHeading": "Build your collar",
+      "contactHeading": "Delivery & last bits",
+      "next": "Next",
+      "back": "Back"
+    },
+    "form": {
+      "width": {
+        "legend": "Width",
+        "options": {
+          "25": { "label": "25 mm", "price": "500 CZK without a nametag / 600 CZK with a nametag" },
+          "40": { "label": "40 mm", "price": "600 CZK without a nametag / 700 CZK with a nametag" }
+        },
+        "lockNote": "40mm width is currently only available with silver hardware."
+      },
+      "hardware": {
+        "legend": "Hardware",
+        "options": {
+          "silver": "Silver",
+          "gold": "Gold",
+          "black": "Black",
+          "brass": "Brass"
+        },
+        "note": "All hardware is nickel-based metal."
+      },
+      "fabric": {
+        "legend": "Fabric",
+        "note": "All fabrics are deadstock, second-hand, or scraps — no exceptions.",
+        "categories": {
+          "floral": "Floral",
+          "stripes": "Stripes & Gingham",
+          "mono": "Monochrome",
+          "random": "Random & Novelty"
+        },
+        "items": {
+          "1c": { "name": "forest meadow" },
+          "2c": { "name": "carnations and tulips" },
+          "3c": { "name": "meadow on white" },
+          "4c": { "name": "orange meadow" },
+          "5c": { "name": "funky meadow" },
+          "6c": { "name": "pink/white meadow" },
+          "7c": { "name": "white flowers on sand" },
+          "8c": { "name": "blue flowers on pink" },
+          "9c": { "name": "pink flowers on pink" },
+          "10c": { "name": "Ellie's folklore (horizontal pattern)" },
+          "13c": { "name": "Ellie's folklore (vertical pattern)" },
+          "11c": { "name": "orange clovers" },
+          "12c": { "name": "yellow meadow" },
+          "1b": { "name": "thin blue stripes" },
+          "2b": { "name": "turquoise/blue (vertical stripes)" },
+          "11b": { "name": "turquoise/blue (horizontal stripes)" },
+          "3b": { "name": "pink/red/orange" },
+          "4b": { "name": "Where is Waldo? (vertical stripes)" },
+          "12b": { "name": "Where is Waldo? (horizontal stripes)" },
+          "5b": { "name": "green/white (horizontal stripes)" },
+          "13b": { "name": "green/white (vertical stripes)" },
+          "6b": { "name": "black/grey/yellow" },
+          "7b": { "name": "orange/white" },
+          "8b": { "name": "green/red wine" },
+          "9b": { "name": "green on white" },
+          "10b": { "name": "blue on white" },
+          "1a": { "name": "pink/purple" },
+          "2a": { "name": "red", "note": "50% polyester" },
+          "3a": { "name": "rusty orange" },
+          "4a": { "name": "butter yellow (darker)" },
+          "5a": { "name": "butter yellow (lighter)" },
+          "6a": { "name": "forest green" },
+          "7a": { "name": "baby blue" },
+          "8a": { "name": "ink blue" },
+          "9a": { "name": "brushed grey/blue", "note": "50% linen" },
+          "10a": { "name": "mint", "note": "100% linen" },
+          "11a": { "name": "baby pink" },
+          "1d": { "name": "hearts on rusty orange" },
+          "2d": { "name": "bubbles" },
+          "3d": { "name": "houndstooth" },
+          "4d": { "name": "blue hallucination" },
+          "5d": { "name": "oriental red" },
+          "6d": { "name": "multicolour hearts" },
+          "7d": { "name": "black and red scribbles" },
+          "8d": { "name": "molecules" },
+          "9d": { "name": "geometric" },
+          "10d": { "name": "blue/yellow/green party" },
+          "11d": { "name": "blue and orange embroidery" }
+        }
+      },
+      "nametag": {
+        "legend": "Nametag",
+        "without": "Without a nametag",
+        "with": "With a nametag",
+        "priceNote": "A nametag adds 100 CZK to the price.",
+        "textLabel": "Name and/or phone number to embroider",
+        "textHelp": "About 30 characters max — 25mm width has less room.",
+        "spaceNote": "On 25mm width, name and/or phone number is about all that fits. On 40mm there's room for a little more — mention it in the notes below."
+      },
+      "measurements": {
+        "legend": "Dog's measurements",
+        "neckLabel": "Your dog's neck circumference (cm)",
+        "breedLabel": "Dog's breed",
+        "fitNote": "Collars are adjustable — measure snugly and you should be able to fit one finger comfortably between the collar and your dog's neck."
+      },
+      "delivery": {
+        "legend": "Delivery",
+        "options": {
+          "pickup": "In-person pickup, Prague 6 — free",
+          "balikovna": "Balíkovna — +75 CZK",
+          "zasilkovna": "Zásilkovna — +89 CZK"
+        }
+      },
+      "payment": {
+        "legend": "Payment method",
+        "label": "How would you like to pay? (e.g. bank transfer, cash on pickup)"
+      },
+      "contact": {
+        "legend": "Contact details",
+        "nameLabel": "Full name",
+        "emailLabel": "Email address",
+        "instagramLabel": "Instagram",
+        "phoneLabel": "Phone number",
+        "oneOfNote": "Please provide at least one of email, Instagram, or phone."
+      },
+      "notes": {
+        "legend": "Notes",
+        "label": "Anything else? Special requests, questions, or extra info."
+      },
+      "submit": "Submit order",
+      "errors": {
+        "fabricRequired": "Please choose a fabric.",
+        "nametagTextRequired": "Please enter the text to embroider.",
+        "neckInvalid": "Please enter a positive number.",
+        "nameRequired": "Please enter your full name.",
+        "contactMethodRequired": "Please provide at least one of email, Instagram, or phone.",
+        "emailInvalid": "Please enter a valid email address.",
+        "widthRequired": "Please choose a width.",
+        "hardwareRequired": "Please choose a hardware finish.",
+        "deliveryRequired": "Please choose a delivery method."
+      }
+    },
+    "price": {
+      "total": "Total",
+      "base": "Base price",
+      "nametag": "Nametag",
+      "delivery": "Delivery",
+      "currency": "CZK",
+      "from": "from",
+      "toggleAriaLabel": "Show price breakdown"
+    }
+  },
   "hero": {
-    "title": "Navrhuju a šiju z nechtěného domácího textilu",
-    "subtitle": "Every Poy collar starts as fabric that's already lived a life — reworked, resized, and made just for your dog. Clothes get a second chapter too, with alterations and repairs done by hand, one piece at a time.",
+    "title": "I give textiles a new life",
+    "subtitle": "At Poy, every piece starts as fabric with a story — and I give it a new one. I'll make the perfect collar tailored to your dog. And I can do the same for human clothing too — I'll fix and alter your favorite pieces. Always with care and love.",
     "cta": "Get in Touch",
     "highlights": {
       "collarsAriaLabel": "Custom collars portfolio — coming soon",
@@ -24,37 +179,39 @@
   "about": {
     "photoAlt": "The maker behind Poy",
     "kicker": "meet the maker",
-    "title": "Hi, I'm the one behind Poy",
+    "title": "Hi, I'm Poy",
     "paragraphs": [
-      "Narodila jsem se v Přerově a do Prahy jsem přišla za studiem na FAMU. Aktuálně se živím jako koordinátorka odbavení letadel na pražském letišti a šití jsem se začala intenzivněji věnovat asi 2 roky zpátky, z potřeby uspokojit kreativní část své osobnosti.",
-      "Vyrábím kvalitní psí obojky s ručně vyšívanými jmenovkami.",
-      "Zajímám se i o ekologická témata spojená s módou. Nejraději se proto věnuji šití z přírodních materiálů, baví mě upcyklovat nechtěný domácí textil, který by jinak pravděpodobně skončil na skládce. Materiály nacházím v sekáčích, nebo od známých a z pozůstalostí.",
-      "Smysl mi dává i přešívání a opravování."
+      "I was born in Přerov and came to Prague to study at FAMU. These days I work as a flight dispatch coordinator at Prague Airport, and I started sewing more seriously about 2 years ago, out of a need to satisfy the creative side of my personality.",
+      "I care about ecological issues around fashion. That's why I love sewing with natural materials — upcycling unwanted household textiles or out-of-fashion pieces that would otherwise likely end up in a landfill.",
+      "I find materials in thrift shops, or from friends and estates.",
+      "Altering and repairing your favorite pieces means a lot to me too.",
+      "You can find me for repairs and alterations in Prague 6 — and of course, I ship collars too. :)"
     ]
   },
   "services": {
-    "kicker": "what I make & mend",
+    "kicker": "what I can do",
     "title": "Services",
+    "collarBuilderCta": "Build your collar",
     "cards": [
       {
-        "imgAlt": "Obojek pro psa na míru",
-        "title": "Obojky a vodítka na míru",
-        "desc": "Vyrobím obojek i vodítko pro vašeho pejska přesně podle vašich představ. Kvalitní kovové komponenty. Mnoho vzorů na výběr, plně pratelný materiál ze 100% bavlny. Ručně vyšívaná jmenovka s telefonním číslem."
+        "imgAlt": "Custom dog collar",
+        "title": "Custom collars & leashes",
+        "desc": "I'll make a collar and leash for your dog exactly to your vision. Quality metal hardware. Lots of patterns to choose from, fully washable 100% cotton material. Hand-embroidered nametag with phone number."
       },
       {
-        "imgAlt": "Oprava oblečení",
-        "title": "Opravy a úpravy oblečení",
-        "desc": "Máte oblíbený kousek, který potřebuje opravit? Díry, vytržené švy, rozbité zipy, upadlé knoflíky, s většinou věcí si dokážu poradit."
+        "imgAlt": "Clothing repair",
+        "title": "Clothing repairs",
+        "desc": "Got a favorite piece that needs fixing? Holes, torn seams, broken zippers, missing buttons — I can handle most of it."
       },
       {
-        "imgAlt": "Úprava oblečení — před a po",
-        "title": "Úpravy oblečení",
-        "desc": "Nebo něco stoprocentně nesedí nebo nesluší? Dokážu zkrátit, zúžit, v rámci možností i prodloužit a rozšířit, upravit rukávy, výstřih,… Společně vymyslíme co s tím."
+        "imgAlt": "Clothing alteration — before and after",
+        "title": "Clothing alterations",
+        "desc": "Or something just doesn't fit or flatter quite right? I can shorten, take in, and — within reason — lengthen or let out, adjust sleeves, necklines… Let's figure it out together."
       },
       {
-        "imgAlt": "Šití na míru",
-        "title": "Šití na míru",
-        "desc": "Máte konkrétní představu unikátního oděvu nebo produktu? Ráda poskytnu konzultaci a pokud se dohodneme, tak poskytnu kompletní realizaci."
+        "imgAlt": "Custom sewing",
+        "title": "Custom sewing",
+        "desc": "Have a specific vision for a unique garment or product? I'm happy to consult, and if we agree on the details, I'll bring it to life from start to finish."
       }
     ]
   },
@@ -64,30 +221,30 @@
     "items": [
       {
         "handle": "@slikr.studio on Instagram",
-        "text": "For our second birthday, we finally treated ourselves to some custom aprons. So we got in touch with Bára, a lovely former uni classmate who’s just launching her brand @atelier_poy – which turned out to be the best decision ever 🧡 She clearly sewed them with love – super-quickly, meticulously, and was happy to bring along samples of fabrics and test versions; they’re also upcycled – made from bed sheets and tablecloths. And from the leftover fabric, she’s also made something we professionally call ‘dumplings’ – little bags to weigh down the plates, to minimise warping as much as possible whilst they’re drying."
+        "text": "For our second birthday, we finally treated ourselves to custom aprons. We reached out to a lovely former college classmate, Bára, who's just launching her brand @atelier_poy — turned out to be the best decision 🧡 She clearly sewed them with love — super fast, careful, happy to send photos of materials and test versions, and they're upcycled too — made from sheets and tablecloths. And from the leftover fabric she even made something we like to call \"dumplings\" — little sandbags to weigh down plates, to minimize warping while they dry."
       },
       {
         "handle": "@eyeofthenewt on Instagram",
-        "text": "I definitely recommend Poy if you want a beautiful, customisable, machine-washable dog collar; if you don’t like the basic ones from pet shops; or if, for example, you’re bothered by the constant jingling of a dog tag… You can have any text embroidered onto the collar, such as a phone number. And you’ll be supporting a small business!"
+        "text": "Highly recommend Poy if you want a beautiful dog collar that's customizable and washable, don't like the modern ones from the pet store, or the constant jingling of the dog tag bothers you… You can have any text embroidered, e.g. a phone number, on the collar. And you're supporting a small business!"
       },
       {
         "handle": "@leniickamr on Instagram",
-        "text": "This new, perfect collar from Poy is absolutely magical – go and get one made for your dog too! Mine’s made from an old pair of pyjamas; it’s sturdy, high-quality, beautiful and perfectly handcrafted. Lucky is absolutely chuffed :D"
+        "text": "The new perfect collar from Poy is pure magic, go get one made for your dog too! Mine is made from an old pair of pajamas, it's sturdy, high quality, beautiful, expertly handmade, Lucky is super happy :D"
       },
       {
         "handle": "@mylonakiova on Instagram",
-        "text": "Jugo got a new collar for Christmas from the amazing @atelier_poy. He loves it and highly recommends it!"
+        "text": "Jugo got a new collar from the amazing @atelier_poy for Christmas. He approves and highly recommends!"
       }
     ]
   },
   "feed": {
-    "kicker": "follow along",
-    "title": "Straight from Instagram"
+    "kicker": "straight from instagram",
+    "title": "Past projects"
   },
   "contact": {
     "kicker": "say hello",
     "title": "Let's make something",
-    "text": "Got a dog who needs a collar, or clothes that need a little care? Send a message and let's talk about it.",
+    "text": "Dog without a collar? Clothes that need a little love? Write to me — we'll figure something out",
     "emailButton": "Email hello@atelierpoy.cz"
   },
   "footer": {
@@ -95,6 +252,6 @@
     "facebookLink": "Facebook",
     "tiktokLink": "TikTok",
     "emailLink": "hello@atelierpoy.cz",
-    "note": "Made in Prague · © 2026 Poy · All collars one-of-a-kind"
+    "note": "Made in Prague · © 2026 Poy ·"
   }
 }

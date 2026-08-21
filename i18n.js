@@ -71,6 +71,9 @@
         applyStrings(strings);
         updateToggleUI(lang);
         localStorage.setItem(STORAGE_KEY, lang);
+        // lets other scripts react to strings changing — e.g. the collar
+        // order page's price panel re-reads the localized currency suffix
+        document.dispatchEvent(new CustomEvent('poy:langchange', { detail: { lang: lang } }));
       })
       .catch(function (err) {
         console.error('[i18n] could not switch language:', err);

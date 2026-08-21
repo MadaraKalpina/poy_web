@@ -335,6 +335,284 @@ button { font-family: inherit; cursor: pointer; }
   color: var(--secondary-deep);
 }
 .card p.desc { font-size: 14px; margin: 0; color: var(--text); }
+.card-cta { margin-top: 14px; }
+
+/* ===========================================================
+   Collar order page
+   =========================================================== */
+.collar-hero { background: var(--cream); padding: 28px 0 20px; text-align: center; }
+.collar-hero .kicker { color: var(--primary-deep); margin-bottom: 0.25em; }
+.collar-hero h1 { color: var(--secondary-deep); font-size: clamp(1.8rem, 3.2vw, 2.5rem); margin-bottom: 0.3em; }
+.collar-hero-sub { max-width: 56ch; margin: 0 auto; font-size: 0.95rem; }
+
+.order-section { background: var(--cream); padding-bottom: 40px; }
+/* wider than a typical text column on purpose — more room per row means
+   the option/fabric grids below need fewer rows to show everything, so
+   there's less to scroll through to see all the choices */
+.order-form { max-width: 900px; margin: 0 auto; }
+
+/* 3-step flow — one .form-step visible at a time (script.js toggles the
+   `hidden` attribute), each with its own "Step N of 3" kicker + heading
+   so the current step is unambiguous without a separate progress bar. */
+.form-step { scroll-margin-top: 130px; }
+.step-indicator { color: var(--primary-deep); }
+.step-heading { color: var(--secondary-deep); font-size: clamp(1.4rem, 2.5vw, 1.8rem); margin: 0 0 20px; }
+.step-nav { display: flex; align-items: center; justify-content: flex-end; gap: 16px; margin-top: 20px; }
+/* pushes itself flush left while the Next/Submit button stays flush
+   right, so a lone Next button (step 1 has no Back) still lands on the
+   same side it does everywhere else */
+.step-back-link {
+  margin-right: auto;
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--secondary-deep);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.step-back-link:hover { color: var(--primary-deep); }
+
+/* fieldset/legend carry a lot of UA default border/padding/inset-legend
+   styling — this class is used on both <fieldset> and plain <div> section
+   wrappers, so it resets those defaults uniformly across both. */
+.form-section {
+  border: none;
+  margin: 0 0 20px;
+  padding: 0 0 20px;
+  border-bottom: 1px solid rgba(171,94,113,0.18);
+}
+.form-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.form-legend {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--secondary-deep);
+  margin: 0 0 8px;
+  padding: 0;
+}
+
+.form-note { font-size: 0.8rem; color: var(--text); opacity: 0.75; margin: 6px 0 0; }
+.form-note--soft {
+  background: var(--primary-pale);
+  border-radius: 10px;
+  padding: 8px 12px;
+  opacity: 1;
+}
+.field-help { font-size: 0.75rem; opacity: 0.65; margin: 4px 0 0; }
+
+.field { margin-bottom: 10px; }
+.field:last-child { margin-bottom: 0; }
+.field label,
+.field-label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--secondary-deep);
+  margin-bottom: 4px;
+}
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="tel"],
+.field input[type="number"],
+.field textarea {
+  width: 100%;
+  border: 2px solid var(--primary-pale);
+  background: var(--white);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text);
+  transition: border-color 0.15s ease;
+}
+.field input:focus,
+.field textarea:focus { outline: none; border-color: var(--primary-deep); }
+.field textarea { min-height: 70px; resize: vertical; }
+
+/* validation — inline, next to the field it belongs to, never a generic
+   top-of-page banner. --primary-deep doubles as the "error" color since
+   the palette has no dedicated red; it reads clearly enough against the
+   cream/white field backgrounds. */
+.field-error {
+  color: var(--primary-deep);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin: 4px 0 0;
+}
+.field input.is-invalid,
+.field textarea.is-invalid { border-color: var(--primary-deep); }
+/* required radio/checkbox groups with no default selection (width,
+   hardware, delivery use .option-card; fabric uses its own accordion
+   markup) — the whole group gets a colored border when nothing's picked */
+.form-section.is-invalid .option-card { border-color: var(--primary-deep); }
+.form-section.is-invalid .fabric-tabs .fabric-tab { border-color: var(--primary-deep); }
+
+/* radio/checkbox "cards" used for width, hardware, delivery and the
+   nametag sub-choices — the whole card is clickable since the input
+   sits inside its <label>; :has() gives the checked one a filled look
+   without needing JS just to toggle a class. */
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+}
+.option-grid--two { grid-template-columns: repeat(2, 1fr); }
+.option-grid--compact { gap: 6px; margin-top: 6px; }
+
+.option-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 2px solid var(--primary-pale);
+  background: var(--white);
+  border-radius: 12px;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.option-card input { accent-color: var(--primary-deep); margin-right: 4px; }
+.option-card:has(input:checked) { border-color: var(--primary-deep); background: var(--primary-pale); }
+.option-card-title { font-weight: 700; font-size: 0.9rem; }
+.option-card-price { font-size: 0.75rem; opacity: 0.75; }
+/* 40mm-silver lock: JS disables the input and adds this class so the
+   reason (the note above the group) is visible, not just a mystery gray */
+.option-card.is-disabled { opacity: 0.5; cursor: not-allowed; background: var(--cream); }
+.option-card.is-disabled input { pointer-events: none; }
+
+/* fabric catalogue — one category's swatches visible at a time, switched
+   via a row of tabs (script.js) rather than the accordion this replaced;
+   .fabric-panel[hidden] just uses the browser's native hidden behavior */
+.fabric-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.fabric-tab {
+  border: 2px solid var(--primary-pale);
+  background: var(--white);
+  color: var(--secondary-deep);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+.fabric-tab:hover { border-color: var(--primary-deep); }
+.fabric-tab.is-active { background: var(--secondary-deep); border-color: var(--secondary-deep); color: var(--cream); }
+
+.fabric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 8px;
+}
+/* the swatch photo is the main identifier now (no code shown to the
+   customer) — the radio floats over its top-left corner rather than
+   taking its own row, so the image can run the full width of the card */
+.fabric-chip {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--primary-pale);
+  background: var(--white);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  font-size: 0.78rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.fabric-chip input {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  margin: 0;
+  accent-color: var(--primary-deep);
+}
+.fabric-chip:has(input:checked) {
+  border-color: var(--primary-deep);
+  box-shadow: 0 0 0 2px var(--primary-pale) inset;
+}
+.fabric-chip:has(input:checked) .fabric-name-row { background: var(--primary-pale); }
+.fabric-swatch {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  background: var(--cream);
+}
+.fabric-name-row { padding: 5px 8px 6px; transition: background 0.15s ease; }
+.fabric-name { color: var(--text); display: block; }
+.fabric-note { font-size: 0.65rem; opacity: 0.65; display: block; }
+
+.nametag-details {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--primary-pale);
+}
+
+/* Live price panel — sidebar next to the form on desktop, a collapsed
+   fixed bar (just the total) on mobile that expands to the breakdown.
+   Both states share the same markup; only position/layout changes, see
+   the max-width: 900px override below. */
+.order-layout {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 40px;
+  align-items: start;
+}
+.price-panel {
+  position: sticky;
+  top: 90px;
+  background: var(--white);
+  border: 2px solid var(--primary-pale);
+  border-radius: 16px;
+  padding: 16px 18px;
+}
+.price-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: default;
+  font-family: var(--font-body);
+  color: var(--secondary-deep);
+}
+.price-summary-label {
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.price-summary-total { font-weight: 800; font-size: 1.35rem; color: var(--primary-deep); }
+/* only meaningful once the panel becomes a collapsible mobile bar */
+.price-toggle-icon { display: none; width: 18px; height: 18px; flex-shrink: 0; transition: transform 0.15s ease; }
+
+.price-details { margin-top: 12px; }
+/* the details pane starts `hidden` in the markup (mobile-collapsed
+   default) — on desktop it should always read as expanded regardless,
+   since there's no bottom-bar space constraint to collapse for */
+.price-details[hidden] { display: block; }
+.price-lines { margin: 0; }
+.price-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.85rem;
+  padding: 5px 0;
+  border-top: 1px solid var(--primary-pale);
+}
+.price-lines .price-line:first-child { border-top: none; }
 
 /* ===========================================================
    Reviews
@@ -533,6 +811,30 @@ button { font-family: inherit; cursor: pointer; }
   .about-inner { grid-template-columns: 1fr; }
   .about-photo { max-width: 420px; margin: 0 auto; }
   .badge { width: 220px; height: auto; bottom: -30px; right: -110px; }
+
+  /* price panel: sticky sidebar → fixed bottom bar, collapsed to just
+     the total by default (native `hidden` on .price-details, toggled by
+     script.js) — room for it is reserved via the form's padding-bottom
+     below so the last field/notes textarea never sits underneath it */
+  .order-layout { grid-template-columns: 1fr; }
+  .order-form { padding-bottom: 90px; }
+  .price-panel {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    border-radius: 20px 20px 0 0;
+    border-width: 2px 0 0;
+    box-shadow: 0 -6px 20px rgba(23,28,58,0.15);
+    padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+  }
+  .price-summary { cursor: pointer; }
+  .price-toggle-icon { display: block; }
+  .price-panel[data-expanded="true"] .price-toggle-icon { transform: rotate(180deg); }
+  .price-details[hidden] { display: none; }
+  .price-details { max-height: 45vh; overflow-y: auto; }
 }
 
 @media (max-width: 640px) {

@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poy — Build Your Collar</title>
+<meta name="description" content="Build your own upcycled dog collar with Poy — choose the width, hardware, fabric and nametag, then send your order.">
+<link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+
+<!-- anchor target for "back to top" links — kept separate from the sticky
+     header, since browsers skip scrolling to a position:sticky element
+     (it's always "in view" already, pinned at top:0) -->
+<div id="top"></div>
+
+<!-- ===========================================================
+     Header / nav — copied verbatim from index.html so this page
+     reads as part of the same site, not a separate app
+     =========================================================== -->
+<header class="site-header">
+
+  <!-- Row 1: logo only, centered, no color block -->
+  <div class="header-row header-row-logo">
+    <a href="index.html" class="logo-link" aria-label="Poy — home" data-i18n-attr="aria-label:nav.logoAriaLabel">
+      <img src="branding/logo_horizontal.png" alt="Poy" class="logo-img">
+    </a>
+  </div>
+
+  <!-- Row 2: nav links + language switcher, on the blue color block.
+       Below 640px this becomes the only header row — .logo-link-mobile
+       shows here (hidden on desktop) while .header-row-logo above hides,
+       so logo + hamburger end up sharing one row on mobile. -->
+  <div class="header-row header-row-nav">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-link logo-link-mobile" aria-label="Poy — home" data-i18n-attr="aria-label:nav.logoAriaLabel">
+        <img src="branding/logo_horizontal.png" alt="Poy" class="logo-img">
+      </a>
+
+      <nav class="nav-side nav-left">
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="index.html#feed" data-i18n="nav.feed">What I do</a>
+        <a href="index.html#about" data-i18n="nav.about">About</a>
+      </nav>
+
+      <nav class="nav-side nav-right">
+        <a href="index.html#services" data-i18n="nav.services">Services</a>
+        <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <!-- language switcher: current language + arrow, opens a dropdown
+           with the other language. Plain fetch()+localStorage, see i18n.js -->
+      <div class="lang-switch">
+        <button type="button" class="lang-switch-trigger" aria-haspopup="true" aria-expanded="false">
+          <span class="lang-switch-current">CZ</span>
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="lang-switch-menu">
+          <button type="button" class="lang-switch-option" data-lang="cz">CZ</button>
+          <button type="button" class="lang-switch-option" data-lang="en">EN</button>
+        </div>
+      </div>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" data-i18n-attr="aria-label:nav.toggleAriaLabel">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- mobile dropdown: all links in one list, shown via the hamburger toggle -->
+    <nav class="mobile-nav" id="main-nav">
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="index.html#feed" data-i18n="nav.feed">What I do</a>
+      <a href="index.html#about" data-i18n="nav.about">About</a>
+      <a href="index.html#services" data-i18n="nav.services">Services</a>
+      <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+      <div class="lang-switch">
+        <button type="button" class="lang-switch-trigger" aria-haspopup="true" aria-expanded="false">
+          <span class="lang-switch-current">CZ</span>
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="lang-switch-menu">
+          <button type="button" class="lang-switch-option" data-lang="cz">CZ</button>
+          <button type="button" class="lang-switch-option" data-lang="en">EN</button>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===========================================================
+       Page hero — kicker + heading + subtext, no photos
+       =========================================================== -->
+  <section class="collar-hero">
+    <div class="container">
+      <p class="kicker" data-i18n="collarPage.kicker">objednávka obojku</p>
+      <h1 data-i18n="collarPage.title">Sestavte si obojek</h1>
+      <p class="collar-hero-sub" data-i18n="collarPage.subtitle">
+        Vyberte si možnosti níže — ozveme se vám, abychom potvrdili objednávku a domluvili platbu.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===========================================================
+       Order form — sections A–I, plus the live price panel.
+       =========================================================== -->
+  <section class="order-section">
+    <div class="container order-layout">
+      <form class="order-form" id="collar-order-form" novalidate>
+
+        <!-- ===================================================
+             Step 1 — Your dog
+             =================================================== -->
+        <div class="form-step" data-step="1" id="form-step-1">
+          <p class="kicker step-indicator" data-i18n="collarPage.steps.step1Label">Krok 1 ze 3</p>
+          <h2 class="step-heading" data-i18n="collarPage.steps.dogHeading">Řekněte nám o svém pejskovi.</h2>
+
+          <!-- E — Length / dog measurement -->
+          <div class="form-section" id="section-measurements">
+            <div class="field">
+              <label for="neck-circumference" data-i18n="collarPage.form.measurements.neckLabel">Obvod krku pejska (cm)</label>
+              <input type="number" id="neck-circumference" name="neckCircumference" min="1" step="0.5" aria-describedby="error-neck-circumference">
+              <p class="field-error" id="error-neck-circumference" role="alert" hidden data-i18n="collarPage.form.errors.neckInvalid">Zadejte prosím kladné číslo.</p>
+            </div>
+            <div class="field">
+              <label for="dog-breed" data-i18n="collarPage.form.measurements.breedLabel">Plemeno pejska</label>
+              <input type="text" id="dog-breed" name="breed">
+            </div>
+            <p class="form-note form-note--soft" data-i18n="collarPage.form.measurements.fitNote">
+              Obojky jsou nastavitelné — měřte na tělo, mezi obojek a krk pejska by měl pohodlně projít jeden prst.
+            </p>
+          </div>
+
+          <div class="step-nav">
+            <button type="button" class="btn btn-navy" data-step-next data-i18n="collarPage.steps.next">Další</button>
+          </div>
+        </div>
+
+        <!-- ===================================================
+             Step 2 — Your collar
+             =================================================== -->
+        <div class="form-step" data-step="2" id="form-step-2" hidden>
+          <p class="kicker step-indicator" data-i18n="collarPage.steps.step2Label">Krok 2 ze 3</p>
+          <h2 class="step-heading" data-i18n="collarPage.steps.collarHeading">Sestavte si obojek.</h2>
+
+          <!-- A — Width -->
+          <fieldset class="form-section" id="section-width">
+            <legend class="form-legend" data-i18n="collarPage.form.width.legend">Šířka</legend>
+            <div class="option-grid">
+              <label class="option-card" for="width-25">
+                <input type="radio" name="width" id="width-25" value="25">
+                <span class="option-card-title" data-i18n="collarPage.form.width.options.25.label">25 mm</span>
+                <span class="option-card-price" data-i18n="collarPage.form.width.options.25.price">500 Kč bez jmenovky / 600 Kč se jmenovkou</span>
+              </label>
+              <label class="option-card" for="width-40">
+                <input type="radio" name="width" id="width-40" value="40">
+                <span class="option-card-title" data-i18n="collarPage.form.width.options.40.label">40 mm</span>
+                <span class="option-card-price" data-i18n="collarPage.form.width.options.40.price">600 Kč bez jmenovky / 700 Kč se jmenovkou</span>
+              </label>
+            </div>
+            <p class="form-note" id="width-lock-note" data-i18n="collarPage.form.width.lockNote" hidden>
+              Šířka 40 mm je aktuálně dostupná pouze se stříbrným kováním.
+            </p>
+            <p class="field-error" id="error-width" role="alert" hidden data-i18n="collarPage.form.errors.widthRequired">Vyberte prosím šířku.</p>
+          </fieldset>
+
+          <!-- B — Hardware -->
+          <fieldset class="form-section" id="section-hardware">
+            <legend class="form-legend" data-i18n="collarPage.form.hardware.legend">Kování</legend>
+            <div class="option-grid">
+              <label class="option-card" for="hardware-silver">
+                <input type="radio" name="hardware" id="hardware-silver" value="silver" checked>
+                <span class="option-card-title" data-i18n="collarPage.form.hardware.options.silver">Stříbrné</span>
+              </label>
+              <label class="option-card" for="hardware-gold">
+                <input type="radio" name="hardware" id="hardware-gold" value="gold">
+                <span class="option-card-title" data-i18n="collarPage.form.hardware.options.gold">Zlaté</span>
+              </label>
+              <label class="option-card" for="hardware-black">
+                <input type="radio" name="hardware" id="hardware-black" value="black">
+                <span class="option-card-title" data-i18n="collarPage.form.hardware.options.black">Černé</span>
+              </label>
+              <label class="option-card" for="hardware-brass">
+                <input type="radio" name="hardware" id="hardware-brass" value="brass">
+                <span class="option-card-title" data-i18n="collarPage.form.hardware.options.brass">Mosazné</span>
+              </label>
+            </div>
+            <p class="form-note" data-i18n="collarPage.form.hardware.note">Veškeré kování je niklované.</p>
+            <p class="field-error" id="error-hardware" role="alert" hidden data-i18n="collarPage.form.errors.hardwareRequired">Vyberte prosím kování.</p>
+          </fieldset>
+
+          <!-- C — Fabric -->
+        <fieldset class="form-section" id="section-fabric">
+          <legend class="form-legend" data-i18n="collarPage.form.fabric.legend">Látka</legend>
+          <p class="form-note" data-i18n="collarPage.form.fabric.note">Všechny látky jsou deadstock, z druhé ruky nebo zbytky — bez výjimky.</p>
+
+          <div class="fabric-tabs" role="tablist">
+            <button type="button" class="fabric-tab is-active" data-fabric-tab="floral" role="tab" aria-selected="true" data-i18n="collarPage.form.fabric.categories.floral">Květinové</button>
+            <button type="button" class="fabric-tab" data-fabric-tab="stripes" role="tab" aria-selected="false" data-i18n="collarPage.form.fabric.categories.stripes">Proužky a kostička</button>
+            <button type="button" class="fabric-tab" data-fabric-tab="mono" role="tab" aria-selected="false" data-i18n="collarPage.form.fabric.categories.mono">Jednobarevné</button>
+            <button type="button" class="fabric-tab" data-fabric-tab="random" role="tab" aria-selected="false" data-i18n="collarPage.form.fabric.categories.random">Vzorované a neobvyklé</button>
+          </div>
+
+          <div class="fabric-panel" data-fabric-panel="floral" role="tabpanel">
+            <div class="fabric-grid">
+              <label class="fabric-chip" for="fabric-1c">
+                <input type="radio" name="fabric" id="fabric-1c" value="1c">
+                <img class="fabric-swatch" src="public/patterns/c1%20forest%20meadow.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.1c.name">lesní louka</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-2c">
+                <input type="radio" name="fabric" id="fabric-2c" value="2c">
+                <img class="fabric-swatch" src="public/patterns/c2%20carnations%20and%20tulips.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.2c.name">karafiáty a tulipány</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-3c">
+                <input type="radio" name="fabric" id="fabric-3c" value="3c">
+                <img class="fabric-swatch" src="public/patterns/c3%20meadow%20on%20white.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.3c.name">louka na bílé</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-4c">
+                <input type="radio" name="fabric" id="fabric-4c" value="4c">
+                <img class="fabric-swatch" src="public/patterns/c4%20orange%20meadow.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.4c.name">oranžová louka</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-5c">
+                <input type="radio" name="fabric" id="fabric-5c" value="5c">
+                <img class="fabric-swatch" src="public/patterns/c5%20funky%20meadow.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.5c.name">bláznivá louka</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-6c">
+                <input type="radio" name="fabric" id="fabric-6c" value="6c">
+                <img class="fabric-swatch" src="public/patterns/c6%20pink_white%20meadow.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.6c.name">růžovo-bílá louka</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-7c">
+                <input type="radio" name="fabric" id="fabric-7c" value="7c">
+                <img class="fabric-swatch" src="public/patterns/c7%20white%20flowers%20on%20sand.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.7c.name">bílé květiny na pískové</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-8c">
+                <input type="radio" name="fabric" id="fabric-8c" value="8c">
+                <img class="fabric-swatch" src="public/patterns/c8%20blue%20flowers%20on%20pink.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.8c.name">modré květiny na růžové</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-9c">
+                <input type="radio" name="fabric" id="fabric-9c" value="9c">
+                <img class="fabric-swatch" src="public/patterns/c9%20pink%20flowers%20on%20pink.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.9c.name">růžové květiny na růžové</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-10c">
+                <input type="radio" name="fabric" id="fabric-10c" value="10c">
+                <img class="fabric-swatch" src="public/patterns/c10a%20-%20Ellie_s%20folklore%20.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.10c.name">Elliin folklor (vodorovný vzor)</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-13c">
+                <input type="radio" name="fabric" id="fabric-13c" value="13c">
+                <img class="fabric-swatch" src="public/patterns/c10b%20Ellie_s%20folklore.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.13c.name">Elliin folklor (svislý vzor)</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-11c">
+                <input type="radio" name="fabric" id="fabric-11c" value="11c">
+                <img class="fabric-swatch" src="public/patterns/c11%20orange%20clovers.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.11c.name">oranžové jetelíčky</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-12c">
+                <input type="radio" name="fabric" id="fabric-12c" value="12c">
+                <img class="fabric-swatch" src="public/patterns/c12%20yellow%20meadow.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.12c.name">žlutá louka</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="fabric-panel" data-fabric-panel="stripes" role="tabpanel" hidden>
+            <div class="fabric-grid">
+              <label class="fabric-chip" for="fabric-1b">
+                <input type="radio" name="fabric" id="fabric-1b" value="1b">
+                <img class="fabric-swatch" src="public/patterns/b1%20thin%20blue%20stripes.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.1b.name">tenké modré proužky</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-2b">
+                <input type="radio" name="fabric" id="fabric-2b" value="2b">
+                <img class="fabric-swatch" src="public/patterns/b2a%20turqoise_blue%20.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.2b.name">tyrkysová/modrá (svislé pruhy)</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-11b">
+                <input type="radio" name="fabric" id="fabric-11b" value="11b">
+                <img class="fabric-swatch" src="public/patterns/b2b%20turqoise_blue.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.11b.name">tyrkysová/modrá (vodorovné pruhy)</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-3b">
+                <input type="radio" name="fabric" id="fabric-3b" value="3b">
+                <img class="fabric-swatch" src="public/patterns/b3%20pink_red_orange.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.3b.name">růžová/červená/oranžová</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-4b">
+                <input type="radio" name="fabric" id="fabric-4b" value="4b">
+                <img class="fabric-swatch" src="public/patterns/b4a%20where%20is%20waldo_.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.4b.name">Kde je Waldo? (svislé pruhy)</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-12b">
+                <input type="radio" name="fabric" id="fabric-12b" value="12b">
+                <img class="fabric-swatch" src="public/patterns/b4b%20where%20is%20waldo_.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.12b.name">Kde je Waldo? (vodorovné pruhy)</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-5b">
+                <input type="radio" name="fabric" id="fabric-5b" value="5b">
+                <img class="fabric-swatch" src="public/patterns/b5a%20-%20green_white%20stripes.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.5b.name">zelená/bílá (vodorovné pruhy)</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-13b">
+                <input type="radio" name="fabric" id="fabric-13b" value="13b">
+                <img class="fabric-swatch" src="public/patterns/b5b%20green_white%20stripes.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.13b.name">zelená/bílá (svislé pruhy)</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-6b">
+                <input type="radio" name="fabric" id="fabric-6b" value="6b">
+                <img class="fabric-swatch" src="public/patterns/b6%20black_grey_yellow%20.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.6b.name">černá/šedá/žlutá</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-7b">
+                <input type="radio" name="fabric" id="fabric-7b" value="7b">
+                <img class="fabric-swatch" src="public/patterns/b7%20orange_white.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.7b.name">oranžová/bílá</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-8b">
+                <input type="radio" name="fabric" id="fabric-8b" value="8b">
+                <img class="fabric-swatch" src="public/patterns/b8%20green_wine%20red.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.8b.name">zelená/vínová</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-9b">
+                <input type="radio" name="fabric" id="fabric-9b" value="9b">
+                <img class="fabric-swatch" src="public/patterns/b9%20green%20on%20white.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.9b.name">zelená na bílé</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-10b">
+                <input type="radio" name="fabric" id="fabric-10b" value="10b">
+                <img class="fabric-swatch" src="public/patterns/b10%20blue%20on%20white.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.10b.name">modrá na bílé</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="fabric-panel" data-fabric-panel="mono" role="tabpanel" hidden>
+            <div class="fabric-grid">
+              <label class="fabric-chip" for="fabric-1a">
+                <input type="radio" name="fabric" id="fabric-1a" value="1a">
+                <img class="fabric-swatch" src="public/patterns/a1%20pink_purple.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.1a.name">růžová/fialová</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-2a">
+                <input type="radio" name="fabric" id="fabric-2a" value="2a">
+                <img class="fabric-swatch" src="public/patterns/a2%20red.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.2a.name">červená</span>
+                  <span class="fabric-note" data-i18n="collarPage.form.fabric.items.2a.note">50 % polyester</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-3a">
+                <input type="radio" name="fabric" id="fabric-3a" value="3a">
+                <img class="fabric-swatch" src="public/patterns/a3%20rusty%20orange.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.3a.name">rezavě oranžová</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-4a">
+                <input type="radio" name="fabric" id="fabric-4a" value="4a">
+                <img class="fabric-swatch" src="public/patterns/a4%20butter%20yellow%20darker.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.4a.name">máslově žlutá (tmavší)</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-5a">
+                <input type="radio" name="fabric" id="fabric-5a" value="5a">
+                <img class="fabric-swatch" src="public/patterns/a5%20butter%20yellow%20lighter.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.5a.name">máslově žlutá (světlejší)</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-6a">
+                <input type="radio" name="fabric" id="fabric-6a" value="6a">
+                <img class="fabric-swatch" src="public/patterns/a6%20forest%20green.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.6a.name">lesní zelená</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-7a">
+                <input type="radio" name="fabric" id="fabric-7a" value="7a">
+                <img class="fabric-swatch" src="public/patterns/a7%20baby%20blue.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.7a.name">dětská modrá</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-8a">
+                <input type="radio" name="fabric" id="fabric-8a" value="8a">
+                <img class="fabric-swatch" src="public/patterns/a8%20ink%20blue.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.8a.name">inkoustově modrá</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-9a">
+                <input type="radio" name="fabric" id="fabric-9a" value="9a">
+                <img class="fabric-swatch" src="public/patterns/a9%20brushed%20grey_blue.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.9a.name">česaná šedo-modrá</span>
+                  <span class="fabric-note" data-i18n="collarPage.form.fabric.items.9a.note">50 % len</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-10a">
+                <input type="radio" name="fabric" id="fabric-10a" value="10a">
+                <img class="fabric-swatch" src="public/patterns/a10%20mint.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.10a.name">mátová</span>
+                  <span class="fabric-note" data-i18n="collarPage.form.fabric.items.10a.note">100 % len</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-11a">
+                <input type="radio" name="fabric" id="fabric-11a" value="11a">
+                <img class="fabric-swatch" src="public/patterns/a11%20baby%20pink.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.11a.name">dětská růžová</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="fabric-panel" data-fabric-panel="random" role="tabpanel" hidden>
+            <div class="fabric-grid">
+              <label class="fabric-chip" for="fabric-1d">
+                <input type="radio" name="fabric" id="fabric-1d" value="1d">
+                <img class="fabric-swatch" src="public/patterns/d1%20hearts%20on%20rusty%20orange.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.1d.name">srdíčka na rezavě oranžové</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-2d">
+                <input type="radio" name="fabric" id="fabric-2d" value="2d">
+                <img class="fabric-swatch" src="public/patterns/d2%20bubbles.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.2d.name">bubliny</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-3d">
+                <input type="radio" name="fabric" id="fabric-3d" value="3d">
+                <img class="fabric-swatch" src="public/patterns/d3%20houndstooth.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.3d.name">kohoutí stopa</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-4d">
+                <input type="radio" name="fabric" id="fabric-4d" value="4d">
+                <img class="fabric-swatch" src="public/patterns/d4%20blue%20hallucination.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.4d.name">modrá halucinace</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-5d">
+                <input type="radio" name="fabric" id="fabric-5d" value="5d">
+                <img class="fabric-swatch" src="public/patterns/d5%20-%20oriental%20red.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.5d.name">orientální červená</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-6d">
+                <input type="radio" name="fabric" id="fabric-6d" value="6d">
+                <img class="fabric-swatch" src="public/patterns/d6%20multicolour%20hearts.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.6d.name">barevná srdíčka</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-7d">
+                <input type="radio" name="fabric" id="fabric-7d" value="7d">
+                <img class="fabric-swatch" src="public/patterns/d7%20black%20and%20red%20scribbles.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.7d.name">černo-červené čmáranice</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-8d">
+                <input type="radio" name="fabric" id="fabric-8d" value="8d">
+                <img class="fabric-swatch" src="public/patterns/d8%20molecules.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.8d.name">molekuly</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-9d">
+                <input type="radio" name="fabric" id="fabric-9d" value="9d">
+                <img class="fabric-swatch" src="public/patterns/d9%20geometric.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.9d.name">geometrický vzor</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-10d">
+                <input type="radio" name="fabric" id="fabric-10d" value="10d">
+                <img class="fabric-swatch" src="public/patterns/d10%20blue_yellow_green%20party.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.10d.name">modro-žluto-zelená párty</span>
+                </div>
+              </label>
+              <label class="fabric-chip" for="fabric-11d">
+                <input type="radio" name="fabric" id="fabric-11d" value="11d">
+                <img class="fabric-swatch" src="public/patterns/d11%20blue_orange.png" alt="" loading="lazy">
+                <div class="fabric-name-row">
+                  <span class="fabric-name" data-i18n="collarPage.form.fabric.items.11d.name">modrá a oranžová výšivka</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <p class="field-error" id="error-fabric" role="alert" hidden data-i18n="collarPage.form.errors.fabricRequired">Vyberte prosím jednu látku.</p>
+        </fieldset>
+
+        <!-- D — Nametag -->
+        <fieldset class="form-section" id="section-nametag">
+          <legend class="form-legend" data-i18n="collarPage.form.nametag.legend">Jmenovka</legend>
+          <div class="option-grid option-grid--two">
+            <label class="option-card" for="nametag-without">
+              <input type="radio" name="nametagChoice" id="nametag-without" value="without" checked>
+              <span class="option-card-title" data-i18n="collarPage.form.nametag.without">Bez jmenovky</span>
+            </label>
+            <label class="option-card" for="nametag-with">
+              <input type="radio" name="nametagChoice" id="nametag-with" value="with">
+              <span class="option-card-title" data-i18n="collarPage.form.nametag.with">Se jmenovkou</span>
+            </label>
+          </div>
+
+          <div class="nametag-details" id="nametag-details" hidden>
+            <p class="form-note" data-i18n="collarPage.form.nametag.priceNote">Jmenovka přidává 100 Kč k ceně.</p>
+
+            <div class="field">
+              <label for="nametag-text" data-i18n="collarPage.form.nametag.textLabel">Jméno a/nebo telefonní číslo k vyšití</label>
+              <input type="text" id="nametag-text" name="nametagText" maxlength="30" aria-describedby="error-nametag-text">
+              <p class="field-help" data-i18n="collarPage.form.nametag.textHelp">Max. cca 30 znaků — u šířky 25 mm je místa méně.</p>
+              <p class="field-error" id="error-nametag-text" role="alert" hidden data-i18n="collarPage.form.errors.nametagTextRequired">Uveďte prosím text k vyšití.</p>
+            </div>
+
+            <p class="form-note" data-i18n="collarPage.form.nametag.spaceNote">
+              U šířky 25 mm se vejde zhruba jen jméno a/nebo telefon. U 40 mm je místa víc — zmiňte to v poznámkách níže.
+            </p>
+          </div>
+        </fieldset>
+
+          <div class="step-nav">
+            <button type="button" class="step-back-link" data-step-back data-i18n="collarPage.steps.back">Zpět</button>
+            <button type="button" class="btn btn-navy" data-step-next data-i18n="collarPage.steps.next">Další</button>
+          </div>
+        </div>
+
+        <!-- ===================================================
+             Step 3 — Almost done
+             =================================================== -->
+        <div class="form-step" data-step="3" id="form-step-3" hidden>
+          <p class="kicker step-indicator" data-i18n="collarPage.steps.step3Label">Krok 3 ze 3</p>
+          <h2 class="step-heading" data-i18n="collarPage.steps.contactHeading">Doprava a kontakt.</h2>
+
+          <!-- F — Delivery -->
+          <fieldset class="form-section" id="section-delivery">
+            <legend class="form-legend" data-i18n="collarPage.form.delivery.legend">Doprava</legend>
+            <div class="option-grid">
+              <label class="option-card" for="delivery-pickup">
+                <input type="radio" name="delivery" id="delivery-pickup" value="pickup" checked>
+                <span class="option-card-title" data-i18n="collarPage.form.delivery.options.pickup">Osobní odběr, Praha 6 — zdarma</span>
+              </label>
+              <label class="option-card" for="delivery-balikovna">
+                <input type="radio" name="delivery" id="delivery-balikovna" value="balikovna">
+                <span class="option-card-title" data-i18n="collarPage.form.delivery.options.balikovna">Balíkovna — +75 Kč</span>
+              </label>
+              <label class="option-card" for="delivery-zasilkovna">
+                <input type="radio" name="delivery" id="delivery-zasilkovna" value="zasilkovna">
+                <span class="option-card-title" data-i18n="collarPage.form.delivery.options.zasilkovna">Zásilkovna — +89 Kč</span>
+              </label>
+            </div>
+            <p class="field-error" id="error-delivery" role="alert" hidden data-i18n="collarPage.form.errors.deliveryRequired">Vyberte prosím způsob dopravy.</p>
+          </fieldset>
+
+          <!-- H — Contact details -->
+          <div class="form-section" id="section-contact">
+            <h2 class="form-legend" data-i18n="collarPage.form.contact.legend">Kontaktní údaje</h2>
+            <div class="field">
+              <label for="contact-name" data-i18n="collarPage.form.contact.nameLabel">Celé jméno</label>
+              <input type="text" id="contact-name" name="contactName" required aria-describedby="error-contact-name">
+              <p class="field-error" id="error-contact-name" role="alert" hidden data-i18n="collarPage.form.errors.nameRequired">Uveďte prosím celé jméno.</p>
+            </div>
+            <div class="field">
+              <label for="contact-email" data-i18n="collarPage.form.contact.emailLabel">E-mailová adresa</label>
+              <input type="email" id="contact-email" name="contactEmail" aria-describedby="error-contact-email">
+              <p class="field-error" id="error-contact-email" role="alert" hidden data-i18n="collarPage.form.errors.emailInvalid">Zadejte prosím platnou e-mailovou adresu.</p>
+            </div>
+            <div class="field">
+              <label for="contact-instagram" data-i18n="collarPage.form.contact.instagramLabel">Instagram</label>
+              <input type="text" id="contact-instagram" name="contactInstagram" placeholder="@yourhandle" value="@">
+            </div>
+            <div class="field">
+              <label for="contact-phone" data-i18n="collarPage.form.contact.phoneLabel">Telefonní číslo</label>
+              <input type="tel" id="contact-phone" name="contactPhone">
+            </div>
+            <p class="field-help" data-i18n="collarPage.form.contact.oneOfNote">Vyplňte prosím alespoň jedno z e-mailu, Instagramu nebo telefonu.</p>
+            <p class="field-error" id="error-contact-method" role="alert" hidden data-i18n="collarPage.form.errors.contactMethodRequired">Vyplňte prosím alespoň jedno z e-mailu, Instagramu nebo telefonu.</p>
+          </div>
+
+          <!-- G — Payment method -->
+          <div class="form-section" id="section-payment">
+            <h2 class="form-legend" data-i18n="collarPage.form.payment.legend">Způsob platby</h2>
+            <div class="field">
+              <label for="payment-preference" data-i18n="collarPage.form.payment.label">Jak byste chtěli platit? (např. převodem, hotově při odběru)</label>
+              <input type="text" id="payment-preference" name="paymentPreference">
+            </div>
+          </div>
+
+          <!-- I — Notes -->
+          <div class="form-section" id="section-notes">
+            <h2 class="form-legend" data-i18n="collarPage.form.notes.legend">Poznámky</h2>
+            <div class="field">
+              <label for="order-notes" data-i18n="collarPage.form.notes.label">Chcete nám sdělit ještě něco? Zvláštní přání, dotazy nebo doplňující info.</label>
+              <textarea id="order-notes" name="notes"></textarea>
+            </div>
+          </div>
+
+          <div class="step-nav">
+            <button type="button" class="step-back-link" data-step-back data-i18n="collarPage.steps.back">Zpět</button>
+            <button type="submit" class="btn btn-navy" data-i18n="collarPage.form.submit">Odeslat objednávku</button>
+          </div>
+        </div>
+
+      </form>
+
+      <!-- Live price panel — sticky sidebar on desktop, fixed bottom bar
+           (collapsed to just the total, expandable) on mobile. Visible
+           from Step 1 onward, before width (Step 2) is chosen, so it
+           starts in a "from 500 Kč" placeholder state — see updatePrice()
+           in script.js. #price-currency/#price-from are normal data-i18n
+           spans the price math reads from at calculation time, so the
+           Kč/CZK suffix and od/from label always match the active
+           language without the price code needing its own i18n lookup. -->
+      <aside class="price-panel" id="price-panel">
+        <button type="button" class="price-summary" id="price-toggle" aria-expanded="false" aria-controls="price-details" data-i18n-attr="aria-label:collarPage.price.toggleAriaLabel">
+          <span class="price-summary-label" data-i18n="collarPage.price.total">Celkem</span>
+          <span class="price-summary-total" id="price-total">od 500&nbsp;Kč</span>
+          <svg class="price-toggle-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="price-details" id="price-details" hidden>
+          <ul class="price-lines">
+            <li class="price-line">
+              <span data-i18n="collarPage.price.base">Základní cena</span>
+              <span id="price-base">—</span>
+            </li>
+            <li class="price-line" id="price-line-nametag" hidden>
+              <span data-i18n="collarPage.price.nametag">Jmenovka</span>
+              <span id="price-nametag">+100&nbsp;Kč</span>
+            </li>
+            <li class="price-line" id="price-line-delivery" hidden>
+              <span data-i18n="collarPage.price.delivery">Doprava</span>
+              <span id="price-delivery">+75&nbsp;Kč</span>
+            </li>
+          </ul>
+        </div>
+        <span id="price-currency" hidden data-i18n="collarPage.price.currency">Kč</span>
+        <span id="price-from" hidden data-i18n="collarPage.price.from">od</span>
+      </aside>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===========================================================
+     Footer — copied verbatim from index.html
+     =========================================================== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <img src="branding/LOGO - PROFILOVKA.png" alt="Poy" class="footer-logo">
+    <div class="footer-links">
+      <div class="footer-socials">
+        <!-- PLACEHOLDER: swap for the real Instagram handle before launch -->
+        <a href="https://www.instagram.com/atelier_poy" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram" data-i18n-attr="aria-label:footer.instagramLink">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61593095477667" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook" data-i18n-attr="aria-label:footer.facebookLink">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M14.5 8.5h1.8V5.8h-2.1c-2.3 0-3.7 1.4-3.7 3.7v1.7H8.4v2.9h2.1V21h3v-6.9h2.2l.4-2.9h-2.6V9.7c0-.7.3-1.2 1-1.2Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@atelier_poy" target="_blank" rel="noopener" class="social-icon" aria-label="TikTok" data-i18n-attr="aria-label:footer.tiktokLink">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M13.5 4v10.8a3 3 0 1 1-2.3-2.9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M13.5 4c.3 2.2 1.9 3.9 4 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+      <!-- PLACEHOLDER: swap for the real email before launch -->
+      <a href="mailto:hello@atelierpoy.cz" data-i18n="footer.emailLink">hello@atelierpoy.cz</a>
+    </div>
+    <p class="footer-note" data-i18n="footer.note">Made in Prague · &copy; 2026 Poy · All collars one-of-a-kind</p>
+  </div>
+</footer>
+
+<script src="script.js?v=2"></script>
+<script src="i18n.js?v=2"></script>
+</body>
+</html>

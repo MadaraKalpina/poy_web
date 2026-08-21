@@ -2,10 +2,166 @@
   "nav": {
     "logoAriaLabel": "Poy — home",
     "toggleAriaLabel": "Toggle navigation",
+    "home": "Domů",
     "feed": "Moje práce",
     "about": "O mně",
     "services": "Služby",
     "contact": "Kontakt"
+  },
+  "collarPage": {
+    "kicker": "objednávka obojku",
+    "title": "Sestavte si obojek",
+    "subtitle": "Vyberte si možnosti níže — ozveme se vám, abychom potvrdili objednávku a domluvili platbu.",
+    "steps": {
+      "step1Label": "Krok 1 ze 3",
+      "step2Label": "Krok 2 ze 3",
+      "step3Label": "Krok 3 ze 3",
+      "dogHeading": "Řekněte nám o svém pejskovi.",
+      "collarHeading": "Sestavte si obojek.",
+      "contactHeading": "Doprava a kontakt.",
+      "next": "Další",
+      "back": "Zpět"
+    },
+    "form": {
+      "width": {
+        "legend": "Šířka",
+        "options": {
+          "25": { "label": "25 mm", "price": "500 Kč bez jmenovky / 600 Kč se jmenovkou" },
+          "40": { "label": "40 mm", "price": "600 Kč bez jmenovky / 700 Kč se jmenovkou" }
+        },
+        "lockNote": "Šířka 40 mm je aktuálně dostupná pouze se stříbrným kováním."
+      },
+      "hardware": {
+        "legend": "Kování",
+        "options": {
+          "silver": "Stříbrné",
+          "gold": "Zlaté",
+          "black": "Černé",
+          "brass": "Mosazné"
+        },
+        "note": "Veškeré kování je niklované."
+      },
+      "fabric": {
+        "legend": "Látka",
+        "note": "Všechny látky jsou deadstock, z druhé ruky nebo zbytky — bez výjimky.",
+        "categories": {
+          "floral": "Květinové",
+          "stripes": "Proužky a kostička",
+          "mono": "Jednobarevné",
+          "random": "Vzorované a neobvyklé"
+        },
+        "items": {
+          "1c": { "name": "lesní louka" },
+          "2c": { "name": "karafiáty a tulipány" },
+          "3c": { "name": "louka na bílé" },
+          "4c": { "name": "oranžová louka" },
+          "5c": { "name": "bláznivá louka" },
+          "6c": { "name": "růžovo-bílá louka" },
+          "7c": { "name": "bílé květiny na pískové" },
+          "8c": { "name": "modré květiny na růžové" },
+          "9c": { "name": "růžové květiny na růžové" },
+          "10c": { "name": "Elliin folklor (vodorovný vzor)" },
+          "13c": { "name": "Elliin folklor (svislý vzor)" },
+          "11c": { "name": "oranžové jetelíčky" },
+          "12c": { "name": "žlutá louka" },
+          "1b": { "name": "tenké modré proužky" },
+          "2b": { "name": "tyrkysová/modrá (svislé pruhy)" },
+          "11b": { "name": "tyrkysová/modrá (vodorovné pruhy)" },
+          "3b": { "name": "růžová/červená/oranžová" },
+          "4b": { "name": "Kde je Waldo? (svislé pruhy)" },
+          "12b": { "name": "Kde je Waldo? (vodorovné pruhy)" },
+          "5b": { "name": "zelená/bílá (vodorovné pruhy)" },
+          "13b": { "name": "zelená/bílá (svislé pruhy)" },
+          "6b": { "name": "černá/šedá/žlutá" },
+          "7b": { "name": "oranžová/bílá" },
+          "8b": { "name": "zelená/vínová" },
+          "9b": { "name": "zelená na bílé" },
+          "10b": { "name": "modrá na bílé" },
+          "1a": { "name": "růžová/fialová" },
+          "2a": { "name": "červená", "note": "50 % polyester" },
+          "3a": { "name": "rezavě oranžová" },
+          "4a": { "name": "máslově žlutá (tmavší)" },
+          "5a": { "name": "máslově žlutá (světlejší)" },
+          "6a": { "name": "lesní zelená" },
+          "7a": { "name": "dětská modrá" },
+          "8a": { "name": "inkoustově modrá" },
+          "9a": { "name": "česaná šedo-modrá", "note": "50 % len" },
+          "10a": { "name": "mátová", "note": "100 % len" },
+          "11a": { "name": "dětská růžová" },
+          "1d": { "name": "srdíčka na rezavě oranžové" },
+          "2d": { "name": "bubliny" },
+          "3d": { "name": "kohoutí stopa" },
+          "4d": { "name": "modrá halucinace" },
+          "5d": { "name": "orientální červená" },
+          "6d": { "name": "barevná srdíčka" },
+          "7d": { "name": "černo-červené čmáranice" },
+          "8d": { "name": "molekuly" },
+          "9d": { "name": "geometrický vzor" },
+          "10d": { "name": "modro-žluto-zelená párty" },
+          "11d": { "name": "modrá a oranžová výšivka" }
+        }
+      },
+      "nametag": {
+        "legend": "Jmenovka",
+        "without": "Bez jmenovky",
+        "with": "Se jmenovkou",
+        "priceNote": "Jmenovka přidává 100 Kč k ceně.",
+        "textLabel": "Jméno a/nebo telefonní číslo k vyšití",
+        "textHelp": "Max. cca 30 znaků — u šířky 25 mm je místa méně.",
+        "spaceNote": "U šířky 25 mm se vejde zhruba jen jméno a/nebo telefon. U 40 mm je místa víc — zmiňte to v poznámkách níže."
+      },
+      "measurements": {
+        "legend": "Míry pejska",
+        "neckLabel": "Obvod krku pejska (cm)",
+        "breedLabel": "Plemeno pejska",
+        "fitNote": "Obojky jsou nastavitelné — měřte na tělo, mezi obojek a krk pejska by měl pohodlně projít jeden prst."
+      },
+      "delivery": {
+        "legend": "Doprava",
+        "options": {
+          "pickup": "Osobní odběr, Praha 6 — zdarma",
+          "balikovna": "Balíkovna — +75 Kč",
+          "zasilkovna": "Zásilkovna — +89 Kč"
+        }
+      },
+      "payment": {
+        "legend": "Způsob platby",
+        "label": "Jak byste chtěli platit? (např. převodem, hotově při odběru)"
+      },
+      "contact": {
+        "legend": "Kontaktní údaje",
+        "nameLabel": "Celé jméno",
+        "emailLabel": "E-mailová adresa",
+        "instagramLabel": "Instagram",
+        "phoneLabel": "Telefonní číslo",
+        "oneOfNote": "Vyplňte prosím alespoň jedno z e-mailu, Instagramu nebo telefonu."
+      },
+      "notes": {
+        "legend": "Poznámky",
+        "label": "Chcete nám sdělit ještě něco? Zvláštní přání, dotazy nebo doplňující info."
+      },
+      "submit": "Odeslat objednávku",
+      "errors": {
+        "fabricRequired": "Vyberte prosím jednu látku.",
+        "nametagTextRequired": "Uveďte prosím text k vyšití.",
+        "neckInvalid": "Zadejte prosím kladné číslo.",
+        "nameRequired": "Uveďte prosím celé jméno.",
+        "contactMethodRequired": "Vyplňte prosím alespoň jedno z e-mailu, Instagramu nebo telefonu.",
+        "emailInvalid": "Zadejte prosím platnou e-mailovou adresu.",
+        "widthRequired": "Vyberte prosím šířku.",
+        "hardwareRequired": "Vyberte prosím kování.",
+        "deliveryRequired": "Vyberte prosím způsob dopravy."
+      }
+    },
+    "price": {
+      "total": "Celkem",
+      "base": "Základní cena",
+      "nametag": "Jmenovka",
+      "delivery": "Doprava",
+      "currency": "Kč",
+      "from": "od",
+      "toggleAriaLabel": "Zobrazit rozpis ceny"
+    }
   },
   "hero": {
     "title": "Dávám textilu nový život",
@@ -35,6 +191,7 @@
   "services": {
     "kicker": "Co umím",
     "title": "Služby",
+    "collarBuilderCta": "Sestavit obojek",
     "cards": [
       {
         "imgAlt": "Obojek pro psa na míru",
