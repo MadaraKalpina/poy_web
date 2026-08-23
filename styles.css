@@ -515,7 +515,13 @@ button { font-family: inherit; cursor: pointer; }
 }
 /* the swatch photo is the main identifier now (no code shown to the
    customer) — the radio floats over its top-left corner rather than
-   taking its own row, so the image can run the full width of the card */
+   taking its own row, so the image can run the full width of the card.
+   .fabric-chip is a plain div (not the label) so the enlarge button can
+   sit as its sibling instead of nesting inside the label — nesting a
+   button inside a label makes click-forwarding to the radio unreliable
+   across browsers. .fabric-chip-select is `display: contents` so its
+   children (input/image/name) lay out exactly as if they were direct
+   flex children of .fabric-chip, keeping the original card layout. */
 .fabric-chip {
   position: relative;
   display: flex;
@@ -528,13 +534,7 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 0.78rem;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
-.fabric-chip input {
-  position: absolute;
-  top: 6px;
-  left: 6px;
-  margin: 0;
-  accent-color: var(--primary-deep);
-}
+.fabric-chip-select { display: contents; }
 .fabric-chip:has(input:checked) {
   border-color: var(--primary-deep);
   box-shadow: 0 0 0 2px var(--primary-pale) inset;
@@ -547,9 +547,100 @@ button { font-family: inherit; cursor: pointer; }
   display: block;
   background: var(--cream);
 }
-.fabric-name-row { padding: 5px 8px 6px; transition: background 0.15s ease; }
-.fabric-name { color: var(--text); display: block; }
-.fabric-note { font-size: 0.65rem; opacity: 0.65; display: block; }
+/* radio sits in the white name row, not over the (often busy) pattern
+   photo, where it used to be hard to notice */
+.fabric-name-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px 6px;
+  padding: 5px 8px 6px;
+  transition: background 0.15s ease;
+}
+.fabric-name-row input { margin: 0; flex-shrink: 0; accent-color: var(--primary-deep); }
+.fabric-name { color: var(--text); }
+.fabric-note { font-size: 0.65rem; opacity: 0.65; flex-basis: 100%; }
+
+.fabric-enlarge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(253,246,236,0.85);
+  color: var(--secondary-deep);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.fabric-enlarge svg { width: 13px; height: 13px; }
+.fabric-enlarge:hover { background: var(--cream); color: var(--primary-deep); }
+
+/* fabric lightbox — full-screen viewer opened from any .fabric-enlarge
+   button; script.js scopes prev/next to whichever category tab is open */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(78,53,15,0.85);
+  padding: 24px;
+}
+/* [hidden] and a plain class selector are equal specificity, so without
+   this the `display: flex` above would win and show the lightbox even
+   while the `hidden` attribute is set on page load */
+.lightbox[hidden] { display: none; }
+.lightbox-content {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: min(820px, 85vw);
+}
+.lightbox-img {
+  max-width: 100%;
+  max-height: 80vh;
+  display: block;
+  border-radius: 12px;
+  background: var(--cream);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+}
+.lightbox-caption { margin: 0; color: var(--cream); font-weight: 700; font-size: 0.95rem; text-align: center; }
+.lightbox-close,
+.lightbox-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(253,246,236,0.15);
+  color: var(--cream);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.lightbox-close:hover,
+.lightbox-nav:hover { background: rgba(253,246,236,0.3); }
+.lightbox-nav { width: 44px; height: 44px; }
+.lightbox-nav svg { width: 22px; height: 22px; }
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+}
+.lightbox-close svg { width: 18px; height: 18px; }
 
 .nametag-details {
   margin-top: 12px;

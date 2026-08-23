@@ -11,7 +11,7 @@
   "collarPage": {
     "kicker": "objednávka obojku",
     "title": "Sestavte si obojek",
-    "subtitle": "Vyberte si možnosti níže — ozveme se vám, abychom potvrdili objednávku a domluvili platbu.",
+    "subtitle": "Obojek vzniká až po vaší objednávce, dodací lhůta 1-3 týdny podle aktuální vytíženosti (upřesním v potvrzovacím mailu),\n    Vyberte si možnosti níže — ozveme se vám, abychom potvrdili objednávku a domluvili platbu.",
     "steps": {
       "step1Label": "Krok 1 ze 3",
       "step2Label": "Krok 2 ze 3",
@@ -39,11 +39,11 @@
           "black": "Černé",
           "brass": "Mosazné"
         },
-        "note": "Veškeré kování je niklované."
+        "note": "Veškeré kování je kovové (zinkoslitina)."
       },
       "fabric": {
         "legend": "Látka",
-        "note": "Všechny látky jsou deadstock, z druhé ruky nebo zbytky — bez výjimky.",
+        "note": "Většina látek je z bavlny, až na pár výjimek, u kterých je to specifikováno. \n Všechny látky jsou deadstock, z druhé ruky nebo zbytky — bez výjimky.",
         "categories": {
           "floral": "Květinové",
           "stripes": "Proužky a kostička",
@@ -83,11 +83,11 @@
           "4a": { "name": "máslově žlutá (tmavší)" },
           "5a": { "name": "máslově žlutá (světlejší)" },
           "6a": { "name": "lesní zelená" },
-          "7a": { "name": "dětská modrá" },
+          "7a": { "name": "baby blue" },
           "8a": { "name": "inkoustově modrá" },
           "9a": { "name": "česaná šedo-modrá", "note": "50 % len" },
           "10a": { "name": "mátová", "note": "100 % len" },
-          "11a": { "name": "dětská růžová" },
+          "11a": { "name": "baby pink" },
           "1d": { "name": "srdíčka na rezavě oranžové" },
           "2d": { "name": "bubliny" },
           "3d": { "name": "kohoutí stopa" },
@@ -99,34 +99,35 @@
           "9d": { "name": "geometrický vzor" },
           "10d": { "name": "modro-žluto-zelená párty" },
           "11d": { "name": "modrá a oranžová výšivka" }
-        }
+        },
+        "enlargeAriaLabel": "Zvětšit",
+        "lightboxCloseAriaLabel": "Zavřít",
+        "lightboxPrevAriaLabel": "Předchozí vzor",
+        "lightboxNextAriaLabel": "Další vzor"
       },
       "nametag": {
         "legend": "Jmenovka",
         "without": "Bez jmenovky",
-        "with": "Se jmenovkou",
+        "with": "S ručně vyšívanou jmenovkou",
         "priceNote": "Jmenovka přidává 100 Kč k ceně.",
         "textLabel": "Jméno a/nebo telefonní číslo k vyšití",
-        "textHelp": "Max. cca 30 znaků — u šířky 25 mm je místa méně.",
-        "spaceNote": "U šířky 25 mm se vejde zhruba jen jméno a/nebo telefon. U 40 mm je místa víc — zmiňte to v poznámkách níže."
+        "textHelp": "Max. cca 25 znaků — u šířky 25 mm je místa méně.",
+        "spaceNote": "U šířky 25 mm se vejde zhruba jen jméno a/nebo telefon. U 40 mm je místa víc — pokud si přejete vyšít něco navíc, zmiňte to v poznámkách níže."
       },
       "measurements": {
         "legend": "Míry pejska",
         "neckLabel": "Obvod krku pejska (cm)",
         "breedLabel": "Plemeno pejska",
-        "fitNote": "Obojky jsou nastavitelné — měřte na tělo, mezi obojek a krk pejska by měl pohodlně projít jeden prst."
+        "fitNote": "Obojky jsou nastavitelné — měřte na tělo, mezi obojek a krk pejska by se měl pohodlně vejít jeden prst."
       },
       "delivery": {
         "legend": "Doprava",
         "options": {
           "pickup": "Osobní odběr, Praha 6 — zdarma",
-          "balikovna": "Balíkovna — +75 Kč",
+          "balikovna": "Balíkovna — +79 Kč",
           "zasilkovna": "Zásilkovna — +89 Kč"
-        }
-      },
-      "payment": {
-        "legend": "Způsob platby",
-        "label": "Jak byste chtěli platit? (např. převodem, hotově při odběru)"
+        },
+        "addressLabel": "Doručovací adresa (ulice, město, PSČ)"
       },
       "contact": {
         "legend": "Kontaktní údaje",
@@ -134,7 +135,7 @@
         "emailLabel": "E-mailová adresa",
         "instagramLabel": "Instagram",
         "phoneLabel": "Telefonní číslo",
-        "oneOfNote": "Vyplňte prosím alespoň jedno z e-mailu, Instagramu nebo telefonu."
+        "oneOfNote": "Vyplňte prosím alespoň jedno z telefonu nebo Instagramu."
       },
       "notes": {
         "legend": "Poznámky",
@@ -146,11 +147,12 @@
         "nametagTextRequired": "Uveďte prosím text k vyšití.",
         "neckInvalid": "Zadejte prosím kladné číslo.",
         "nameRequired": "Uveďte prosím celé jméno.",
-        "contactMethodRequired": "Vyplňte prosím alespoň jedno z e-mailu, Instagramu nebo telefonu.",
+        "contactMethodRequired": "Vyplňte prosím alespoň jedno z telefonu nebo Instagramu.",
         "emailInvalid": "Zadejte prosím platnou e-mailovou adresu.",
         "widthRequired": "Vyberte prosím šířku.",
         "hardwareRequired": "Vyberte prosím kování.",
-        "deliveryRequired": "Vyberte prosím způsob dopravy."
+        "deliveryRequired": "Vyberte prosím způsob dopravy.",
+        "deliveryAddressRequired": "Uveďte prosím doručovací adresu."
       }
     },
     "price": {

@@ -111,6 +111,74 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Collar order page — fabric lightbox. Prev/Next (buttons or the
+  // left/right arrow keys) cycle through whichever category tab was open
+  // when the lightbox was launched, since that's the set the customer was
+  // actually looking at.
+  var fabricEnlargeButtons = document.querySelectorAll('.fabric-enlarge');
+  var lightbox = document.getElementById('fabric-lightbox');
+  var lightboxImg = document.getElementById('lightbox-img');
+  var lightboxCaption = document.getElementById('lightbox-caption');
+  var lightboxClose = document.getElementById('lightbox-close');
+  var lightboxPrev = document.getElementById('lightbox-prev');
+  var lightboxNext = document.getElementById('lightbox-next');
+
+  if (fabricEnlargeButtons.length && lightbox && lightboxImg) {
+    var lightboxItems = [];
+    var lightboxIndex = 0;
+
+    var showLightboxItem = function (index) {
+      lightboxIndex = (index + lightboxItems.length) % lightboxItems.length;
+      var item = lightboxItems[lightboxIndex];
+      lightboxImg.src = item.src;
+      lightboxImg.alt = item.name;
+      lightboxCaption.textContent = item.name;
+    };
+
+    var openLightbox = function (code, panel) {
+      lightboxItems = Array.prototype.slice.call(panel.querySelectorAll('.fabric-chip')).map(function (chip) {
+        return {
+          code: chip.querySelector('.fabric-enlarge').getAttribute('data-fabric-code'),
+          src: chip.querySelector('.fabric-swatch').src,
+          name: chip.querySelector('.fabric-name').textContent
+        };
+      });
+      var startIndex = lightboxItems.findIndex(function (item) { return item.code === code; });
+      showLightboxItem(startIndex > -1 ? startIndex : 0);
+      lightbox.hidden = false;
+      document.body.style.overflow = 'hidden';
+    };
+
+    var closeLightbox = function () {
+      lightbox.hidden = true;
+      document.body.style.overflow = '';
+    };
+
+    fabricEnlargeButtons.forEach(function (btn) {
+      btn.addEventListener('click', function (event) {
+        event.preventDefault();
+        var panel = btn.closest('.fabric-panel');
+        openLightbox(btn.getAttribute('data-fabric-code'), panel);
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', function () { showLightboxItem(lightboxIndex - 1); });
+    lightboxNext.addEventListener('click', function () { showLightboxItem(lightboxIndex + 1); });
+
+    // clicking the dark backdrop (not the image/caption/nav buttons) also closes it
+    lightbox.addEventListener('click', function (event) {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (lightbox.hidden) return;
+      if (event.key === 'Escape') closeLightbox();
+      else if (event.key === 'ArrowLeft') showLightboxItem(lightboxIndex - 1);
+      else if (event.key === 'ArrowRight') showLightboxItem(lightboxIndex + 1);
+    });
+  }
+
   // Collar order page — nametag "with" reveals the extra fields below
   var nametagInputs = document.querySelectorAll('input[name="nametagChoice"]');
   var nametagDetails = document.getElementById('nametag-details');
@@ -124,6 +192,22 @@ document.addEventListener('DOMContentLoaded', function () {
       input.addEventListener('change', applyNametagToggle);
     });
     applyNametagToggle();
+  }
+
+  // Collar order page — shipping (Balíkovna/Zásilkovna) reveals an address
+  // field; pickup needs no address so it stays hidden for that option
+  var deliveryInputs = document.querySelectorAll('input[name="delivery"]');
+  var deliveryAddressField = document.getElementById('delivery-address-field');
+
+  if (deliveryInputs.length && deliveryAddressField) {
+    var applyDeliveryAddressToggle = function () {
+      var checked = document.querySelector('input[name="delivery"]:checked');
+      deliveryAddressField.hidden = !checked || checked.value === 'pickup';
+    };
+    deliveryInputs.forEach(function (input) {
+      input.addEventListener('change', applyDeliveryAddressToggle);
+    });
+    applyDeliveryAddressToggle();
   }
 
   // Collar order page — live price panel. Visible from Step 1 onward, so
@@ -142,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (priceBase && priceTotal && priceCurrency) {
     var WIDTH_BASE_PRICE = { '25': 500, '40': 600 };
     var NAMETAG_PRICE = 100;
-    var DELIVERY_PRICE = { pickup: 0, balikovna: 75, zasilkovna: 89 };
+    var DELIVERY_PRICE = { pickup: 0, balikovna: 79, zasilkovna: 89 };
 
     var formatPrice = function (amount, withSign) {
       var currency = priceCurrency.textContent;
@@ -286,10 +370,18 @@ document.addEventListener('DOMContentLoaded', function () {
       setGroupError(deliverySection, document.getElementById('error-delivery'), deliveryInvalid);
       if (deliveryInvalid) markInvalid(deliverySection);
 
-      // name always required; email optional but must be a valid format if
-      // given (checkValidity() still works with novalidate on the form —
-      // that attribute only suppresses the native UI/blocking, not the
-      // underlying constraint API); email/instagram/phone need at least
+      // shipping (not pickup) needs somewhere to actually ship to
+      var needsAddress = !!deliveryChecked && deliveryChecked.value !== 'pickup';
+      var addressInput = document.getElementById('delivery-address');
+      var addressInvalid = needsAddress && !addressInput.value.trim();
+      setFieldError(addressInput, document.getElementById('error-delivery-address'), addressInvalid);
+      if (addressInvalid) markInvalid(addressInput);
+
+      // name and a valid email are always required (checkValidity() still
+      // works with novalidate on the form — that attribute only suppresses
+      // the native UI/blocking, not the underlying constraint API, and
+      // catches both "empty" and "malformed" via the input's own
+      // required+type=email constraints); instagram/phone need at least
       // one filled in between them.
       var nameInput = document.getElementById('contact-name');
       var nameInvalid = !nameInput.value.trim();
@@ -297,21 +389,19 @@ document.addEventListener('DOMContentLoaded', function () {
       if (nameInvalid) markInvalid(nameInput);
 
       var emailInput = document.getElementById('contact-email');
-      var emailValue = emailInput.value.trim();
-      var emailFormatInvalid = !!emailValue && !emailInput.checkValidity();
-      setFieldError(emailInput, document.getElementById('error-contact-email'), emailFormatInvalid);
-      if (emailFormatInvalid) markInvalid(emailInput);
+      var emailInvalid = !emailInput.checkValidity();
+      setFieldError(emailInput, document.getElementById('error-contact-email'), emailInvalid);
+      if (emailInvalid) markInvalid(emailInput);
 
       var instagramInput = document.getElementById('contact-instagram');
       var phoneInput = document.getElementById('contact-phone');
       // the field is prefilled with "@" so that alone doesn't count as filled in
       var instagramValue = instagramInput.value.trim().replace(/^@/, '');
-      var hasEmail = !!emailValue && !emailFormatInvalid;
       var hasInstagram = instagramValue.length > 0;
       var hasPhone = !!phoneInput.value.trim();
-      var contactMethodInvalid = !hasEmail && !hasInstagram && !hasPhone;
+      var contactMethodInvalid = !hasInstagram && !hasPhone;
       setGroupError(null, document.getElementById('error-contact-method'), contactMethodInvalid);
-      if (contactMethodInvalid) markInvalid(emailInput);
+      if (contactMethodInvalid) markInvalid(instagramInput);
 
       return firstInvalid;
     };
