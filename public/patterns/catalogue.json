@@ -1,0 +1,392 @@
+[
+  {
+    "code": "1c",
+    "category": "floral",
+    "name_cz": "lesní louka",
+    "name_en": "forest meadow",
+    "status": "active",
+    "image": "c1 forest meadow.png"
+  },
+  {
+    "code": "2c",
+    "category": "floral",
+    "name_cz": "karafiáty a tulipány",
+    "name_en": "carnations and tulips",
+    "status": "active",
+    "image": "c2 carnations and tulips.png"
+  },
+  {
+    "code": "3c",
+    "category": "floral",
+    "name_cz": "louka na bílé",
+    "name_en": "meadow on white",
+    "status": "active",
+    "image": "c3 meadow on white.png"
+  },
+  {
+    "code": "4c",
+    "category": "floral",
+    "name_cz": "oranžová louka",
+    "name_en": "orange meadow",
+    "status": "active",
+    "image": "c4 orange meadow.png"
+  },
+  {
+    "code": "5c",
+    "category": "floral",
+    "name_cz": "bláznivá louka",
+    "name_en": "funky meadow",
+    "status": "active",
+    "image": "c5 funky meadow.png"
+  },
+  {
+    "code": "6c",
+    "category": "floral",
+    "name_cz": "růžovo-bílá louka",
+    "name_en": "pink/white meadow",
+    "status": "active",
+    "image": "c6 pink_white meadow.png"
+  },
+  {
+    "code": "7c",
+    "category": "floral",
+    "name_cz": "bílé květiny na pískové",
+    "name_en": "white flowers on sand",
+    "status": "active",
+    "image": "c7 white flowers on sand.png"
+  },
+  {
+    "code": "8c",
+    "category": "floral",
+    "name_cz": "modré květiny na růžové",
+    "name_en": "blue flowers on pink",
+    "status": "active",
+    "image": "c8 blue flowers on pink.png"
+  },
+  {
+    "code": "9c",
+    "category": "floral",
+    "name_cz": "růžové květiny na růžové",
+    "name_en": "pink flowers on pink",
+    "status": "active",
+    "image": "c9 pink flowers on pink.png"
+  },
+  {
+    "code": "10c",
+    "category": "floral",
+    "name_cz": "Elliin folklor (vodorovný vzor)",
+    "name_en": "Ellie's folklore (horizontal pattern)",
+    "status": "active",
+    "image": "c10a - Ellie_s folklore .png"
+  },
+  {
+    "code": "13c",
+    "category": "floral",
+    "name_cz": "Elliin folklor (svislý vzor)",
+    "name_en": "Ellie's folklore (vertical pattern)",
+    "status": "active",
+    "image": "c10b Ellie_s folklore.png"
+  },
+  {
+    "code": "11c",
+    "category": "floral",
+    "name_cz": "oranžové jetelíčky",
+    "name_en": "orange clovers",
+    "status": "active",
+    "image": "c11 orange clovers.png"
+  },
+  {
+    "code": "12c",
+    "category": "floral",
+    "name_cz": "žlutá louka",
+    "name_en": "yellow meadow",
+    "status": "active",
+    "image": "c12 yellow meadow.png"
+  },
+  {
+    "code": "1b",
+    "category": "stripes",
+    "name_cz": "tenké modré proužky",
+    "name_en": "thin blue stripes",
+    "status": "active",
+    "image": "b1 thin blue stripes.png"
+  },
+  {
+    "code": "2b",
+    "category": "stripes",
+    "name_cz": "tyrkysová/modrá (svislé pruhy)",
+    "name_en": "turquoise/blue (vertical stripes)",
+    "status": "active",
+    "image": "b2a turqoise_blue .png"
+  },
+  {
+    "code": "11b",
+    "category": "stripes",
+    "name_cz": "tyrkysová/modrá (vodorovné pruhy)",
+    "name_en": "turquoise/blue (horizontal stripes)",
+    "status": "active",
+    "image": "b2b turqoise_blue.png"
+  },
+  {
+    "code": "3b",
+    "category": "stripes",
+    "name_cz": "růžová/červená/oranžová",
+    "name_en": "pink/red/orange",
+    "status": "active",
+    "image": "b3 pink_red_orange.png"
+  },
+  {
+    "code": "4b",
+    "category": "stripes",
+    "name_cz": "Kde je Waldo? (svislé pruhy)",
+    "name_en": "Where is Waldo? (vertical stripes)",
+    "status": "active",
+    "image": "b4a where is waldo_.png"
+  },
+  {
+    "code": "12b",
+    "category": "stripes",
+    "name_cz": "Kde je Waldo? (vodorovné pruhy)",
+    "name_en": "Where is Waldo? (horizontal stripes)",
+    "status": "active",
+    "image": "b4b where is waldo_.png"
+  },
+  {
+    "code": "5b",
+    "category": "stripes",
+    "name_cz": "zelená/bílá (vodorovné pruhy)",
+    "name_en": "green/white (horizontal stripes)",
+    "status": "active",
+    "image": "b5a - green_white stripes.png"
+  },
+  {
+    "code": "13b",
+    "category": "stripes",
+    "name_cz": "zelená/bílá (svislé pruhy)",
+    "name_en": "green/white (vertical stripes)",
+    "status": "active",
+    "image": "b5b green_white stripes.png"
+  },
+  {
+    "code": "6b",
+    "category": "stripes",
+    "name_cz": "černá/šedá/žlutá",
+    "name_en": "black/grey/yellow",
+    "status": "active",
+    "image": "b6 black_grey_yellow .png"
+  },
+  {
+    "code": "7b",
+    "category": "stripes",
+    "name_cz": "oranžová/bílá",
+    "name_en": "orange/white",
+    "status": "active",
+    "image": "b7 orange_white.png"
+  },
+  {
+    "code": "8b",
+    "category": "stripes",
+    "name_cz": "zelená/vínová",
+    "name_en": "green/red wine",
+    "status": "active",
+    "image": "b8 green_wine red.png"
+  },
+  {
+    "code": "9b",
+    "category": "stripes",
+    "name_cz": "zelená na bílé",
+    "name_en": "green on white",
+    "status": "active",
+    "image": "b9 green on white.png"
+  },
+  {
+    "code": "10b",
+    "category": "stripes",
+    "name_cz": "modrá na bílé",
+    "name_en": "blue on white",
+    "status": "active",
+    "image": "b10 blue on white.png"
+  },
+  {
+    "code": "1a",
+    "category": "mono",
+    "name_cz": "růžová/fialová",
+    "name_en": "pink/purple",
+    "status": "active",
+    "image": "a1 pink_purple.png"
+  },
+  {
+    "code": "2a",
+    "category": "mono",
+    "name_cz": "červená",
+    "name_en": "red",
+    "status": "active",
+    "image": "a2 red.png",
+    "note_cz": "50 % polyester",
+    "note_en": "50% polyester"
+  },
+  {
+    "code": "3a",
+    "category": "mono",
+    "name_cz": "rezavě oranžová",
+    "name_en": "rusty orange",
+    "status": "active",
+    "image": "a3 rusty orange.png"
+  },
+  {
+    "code": "4a",
+    "category": "mono",
+    "name_cz": "máslově žlutá (tmavší)",
+    "name_en": "butter yellow (darker)",
+    "status": "active",
+    "image": "a4 butter yellow darker.png"
+  },
+  {
+    "code": "5a",
+    "category": "mono",
+    "name_cz": "máslově žlutá (světlejší)",
+    "name_en": "butter yellow (lighter)",
+    "status": "active",
+    "image": "a5 butter yellow lighter.png"
+  },
+  {
+    "code": "6a",
+    "category": "mono",
+    "name_cz": "lesní zelená",
+    "name_en": "forest green",
+    "status": "active",
+    "image": "a6 forest green.png"
+  },
+  {
+    "code": "7a",
+    "category": "mono",
+    "name_cz": "dětská modrá",
+    "name_en": "baby blue",
+    "status": "active",
+    "image": "a7 baby blue.png"
+  },
+  {
+    "code": "8a",
+    "category": "mono",
+    "name_cz": "inkoustově modrá",
+    "name_en": "ink blue",
+    "status": "active",
+    "image": "a8 ink blue.png"
+  },
+  {
+    "code": "9a",
+    "category": "mono",
+    "name_cz": "česaná šedo-modrá",
+    "name_en": "brushed grey/blue",
+    "status": "active",
+    "image": "a9 brushed grey_blue.png",
+    "note_cz": "50 % len",
+    "note_en": "50% linen"
+  },
+  {
+    "code": "10a",
+    "category": "mono",
+    "name_cz": "mátová",
+    "name_en": "mint",
+    "status": "active",
+    "image": "a10 mint.png",
+    "note_cz": "100 % len",
+    "note_en": "100% linen"
+  },
+  {
+    "code": "11a",
+    "category": "mono",
+    "name_cz": "dětská růžová",
+    "name_en": "baby pink",
+    "status": "active",
+    "image": "a11 baby pink.png"
+  },
+  {
+    "code": "1d",
+    "category": "random",
+    "name_cz": "srdíčka na rezavě oranžové",
+    "name_en": "hearts on rusty orange",
+    "status": "active",
+    "image": "d1 hearts on rusty orange.png"
+  },
+  {
+    "code": "2d",
+    "category": "random",
+    "name_cz": "bubliny",
+    "name_en": "bubbles",
+    "status": "active",
+    "image": "d2 bubbles.png"
+  },
+  {
+    "code": "3d",
+    "category": "random",
+    "name_cz": "kohoutí stopa",
+    "name_en": "houndstooth",
+    "status": "active",
+    "image": "d3 houndstooth.png"
+  },
+  {
+    "code": "4d",
+    "category": "random",
+    "name_cz": "modrá halucinace",
+    "name_en": "blue hallucination",
+    "status": "active",
+    "image": "d4 blue hallucination.png"
+  },
+  {
+    "code": "5d",
+    "category": "random",
+    "name_cz": "orientální červená",
+    "name_en": "oriental red",
+    "status": "active",
+    "image": "d5 - oriental red.png"
+  },
+  {
+    "code": "6d",
+    "category": "random",
+    "name_cz": "barevná srdíčka",
+    "name_en": "multicolour hearts",
+    "status": "active",
+    "image": "d6 multicolour hearts.png"
+  },
+  {
+    "code": "7d",
+    "category": "random",
+    "name_cz": "černo-červené čmáranice",
+    "name_en": "black and red scribbles",
+    "status": "active",
+    "image": "d7 black and red scribbles.png"
+  },
+  {
+    "code": "8d",
+    "category": "random",
+    "name_cz": "molekuly",
+    "name_en": "molecules",
+    "status": "active",
+    "image": "d8 molecules.png"
+  },
+  {
+    "code": "9d",
+    "category": "random",
+    "name_cz": "geometrický vzor",
+    "name_en": "geometric",
+    "status": "active",
+    "image": "d9 geometric.png"
+  },
+  {
+    "code": "10d",
+    "category": "random",
+    "name_cz": "modro-žluto-zelená párty",
+    "name_en": "blue/yellow/green party",
+    "status": "active",
+    "image": "d10 blue_yellow_green party.png"
+  },
+  {
+    "code": "11d",
+    "category": "random",
+    "name_cz": "modrá a oranžová výšivka",
+    "name_en": "blue and orange embroidery",
+    "status": "active",
+    "image": "d11 blue_orange.png"
+  }
+]

@@ -561,6 +561,20 @@ button { font-family: inherit; cursor: pointer; }
 .fabric-name { color: var(--text); }
 .fabric-note { font-size: 0.65rem; opacity: 0.65; flex-basis: 100%; }
 
+/* set by the maker via patterns/catalogue.json (status: "out_of_stock") —
+   same greyed-out treatment as .option-card.is-disabled (the 40mm/silver
+   hardware lock), plus a small badge since there's no adjacent note
+   explaining the disabled radio the way that lock has */
+.fabric-chip.is-out-of-stock { opacity: 0.55; cursor: not-allowed; }
+.fabric-chip.is-out-of-stock .fabric-swatch { filter: grayscale(60%); }
+.fabric-out-of-stock-badge {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--primary-deep);
+  opacity: 1;
+}
+
 .fabric-enlarge {
   position: absolute;
   top: 6px;

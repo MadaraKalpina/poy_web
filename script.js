@@ -111,11 +111,136 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Collar order page — fabric catalogue, fetched from
+  // patterns/catalogue.json so the maker can add/remove/rename/mark a
+  // pattern out of stock by editing that one file (see
+  // public/patterns/README.md) instead of touching this page's markup.
+  // Only the .fabric-grid contents are built here — the tabs and panel
+  // shells above are static, so the tab-switching code above needs no
+  // changes, and the lightbox (further below) just needs to use event
+  // delegation instead of binding to buttons that don't exist yet.
+  var fabricGrids = document.querySelectorAll('.fabric-grid[data-fabric-grid]');
+
+  if (fabricGrids.length) {
+    var fabricEnlargeIcon = '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 3H5a2 2 0 0 0-2 2v4M15 3h4a2 2 0 0 1 2 2v4M9 21H5a2 2 0 0 1-2-2v-4M15 21h4a2 2 0 0 0 2-2v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    var fabricCatalogueData = null;
+
+    var fabricI18nText = function (id, fallback) {
+      var el = document.getElementById(id);
+      return el && el.textContent ? el.textContent : fallback;
+    };
+
+    var buildFabricChip = function (item, lang) {
+      var name = (lang === 'en' ? item.name_en : item.name_cz) || item.name_cz || item.name_en || item.code;
+      var note = lang === 'en' ? item.note_en : item.note_cz;
+      var isOutOfStock = item.status === 'out_of_stock';
+
+      var chip = document.createElement('div');
+      chip.className = 'fabric-chip' + (isOutOfStock ? ' is-out-of-stock' : '');
+
+      var label = document.createElement('label');
+      label.className = 'fabric-chip-select';
+      label.setAttribute('for', 'fabric-' + item.code);
+
+      var img = document.createElement('img');
+      img.className = 'fabric-swatch';
+      img.src = 'public/patterns/' + item.image.split('/').map(encodeURIComponent).join('/');
+      img.alt = '';
+      img.loading = 'lazy';
+      label.appendChild(img);
+
+      var nameRow = document.createElement('div');
+      nameRow.className = 'fabric-name-row';
+
+      var input = document.createElement('input');
+      input.type = 'radio';
+      input.name = 'fabric';
+      input.id = 'fabric-' + item.code;
+      input.value = item.code;
+      if (isOutOfStock) input.disabled = true;
+      nameRow.appendChild(input);
+
+      var nameSpan = document.createElement('span');
+      nameSpan.className = 'fabric-name';
+      nameSpan.textContent = name;
+      nameRow.appendChild(nameSpan);
+
+      if (note) {
+        var noteSpan = document.createElement('span');
+        noteSpan.className = 'fabric-note';
+        noteSpan.textContent = note;
+        nameRow.appendChild(noteSpan);
+      }
+
+      if (isOutOfStock) {
+        var badge = document.createElement('span');
+        badge.className = 'fabric-note fabric-out-of-stock-badge';
+        badge.textContent = fabricI18nText('fabric-i18n-out-of-stock', 'Vyprodáno');
+        nameRow.appendChild(badge);
+      }
+
+      label.appendChild(nameRow);
+      chip.appendChild(label);
+
+      var enlargeBtn = document.createElement('button');
+      enlargeBtn.type = 'button';
+      enlargeBtn.className = 'fabric-enlarge';
+      enlargeBtn.setAttribute('data-fabric-code', item.code);
+      enlargeBtn.setAttribute('aria-label', fabricI18nText('fabric-i18n-enlarge', 'Zvětšit'));
+      enlargeBtn.innerHTML = fabricEnlargeIcon;
+      chip.appendChild(enlargeBtn);
+
+      return chip;
+    };
+
+    var renderFabricCatalogue = function () {
+      if (!fabricCatalogueData) return;
+      var lang = localStorage.getItem('poy-lang') === 'en' ? 'en' : 'cz';
+      var previouslyChecked = document.querySelector('input[name="fabric"]:checked');
+      var previousCode = previouslyChecked ? previouslyChecked.value : null;
+
+      fabricGrids.forEach(function (grid) {
+        var category = grid.getAttribute('data-fabric-grid');
+        grid.innerHTML = '';
+        fabricCatalogueData
+          .filter(function (item) { return item.category === category && item.status !== 'hidden'; })
+          .forEach(function (item) { grid.appendChild(buildFabricChip(item, lang)); });
+      });
+
+      if (previousCode) {
+        var restored = document.getElementById('fabric-' + previousCode);
+        if (restored && !restored.disabled) restored.checked = true;
+      }
+    };
+
+    fetch('public/patterns/catalogue.json')
+      .then(function (res) {
+        if (!res.ok) throw new Error('Failed to load catalogue.json');
+        return res.json();
+      })
+      .then(function (data) {
+        fabricCatalogueData = data;
+        renderFabricCatalogue();
+      })
+      .catch(function (err) {
+        console.error('[fabric catalogue]', err);
+        var message = fabricI18nText('fabric-i18n-load-error', "Couldn't load the fabric patterns.");
+        fabricGrids.forEach(function (grid) { grid.textContent = message; });
+      });
+
+    // language switch re-picks name_cz/name_en (and the badge/aria-label
+    // text) without a re-fetch; also fires once on initial load (see
+    // i18n.js), which self-heals if this render ran before i18n's own
+    // first pass finished translating the hidden reference spans above
+    document.addEventListener('poy:langchange', renderFabricCatalogue);
+  }
+
   // Collar order page — fabric lightbox. Prev/Next (buttons or the
   // left/right arrow keys) cycle through whichever category tab was open
   // when the lightbox was launched, since that's the set the customer was
-  // actually looking at.
-  var fabricEnlargeButtons = document.querySelectorAll('.fabric-enlarge');
+  // actually looking at. Uses event delegation (not per-button binding)
+  // since the enlarge buttons are added asynchronously by the catalogue
+  // render above.
   var lightbox = document.getElementById('fabric-lightbox');
   var lightboxImg = document.getElementById('lightbox-img');
   var lightboxCaption = document.getElementById('lightbox-caption');
@@ -123,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var lightboxPrev = document.getElementById('lightbox-prev');
   var lightboxNext = document.getElementById('lightbox-next');
 
-  if (fabricEnlargeButtons.length && lightbox && lightboxImg) {
+  if (lightbox && lightboxImg && lightboxClose && lightboxPrev && lightboxNext) {
     var lightboxItems = [];
     var lightboxIndex = 0;
 
@@ -154,12 +279,12 @@ document.addEventListener('DOMContentLoaded', function () {
       document.body.style.overflow = '';
     };
 
-    fabricEnlargeButtons.forEach(function (btn) {
-      btn.addEventListener('click', function (event) {
-        event.preventDefault();
-        var panel = btn.closest('.fabric-panel');
-        openLightbox(btn.getAttribute('data-fabric-code'), panel);
-      });
+    document.addEventListener('click', function (event) {
+      var btn = event.target.closest('.fabric-enlarge');
+      if (!btn) return;
+      event.preventDefault();
+      var panel = btn.closest('.fabric-panel');
+      openLightbox(btn.getAttribute('data-fabric-code'), panel);
     });
 
     lightboxClose.addEventListener('click', closeLightbox);
