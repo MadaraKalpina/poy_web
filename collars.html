@@ -172,25 +172,14 @@
           <!-- B — Hardware -->
           <fieldset class="form-section" id="section-hardware">
             <legend class="form-legend" data-i18n="collarPage.form.hardware.legend">Kování</legend>
-            <div class="option-grid">
-              <label class="option-card" for="hardware-silver">
-                <input type="radio" name="hardware" id="hardware-silver" value="silver" checked>
-                <span class="option-card-title" data-i18n="collarPage.form.hardware.options.silver">Stříbrné</span>
-              </label>
-              <label class="option-card" for="hardware-gold">
-                <input type="radio" name="hardware" id="hardware-gold" value="gold">
-                <span class="option-card-title" data-i18n="collarPage.form.hardware.options.gold">Zlaté</span>
-              </label>
-              <label class="option-card" for="hardware-black">
-                <input type="radio" name="hardware" id="hardware-black" value="black">
-                <span class="option-card-title" data-i18n="collarPage.form.hardware.options.black">Černé</span>
-              </label>
-              <label class="option-card" for="hardware-brass">
-                <input type="radio" name="hardware" id="hardware-brass" value="brass">
-                <span class="option-card-title" data-i18n="collarPage.form.hardware.options.brass">Mosazné</span>
-              </label>
-            </div>
-            <p class="form-note" data-i18n="collarPage.form.hardware.note">Veškeré kování je niklované.</p>
+            <!-- populated at runtime from hardware/catalogue.json — see
+                 renderHardwareCatalogue() in script.js. Same pattern as the
+                 fabric grid below: static shell, dynamic contents, plus
+                 hidden i18n reference spans the render code reads from. -->
+            <div class="hardware-grid" id="hardware-grid" data-i18n="collarPage.form.hardware.loading">Načítání kování…</div>
+            <span id="hardware-i18n-out-of-stock" hidden data-i18n="collarPage.form.hardware.outOfStockLabel">Vyprodáno</span>
+            <span id="hardware-i18n-load-error" hidden data-i18n="collarPage.form.hardware.loadError">Nepodařilo se načíst možnosti kování. Zkuste to prosím znovu, nebo nás kontaktujte.</span>
+            <p class="form-note" data-i18n="collarPage.form.hardware.note">Veškeré kování je kovové (zinkoslitina).</p>
             <p class="field-error" id="error-hardware" role="alert" hidden data-i18n="collarPage.form.errors.hardwareRequired">Vyberte prosím kování.</p>
           </fieldset>
 
@@ -198,6 +187,7 @@
         <fieldset class="form-section" id="section-fabric">
           <legend class="form-legend" data-i18n="collarPage.form.fabric.legend">Látka</legend>
           <p class="form-note" data-i18n="collarPage.form.fabric.note">Všechny látky jsou deadstock, z druhé ruky nebo zbytky — bez výjimky.</p>
+          <p class="form-note" data-i18n="collarPage.form.fabric.widthFilterNote">Nabídka vzorů se může lišit podle zvolené šířky.</p>
 
           <!-- Tabs + panel shells stay static so the existing tab-click and
                lightbox JS need no changes; only each .fabric-grid's contents
@@ -227,6 +217,7 @@
           <span id="fabric-i18n-enlarge" hidden data-i18n="collarPage.form.fabric.enlargeAriaLabel">Zvětšit</span>
           <span id="fabric-i18n-out-of-stock" hidden data-i18n="collarPage.form.fabric.outOfStockLabel">Vyprodáno</span>
           <span id="fabric-i18n-load-error" hidden data-i18n="collarPage.form.fabric.loadError">Nepodařilo se načíst vzory látek. Zkuste to prosím znovu, nebo nás kontaktujte.</span>
+          <span id="fabric-i18n-empty-for-width" hidden data-i18n="collarPage.form.fabric.emptyForWidth">Pro zvolenou šířku zde momentálně nejsou žádné vzory.</span>
           <p class="field-error" id="error-fabric" role="alert" hidden data-i18n="collarPage.form.errors.fabricRequired">Vyberte prosím jednu látku.</p>
         </fieldset>
 

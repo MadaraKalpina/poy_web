@@ -59,26 +59,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Collar order page — 40mm width auto-locks hardware to silver, with
   // the other options left visible-but-disabled (not hidden) alongside
-  // the note explaining why, per the brief.
+  // the note explaining why, per the brief. Hardware inputs are looked up
+  // fresh on every call (not captured once) since they're now rendered
+  // asynchronously from hardware/catalogue.json — see applyWidthLock() call
+  // at the end of renderHardwareCatalogue() below, which re-applies the
+  // lock once those inputs actually exist.
   var widthInputs = document.querySelectorAll('input[name="width"]');
-  var hardwareInputs = document.querySelectorAll('input[name="hardware"]');
   var widthLockNote = document.getElementById('width-lock-note');
+  var applyWidthLock = null;
 
-  if (widthInputs.length && hardwareInputs.length && widthLockNote) {
-    var silverInput = document.getElementById('hardware-silver');
-
-    var applyWidthLock = function () {
+  if (widthInputs.length && widthLockNote) {
+    applyWidthLock = function () {
       var checked = document.querySelector('input[name="width"]:checked');
       var is40 = !!checked && checked.value === '40';
       widthLockNote.hidden = !is40;
-      hardwareInputs.forEach(function (input) {
-        var card = input.closest('.option-card');
+      var silverInput = document.getElementById('hardware-silver');
+      document.querySelectorAll('input[name="hardware"]').forEach(function (input) {
+        var card = input.closest('.hardware-chip');
         if (input === silverInput) {
           if (is40) input.checked = true;
           return;
         }
-        input.disabled = is40;
-        if (card) card.classList.toggle('is-disabled', is40);
+        // don't re-enable an input the catalogue itself marked out of
+        // stock — only ever override the width-lock's own disabling
+        if (is40) {
+          input.disabled = true;
+          if (card) card.classList.add('is-disabled');
+        } else if (card && !card.classList.contains('is-out-of-stock')) {
+          input.disabled = false;
+          card.classList.remove('is-disabled');
+        }
       });
     };
 
@@ -86,6 +96,122 @@ document.addEventListener('DOMContentLoaded', function () {
       input.addEventListener('change', applyWidthLock);
     });
     applyWidthLock();
+  }
+
+  // Collar order page — hardware catalogue, fetched from
+  // hardware/catalogue.json (same idea as the fabric catalogue below) so
+  // the maker can add a new finish or mark one out of stock by editing
+  // that one file. Only 4 items and no categories, so this is a single
+  // grid with no tabs.
+  var hardwareGrid = document.getElementById('hardware-grid');
+
+  if (hardwareGrid) {
+    var hardwareI18nText = function (id, fallback) {
+      var el = document.getElementById(id);
+      return el && el.textContent ? el.textContent : fallback;
+    };
+
+    var buildHardwareChip = function (item, lang) {
+      var name = (lang === 'en' ? item.name_en : item.name_cz) || item.name_cz || item.name_en || item.code;
+      var note = lang === 'en' ? item.note_en : item.note_cz;
+      var isOutOfStock = item.status === 'out_of_stock';
+
+      var chip = document.createElement('div');
+      chip.className = 'hardware-chip' + (isOutOfStock ? ' is-out-of-stock' : '');
+
+      var label = document.createElement('label');
+      label.className = 'hardware-chip-select';
+      label.setAttribute('for', 'hardware-' + item.code);
+
+      var img = document.createElement('img');
+      img.className = 'hardware-swatch';
+      img.src = 'public/hardware/' + encodeURIComponent(item.image);
+      img.alt = '';
+      img.loading = 'lazy';
+      label.appendChild(img);
+
+      var nameRow = document.createElement('div');
+      nameRow.className = 'hardware-name-row';
+
+      var input = document.createElement('input');
+      input.type = 'radio';
+      input.name = 'hardware';
+      input.id = 'hardware-' + item.code;
+      input.value = item.code;
+      if (isOutOfStock) input.disabled = true;
+      nameRow.appendChild(input);
+
+      var nameSpan = document.createElement('span');
+      nameSpan.className = 'hardware-name';
+      nameSpan.textContent = name;
+      nameRow.appendChild(nameSpan);
+
+      if (note) {
+        var noteSpan = document.createElement('span');
+        noteSpan.className = 'hardware-note';
+        noteSpan.textContent = note;
+        nameRow.appendChild(noteSpan);
+      }
+
+      if (isOutOfStock) {
+        var badge = document.createElement('span');
+        badge.className = 'hardware-note hardware-out-of-stock-badge';
+        badge.textContent = hardwareI18nText('hardware-i18n-out-of-stock', 'Vyprodáno');
+        nameRow.appendChild(badge);
+      }
+
+      label.appendChild(nameRow);
+      chip.appendChild(label);
+      return chip;
+    };
+
+    var hardwareCatalogueData = null;
+
+    var renderHardwareCatalogue = function () {
+      if (!hardwareCatalogueData) return;
+      var lang = localStorage.getItem('poy-lang') === 'en' ? 'en' : 'cz';
+      var previouslyChecked = document.querySelector('input[name="hardware"]:checked');
+      var previousCode = previouslyChecked ? previouslyChecked.value : null;
+
+      hardwareGrid.innerHTML = '';
+      hardwareCatalogueData
+        .filter(function (item) { return item.status !== 'hidden'; })
+        .forEach(function (item) { hardwareGrid.appendChild(buildHardwareChip(item, lang)); });
+
+      if (previousCode) {
+        var restored = document.getElementById('hardware-' + previousCode);
+        if (restored && !restored.disabled) restored.checked = true;
+      }
+      if (!document.querySelector('input[name="hardware"]:checked')) {
+        // silver is the sensible default (same as the old static markup);
+        // fall back to whatever's first and available if silver is missing
+        // or out of stock, so a maker marking silver out of stock doesn't
+        // leave hardware silently unselected
+        var silverOption = document.getElementById('hardware-silver');
+        var defaultInput = (silverOption && !silverOption.disabled) ? silverOption : hardwareGrid.querySelector('input[name="hardware"]:not(:disabled)');
+        if (defaultInput) defaultInput.checked = true;
+      }
+
+      // re-apply the 40mm-silver lock now that hardware inputs exist —
+      // matters on first render, harmless no-op on later re-renders
+      if (applyWidthLock) applyWidthLock();
+    };
+
+    fetch('public/hardware/catalogue.json')
+      .then(function (res) {
+        if (!res.ok) throw new Error('Failed to load catalogue.json');
+        return res.json();
+      })
+      .then(function (data) {
+        hardwareCatalogueData = data;
+        renderHardwareCatalogue();
+      })
+      .catch(function (err) {
+        console.error('[hardware catalogue]', err);
+        hardwareGrid.textContent = hardwareI18nText('hardware-i18n-load-error', "Couldn't load the hardware options.");
+      });
+
+    document.addEventListener('poy:langchange', renderHardwareCatalogue);
   }
 
   // Collar order page — fabric category tabs: one .fabric-panel visible
@@ -199,12 +325,30 @@ document.addEventListener('DOMContentLoaded', function () {
       var previouslyChecked = document.querySelector('input[name="fabric"]:checked');
       var previousCode = previouslyChecked ? previouslyChecked.value : null;
 
+      // no width chosen yet (Step 1/2, before that field) shows every
+      // pattern; once a width is picked, patterns whose own `widths` list
+      // (set per-pattern in catalogue.json) doesn't include it disappear
+      // entirely — this is a visibility rule, not an out-of-stock state
+      var widthChecked = document.querySelector('input[name="width"]:checked');
+      var currentWidth = widthChecked ? widthChecked.value : null;
+      var availableForWidth = function (item) {
+        return !currentWidth || !item.widths || !item.widths.length || item.widths.indexOf(currentWidth) > -1;
+      };
+
       fabricGrids.forEach(function (grid) {
         var category = grid.getAttribute('data-fabric-grid');
         grid.innerHTML = '';
-        fabricCatalogueData
-          .filter(function (item) { return item.category === category && item.status !== 'hidden'; })
-          .forEach(function (item) { grid.appendChild(buildFabricChip(item, lang)); });
+        var visible = fabricCatalogueData.filter(function (item) {
+          return item.category === category && item.status !== 'hidden' && availableForWidth(item);
+        });
+        if (visible.length) {
+          visible.forEach(function (item) { grid.appendChild(buildFabricChip(item, lang)); });
+        } else {
+          var empty = document.createElement('p');
+          empty.className = 'form-note fabric-grid-empty';
+          empty.textContent = fabricI18nText('fabric-i18n-empty-for-width', 'No patterns available for this width.');
+          grid.appendChild(empty);
+        }
       });
 
       if (previousCode) {
@@ -233,6 +377,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // i18n.js), which self-heals if this render ran before i18n's own
     // first pass finished translating the hidden reference spans above
     document.addEventListener('poy:langchange', renderFabricCatalogue);
+    // width changing may add/remove which patterns are visible — the
+    // width radios themselves are static, so this listener is safe to
+    // attach immediately regardless of catalogue fetch timing
+    document.querySelectorAll('input[name="width"]').forEach(function (input) {
+      input.addEventListener('change', renderFabricCatalogue);
+    });
   }
 
   // Collar order page — fabric lightbox. Prev/Next (buttons or the

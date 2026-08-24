@@ -55,7 +55,7 @@ button { font-family: inherit; cursor: pointer; }
 .kicker {
   font-family: var(--font-body);
   font-weight: 800;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   margin: 0 0 0.5em;
@@ -71,7 +71,7 @@ button { font-family: inherit; cursor: pointer; }
   border: 2px solid transparent;
   font-family: var(--font-body);
   font-weight: 800;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -174,7 +174,7 @@ button { font-family: inherit; cursor: pointer; }
 .nav-side { display: contents; }
 .nav-side a, .mobile-nav a {
   font-weight: 800;
-  font-size: 0.9rem;
+  font-size: 1rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -198,7 +198,7 @@ button { font-family: inherit; cursor: pointer; }
   padding: 0;
   font-family: var(--font-body);
   font-weight: 800;
-  font-size: 0.9rem;
+  font-size: 1rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--cream);
@@ -230,7 +230,7 @@ button { font-family: inherit; cursor: pointer; }
   background: transparent;
   font-family: var(--font-body);
   font-weight: 800;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--secondary-deep);
@@ -327,14 +327,14 @@ button { font-family: inherit; cursor: pointer; }
 }
 .card-caption { text-align: center; margin-top: 16px; }
 .card h3 {
-  font-size: 0.9rem;
+  font-size: 1rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   line-height: 1.3;
   margin: 0 0 6px;
   color: var(--secondary-deep);
 }
-.card p.desc { font-size: 14px; margin: 0; color: var(--text); }
+.card p.desc { font-size: 15px; margin: 0; color: var(--text); }
 .card-cta { margin-top: 14px; }
 
 /* ===========================================================
@@ -368,7 +368,7 @@ button { font-family: inherit; cursor: pointer; }
   padding: 0;
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--secondary-deep);
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -396,14 +396,14 @@ button { font-family: inherit; cursor: pointer; }
   padding: 0;
 }
 
-.form-note { font-size: 0.8rem; color: var(--text); opacity: 0.75; margin: 6px 0 0; }
+.form-note { font-size: 0.95rem; color: var(--text); opacity: 0.75; margin: 6px 0 0; }
 .form-note--soft {
   background: var(--primary-pale);
   border-radius: 10px;
   padding: 8px 12px;
   opacity: 1;
 }
-.field-help { font-size: 0.75rem; opacity: 0.65; margin: 4px 0 0; }
+.field-help { font-size: 0.95rem; opacity: 0.65; margin: 4px 0 0; }
 
 .field { margin-bottom: 10px; }
 .field:last-child { margin-bottom: 0; }
@@ -411,7 +411,7 @@ button { font-family: inherit; cursor: pointer; }
 .field-label {
   display: block;
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   color: var(--secondary-deep);
   margin-bottom: 4px;
 }
@@ -426,7 +426,7 @@ button { font-family: inherit; cursor: pointer; }
   border-radius: 10px;
   padding: 8px 12px;
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--text);
   transition: border-color 0.15s ease;
 }
@@ -440,7 +440,7 @@ button { font-family: inherit; cursor: pointer; }
    cream/white field backgrounds. */
 .field-error {
   color: var(--primary-deep);
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   font-weight: 700;
   margin: 4px 0 0;
 }
@@ -451,6 +451,7 @@ button { font-family: inherit; cursor: pointer; }
    markup) — the whole group gets a colored border when nothing's picked */
 .form-section.is-invalid .option-card { border-color: var(--primary-deep); }
 .form-section.is-invalid .fabric-tabs .fabric-tab { border-color: var(--primary-deep); }
+.form-section.is-invalid .hardware-chip { border-color: var(--primary-deep); }
 
 /* radio/checkbox "cards" used for width, hardware, delivery and the
    nametag sub-choices — the whole card is clickable since the input
@@ -477,8 +478,8 @@ button { font-family: inherit; cursor: pointer; }
 }
 .option-card input { accent-color: var(--primary-deep); margin-right: 4px; }
 .option-card:has(input:checked) { border-color: var(--primary-deep); background: var(--primary-pale); }
-.option-card-title { font-weight: 700; font-size: 0.9rem; }
-.option-card-price { font-size: 0.75rem; opacity: 0.75; }
+.option-card-title { font-weight: 700; font-size: 1rem; }
+.option-card-price { font-size: 0.95rem; opacity: 0.75; }
 /* 40mm-silver lock: JS disables the input and adds this class so the
    reason (the note above the group) is visible, not just a mystery gray */
 .option-card.is-disabled { opacity: 0.5; cursor: not-allowed; background: var(--cream); }
@@ -501,7 +502,7 @@ button { font-family: inherit; cursor: pointer; }
   padding: 8px 14px;
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 0.82rem;
+  font-size: 0.95rem;
   cursor: pointer;
   transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
 }
@@ -531,7 +532,7 @@ button { font-family: inherit; cursor: pointer; }
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
-  font-size: 0.78rem;
+  font-size: 1rem;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 .fabric-chip-select { display: contents; }
@@ -559,7 +560,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .fabric-name-row input { margin: 0; flex-shrink: 0; accent-color: var(--primary-deep); }
 .fabric-name { color: var(--text); }
-.fabric-note { font-size: 0.65rem; opacity: 0.65; flex-basis: 100%; }
+.fabric-note { font-size: 0.95rem; opacity: 0.65; flex-basis: 100%; }
 
 /* set by the maker via patterns/catalogue.json (status: "out_of_stock") —
    same greyed-out treatment as .option-card.is-disabled (the 40mm/silver
@@ -568,6 +569,72 @@ button { font-family: inherit; cursor: pointer; }
 .fabric-chip.is-out-of-stock { opacity: 0.55; cursor: not-allowed; }
 .fabric-chip.is-out-of-stock .fabric-swatch { filter: grayscale(60%); }
 .fabric-out-of-stock-badge {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--primary-deep);
+  opacity: 1;
+}
+.fabric-grid-empty { grid-column: 1 / -1; margin: 0; }
+
+/* hardware catalogue — same card shape as the fabric chips (image, radio
+   + name in the white row below), fetched from hardware/catalogue.json.
+   Product photos rather than repeating pattern swatches, so `contain`
+   instead of `cover` — cropping a clasp in half would look broken in a
+   way cropping a fabric texture doesn't. */
+.hardware-grid {
+  display: grid;
+  /* auto-fill (not auto-fit) to match .fabric-grid — with only 4 items,
+     auto-fit would collapse the empty tracks and stretch these to fill
+     the row, making them wider/taller than the pattern boxes */
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.hardware-chip {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--primary-pale);
+  background: var(--white);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.hardware-chip-select { display: contents; }
+.hardware-chip:has(input:checked) {
+  border-color: var(--primary-deep);
+  box-shadow: 0 0 0 2px var(--primary-pale) inset;
+}
+.hardware-chip:has(input:checked) .hardware-name-row { background: var(--primary-pale); }
+.hardware-swatch {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  display: block;
+  background: var(--white);
+  padding: 10px;
+}
+.hardware-name-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px 6px;
+  padding: 5px 8px 6px;
+  transition: background 0.15s ease;
+}
+.hardware-name-row input { margin: 0; flex-shrink: 0; accent-color: var(--primary-deep); }
+.hardware-name { color: var(--text); }
+.hardware-note { font-size: 0.95rem; opacity: 0.65; flex-basis: 100%; }
+/* set by the maker via hardware/catalogue.json (status: "out_of_stock"),
+   or by the 40mm-silver lock (.is-disabled, see applyWidthLock()) —
+   same greyed-out treatment either way */
+.hardware-chip.is-out-of-stock,
+.hardware-chip.is-disabled { opacity: 0.5; cursor: not-allowed; background: var(--cream); }
+.hardware-chip.is-out-of-stock .hardware-swatch { filter: grayscale(60%); }
+.hardware-out-of-stock-badge {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -695,7 +762,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .price-summary-label {
   font-weight: 800;
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -713,7 +780,7 @@ button { font-family: inherit; cursor: pointer; }
   display: flex;
   justify-content: space-between;
   gap: 8px;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   padding: 5px 0;
   border-top: 1px solid var(--primary-pale);
 }
@@ -776,7 +843,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .review-handle {
   font-weight: 800;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--secondary-deep);
@@ -879,7 +946,7 @@ button { font-family: inherit; cursor: pointer; }
   gap: 20px;
   flex-wrap: wrap;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 .footer-links a:hover { color: var(--accent); }
 
@@ -903,7 +970,7 @@ button { font-family: inherit; cursor: pointer; }
   width: 100%;
   text-align: center;
   margin-top: 24px;
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   opacity: 0.65;
 }
 

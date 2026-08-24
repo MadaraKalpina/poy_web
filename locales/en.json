@@ -33,17 +33,16 @@
       },
       "hardware": {
         "legend": "Hardware",
-        "options": {
-          "silver": "Silver",
-          "gold": "Gold",
-          "black": "Black",
-          "brass": "Brass"
-        },
-        "note": "All hardware is made of metal (zinc die casting)."
+        "note": "All hardware is made of metal (zinc die casting).",
+        "loading": "Loading hardware…",
+        "loadError": "Couldn't load the hardware options. Please try again, or get in touch with us.",
+        "outOfStockLabel": "Out of stock"
       },
       "fabric": {
         "legend": "Fabric",
         "note": "Most fabrics are cotton, with a few exceptions where the material is specified \n All fabrics are deadstock, second-hand, or scraps — no exceptions.",
+        "widthFilterNote": "Available patterns may vary depending on the width you chose.",
+        "emptyForWidth": "There are currently no patterns available for the selected width.",
         "categories": {
           "floral": "Floral",
           "stripes": "Stripes & Gingham",

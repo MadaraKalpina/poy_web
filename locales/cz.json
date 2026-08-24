@@ -33,17 +33,16 @@
       },
       "hardware": {
         "legend": "Kování",
-        "options": {
-          "silver": "Stříbrné",
-          "gold": "Zlaté",
-          "black": "Černé",
-          "brass": "Mosazné"
-        },
-        "note": "Veškeré kování je kovové (zinkoslitina)."
+        "note": "Veškeré kování je kovové (zinkoslitina).",
+        "loading": "Načítání kování…",
+        "loadError": "Nepodařilo se načíst možnosti kování. Zkuste to prosím znovu, nebo nás kontaktujte.",
+        "outOfStockLabel": "Vyprodáno"
       },
       "fabric": {
         "legend": "Látka",
         "note": "Většina látek je z bavlny, až na pár výjimek, u kterých je to specifikováno. \n Všechny látky jsou deadstock, z druhé ruky nebo zbytky — bez výjimky.",
+        "widthFilterNote": "Nabídka vzorů se může lišit podle zvolené šířky.",
+        "emptyForWidth": "Pro zvolenou šířku zde momentálně nejsou žádné vzory.",
         "categories": {
           "floral": "Květinové",
           "stripes": "Proužky a kostička",

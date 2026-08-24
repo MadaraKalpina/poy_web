@@ -25,6 +25,7 @@ change.
   "name_cz": "lesní louka",
   "name_en": "forest meadow",
   "status": "active",
+  "widths": ["25", "40"],
   "image": "c1 forest meadow.png"
 }
 ```
@@ -37,6 +38,7 @@ change.
 | `name_en` | The English name shown to customers. |
 | `note_cz` / `note_en` | *(optional — only add these two lines if needed)* A small note under the name, e.g. `"50 % polyester"`. Leave both out entirely for a pattern with no note. |
 | `status` | One of three values — see below. |
+| `widths` | Which collar width(s) this pattern can be used on: `["25", "40"]` for both (the normal case), `["40"]` for 40mm-only, `["25"]` for 25mm-only. A pattern not available for the width a customer picked simply doesn't show up — this is different from `out_of_stock`, which still shows the pattern but greyed out. |
 | `image` | The exact filename of the photo in this folder (spelling, spaces and capital letters all have to match exactly). |
 
 ### `status` — the three options
@@ -58,6 +60,8 @@ change.
 - **Rename a pattern**: edit `name_cz` and/or `name_en`.
 - **Mark something out of stock**: change `status` to `"out_of_stock"`.
   Change it back to `"active"` when it's available again.
+- **Restrict a pattern to one width**: set `widths` to just `["25"]` or
+  `["40"]`.
 
 ### A few things to double-check before saving
 
