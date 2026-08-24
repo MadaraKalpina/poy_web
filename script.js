@@ -3,11 +3,24 @@
 document.addEventListener('DOMContentLoaded', function () {
   var header = document.querySelector('.site-header');
   if (header) {
+    // the price panel's sticky offset (collars.html) reads this custom
+    // property so it always sits flush under the header instead of a
+    // hardcoded px guess that drifts out of sync whenever the header's
+    // own height changes (e.g. the logo-shrink below)
+    var updateHeaderHeight = function () {
+      document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+    };
     var updateScrolled = function () {
       header.classList.toggle('is-scrolled', window.scrollY > 10);
+      updateHeaderHeight();
     };
     updateScrolled();
+    // the logo-shrink on scroll animates via CSS transition, so the height
+    // read right at toggle-time is still the pre-transition value — catch
+    // the settled height once that transition finishes
+    header.addEventListener('transitionend', updateHeaderHeight);
     window.addEventListener('scroll', updateScrolled, { passive: true });
+    window.addEventListener('resize', updateHeaderHeight);
   }
 
   var toggle = document.getElementById('nav-toggle');
@@ -58,21 +71,18 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Collar order page — 40mm width auto-locks hardware to silver, with
-  // the other options left visible-but-disabled (not hidden) alongside
-  // the note explaining why, per the brief. Hardware inputs are looked up
-  // fresh on every call (not captured once) since they're now rendered
-  // asynchronously from hardware/catalogue.json — see applyWidthLock() call
-  // at the end of renderHardwareCatalogue() below, which re-applies the
-  // lock once those inputs actually exist.
+  // the other options left visible-but-disabled (not hidden). Hardware
+  // inputs are looked up fresh on every call (not captured once) since
+  // they're now rendered asynchronously from hardware/catalogue.json —
+  // see applyWidthLock() call at the end of renderHardwareCatalogue()
+  // below, which re-applies the lock once those inputs actually exist.
   var widthInputs = document.querySelectorAll('input[name="width"]');
-  var widthLockNote = document.getElementById('width-lock-note');
   var applyWidthLock = null;
 
-  if (widthInputs.length && widthLockNote) {
+  if (widthInputs.length) {
     applyWidthLock = function () {
       var checked = document.querySelector('input[name="width"]:checked');
       var is40 = !!checked && checked.value === '40';
-      widthLockNote.hidden = !is40;
       var silverInput = document.getElementById('hardware-silver');
       document.querySelectorAll('input[name="hardware"]').forEach(function (input) {
         var card = input.closest('.hardware-chip');
@@ -469,15 +479,42 @@ document.addEventListener('DOMContentLoaded', function () {
     applyNametagToggle();
   }
 
-  // Collar order page — shipping (Balíkovna/Zásilkovna) reveals an address
-  // field; pickup needs no address so it stays hidden for that option
+  // Collar order page — nametag sub-choices (background, embroidery color,
+  // embroidery font) each reveal a free-text field when "custom" is picked
+  var setupCustomToggle = function (radioName, detailId) {
+    var inputs = document.querySelectorAll('input[name="' + radioName + '"]');
+    var detail = document.getElementById(detailId);
+    if (!inputs.length || !detail) return;
+    var apply = function () {
+      var checked = document.querySelector('input[name="' + radioName + '"]:checked');
+      detail.hidden = !checked || checked.value !== 'custom';
+    };
+    inputs.forEach(function (input) {
+      input.addEventListener('change', apply);
+    });
+    apply();
+  };
+
+  setupCustomToggle('nametagBackground', 'nametag-bg-custom-detail');
+  setupCustomToggle('embroideryColor', 'embroidery-color-custom-detail');
+  setupCustomToggle('nametagFont', 'nametag-font-custom-detail');
+
+  // Collar order page — each shipping option reveals its own address field:
+  // Balíkovna home delivery needs a street address, while Zásilkovna and
+  // Balíkovna's own pickup-point option each need that network's pickup
+  // point address instead; plain pickup needs none of them.
   var deliveryInputs = document.querySelectorAll('input[name="delivery"]');
   var deliveryAddressField = document.getElementById('delivery-address-field');
+  var deliveryZasilkovnaPointField = document.getElementById('delivery-zasilkovna-point-field');
+  var deliveryBalikovnaPointField = document.getElementById('delivery-balikovna-point-field');
 
-  if (deliveryInputs.length && deliveryAddressField) {
+  if (deliveryInputs.length && deliveryAddressField && deliveryZasilkovnaPointField && deliveryBalikovnaPointField) {
     var applyDeliveryAddressToggle = function () {
       var checked = document.querySelector('input[name="delivery"]:checked');
-      deliveryAddressField.hidden = !checked || checked.value === 'pickup';
+      var value = checked ? checked.value : 'pickup';
+      deliveryAddressField.hidden = value !== 'balikovna_home';
+      deliveryZasilkovnaPointField.hidden = value !== 'zasilkovna';
+      deliveryBalikovnaPointField.hidden = value !== 'balikovna_box';
     };
     deliveryInputs.forEach(function (input) {
       input.addEventListener('change', applyDeliveryAddressToggle);
@@ -501,7 +538,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (priceBase && priceTotal && priceCurrency) {
     var WIDTH_BASE_PRICE = { '25': 500, '40': 600 };
     var NAMETAG_PRICE = 100;
-    var DELIVERY_PRICE = { pickup: 0, balikovna: 79, zasilkovna: 89 };
+    var DELIVERY_PRICE = { pickup: 0, zasilkovna: 89, balikovna_home: 109, balikovna_box: 79 };
 
     var formatPrice = function (amount, withSign) {
       var currency = priceCurrency.textContent;
@@ -601,7 +638,7 @@ document.addEventListener('DOMContentLoaded', function () {
       return firstInvalid;
     };
 
-    // Step 2 — width, hardware, fabric, nametag (its sub-fields only if toggled on)
+    // Step 2 — width, hardware, fabric (nametag moved to its own step 3)
     var validateStep2 = function () {
       var firstInvalid = null;
       var markInvalid = function (el) { if (!firstInvalid && el) firstInvalid = el; };
@@ -624,6 +661,14 @@ document.addEventListener('DOMContentLoaded', function () {
       setGroupError(fabricSection, document.getElementById('error-fabric'), fabricInvalid);
       if (fabricInvalid) markInvalid(fabricSection);
 
+      return firstInvalid;
+    };
+
+    // Step 3 — nametag (its sub-fields only required if toggled on)
+    var validateStep3 = function () {
+      var firstInvalid = null;
+      var markInvalid = function (el) { if (!firstInvalid && el) firstInvalid = el; };
+
       var nametagChecked = document.querySelector('input[name="nametagChoice"]:checked');
       var hasNametag = !!nametagChecked && nametagChecked.value === 'with';
       var nametagTextInput = document.getElementById('nametag-text');
@@ -631,11 +676,24 @@ document.addEventListener('DOMContentLoaded', function () {
       setFieldError(nametagTextInput, document.getElementById('error-nametag-text'), nametagTextInvalid);
       if (nametagTextInvalid) markInvalid(nametagTextInput);
 
+      var validateCustomTextField = function (radioName, textInputId, errorId) {
+        var checked = document.querySelector('input[name="' + radioName + '"]:checked');
+        var isCustom = hasNametag && !!checked && checked.value === 'custom';
+        var textInput = document.getElementById(textInputId);
+        var invalid = isCustom && !textInput.value.trim();
+        setFieldError(textInput, document.getElementById(errorId), invalid);
+        if (invalid) markInvalid(textInput);
+      };
+
+      validateCustomTextField('nametagBackground', 'nametag-bg-text', 'error-nametag-bg-text');
+      validateCustomTextField('embroideryColor', 'embroidery-color-text', 'error-embroidery-color-text');
+      validateCustomTextField('nametagFont', 'nametag-font-text', 'error-nametag-font-text');
+
       return firstInvalid;
     };
 
-    // Step 3 — delivery, contact (name + at least one of email/instagram/phone)
-    var validateStep3 = function () {
+    // Step 4 — delivery, contact (name + at least one of email/instagram/phone)
+    var validateStep4 = function () {
       var firstInvalid = null;
       var markInvalid = function (el) { if (!firstInvalid && el) firstInvalid = el; };
 
@@ -645,19 +703,24 @@ document.addEventListener('DOMContentLoaded', function () {
       setGroupError(deliverySection, document.getElementById('error-delivery'), deliveryInvalid);
       if (deliveryInvalid) markInvalid(deliverySection);
 
-      // shipping (not pickup) needs somewhere to actually ship to
-      var needsAddress = !!deliveryChecked && deliveryChecked.value !== 'pickup';
-      var addressInput = document.getElementById('delivery-address');
-      var addressInvalid = needsAddress && !addressInput.value.trim();
-      setFieldError(addressInput, document.getElementById('error-delivery-address'), addressInvalid);
-      if (addressInvalid) markInvalid(addressInput);
+      // each shipping option that needs an address checks its own field
+      var validateDeliveryAddressField = function (deliveryValue, inputId, errorId) {
+        var needed = !!deliveryChecked && deliveryChecked.value === deliveryValue;
+        var input = document.getElementById(inputId);
+        var invalid = needed && !input.value.trim();
+        setFieldError(input, document.getElementById(errorId), invalid);
+        if (invalid) markInvalid(input);
+      };
 
-      // name and a valid email are always required (checkValidity() still
+      validateDeliveryAddressField('balikovna_home', 'delivery-address', 'error-delivery-address');
+      validateDeliveryAddressField('zasilkovna', 'delivery-zasilkovna-point', 'error-delivery-zasilkovna-point');
+      validateDeliveryAddressField('balikovna_box', 'delivery-balikovna-point', 'error-delivery-balikovna-point');
+
+      // name, email and phone are always required (checkValidity() still
       // works with novalidate on the form — that attribute only suppresses
       // the native UI/blocking, not the underlying constraint API, and
       // catches both "empty" and "malformed" via the input's own
-      // required+type=email constraints); instagram/phone need at least
-      // one filled in between them.
+      // required+type=email constraints); Instagram stays optional.
       var nameInput = document.getElementById('contact-name');
       var nameInvalid = !nameInput.value.trim();
       setFieldError(nameInput, document.getElementById('error-contact-name'), nameInvalid);
@@ -668,20 +731,15 @@ document.addEventListener('DOMContentLoaded', function () {
       setFieldError(emailInput, document.getElementById('error-contact-email'), emailInvalid);
       if (emailInvalid) markInvalid(emailInput);
 
-      var instagramInput = document.getElementById('contact-instagram');
       var phoneInput = document.getElementById('contact-phone');
-      // the field is prefilled with "@" so that alone doesn't count as filled in
-      var instagramValue = instagramInput.value.trim().replace(/^@/, '');
-      var hasInstagram = instagramValue.length > 0;
-      var hasPhone = !!phoneInput.value.trim();
-      var contactMethodInvalid = !hasInstagram && !hasPhone;
-      setGroupError(null, document.getElementById('error-contact-method'), contactMethodInvalid);
-      if (contactMethodInvalid) markInvalid(instagramInput);
+      var phoneInvalid = !phoneInput.value.trim();
+      setFieldError(phoneInput, document.getElementById('error-contact-phone'), phoneInvalid);
+      if (phoneInvalid) markInvalid(phoneInput);
 
       return firstInvalid;
     };
 
-    var stepValidators = { 1: validateStep1, 2: validateStep2, 3: validateStep3 };
+    var stepValidators = { 1: validateStep1, 2: validateStep2, 3: validateStep3, 4: validateStep4 };
     var attemptedSteps = {};
     var currentStep = 1;
 
@@ -694,11 +752,17 @@ document.addEventListener('DOMContentLoaded', function () {
     // time, so going back and forth never loses anything; only which
     // .form-step is `hidden` changes.
     var formSteps = Array.prototype.slice.call(document.querySelectorAll('.form-step'));
+    var stepProgressItems = Array.prototype.slice.call(document.querySelectorAll('.step-progress-item'));
 
     var showStep = function (n) {
       currentStep = n;
       formSteps.forEach(function (stepEl) {
         stepEl.hidden = Number(stepEl.getAttribute('data-step')) !== n;
+      });
+      stepProgressItems.forEach(function (item) {
+        var num = Number(item.getAttribute('data-step-progress'));
+        item.classList.toggle('is-complete', num < n);
+        item.classList.toggle('is-current', num === n);
       });
       var activeStep = document.getElementById('form-step-' + n);
       if (activeStep) activeStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -725,8 +789,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     orderForm.addEventListener('submit', function (event) {
       event.preventDefault();
-      attemptedSteps[3] = true;
-      var firstInvalid = validateStep3();
+      attemptedSteps[4] = true;
+      var firstInvalid = validateStep4();
       if (firstInvalid) { focusInvalid(firstInvalid); return; }
       // Stage 5: EmailJS + Google Sheets submission hooks in here.
     });

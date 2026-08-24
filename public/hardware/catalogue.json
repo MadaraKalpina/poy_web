@@ -1,30 +1,34 @@
 [
-  {
-    "code": "silver",
-    "name_cz": "Stříbrné",
-    "name_en": "Silver",
-    "status": "active",
-    "image": "silver.png"
-  },
-  {
-    "code": "gold",
-    "name_cz": "Zlaté",
-    "name_en": "Gold",
-    "status": "active",
-    "image": "gold.png"
-  },
-  {
-    "code": "black",
-    "name_cz": "Černé",
-    "name_en": "Black",
-    "status": "active",
-    "image": "black.png"
-  },
-  {
-    "code": "brass",
-    "name_cz": "Mosazné",
-    "name_en": "Brass",
-    "status": "active",
-    "image": "brass.png"
-  }
+{
+"code": "silver",
+"name_cz": "Stříbrné",
+"name_en": "Silver",
+"note_cz": "poniklováno",
+"note_en": "nickel plated finish",
+"status": "active",
+"image": "silver.png"
+},
+{
+"code": "gold",
+"name_cz": "Zlaté",
+"name_en": "Gold",
+"note_cz": "poniklováno",
+"note_en": "brass plated finish",
+"status": "active",
+"image": "gold.png"
+},
+{
+"code": "black",
+"name_cz": "Černé",
+"name_en": "Black",
+"status": "active",
+"image": "black.png"
+},
+{
+"code": "brass",
+"name_cz": "Mosazné",
+"name_en": "Brass",
+"status": "active",
+"image": "brass.png"
+}
 ]

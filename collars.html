@@ -100,9 +100,7 @@
     <div class="container">
       <p class="kicker" data-i18n="collarPage.kicker">objednávka obojku</p>
       <h1 data-i18n="collarPage.title">Sestavte si obojek</h1>
-      <p class="collar-hero-sub" data-i18n="collarPage.subtitle">
-        Vyberte si možnosti níže — ozveme se vám, abychom potvrdili objednávku a domluvili platbu.
-      </p>
+      <p class="collar-hero-sub" data-i18n="collarPage.subtitle">Vyberte si možnosti níže — ozveme se vám, abychom potvrdili objednávku a domluvili platbu.</p>
     </div>
   </section>
 
@@ -113,11 +111,56 @@
     <div class="container order-layout">
       <form class="order-form" id="collar-order-form" novalidate>
 
+        <!-- Persistent step progress — stays visible across all 4 steps
+             (unlike the per-step heading below it, which lives inside
+             each .form-step and only shows when that step is active).
+             is-complete/is-current are toggled by showStep() in script.js. -->
+        <ol class="step-progress" id="step-progress">
+          <li class="step-progress-item is-current" data-step-progress="1">
+            <span class="step-progress-circle">
+              <svg class="step-progress-check" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="step-progress-number">1</span>
+            </span>
+            <span class="step-progress-label" data-i18n="collarPage.steps.step1Label">Krok 1</span>
+          </li>
+          <li class="step-progress-line" aria-hidden="true"></li>
+          <li class="step-progress-item" data-step-progress="2">
+            <span class="step-progress-circle">
+              <svg class="step-progress-check" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="step-progress-number">2</span>
+            </span>
+            <span class="step-progress-label" data-i18n="collarPage.steps.step2Label">Krok 2</span>
+          </li>
+          <li class="step-progress-line" aria-hidden="true"></li>
+          <li class="step-progress-item" data-step-progress="3">
+            <span class="step-progress-circle">
+              <svg class="step-progress-check" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="step-progress-number">3</span>
+            </span>
+            <span class="step-progress-label" data-i18n="collarPage.steps.step3Label">Krok 3</span>
+          </li>
+          <li class="step-progress-line" aria-hidden="true"></li>
+          <li class="step-progress-item" data-step-progress="4">
+            <span class="step-progress-circle">
+              <svg class="step-progress-check" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="step-progress-number">4</span>
+            </span>
+            <span class="step-progress-label" data-i18n="collarPage.steps.step4Label">Krok 4</span>
+          </li>
+        </ol>
+
         <!-- ===================================================
              Step 1 — Your dog
              =================================================== -->
         <div class="form-step" data-step="1" id="form-step-1">
-          <p class="kicker step-indicator" data-i18n="collarPage.steps.step1Label">Krok 1 ze 3</p>
           <h2 class="step-heading" data-i18n="collarPage.steps.dogHeading">Řekněte nám o svém pejskovi.</h2>
 
           <!-- E — Length / dog measurement -->
@@ -145,27 +188,23 @@
              Step 2 — Your collar
              =================================================== -->
         <div class="form-step" data-step="2" id="form-step-2" hidden>
-          <p class="kicker step-indicator" data-i18n="collarPage.steps.step2Label">Krok 2 ze 3</p>
           <h2 class="step-heading" data-i18n="collarPage.steps.collarHeading">Sestavte si obojek.</h2>
 
           <!-- A — Width -->
           <fieldset class="form-section" id="section-width">
             <legend class="form-legend" data-i18n="collarPage.form.width.legend">Šířka</legend>
             <div class="option-grid">
-              <label class="option-card" for="width-25">
+              <label class="option-card option-card--image" for="width-25">
+                <img class="option-card-img" src="public/25mm%20example.png" alt="" loading="lazy">
                 <input type="radio" name="width" id="width-25" value="25">
                 <span class="option-card-title" data-i18n="collarPage.form.width.options.25.label">25 mm</span>
-                <span class="option-card-price" data-i18n="collarPage.form.width.options.25.price">500 Kč bez jmenovky / 600 Kč se jmenovkou</span>
               </label>
-              <label class="option-card" for="width-40">
+              <label class="option-card option-card--image" for="width-40">
+                <img class="option-card-img" src="public/40mm%20example.png" alt="" loading="lazy">
                 <input type="radio" name="width" id="width-40" value="40">
                 <span class="option-card-title" data-i18n="collarPage.form.width.options.40.label">40 mm</span>
-                <span class="option-card-price" data-i18n="collarPage.form.width.options.40.price">600 Kč bez jmenovky / 700 Kč se jmenovkou</span>
               </label>
             </div>
-            <p class="form-note" id="width-lock-note" data-i18n="collarPage.form.width.lockNote" hidden>
-              Šířka 40 mm je aktuálně dostupná pouze se stříbrným kováním.
-            </p>
             <p class="field-error" id="error-width" role="alert" hidden data-i18n="collarPage.form.errors.widthRequired">Vyberte prosím šířku.</p>
           </fieldset>
 
@@ -221,35 +260,121 @@
           <p class="field-error" id="error-fabric" role="alert" hidden data-i18n="collarPage.form.errors.fabricRequired">Vyberte prosím jednu látku.</p>
         </fieldset>
 
-        <!-- D — Nametag -->
-        <fieldset class="form-section" id="section-nametag">
-          <legend class="form-legend" data-i18n="collarPage.form.nametag.legend">Jmenovka</legend>
-          <div class="option-grid option-grid--two">
-            <label class="option-card" for="nametag-without">
-              <input type="radio" name="nametagChoice" id="nametag-without" value="without" checked>
-              <span class="option-card-title" data-i18n="collarPage.form.nametag.without">Bez jmenovky</span>
-            </label>
-            <label class="option-card" for="nametag-with">
-              <input type="radio" name="nametagChoice" id="nametag-with" value="with">
-              <span class="option-card-title" data-i18n="collarPage.form.nametag.with">Se jmenovkou</span>
-            </label>
+          <div class="step-nav">
+            <button type="button" class="step-back-link" data-step-back data-i18n="collarPage.steps.back">Zpět</button>
+            <button type="button" class="btn btn-navy" data-step-next data-i18n="collarPage.steps.next">Další</button>
           </div>
+        </div>
 
-          <div class="nametag-details" id="nametag-details" hidden>
-            <p class="form-note" data-i18n="collarPage.form.nametag.priceNote">Jmenovka přidává 100 Kč k ceně.</p>
+        <!-- ===================================================
+             Step 3 — Nametag
+             =================================================== -->
+        <div class="form-step" data-step="3" id="form-step-3" hidden>
+          <h2 class="step-heading" data-i18n="collarPage.steps.nametagHeading">Chcete jmenovku?</h2>
 
-            <div class="field">
-              <label for="nametag-text" data-i18n="collarPage.form.nametag.textLabel">Jméno a/nebo telefonní číslo k vyšití</label>
-              <input type="text" id="nametag-text" name="nametagText" maxlength="25" aria-describedby="error-nametag-text">
-              <p class="field-help" data-i18n="collarPage.form.nametag.textHelp">Max. cca 30 znaků — u šířky 25 mm je místa méně.</p>
-              <p class="field-error" id="error-nametag-text" role="alert" hidden data-i18n="collarPage.form.errors.nametagTextRequired">Uveďte prosím text k vyšití.</p>
+          <!-- D — Nametag -->
+          <fieldset class="form-section" id="section-nametag">
+            <legend class="form-legend" data-i18n="collarPage.form.nametag.legend">Jmenovka</legend>
+
+            <div class="option-grid option-grid--two">
+              <label class="option-card" for="nametag-without">
+                <input type="radio" name="nametagChoice" id="nametag-without" value="without" checked>
+                <span class="option-card-title" data-i18n="collarPage.form.nametag.without">Bez jmenovky</span>
+              </label>
+              <label class="option-card" for="nametag-with">
+                <input type="radio" name="nametagChoice" id="nametag-with" value="with">
+                <span class="option-card-title" data-i18n="collarPage.form.nametag.with">Se jmenovkou</span>
+              </label>
             </div>
 
-            <p class="form-note" data-i18n="collarPage.form.nametag.spaceNote">
-              U šířky 25 mm se vejde zhruba jen jméno a/nebo telefon. U 40 mm je místa víc — zmiňte to v poznámkách níže.
-            </p>
-          </div>
-        </fieldset>
+            <div class="nametag-details" id="nametag-details" hidden>
+              <div class="nametag-example-row">
+                <div class="nametag-example-text">
+                  <div class="field">
+                    <label for="nametag-text" data-i18n="collarPage.form.nametag.textLabel">Jméno a/nebo telefonní číslo k vyšití</label>
+                    <textarea id="nametag-text" name="nametagText" rows="2" maxlength="50" aria-describedby="error-nametag-text"></textarea>
+                    <p class="field-error" id="error-nametag-text" role="alert" hidden data-i18n="collarPage.form.errors.nametagTextRequired">Uveďte prosím text k vyšití.</p>
+                  </div>
+
+                  <p class="form-note" data-i18n="collarPage.form.nametag.spaceNote">
+                    U šířky 25 mm se vejde zhruba jen jméno a/nebo telefon. U 40 mm je místa víc — zmiňte to v poznámkách níže.
+                  </p>
+
+                  <p class="form-note" data-i18n="collarPage.form.nametag.phoneCheckReminder">
+                    Než objednávku odešlete, zkontrolujte si prosím ještě jednou telefonní číslo k vyšití.
+                  </p>
+                </div>
+                <img class="nametag-example-img" src="public/nametag_example.png" data-i18n-attr="alt:collarPage.form.nametag.exampleImgAlt" alt="Ukázka hotové jmenovky" loading="lazy">
+              </div>
+
+              <!-- Background color -->
+              <div class="field">
+                <p class="field-label" data-i18n="collarPage.form.nametag.backgroundLegend">Barva podkladu</p>
+                <div class="option-grid">
+                  <label class="option-card" for="nametag-bg-white">
+                    <input type="radio" name="nametagBackground" id="nametag-bg-white" value="white" checked>
+                    <span class="option-card-title" data-i18n="collarPage.form.nametag.backgroundWhite">Bílá</span>
+                  </label>
+                  <label class="option-card" for="nametag-bg-custom">
+                    <input type="radio" name="nametagBackground" id="nametag-bg-custom" value="custom">
+                    <span class="option-card-title" data-i18n="collarPage.form.nametag.backgroundCustom">Vlastní přání</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field" id="nametag-bg-custom-detail" hidden>
+                <label for="nametag-bg-text" data-i18n="collarPage.form.nametag.backgroundCustomLabel">Jakou barvu podkladu byste chtěli?</label>
+                <input type="text" id="nametag-bg-text" name="nametagBackgroundText" maxlength="60" aria-describedby="error-nametag-bg-text">
+                <p class="field-error" id="error-nametag-bg-text" role="alert" hidden data-i18n="collarPage.form.errors.nametagBackgroundTextRequired">Uveďte prosím požadovanou barvu podkladu.</p>
+              </div>
+
+              <!-- Embroidery color -->
+              <div class="field">
+                <p class="field-label" data-i18n="collarPage.form.nametag.colorLegend">Barva výšivky</p>
+                <div class="option-grid">
+                  <label class="option-card" for="embroidery-color-black">
+                    <input type="radio" name="embroideryColor" id="embroidery-color-black" value="black" checked>
+                    <span class="option-card-title" data-i18n="collarPage.form.nametag.colorBlack">Černá</span>
+                  </label>
+                  <label class="option-card" for="embroidery-color-matching">
+                    <input type="radio" name="embroideryColor" id="embroidery-color-matching" value="matching">
+                    <span class="option-card-title" data-i18n="collarPage.form.nametag.colorMatching">Podle zvoleného vzoru</span>
+                  </label>
+                  <label class="option-card" for="embroidery-color-custom">
+                    <input type="radio" name="embroideryColor" id="embroidery-color-custom" value="custom">
+                    <span class="option-card-title" data-i18n="collarPage.form.nametag.colorCustom">Vlastní přání</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field" id="embroidery-color-custom-detail" hidden>
+                <label for="embroidery-color-text" data-i18n="collarPage.form.nametag.colorCustomLabel">Jaká barva výšivky by vás zajímala?</label>
+                <input type="text" id="embroidery-color-text" name="embroideryColorText" maxlength="60" aria-describedby="error-embroidery-color-text">
+                <p class="field-error" id="error-embroidery-color-text" role="alert" hidden data-i18n="collarPage.form.errors.embroideryColorTextRequired">Uveďte prosím požadovanou barvu výšivky.</p>
+              </div>
+
+              <!-- Embroidery style / font -->
+              <div class="field">
+                <p class="field-label" data-i18n="collarPage.form.nametag.fontLegend">Styl výšivky</p>
+                <div class="option-grid">
+                  <label class="option-card" for="nametag-font-handwritten">
+                    <input type="radio" name="nametagFont" id="nametag-font-handwritten" value="handwritten" checked>
+                    <span class="option-card-title" data-i18n="collarPage.form.nametag.fontHandwritten">Ručně psané / kurzíva</span>
+                  </label>
+                  <label class="option-card" for="nametag-font-custom">
+                    <input type="radio" name="nametagFont" id="nametag-font-custom" value="custom">
+                    <span class="option-card-title" data-i18n="collarPage.form.nametag.fontCustom">Vlastní přání</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field" id="nametag-font-custom-detail" hidden>
+                <label for="nametag-font-text" data-i18n="collarPage.form.nametag.fontCustomLabel">Jaké písmo byste chtěli?</label>
+                <input type="text" id="nametag-font-text" name="nametagFontText" maxlength="60" aria-describedby="error-nametag-font-text">
+                <p class="field-error" id="error-nametag-font-text" role="alert" hidden data-i18n="collarPage.form.errors.nametagFontTextRequired">Uveďte prosím požadovaný styl písma.</p>
+              </div>
+            </div>
+          </fieldset>
 
           <div class="step-nav">
             <button type="button" class="step-back-link" data-step-back data-i18n="collarPage.steps.back">Zpět</button>
@@ -258,10 +383,9 @@
         </div>
 
         <!-- ===================================================
-             Step 3 — Almost done
+             Step 4 — Almost done
              =================================================== -->
-        <div class="form-step" data-step="3" id="form-step-3" hidden>
-          <p class="kicker step-indicator" data-i18n="collarPage.steps.step3Label">Krok 3 ze 3</p>
+        <div class="form-step" data-step="4" id="form-step-4" hidden>
           <h2 class="step-heading" data-i18n="collarPage.steps.contactHeading">Doprava a kontakt.</h2>
 
           <!-- F — Delivery -->
@@ -272,13 +396,17 @@
                 <input type="radio" name="delivery" id="delivery-pickup" value="pickup" checked>
                 <span class="option-card-title" data-i18n="collarPage.form.delivery.options.pickup">Osobní odběr, Praha 6 — zdarma</span>
               </label>
-              <label class="option-card" for="delivery-balikovna">
-                <input type="radio" name="delivery" id="delivery-balikovna" value="balikovna">
-                <span class="option-card-title" data-i18n="collarPage.form.delivery.options.balikovna">Balíkovna — +79 Kč</span>
-              </label>
               <label class="option-card" for="delivery-zasilkovna">
                 <input type="radio" name="delivery" id="delivery-zasilkovna" value="zasilkovna">
                 <span class="option-card-title" data-i18n="collarPage.form.delivery.options.zasilkovna">Zásilkovna — +89 Kč</span>
+              </label>
+              <label class="option-card" for="delivery-balikovna-home">
+                <input type="radio" name="delivery" id="delivery-balikovna-home" value="balikovna_home">
+                <span class="option-card-title" data-i18n="collarPage.form.delivery.options.balikovnaHome">Balíkovna — domů na adresu — +109 Kč</span>
+              </label>
+              <label class="option-card" for="delivery-balikovna-box">
+                <input type="radio" name="delivery" id="delivery-balikovna-box" value="balikovna_box">
+                <span class="option-card-title" data-i18n="collarPage.form.delivery.options.balikovnaBox">Balíkovna — do Balíkovny — +79 Kč</span>
               </label>
             </div>
             <p class="field-error" id="error-delivery" role="alert" hidden data-i18n="collarPage.form.errors.deliveryRequired">Vyberte prosím způsob dopravy.</p>
@@ -286,6 +414,24 @@
               <label for="delivery-address" data-i18n="collarPage.form.delivery.addressLabel">Doručovací adresa (ulice, město, PSČ)</label>
               <textarea id="delivery-address" name="deliveryAddress" rows="2" aria-describedby="error-delivery-address"></textarea>
               <p class="field-error" id="error-delivery-address" role="alert" hidden data-i18n="collarPage.form.errors.deliveryAddressRequired">Uveďte prosím doručovací adresu.</p>
+            </div>
+            <div class="field" id="delivery-zasilkovna-point-field" hidden>
+              <label for="delivery-zasilkovna-point" data-i18n="collarPage.form.delivery.zasilkovnaPointLabel">Adresa zásilkovny</label>
+              <input type="text" id="delivery-zasilkovna-point" name="deliveryZasilkovnaPoint" aria-describedby="error-delivery-zasilkovna-point">
+              <p class="field-help">
+                <span data-i18n="collarPage.form.delivery.zasilkovnaPointHelp">Adresu nejbližší zásilkovny najdete zde:</span>
+                <a href="https://www.zasilkovna.cz/pobocky" target="_blank" rel="noopener" data-i18n="collarPage.form.delivery.zasilkovnaPointLinkText">zasilkovna.cz/pobocky</a>
+              </p>
+              <p class="field-error" id="error-delivery-zasilkovna-point" role="alert" hidden data-i18n="collarPage.form.errors.zasilkovnaPointRequired">Uveďte prosím adresu zásilkovny.</p>
+            </div>
+            <div class="field" id="delivery-balikovna-point-field" hidden>
+              <label for="delivery-balikovna-point" data-i18n="collarPage.form.delivery.balikovnaPointLabel">Adresa balíkovny</label>
+              <input type="text" id="delivery-balikovna-point" name="deliveryBalikovnaPoint" aria-describedby="error-delivery-balikovna-point">
+              <p class="field-help">
+                <span data-i18n="collarPage.form.delivery.balikovnaPointHelp">Adresu nejbližší balíkovny najdete zde:</span>
+                <a href="https://www.balikovna.cz/cs/vyhledat-balikovnu" target="_blank" rel="noopener" data-i18n="collarPage.form.delivery.balikovnaPointLinkText">balikovna.cz/vyhledat-balikovnu</a>
+              </p>
+              <p class="field-error" id="error-delivery-balikovna-point" role="alert" hidden data-i18n="collarPage.form.errors.balikovnaPointRequired">Uveďte prosím adresu balíkovny.</p>
             </div>
           </fieldset>
 
@@ -303,15 +449,14 @@
               <p class="field-error" id="error-contact-email" role="alert" hidden data-i18n="collarPage.form.errors.emailInvalid">Zadejte prosím platnou e-mailovou adresu.</p>
             </div>
             <div class="field">
+              <label for="contact-phone" data-i18n="collarPage.form.contact.phoneLabel">Telefonní číslo</label>
+              <input type="tel" id="contact-phone" name="contactPhone" required aria-describedby="error-contact-phone">
+              <p class="field-error" id="error-contact-phone" role="alert" hidden data-i18n="collarPage.form.errors.phoneRequired">Uveďte prosím telefonní číslo.</p>
+            </div>
+            <div class="field">
               <label for="contact-instagram" data-i18n="collarPage.form.contact.instagramLabel">Instagram</label>
               <input type="text" id="contact-instagram" name="contactInstagram" placeholder="@yourhandle" value="@">
             </div>
-            <div class="field">
-              <label for="contact-phone" data-i18n="collarPage.form.contact.phoneLabel">Telefonní číslo</label>
-              <input type="tel" id="contact-phone" name="contactPhone">
-            </div>
-            <p class="field-help" data-i18n="collarPage.form.contact.oneOfNote">Vyplňte prosím alespoň jedno z telefonu nebo Instagramu.</p>
-            <p class="field-error" id="error-contact-method" role="alert" hidden data-i18n="collarPage.form.errors.contactMethodRequired">Vyplňte prosím alespoň jedno z telefonu nebo Instagramu.</p>
           </div>
 
           <!-- I — Notes -->
@@ -362,6 +507,7 @@
               <span id="price-delivery">+75&nbsp;Kč</span>
             </li>
           </ul>
+          <p class="form-note price-panel-note" data-i18n="collarPage.price.deliveryNote">Obojek vzniká až po vaší objednávce, dodací lhůta 1-3 týdny podle aktuální vytíženosti. Přesný termín dodání upřesním v potvrzovacím mailu.</p>
         </div>
         <span id="price-currency" hidden data-i18n="collarPage.price.currency">Kč</span>
         <span id="price-from" hidden data-i18n="collarPage.price.from">od</span>

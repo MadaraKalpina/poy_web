@@ -11,13 +11,15 @@
   "collarPage": {
     "kicker": "objednávka obojku",
     "title": "Sestavte si obojek",
-    "subtitle": "Obojek vzniká až po vaší objednávce, dodací lhůta 1-3 týdny podle aktuální vytíženosti (upřesním v potvrzovacím mailu),\n    Vyberte si možnosti níže — ozveme se vám, abychom potvrdili objednávku a domluvili platbu.",
+    "subtitle": "Vyberte si možnosti níže — ozveme se vám, abychom potvrdili objednávku a domluvili platbu.",
     "steps": {
-      "step1Label": "Krok 1 ze 3",
-      "step2Label": "Krok 2 ze 3",
-      "step3Label": "Krok 3 ze 3",
+      "step1Label": "Krok 1",
+      "step2Label": "Krok 2",
+      "step3Label": "Krok 3",
+      "step4Label": "Krok 4",
       "dogHeading": "Řekněte nám o svém pejskovi.",
       "collarHeading": "Sestavte si obojek.",
+      "nametagHeading": "Chcete jmenovku?",
       "contactHeading": "Doprava a kontakt.",
       "next": "Další",
       "back": "Zpět"
@@ -26,10 +28,9 @@
       "width": {
         "legend": "Šířka",
         "options": {
-          "25": { "label": "25 mm", "price": "500 Kč bez jmenovky / 600 Kč se jmenovkou" },
-          "40": { "label": "40 mm", "price": "600 Kč bez jmenovky / 700 Kč se jmenovkou" }
-        },
-        "lockNote": "Šířka 40 mm je aktuálně dostupná pouze se stříbrným kováním."
+          "25": { "label": "25 mm" },
+          "40": { "label": "40 mm" }
+        }
       },
       "hardware": {
         "legend": "Kování",
@@ -59,12 +60,25 @@
       },
       "nametag": {
         "legend": "Jmenovka",
+        "exampleImgAlt": "Ukázka hotové jmenovky",
         "without": "Bez jmenovky",
         "with": "S ručně vyšívanou jmenovkou",
-        "priceNote": "Jmenovka přidává 100 Kč k ceně.",
         "textLabel": "Jméno a/nebo telefonní číslo k vyšití",
-        "textHelp": "Max. cca 25 znaků — u šířky 25 mm je místa méně.",
-        "spaceNote": "U šířky 25 mm se vejde zhruba jen jméno a/nebo telefon. U 40 mm je místa víc — pokud si přejete vyšít něco navíc, zmiňte to v poznámkách níže."
+        "spaceNote": "U šířky 25 mm se vejde zhruba jen jméno a/nebo telefon. U 40 mm je místa víc — pokud si přejete vyšít něco navíc, zmiňte to v poznámkách níže.",
+        "phoneCheckReminder": "Než objednávku odešlete, zkontrolujte si prosím ještě jednou telefonní číslo k vyšití.",
+        "backgroundLegend": "Barva podkladu",
+        "backgroundWhite": "Bílá",
+        "backgroundCustom": "Vlastní přání",
+        "backgroundCustomLabel": "Jakou barvu podkladu byste chtěli?",
+        "colorLegend": "Barva výšivky",
+        "colorBlack": "Černá",
+        "colorMatching": "Podle zvoleného vzoru",
+        "colorCustom": "Vlastní přání",
+        "colorCustomLabel": "Jaká barva výšivky by vás zajímala?",
+        "fontLegend": "Styl výšivky",
+        "fontHandwritten": "Ručně psané / kurzíva",
+        "fontCustom": "Vlastní přání",
+        "fontCustomLabel": "Jaké písmo byste chtěli?"
       },
       "measurements": {
         "legend": "Míry pejska",
@@ -76,18 +90,24 @@
         "legend": "Doprava",
         "options": {
           "pickup": "Osobní odběr, Praha 6 — zdarma",
-          "balikovna": "Balíkovna — +79 Kč",
-          "zasilkovna": "Zásilkovna — +89 Kč"
+          "zasilkovna": "Zásilkovna — +89 Kč",
+          "balikovnaHome": "Balíkovna — domů na adresu — +109 Kč",
+          "balikovnaBox": "Balíkovna — do Balíkovny — +79 Kč"
         },
-        "addressLabel": "Doručovací adresa (ulice, město, PSČ)"
+        "addressLabel": "Doručovací adresa (ulice, město, PSČ)",
+        "zasilkovnaPointLabel": "Adresa zásilkovny",
+        "zasilkovnaPointHelp": "Adresu nejbližší zásilkovny najdete zde:",
+        "zasilkovnaPointLinkText": "zasilkovna.cz/pobocky",
+        "balikovnaPointLabel": "Adresa balíkovny",
+        "balikovnaPointHelp": "Adresu nejbližší balíkovny najdete zde:",
+        "balikovnaPointLinkText": "balikovna.cz/vyhledat-balikovnu"
       },
       "contact": {
         "legend": "Kontaktní údaje",
         "nameLabel": "Celé jméno",
         "emailLabel": "E-mailová adresa",
         "instagramLabel": "Instagram",
-        "phoneLabel": "Telefonní číslo",
-        "oneOfNote": "Vyplňte prosím alespoň jedno z telefonu nebo Instagramu."
+        "phoneLabel": "Telefonní číslo"
       },
       "notes": {
         "legend": "Poznámky",
@@ -97,14 +117,19 @@
       "errors": {
         "fabricRequired": "Vyberte prosím jednu látku.",
         "nametagTextRequired": "Uveďte prosím text k vyšití.",
+        "embroideryColorTextRequired": "Uveďte prosím požadovanou barvu výšivky.",
+        "nametagBackgroundTextRequired": "Uveďte prosím požadovanou barvu podkladu.",
+        "nametagFontTextRequired": "Uveďte prosím požadovaný styl písma.",
         "neckInvalid": "Zadejte prosím kladné číslo.",
         "nameRequired": "Uveďte prosím celé jméno.",
-        "contactMethodRequired": "Vyplňte prosím alespoň jedno z telefonu nebo Instagramu.",
+        "phoneRequired": "Uveďte prosím telefonní číslo.",
         "emailInvalid": "Zadejte prosím platnou e-mailovou adresu.",
         "widthRequired": "Vyberte prosím šířku.",
         "hardwareRequired": "Vyberte prosím kování.",
         "deliveryRequired": "Vyberte prosím způsob dopravy.",
-        "deliveryAddressRequired": "Uveďte prosím doručovací adresu."
+        "deliveryAddressRequired": "Uveďte prosím doručovací adresu.",
+        "balikovnaPointRequired": "Uveďte prosím adresu balíkovny.",
+        "zasilkovnaPointRequired": "Uveďte prosím adresu zásilkovny."
       }
     },
     "price": {
@@ -114,7 +139,8 @@
       "delivery": "Doprava",
       "currency": "Kč",
       "from": "od",
-      "toggleAriaLabel": "Zobrazit rozpis ceny"
+      "toggleAriaLabel": "Zobrazit rozpis ceny",
+      "deliveryNote": "Obojek vzniká až po vaší objednávce, dodací lhůta 1-3 týdny podle aktuální vytíženosti. Přesný termín dodání upřesním v potvrzovacím mailu."
     }
   },
   "hero": {

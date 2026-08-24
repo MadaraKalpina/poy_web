@@ -351,12 +351,69 @@ button { font-family: inherit; cursor: pointer; }
    there's less to scroll through to see all the choices */
 .order-form { max-width: 900px; margin: 0 auto; }
 
-/* 3-step flow — one .form-step visible at a time (script.js toggles the
-   `hidden` attribute), each with its own "Step N of 3" kicker + heading
-   so the current step is unambiguous without a separate progress bar. */
+/* 4-step flow — one .form-step visible at a time (script.js toggles the
+   `hidden` attribute). .step-progress is the persistent graphical stepper
+   above them (circles + connecting lines, filled/checked as steps
+   complete); each .form-step's own heading below it is the per-step
+   content title, not a position indicator. */
 .form-step { scroll-margin-top: 130px; }
-.step-indicator { color: var(--primary-deep); }
 .step-heading { color: var(--secondary-deep); font-size: clamp(1.4rem, 2.5vw, 1.8rem); margin: 0 0 20px; }
+
+.step-progress {
+  display: flex;
+  align-items: flex-start;
+  list-style: none;
+  margin: 0 0 28px;
+  padding: 0;
+}
+.step-progress-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+.step-progress-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-pale);
+  background: var(--white);
+  color: var(--text);
+  font-weight: 800;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.step-progress-check { display: none; width: 16px; height: 16px; }
+.step-progress-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  opacity: 0.55;
+  white-space: nowrap;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+.step-progress-line {
+  flex: 1 1 20px;
+  min-width: 16px;
+  height: 2px;
+  background: var(--primary-pale);
+  margin-top: 16px;
+  transition: background 0.15s ease;
+}
+
+.step-progress-item.is-current .step-progress-circle { border-color: var(--secondary-deep); color: var(--secondary-deep); }
+.step-progress-item.is-current .step-progress-label { opacity: 1; color: var(--secondary-deep); }
+
+.step-progress-item.is-complete .step-progress-circle { background: var(--secondary-deep); border-color: var(--secondary-deep); }
+.step-progress-item.is-complete .step-progress-number { display: none; }
+.step-progress-item.is-complete .step-progress-check { display: block; color: var(--cream); }
+.step-progress-item.is-complete .step-progress-label { opacity: 1; color: var(--secondary-deep); }
+.step-progress-item.is-complete + .step-progress-line { background: var(--secondary-deep); }
 .step-nav { display: flex; align-items: center; justify-content: flex-end; gap: 16px; margin-top: 20px; }
 /* pushes itself flush left while the Next/Submit button stays flush
    right, so a lone Next button (step 1 has no Back) still lands on the
@@ -404,6 +461,8 @@ button { font-family: inherit; cursor: pointer; }
   opacity: 1;
 }
 .field-help { font-size: 0.95rem; opacity: 0.65; margin: 4px 0 0; }
+.field-help a { text-decoration: underline; text-underline-offset: 2px; }
+.field-help a:hover { color: var(--primary-deep); }
 
 .field { margin-bottom: 10px; }
 .field:last-child { margin-bottom: 0; }
@@ -480,6 +539,17 @@ button { font-family: inherit; cursor: pointer; }
 .option-card:has(input:checked) { border-color: var(--primary-deep); background: var(--primary-pale); }
 .option-card-title { font-weight: 700; font-size: 1rem; }
 .option-card-price { font-size: 0.95rem; opacity: 0.75; }
+/* width example photos — bleeds to the card's edges (negative margin
+   cancels .option-card's own padding), same idea as the fabric/hardware
+   swatch photos */
+.option-card--image { padding-top: 0; overflow: hidden; }
+.option-card-img {
+  width: calc(100% + 20px);
+  margin: 0 -10px 6px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
 /* 40mm-silver lock: JS disables the input and adds this class so the
    reason (the note above the group) is visible, not just a mystery gray */
 .option-card.is-disabled { opacity: 0.5; cursor: not-allowed; background: var(--cream); }
@@ -584,10 +654,10 @@ button { font-family: inherit; cursor: pointer; }
    way cropping a fabric texture doesn't. */
 .hardware-grid {
   display: grid;
-  /* auto-fill (not auto-fit) to match .fabric-grid — with only 4 items,
-     auto-fit would collapse the empty tracks and stretch these to fill
-     the row, making them wider/taller than the pattern boxes */
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  /* always exactly 4 hardware options (unlike the fabric catalogue, which
+     can grow), so a fixed 4-column split fills the row edge to edge
+     instead of packing tight and leaving empty space to the right */
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
   margin-bottom: 8px;
 }
@@ -728,6 +798,21 @@ button { font-family: inherit; cursor: pointer; }
   padding-top: 12px;
   border-top: 1px dashed var(--primary-pale);
 }
+.nametag-example-row {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.nametag-example-text { flex: 1; min-width: 0; }
+.nametag-example-text .field { margin-bottom: 0; }
+.nametag-example-img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
 
 /* Live price panel — sidebar next to the form on desktop, a collapsed
    fixed bar (just the total) on mobile that expands to the breakdown.
@@ -741,11 +826,19 @@ button { font-family: inherit; cursor: pointer; }
 }
 .price-panel {
   position: sticky;
-  top: 90px;
+  top: calc(var(--header-height, 90px) + 12px);
   background: var(--white);
   border: 2px solid var(--primary-pale);
   border-radius: 16px;
   padding: 16px 18px;
+}
+/* lives inside .price-details so it's part of the same sticky box and
+   scrolls as one unit with the price breakdown, instead of being a
+   separate sibling that could slide up behind it mid-scroll */
+.price-panel-note {
+  margin: 12px 0 0;
+  padding-top: 12px;
+  border-top: 1px dashed var(--primary-pale);
 }
 .price-summary {
   display: flex;
@@ -986,8 +1079,9 @@ button { font-family: inherit; cursor: pointer; }
 
   /* price panel: sticky sidebar → fixed bottom bar, collapsed to just
      the total by default (native `hidden` on .price-details, toggled by
-     script.js) — room for it is reserved via the form's padding-bottom
-     below so the last field/notes textarea never sits underneath it */
+     script.js, which also hides the delivery note nested inside it) —
+     room for it is reserved via the form's padding-bottom below so the
+     last field/notes textarea never sits underneath it */
   .order-layout { grid-template-columns: 1fr; }
   .order-form { padding-bottom: 90px; }
   .price-panel {
@@ -1088,4 +1182,18 @@ button { font-family: inherit; cursor: pointer; }
   .review-track { padding: 0 42px; min-height: 190px; }
   .review-text,
   .review-track.is-wide .review-text { font-size: 1rem; line-height: 1.45; }
+
+  /* 4 equal columns get too cramped on a phone-width row — 2x2 instead,
+     still filling the row edge to edge */
+  .hardware-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* let the connecting lines shrink first on a narrow phone rather than
+     the circles/labels, which need to stay tap-friendly and readable */
+  .step-progress-line { flex-basis: 8px; min-width: 8px; }
+  .step-progress-circle { width: 30px; height: 30px; }
+
+  /* nametag example photo stacks above the text field instead of sitting
+     beside it once there's no room for both at a readable width */
+  .nametag-example-row { flex-direction: column; }
+  .nametag-example-img { width: 100%; height: auto; aspect-ratio: 4 / 3; }
 }
