@@ -1,4 +1,14 @@
 [
+   {
+    "code": "11c",
+    "category": "floral",
+    "name_cz": "cz new pattern",
+    "name_en": "en new pattern",
+    "status": "active",
+    "image": "paper-flower.jpg",
+    "note_cz": "just in cz",
+    "note_en": "just in en"
+  },
   {
     "code": "1c",
     "category": "floral",
