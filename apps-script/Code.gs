@@ -161,8 +161,8 @@ function sendCustomerEmail(data) {
   var subject = isEnglish ? 'Your Poy collar order' : 'Vaše objednávka obojku Poy';
   var greeting = data.contactName ? (isEnglish ? 'Hi ' + data.contactName : 'Ahoj ' + data.contactName) : (isEnglish ? 'Hi' : 'Ahoj');
   var intro = isEnglish
-    ? greeting + ',\n\nThanks for your order! We\'ll be in touch soon to confirm details and arrange payment and delivery.\n\nHere\'s what you selected:\n'
-    : greeting + ',\n\nDěkujeme za objednávku! Brzy se vám ozveme s potvrzením a domluvíme platbu a dodání.\n\nShrnutí vaší objednávky:\n';
+    ? greeting + ',\n\nThanks for your order! We\'ll be in touch soon to confirm details and arrange payment and delivery.\n\nPlease carefully double-check the details you entered below — if anything is wrong, just reply to this email.\n\n'
+    : greeting + '\n\nDěkujeme za objednávku! Brzy se vám ozveme s potvrzením a domluvíme platbu a dodání.\n\nProsíme, pečlivě si ještě zkontrolujte zadané informace níže, pokud je cokoliv v nepořádku, stačí odpovědět na tento e-mail.\n\n';
   var body = intro + buildCustomerOrderSummary(data, isEnglish) + '\n\n— Poy';
   MailApp.sendEmail(data.contactEmail, subject, body);
 }

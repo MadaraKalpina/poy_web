@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poy — Mending &amp; Alteration Price List</title>
+<meta name="description" content="Approximate prices for Poy's clothing repairs and alterations — zippers, pockets, hems, buttons and more.">
+<link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+
+<!-- anchor target for "back to top" links — kept separate from the sticky
+     header, since browsers skip scrolling to a position:sticky element
+     (it's always "in view" already, pinned at top:0) -->
+<div id="top"></div>
+
+<!-- ===========================================================
+     Header / nav — copied verbatim from index.html so this page
+     reads as part of the same site, not a separate app
+     =========================================================== -->
+<header class="site-header">
+
+  <!-- Row 1: logo only, centered, no color block -->
+  <div class="header-row header-row-logo">
+    <a href="index.html" class="logo-link" aria-label="Poy — home" data-i18n-attr="aria-label:nav.logoAriaLabel">
+      <img src="branding/logo_horizontal.png" alt="Poy" class="logo-img">
+    </a>
+  </div>
+
+  <!-- Row 2: nav links + language switcher, on the blue color block.
+       Below 640px this becomes the only header row — .logo-link-mobile
+       shows here (hidden on desktop) while .header-row-logo above hides,
+       so logo + hamburger end up sharing one row on mobile. -->
+  <div class="header-row header-row-nav">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-link logo-link-mobile" aria-label="Poy — home" data-i18n-attr="aria-label:nav.logoAriaLabel">
+        <img src="branding/logo_horizontal.png" alt="Poy" class="logo-img">
+      </a>
+
+      <nav class="nav-side nav-left">
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="index.html#feed" data-i18n="nav.feed">What I do</a>
+        <a href="index.html#about" data-i18n="nav.about">About</a>
+      </nav>
+
+      <nav class="nav-side nav-right">
+        <a href="index.html#services" data-i18n="nav.services">Services</a>
+        <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <!-- language switcher: current language + arrow, opens a dropdown
+           with the other language. Plain fetch()+localStorage, see i18n.js -->
+      <div class="lang-switch">
+        <button type="button" class="lang-switch-trigger" aria-haspopup="true" aria-expanded="false">
+          <span class="lang-switch-current">CZ</span>
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="lang-switch-menu">
+          <button type="button" class="lang-switch-option" data-lang="cz">CZ</button>
+          <button type="button" class="lang-switch-option" data-lang="en">EN</button>
+        </div>
+      </div>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" data-i18n-attr="aria-label:nav.toggleAriaLabel">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- mobile dropdown: all links in one list, shown via the hamburger toggle -->
+    <nav class="mobile-nav" id="main-nav">
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="index.html#feed" data-i18n="nav.feed">What I do</a>
+      <a href="index.html#about" data-i18n="nav.about">About</a>
+      <a href="index.html#services" data-i18n="nav.services">Services</a>
+      <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+      <div class="lang-switch">
+        <button type="button" class="lang-switch-trigger" aria-haspopup="true" aria-expanded="false">
+          <span class="lang-switch-current">CZ</span>
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="lang-switch-menu">
+          <button type="button" class="lang-switch-option" data-lang="cz">CZ</button>
+          <button type="button" class="lang-switch-option" data-lang="en">EN</button>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===========================================================
+       Page hero — kicker + heading, no photos (same pattern as
+       collars.html's .collar-hero, reused as-is since it's purely
+       generic layout/typography, not collar-specific)
+       =========================================================== -->
+  <section class="collar-hero">
+    <div class="container">
+      <p class="kicker" data-i18n="mendingPricelist.kicker">mending &amp; alterations</p>
+      <h1 data-i18n="mendingPricelist.title">Mending &amp; Alteration Price List</h1>
+    </div>
+  </section>
+
+  <section class="mending-section">
+    <div class="container">
+      <div class="mending-content">
+
+        <p data-i18n="mendingPricelist.intro.fitting">I&rsquo;ll need to see the garment before I can confirm the exact price; in some cases, a photo will suffice. If size/length alterations are required, you will, of course, need to try the garment on.</p>
+        <p data-i18n="mendingPricelist.intro.location">I&rsquo;m based in Prague 6, but we can also arrange a courier service.</p>
+        <p data-i18n="mendingPricelist.intro.turnaround">I usually complete most jobs within 1&ndash;3 weeks, depending on the complexity and my current workload; there&rsquo;s a 50% surcharge for express repairs or alterations.</p>
+
+        <h2 data-i18n="mendingPricelist.listHeading">Approximate price list</h2>
+
+        <h3 data-i18n="mendingPricelist.categories.trousers.heading">Trousers &amp; Jeans</h3>
+        <div class="price-table-wrap">
+          <table class="price-table">
+            <tbody>
+              <tr>
+                <td data-i18n="mendingPricelist.categories.trousers.items.0.name">Zipper replacement</td>
+                <td data-i18n="mendingPricelist.categories.trousers.items.0.price">300&ndash;500 CZK + cost of zip</td>
+              </tr>
+              <tr>
+                <td data-i18n="mendingPricelist.categories.trousers.items.1.name">Pocket replacement</td>
+                <td data-i18n="mendingPricelist.categories.trousers.items.1.price">400&ndash;600 CZK</td>
+              </tr>
+              <tr>
+                <td data-i18n="mendingPricelist.categories.trousers.items.2.name">Elastic replacement</td>
+                <td data-i18n="mendingPricelist.categories.trousers.items.2.price">300 CZK</td>
+              </tr>
+              <tr>
+                <td data-i18n="mendingPricelist.categories.trousers.items.3.name">Hole repair</td>
+                <td data-i18n="mendingPricelist.categories.trousers.items.3.price">200&ndash;500 CZK</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 data-i18n="mendingPricelist.categories.dresses.heading">Dresses &amp; Skirts</h3>
+        <div class="price-table-wrap">
+          <table class="price-table">
+            <tbody>
+              <tr>
+                <td data-i18n="mendingPricelist.categories.dresses.items.0.name">Zipper replacement</td>
+                <td data-i18n="mendingPricelist.categories.dresses.items.0.price">400&ndash;600 CZK + cost of zip</td>
+              </tr>
+              <tr>
+                <td data-i18n="mendingPricelist.categories.dresses.items.1.name">Repairing a hole (in a seam or on the fabric)</td>
+                <td data-i18n="mendingPricelist.categories.dresses.items.1.price">200&ndash;500 CZK</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 data-i18n="mendingPricelist.categories.other.heading">Other</h3>
+        <div class="price-table-wrap">
+          <table class="price-table">
+            <tbody>
+              <tr>
+                <td data-i18n="mendingPricelist.categories.other.items.0.name">Repairing or replacing zips</td>
+                <td data-i18n="mendingPricelist.categories.other.items.0.price">from 300 CZK + cost of zip</td>
+              </tr>
+              <tr>
+                <td data-i18n="mendingPricelist.categories.other.items.1.name">Sewing on a button</td>
+                <td data-i18n="mendingPricelist.categories.other.items.1.price">from 50 CZK/button</td>
+              </tr>
+              <tr>
+                <td data-i18n="mendingPricelist.categories.other.items.2.name">Making new buttonholes</td>
+                <td data-i18n="mendingPricelist.categories.other.items.2.price">from 50 CZK/buttonhole</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p data-i18n="mendingPricelist.closingNote">If you can&rsquo;t find your specific case here, please write me an e-mail and we&rsquo;ll sort it out &#10084;&#65039;</p>
+        <div class="mending-cta">
+          <!-- PLACEHOLDER: swap for the real email before launch -->
+          <a href="mailto:hello@atelierpoy.cz" class="btn btn-navy" data-i18n="mendingPricelist.emailCta">Email hello@atelierpoy.cz</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===========================================================
+     Footer — copied verbatim from index.html
+     =========================================================== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <img src="branding/LOGO - PROFILOVKA.png" alt="Poy" class="footer-logo">
+    <div class="footer-links">
+      <div class="footer-socials">
+        <!-- PLACEHOLDER: swap for the real Instagram handle before launch -->
+        <a href="https://www.instagram.com/atelier_poy" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram" data-i18n-attr="aria-label:footer.instagramLink">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61593095477667" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook" data-i18n-attr="aria-label:footer.facebookLink">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M14.5 8.5h1.8V5.8h-2.1c-2.3 0-3.7 1.4-3.7 3.7v1.7H8.4v2.9h2.1V21h3v-6.9h2.2l.4-2.9h-2.6V9.7c0-.7.3-1.2 1-1.2Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@atelier_poy" target="_blank" rel="noopener" class="social-icon" aria-label="TikTok" data-i18n-attr="aria-label:footer.tiktokLink">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M13.5 4v10.8a3 3 0 1 1-2.3-2.9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M13.5 4c.3 2.2 1.9 3.9 4 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+      <!-- PLACEHOLDER: swap for the real email before launch -->
+      <a href="mailto:hello@atelierpoy.cz" data-i18n="footer.emailLink">hello@atelierpoy.cz</a>
+    </div>
+    <p class="footer-note" data-i18n="footer.note">Made in Prague · &copy; 2026 Poy ·</p>
+  </div>
+</footer>
+
+<script src="script.js?v=2"></script>
+<script src="i18n.js?v=2"></script>
+</body>
+</html>

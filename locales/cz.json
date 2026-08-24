@@ -148,6 +148,98 @@
       "body": "Ozveme se vám co nejdříve s potvrzením a informacemi k platbě a dodání."
     }
   },
+  "mendingPricelist": {
+    "kicker": "opravy a úpravy",
+    "title": "Ceník oprav a úprav oblečení",
+    "intro": {
+      "fitting": "Oděv potřebuji před potvrzením přesné ceny vidět, v některých případech stačí i fotka. V případě úprav délky nebo velikosti je samozřejmě potřeba oděv nazkoušet přímo na vás.",
+      "location": "Najdete mě na Praze 6, můžeme zařídit i kurýrní službu.",
+      "turnaround": "Většinu věcí zpracuju do 1–3 týdnů podle složitosti a mé aktuální vytíženosti, za expresní opravu/úpravu příplatek +50 %."
+    },
+    "listHeading": "Orientační ceník",
+    "categories": {
+      "trousers": {
+        "heading": "Kalhoty",
+        "items": [
+          { "name": "Výměna zipů", "price": "300–500 Kč + cena zipu" },
+          { "name": "Výměna kapsy", "price": "400–600 Kč" },
+          { "name": "Výměna gumy", "price": "300 Kč" },
+          { "name": "Oprava díry", "price": "200–500 Kč" }
+        ]
+      },
+      "dresses": {
+        "heading": "Šaty a sukně",
+        "items": [
+          { "name": "Výměna zipů", "price": "400–600 Kč + cena zipu" },
+          { "name": "Oprava díry (ve švu nebo v ploše)", "price": "200–500 Kč" }
+        ]
+      },
+      "other": {
+        "heading": "Jiné",
+        "items": [
+          { "name": "Oprava nebo výměna zipů", "price": "od 300 Kč + cena zipu" },
+          { "name": "Přišití knoflíku", "price": "od 50 Kč" },
+          { "name": "Vyšití knoflíkových dírek", "price": "od 50 Kč" }
+        ]
+      }
+    },
+    "closingNote": "Pokud jste zde svůj případ nenajdete, napište mi a dohodneme se ❤️",
+    "emailCta": "Email hello@atelierpoy.cz"
+  },
+  "alterationsPricelist": {
+    "kicker": "úpravy",
+    "title": "Ceník úprav oblečení",
+    "intro": {
+      "fitting": "Oděv potřebuji před potvrzením přesné ceny vidět, v některých případech stačí i fotka. V případě úprav délky nebo velikosti je samozřejmě potřeba oděv nazkoušet přímo na vás.",
+      "location": "Najdete mě na Praze 6, můžeme zařídit i kurýrní službu.",
+      "turnaround": "Většinu věcí zpracuju do 1–3 týdnů podle složitosti a mé aktuální vytíženosti, za expresní opravu/úpravu příplatek +50 %."
+    },
+    "listHeading": "Orientační ceník",
+    "categories": {
+      "trousers": {
+        "heading": "Kalhoty",
+        "items": [
+          { "name": "Zkrácení nebo prodloužení strojem", "price": "200–400 Kč" },
+          { "name": "Zkrácení nebo prodloužení ručně neviditelným švem", "price": "500 Kč" },
+          { "name": "Zkrácení nebo prodloužení s chránítkem, manžetou nebo rozparky", "price": "500 Kč" },
+          { "name": "Zkrácení riflí s originálním lemem", "price": "400 Kč" },
+          { "name": "Zúžení nebo rozšíření v pase", "price": "400–700 Kč" },
+          { "name": "Zúžení nebo rozšíření bočních švů", "price": "300–600 Kč" }
+        ]
+      },
+      "dresses": {
+        "heading": "Sukně a šaty",
+        "items": [
+          { "name": "Zkrácení strojem nebo ručně neviditelným švem", "price": "300–500 Kč" },
+          { "name": "Zkrácení plesových/svatebních šatů (podle šířky a množství vrstev)", "price": "700–2 000 Kč" },
+          { "name": "Zúžení boků / v pase", "price": "400–600 Kč" },
+          { "name": "Zúžení zadního středového švu", "price": "100–300 Kč" },
+          { "name": "Zúžení rukávů", "price": "200–400 Kč" },
+          { "name": "Zkrácení rukávů", "price": "200–300 Kč" }
+        ]
+      },
+      "shirts": {
+        "heading": "Košile a halenky",
+        "items": [
+          { "name": "Zkrácení délky", "price": "300–500 Kč" },
+          { "name": "Zúžení v pase", "price": "300–500 Kč" },
+          { "name": "Zkrácení rukávů (bez manžety nebo s)", "price": "200–400 Kč" },
+          { "name": "Zúžení rukávů", "price": "300–500 Kč" },
+          { "name": "Přidání kapes do švu", "price": "400–500 Kč/kapsa" }
+        ]
+      },
+      "curtains": {
+        "heading": "Záclony a závěsy",
+        "items": [
+          { "name": "Zkrácení záclon a závěsů", "price": "150 Kč / 1 m šířky" },
+          { "name": "Zkrácení záclon a závěsů s přidáním olověné šňůrky (k zatížení – vypadá to luxusněji a nelítají tolik v průvanu)", "price": "250 Kč / 1 m šířky" },
+          { "name": "Zmenšení povlaku na polštář nebo na peřinu", "price": "200–400 Kč" }
+        ]
+      }
+    },
+    "closingNote": "Pokud jste zde svůj případ nenajdete, napište mi a dohodneme se ❤️",
+    "emailCta": "Email hello@atelierpoy.cz"
+  },
   "hero": {
     "title": "Dávám textilu nový život",
     "subtitle": "U Poy začíná každý výrobek jako látka s příběhem — a já jí dám nový. Vyrobím dokonalý obojek na míru vašemu pejskovi. A s člověčím oblečením to umím taky - opravím a upravím vám vaše oblíbené kousky. Vždy s péčí a láskou.",
@@ -177,6 +269,8 @@
     "kicker": "Co umím",
     "title": "Služby",
     "collarBuilderCta": "Sestavit obojek",
+    "mendingPricelistCta": "Zobrazit ceník",
+    "alterationsPricelistCta": "Zobrazit ceník",
     "cards": [
       {
         "imgAlt": "Obojek pro psa na míru",

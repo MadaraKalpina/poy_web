@@ -148,6 +148,98 @@
       "body": "We'll be in touch soon to confirm your order and arrange payment and delivery."
     }
   },
+  "mendingPricelist": {
+    "kicker": "mending & alterations",
+    "title": "Mending & Alteration Price List",
+    "intro": {
+      "fitting": "I'll need to see the garment before I can confirm the exact price; in some cases, a photo will suffice. If size/length alterations are required, you will, of course, need to try the garment on.",
+      "location": "I'm based in Prague 6, but we can also arrange a courier service.",
+      "turnaround": "I usually complete most jobs within 1–3 weeks, depending on the complexity and my current workload; there's a 50% surcharge for express repairs or alterations."
+    },
+    "listHeading": "Approximate price list",
+    "categories": {
+      "trousers": {
+        "heading": "Trousers & Jeans",
+        "items": [
+          { "name": "Zipper replacement", "price": "300–500 CZK + cost of zip" },
+          { "name": "Pocket replacement", "price": "400–600 CZK" },
+          { "name": "Elastic replacement", "price": "300 CZK" },
+          { "name": "Hole repair", "price": "200–500 CZK" }
+        ]
+      },
+      "dresses": {
+        "heading": "Dresses & Skirts",
+        "items": [
+          { "name": "Zipper replacement", "price": "400–600 CZK + cost of zip" },
+          { "name": "Repairing a hole (in a seam or on the fabric)", "price": "200–500 CZK" }
+        ]
+      },
+      "other": {
+        "heading": "Other",
+        "items": [
+          { "name": "Repairing or replacing zips", "price": "from 300 CZK + cost of zip" },
+          { "name": "Sewing on a button", "price": "from 50 CZK/button" },
+          { "name": "Making new buttonholes", "price": "from 50 CZK/buttonhole" }
+        ]
+      }
+    },
+    "closingNote": "If you can't find your specific case here, please write me an e-mail and we'll sort it out ❤️",
+    "emailCta": "Email hello@atelierpoy.cz"
+  },
+  "alterationsPricelist": {
+    "kicker": "alterations",
+    "title": "Alterations Price List",
+    "intro": {
+      "fitting": "I'll need to see the garment before I can confirm the exact price; in some cases, a photo will suffice. If size/length alterations are required, you will, of course, need to try the garment on.",
+      "location": "I'm based in Prague 6, but we can also arrange a courier service.",
+      "turnaround": "I usually complete most jobs within 1–3 weeks, depending on the complexity and my current workload; there's a 50% surcharge for express repairs or alterations."
+    },
+    "listHeading": "Approximate price list",
+    "categories": {
+      "trousers": {
+        "heading": "Trousers & Jeans",
+        "items": [
+          { "name": "Machine hemming or lengthening", "price": "200–400 CZK" },
+          { "name": "Hand hemming or lengthening with an invisible seam", "price": "500 CZK" },
+          { "name": "Hemming or lengthening with a fly, cuff or slits", "price": "500 CZK" },
+          { "name": "Hemming of jeans with the original hem", "price": "400 CZK" },
+          { "name": "Tightening or widening at the waist", "price": "400–700 CZK" },
+          { "name": "Tightening or widening of side seams", "price": "300–600 CZK" }
+        ]
+      },
+      "dresses": {
+        "heading": "Skirts & Dresses",
+        "items": [
+          { "name": "Shortening and hemming by machine or by hand with an invisible seam", "price": "300–500 CZK" },
+          { "name": "Shortening and hemming of ball gowns/wedding dresses (depending on width and number of layers)", "price": "700–2,000 CZK" },
+          { "name": "Taking in at the hips/waist", "price": "400–600 CZK" },
+          { "name": "Taking in the centre back seam", "price": "100–300 CZK" },
+          { "name": "Taking in the sleeves", "price": "200–400 CZK" },
+          { "name": "Shortening the sleeves", "price": "200–300 CZK" }
+        ]
+      },
+      "shirts": {
+        "heading": "Shirts & Blouses",
+        "items": [
+          { "name": "Shortening the length", "price": "300–500 CZK" },
+          { "name": "Taking in at the waist", "price": "300–500 CZK" },
+          { "name": "Shortening the sleeves (with or without cuffs)", "price": "200–400 CZK" },
+          { "name": "Taking in the sleeves", "price": "300–500 CZK" },
+          { "name": "Adding pockets to the seam", "price": "400–500 CZK per pocket" }
+        ]
+      },
+      "curtains": {
+        "heading": "Curtains & Drapes",
+        "items": [
+          { "name": "Shortening curtains and drapes", "price": "150 CZK per metre in width" },
+          { "name": "Shortening curtains and drapes with the addition of a lead weight cord (to weigh them down — it looks more luxurious and they don't flap about as much in a draught)", "price": "250 CZK per metre in width" },
+          { "name": "Resizing a pillowcase or duvet cover", "price": "200–400 CZK" }
+        ]
+      }
+    },
+    "closingNote": "If you can't find your specific case here, please write me an e-mail and we'll sort it out ❤️",
+    "emailCta": "Email hello@atelierpoy.cz"
+  },
   "hero": {
     "title": "I give textiles a new life",
     "subtitle": "At Poy, every piece starts as fabric with a story — and I give it a new one. I'll make the perfect collar tailored to your dog. And I can do the same for human clothing too — I'll fix and alter your favorite pieces. Always with care and love.",
@@ -177,6 +269,8 @@
     "kicker": "what I can do",
     "title": "Services",
     "collarBuilderCta": "Build your collar",
+    "mendingPricelistCta": "See price list",
+    "alterationsPricelistCta": "See price list",
     "cards": [
       {
         "imgAlt": "Custom dog collar",

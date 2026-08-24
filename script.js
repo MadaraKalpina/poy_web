@@ -608,7 +608,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // sends the notification emails — replace the placeholder URL/token below
   // once that's deployed.
   var orderForm = document.getElementById('collar-order-form');
-  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzBzgSf3eiq2FHI489rV5scKXoR3ae0kNhXIGTdRRo7IaQ-ASxjnMe5KtrwU6Mo4RkA/exec';
+  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzXN-QtbUgBsNnLDC7bFrGixRv2uhyhDkHDop7JbB91GA_OxgfzOY3JCNp5l2vlT7rn/exec';
   var APPS_SCRIPT_TOKEN = 'poy-collar-order-form';
 
   if (orderForm) {
@@ -855,7 +855,10 @@ document.addEventListener('DOMContentLoaded', function () {
       var orderSuccess = document.getElementById('order-success');
       var pricePanel = document.getElementById('price-panel');
 
-      if (submitButton) submitButton.disabled = true;
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.classList.add('is-loading');
+      }
       if (submitError) submitError.hidden = true;
 
       fetch(APPS_SCRIPT_URL, {
@@ -875,7 +878,10 @@ document.addEventListener('DOMContentLoaded', function () {
           if (orderSuccess) orderSuccess.hidden = false;
         })
         .catch(function () {
-          if (submitButton) submitButton.disabled = false;
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.classList.remove('is-loading');
+          }
           if (submitError) submitError.hidden = false;
         });
     });

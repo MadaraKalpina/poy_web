@@ -470,7 +470,10 @@
 
           <div class="step-nav">
             <button type="button" class="step-back-link" data-step-back data-i18n="collarPage.steps.back">Zpět</button>
-            <button type="submit" class="btn btn-navy" id="submit-button" data-i18n="collarPage.form.submit">Odeslat objednávku</button>
+            <button type="submit" class="btn btn-navy" id="submit-button">
+              <span class="btn-spinner" aria-hidden="true"></span>
+              <span data-i18n="collarPage.form.submit">Odeslat objednávku</span>
+            </button>
           </div>
           <p class="field-error" id="error-submit" role="alert" hidden data-i18n="collarPage.form.errors.submitFailed">Odeslání se nepovedlo. Zkuste to prosím znovu, nebo nás kontaktujte přímo.</p>
         </div>

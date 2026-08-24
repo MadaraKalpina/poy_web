@@ -84,6 +84,25 @@ button { font-family: inherit; cursor: pointer; }
 .btn-pink { background: var(--primary-deep); color: var(--white); }
 .btn-outline { background: transparent; border-color: currentColor; box-shadow: none; }
 
+/* loading state — e.g. the collar order submit button while its fetch is
+   in flight, so there's visible feedback for the gap before the success/
+   error state appears. currentColor keeps the spinner matching whichever
+   .btn color variant it's used on with no new color needed. */
+.btn.is-loading { opacity: 0.85; cursor: default; }
+.btn.is-loading:hover { transform: none; }
+.btn-spinner {
+  display: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  opacity: 0.85;
+  animation: btn-spinner-spin 0.6s linear infinite;
+}
+.btn.is-loading .btn-spinner { display: inline-block; }
+@keyframes btn-spinner-spin { to { transform: rotate(360deg); } }
+
 /* ---------- scalloped divider ----------
    A continuous wave made of alternating elliptical arcs (rx 70 / ry 30)
    — one bulging up, the next bulging down, tangent at each join. Wide,
@@ -889,6 +908,31 @@ button { font-family: inherit; cursor: pointer; }
   border-top: 1px solid var(--primary-pale);
 }
 .price-lines .price-line:first-child { border-top: none; }
+
+/* ===========================================================
+   Mending price list
+   =========================================================== */
+.mending-section { background: var(--cream); padding: 40px 0 72px; }
+.mending-content { max-width: 720px; margin: 0 auto; }
+.mending-content h2 { color: var(--secondary-deep); margin-top: 1.2em; }
+.mending-content h3 { color: var(--primary-deep); font-size: 1.1rem; margin-top: 1.4em; margin-bottom: 0.5em; }
+.price-table-wrap { overflow-x: auto; margin-bottom: 1.2em; }
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  border: 2px solid var(--primary-pale);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.price-table td {
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  border-top: 1px solid var(--primary-pale);
+}
+.price-table tr:first-child td { border-top: none; }
+.price-table td:last-child { text-align: right; white-space: nowrap; font-weight: 700; color: var(--secondary-deep); }
+.mending-cta { margin-top: 1.5em; }
 
 /* ===========================================================
    Reviews

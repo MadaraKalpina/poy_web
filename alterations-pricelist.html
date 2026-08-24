@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poy — Alterations Price List</title>
+<meta name="description" content="Approximate prices for Poy's clothing alterations — hemming, taking in, sleeves, curtains and more.">
+<link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+
+<!-- anchor target for "back to top" links — kept separate from the sticky
+     header, since browsers skip scrolling to a position:sticky element
+     (it's always "in view" already, pinned at top:0) -->
+<div id="top"></div>
+
+<!-- ===========================================================
+     Header / nav — copied verbatim from index.html so this page
+     reads as part of the same site, not a separate app
+     =========================================================== -->
+<header class="site-header">
+
+  <!-- Row 1: logo only, centered, no color block -->
+  <div class="header-row header-row-logo">
+    <a href="index.html" class="logo-link" aria-label="Poy — home" data-i18n-attr="aria-label:nav.logoAriaLabel">
+      <img src="branding/logo_horizontal.png" alt="Poy" class="logo-img">
+    </a>
+  </div>
+
+  <!-- Row 2: nav links + language switcher, on the blue color block.
+       Below 640px this becomes the only header row — .logo-link-mobile
+       shows here (hidden on desktop) while .header-row-logo above hides,
+       so logo + hamburger end up sharing one row on mobile. -->
+  <div class="header-row header-row-nav">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-link logo-link-mobile" aria-label="Poy — home" data-i18n-attr="aria-label:nav.logoAriaLabel">
+        <img src="branding/logo_horizontal.png" alt="Poy" class="logo-img">
+      </a>
+
+      <nav class="nav-side nav-left">
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="index.html#feed" data-i18n="nav.feed">What I do</a>
+        <a href="index.html#about" data-i18n="nav.about">About</a>
+      </nav>
+
+      <nav class="nav-side nav-right">
+        <a href="index.html#services" data-i18n="nav.services">Services</a>
+        <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <!-- language switcher: current language + arrow, opens a dropdown
+           with the other language. Plain fetch()+localStorage, see i18n.js -->
+      <div class="lang-switch">
+        <button type="button" class="lang-switch-trigger" aria-haspopup="true" aria-expanded="false">
+          <span class="lang-switch-current">CZ</span>
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="lang-switch-menu">
+          <button type="button" class="lang-switch-option" data-lang="cz">CZ</button>
+          <button type="button" class="lang-switch-option" data-lang="en">EN</button>
+        </div>
+      </div>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" data-i18n-attr="aria-label:nav.toggleAriaLabel">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- mobile dropdown: all links in one list, shown via the hamburger toggle -->
+    <nav class="mobile-nav" id="main-nav">
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="index.html#feed" data-i18n="nav.feed">What I do</a>
+      <a href="index.html#about" data-i18n="nav.about">About</a>
+      <a href="index.html#services" data-i18n="nav.services">Services</a>
+      <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+      <div class="lang-switch">
+        <button type="button" class="lang-switch-trigger" aria-haspopup="true" aria-expanded="false">
+          <span class="lang-switch-current">CZ</span>
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="lang-switch-menu">
+          <button type="button" class="lang-switch-option" data-lang="cz">CZ</button>
+          <button type="button" class="lang-switch-option" data-lang="en">EN</button>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===========================================================
+       Page hero — kicker + heading, no photos (same generic pattern
+       reused from collars.html's .collar-hero)
+       =========================================================== -->
+  <section class="collar-hero">
+    <div class="container">
+      <p class="kicker" data-i18n="alterationsPricelist.kicker">alterations</p>
+      <h1 data-i18n="alterationsPricelist.title">Alterations Price List</h1>
+    </div>
+  </section>
+
+  <!-- content styling (.mending-section/.mending-content/.price-table*)
+       is shared with mending-pricelist.html — purely generic page-content
+       styling, not specific to either service, so reused as-is -->
+  <section class="mending-section">
+    <div class="container">
+      <div class="mending-content">
+
+        <p data-i18n="alterationsPricelist.intro.fitting">I&rsquo;ll need to see the garment before I can confirm the exact price; in some cases, a photo will suffice. If size/length alterations are required, you will, of course, need to try the garment on.</p>
+        <p data-i18n="alterationsPricelist.intro.location">I&rsquo;m based in Prague 6, but we can also arrange a courier service.</p>
+        <p data-i18n="alterationsPricelist.intro.turnaround">I usually complete most jobs within 1&ndash;3 weeks, depending on the complexity and my current workload; there&rsquo;s a 50% surcharge for express repairs or alterations.</p>
+
+        <h2 data-i18n="alterationsPricelist.listHeading">Approximate price list</h2>
+
+        <h3 data-i18n="alterationsPricelist.categories.trousers.heading">Trousers &amp; Jeans</h3>
+        <div class="price-table-wrap">
+          <table class="price-table">
+            <tbody>
+              <tr>
+                <td data-i18n="alterationsPricelist.categories.trousers.items.0.name">Machine hemming or lengthening</td>
+                <td data-i18n="alterationsPricelist.categories.trousers.items.0.price">200&ndash;400 CZK</td>
+              </tr>
+              <tr>
+                <td data-i18n="alterationsPricelist.categories.trousers.items.1.name">Hand hemming or lengthening with an invisible seam</td>
+                <td data-i18n="alterationsPricelist.categories.trousers.items.1.price">500 CZK</td>
+              </tr>
+              <tr>
+                <td data-i18n="alterationsPricelist.categories.trousers.items.2.name">Hemming or lengthening with a fly, cuff or slits</td>
+                <td data-i18n="alterationsPricelist.categories.trousers.items.2.price">500 CZK</td>
+              </tr>
+              <tr>
+                <td data-i18n="alterationsPricelist.categories.trousers.items.3.name">Hemming of jeans with the original hem</td>
+                <td data-i18n="alterationsPricelist.categories.trousers.items.3.price">400 CZK</td>
+              </tr>
+              <tr>
+                <td data-i18n="alterationsPricelist.categories.trousers.items.4.name">Tightening or widening at the waist</td>
+                <td data-i18n="alterationsPricelist.categories.trousers.items.4.price">400&ndash;700 CZK</td>
+              </tr>
+              <tr>
+                <td data-i18n="alterationsPricelist.categories.trousers.items.5.name">Tightening or widening of side seams</td>
+                <td data-i18n="alterationsPricelist.categories.trousers.items.5.price">300&ndash;600 CZK</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 data-i18n="alterationsPricelist.categories.dresses.heading">Skirts &amp; Dresses</h3>
+        <div class="price-table-wrap">
+          <table class="price-table">
+            <tbody>
+              <tr>
+                <td data-i18n="alterationsPricelist.categories.dresses.items.0.name">Shortening and hemming by machine or by hand with an invisible seam</td>
+                <td data-i18n="alterationsPricelist.categories.dresses.items.0.price">300&ndash;500 CZK</td>
+              </tr>
+              <tr>
+                <td data-i18n="alterationsPricelist.categories.dresses.items.1.name">Shortening and hemming of ball gowns/wedding dresses (depending on width and number of layers)</td>
+                <td data-i18n="alterationsPricelist.categories.dresses.items.1.price">700&ndash;2,000 CZK</td>
+              </tr>
+              <tr>
+                <td data-i18n="alterationsPricelist.categories.dresses.items.2.name">Taking in at the hips/waist</td>
+                <td data-i18n="alterationsPricelist.categories.dresses.items.2.price">400&ndash;600 CZK</td>
+              </tr>
+              <tr>
+                <td data-i18n="alterationsPricelist.categories.dresses.items.3.name">Taking in the centre back seam</td>
+                <td data-i18n="alterationsPricelist.categories.dresses.items.3.price">100&ndash;300 CZK</td>
+              </tr>
+              <tr>
+                <td data-i18n="alterationsPricelist.categories.dresses.items.4.name">Taking in the sleeves</td>
+                <td data-i18n="alterationsPricelist.categories.dresses.items.4.price">200&ndash;400 CZK</td>
+              </tr>
+              <tr>
+                <td data-i18n="alterationsPricelist.categories.dresses.items.5.name">Shortening the sleeves</td>
+                <td data-i18n="alterationsPricelist.categories.dresses.items.5.price">200&ndash;300 CZK</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 data-i18n="alterationsPricelist.categories.shirts.heading">Shirts &amp; Blouses</h3>
+        <div class="price-table-wrap">
+          <table class="price-table">
+            <tbody>
+              <tr>
+                <td data-i18n="alterationsPricelist.categories.shirts.items.0.name">Shortening the length</td>
+                <td data-i18n="alterationsPricelist.categories.shirts.items.0.price">300&ndash;500 CZK</td>
+              </tr>
+              <tr>
+                <td data-i18n="alterationsPricelist.categories.shirts.items.1.name">Taking in at the waist</td>
+                <td data-i18n="alterationsPricelist.categories.shirts.items.1.price">300&ndash;500 CZK</td>
+              </tr>
+              <tr>
+                <td data-i18n="alterationsPricelist.categories.shirts.items.2.name">Shortening the sleeves (with or without cuffs)</td>
+                <td data-i18n="alterationsPricelist.categories.shirts.items.2.price">200&ndash;400 CZK</td>
+              </tr>
+              <tr>
+                <td data-i18n="alterationsPricelist.categories.shirts.items.3.name">Taking in the sleeves</td>
+                <td data-i18n="alterationsPricelist.categories.shirts.items.3.price">300&ndash;500 CZK</td>
+              </tr>
+              <tr>
+                <td data-i18n="alterationsPricelist.categories.shirts.items.4.name">Adding pockets to the seam</td>
+                <td data-i18n="alterationsPricelist.categories.shirts.items.4.price">400&ndash;500 CZK per pocket</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 data-i18n="alterationsPricelist.categories.curtains.heading">Curtains &amp; Drapes</h3>
+        <div class="price-table-wrap">
+          <table class="price-table">
+            <tbody>
+              <tr>
+                <td data-i18n="alterationsPricelist.categories.curtains.items.0.name">Shortening curtains and drapes</td>
+                <td data-i18n="alterationsPricelist.categories.curtains.items.0.price">150 CZK per metre in width</td>
+              </tr>
+              <tr>
+                <td data-i18n="alterationsPricelist.categories.curtains.items.1.name">Shortening curtains and drapes with the addition of a lead weight cord (to weigh them down &mdash; it looks more luxurious and they don&rsquo;t flap about as much in a draught)</td>
+                <td data-i18n="alterationsPricelist.categories.curtains.items.1.price">250 CZK per metre in width</td>
+              </tr>
+              <tr>
+                <td data-i18n="alterationsPricelist.categories.curtains.items.2.name">Resizing a pillowcase or duvet cover</td>
+                <td data-i18n="alterationsPricelist.categories.curtains.items.2.price">200&ndash;400 CZK</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p data-i18n="alterationsPricelist.closingNote">If you can&rsquo;t find your specific case here, please write me an e-mail and we&rsquo;ll sort it out &#10084;&#65039;</p>
+        <div class="mending-cta">
+          <!-- PLACEHOLDER: swap for the real email before launch -->
+          <a href="mailto:hello@atelierpoy.cz" class="btn btn-navy" data-i18n="alterationsPricelist.emailCta">Email hello@atelierpoy.cz</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===========================================================
+     Footer — copied verbatim from index.html
+     =========================================================== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <img src="branding/LOGO - PROFILOVKA.png" alt="Poy" class="footer-logo">
+    <div class="footer-links">
+      <div class="footer-socials">
+        <!-- PLACEHOLDER: swap for the real Instagram handle before launch -->
+        <a href="https://www.instagram.com/atelier_poy" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram" data-i18n-attr="aria-label:footer.instagramLink">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61593095477667" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook" data-i18n-attr="aria-label:footer.facebookLink">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M14.5 8.5h1.8V5.8h-2.1c-2.3 0-3.7 1.4-3.7 3.7v1.7H8.4v2.9h2.1V21h3v-6.9h2.2l.4-2.9h-2.6V9.7c0-.7.3-1.2 1-1.2Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@atelier_poy" target="_blank" rel="noopener" class="social-icon" aria-label="TikTok" data-i18n-attr="aria-label:footer.tiktokLink">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M13.5 4v10.8a3 3 0 1 1-2.3-2.9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M13.5 4c.3 2.2 1.9 3.9 4 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+      <!-- PLACEHOLDER: swap for the real email before launch -->
+      <a href="mailto:hello@atelierpoy.cz" data-i18n="footer.emailLink">hello@atelierpoy.cz</a>
+    </div>
+    <p class="footer-note" data-i18n="footer.note">Made in Prague · &copy; 2026 Poy ·</p>
+  </div>
+</footer>
+
+<script src="script.js?v=2"></script>
+<script src="i18n.js?v=2"></script>
+</body>
+</html>
