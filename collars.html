@@ -470,11 +470,17 @@
 
           <div class="step-nav">
             <button type="button" class="step-back-link" data-step-back data-i18n="collarPage.steps.back">Zpět</button>
-            <button type="submit" class="btn btn-navy" data-i18n="collarPage.form.submit">Odeslat objednávku</button>
+            <button type="submit" class="btn btn-navy" id="submit-button" data-i18n="collarPage.form.submit">Odeslat objednávku</button>
           </div>
+          <p class="field-error" id="error-submit" role="alert" hidden data-i18n="collarPage.form.errors.submitFailed">Odeslání se nepovedlo. Zkuste to prosím znovu, nebo nás kontaktujte přímo.</p>
         </div>
 
       </form>
+
+      <div class="order-success" id="order-success" hidden>
+        <h2 data-i18n="collarPage.success.heading">Děkujeme za objednávku!</h2>
+        <p data-i18n="collarPage.success.body">Ozveme se vám co nejdříve s potvrzením a informacemi k platbě a dodání.</p>
+      </div>
 
       <!-- Live price panel — sticky sidebar on desktop, fixed bottom bar
            (collapsed to just the total, expandable) on mobile. Visible

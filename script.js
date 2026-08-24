@@ -602,10 +602,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Collar order page — validation, split one function per step so Next
   // only checks the fields the customer can currently see. Inline errors
-  // next to each field, not a generic top-of-page message. No submission
-  // wiring yet: a clean Step 3 submit just falls through with a comment
-  // marking where Stage 5 (EmailJS / Google Sheets) hooks in.
+  // next to each field, not a generic top-of-page message. Submission goes
+  // to a Google Apps Script Web App (see apps-script/Code.gs in this repo
+  // for the script to deploy) which appends a row to the order Sheet and
+  // sends the notification emails — replace the placeholder URL/token below
+  // once that's deployed.
   var orderForm = document.getElementById('collar-order-form');
+  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzBzgSf3eiq2FHI489rV5scKXoR3ae0kNhXIGTdRRo7IaQ-ASxjnMe5KtrwU6Mo4RkA/exec';
+  var APPS_SCRIPT_TOKEN = 'poy-collar-order-form';
 
   if (orderForm) {
     var setFieldError = function (input, errorEl, isInvalid) {
@@ -787,12 +791,93 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
+    // Gathers every field into one plain object for the Apps Script POST —
+    // reads the same ids/names the validators above already reference, plus
+    // the checked option's visible label text for hardware/fabric (not just
+    // its catalogue code) so the Sheet reads like the order the customer
+    // actually saw, in whichever language they had the site set to.
+    var getFieldValue = function (id) {
+      var el = document.getElementById(id);
+      return el ? el.value.trim() : '';
+    };
+    var getCheckedValue = function (name) {
+      var checked = document.querySelector('input[name="' + name + '"]:checked');
+      return checked ? checked.value : '';
+    };
+    var getCheckedLabel = function (name, chipClass, nameClass) {
+      var checked = document.querySelector('input[name="' + name + '"]:checked');
+      if (!checked) return '';
+      var chip = checked.closest('.' + chipClass);
+      var nameEl = chip ? chip.querySelector('.' + nameClass) : null;
+      return nameEl ? nameEl.textContent.trim() : checked.value;
+    };
+
+    var collectOrderPayload = function () {
+      var instagramRaw = getFieldValue('contact-instagram');
+      var instagram = instagramRaw.replace(/^@/, '').length > 0 ? instagramRaw : '';
+
+      return {
+        token: APPS_SCRIPT_TOKEN,
+        lang: localStorage.getItem('poy-lang') || 'cz',
+        neckCircumference: getFieldValue('neck-circumference'),
+        breed: getFieldValue('dog-breed'),
+        width: getCheckedValue('width'),
+        hardware: getCheckedLabel('hardware', 'hardware-chip', 'hardware-name'),
+        fabric: getCheckedLabel('fabric', 'fabric-chip', 'fabric-name'),
+        nametagChoice: getCheckedValue('nametagChoice'),
+        nametagText: getFieldValue('nametag-text'),
+        nametagBackground: getCheckedValue('nametagBackground'),
+        nametagBackgroundText: getFieldValue('nametag-bg-text'),
+        embroideryColor: getCheckedValue('embroideryColor'),
+        embroideryColorText: getFieldValue('embroidery-color-text'),
+        nametagFont: getCheckedValue('nametagFont'),
+        nametagFontText: getFieldValue('nametag-font-text'),
+        delivery: getCheckedValue('delivery'),
+        deliveryAddress: getFieldValue('delivery-address'),
+        deliveryZasilkovnaPoint: getFieldValue('delivery-zasilkovna-point'),
+        deliveryBalikovnaPoint: getFieldValue('delivery-balikovna-point'),
+        contactName: getFieldValue('contact-name'),
+        contactEmail: getFieldValue('contact-email'),
+        contactPhone: getFieldValue('contact-phone'),
+        contactInstagram: instagram,
+        notes: getFieldValue('order-notes')
+      };
+    };
+
     orderForm.addEventListener('submit', function (event) {
       event.preventDefault();
       attemptedSteps[4] = true;
       var firstInvalid = validateStep4();
       if (firstInvalid) { focusInvalid(firstInvalid); return; }
-      // Stage 5: EmailJS + Google Sheets submission hooks in here.
+
+      var submitButton = document.getElementById('submit-button');
+      var submitError = document.getElementById('error-submit');
+      var orderSuccess = document.getElementById('order-success');
+      var pricePanel = document.getElementById('price-panel');
+
+      if (submitButton) submitButton.disabled = true;
+      if (submitError) submitError.hidden = true;
+
+      fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        // text/plain keeps this a CORS "simple request" so the browser skips
+        // a preflight OPTIONS call, which Apps Script Web Apps don't handle —
+        // the body is still JSON and Code.gs parses it as such regardless of
+        // the declared content-type.
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(collectOrderPayload())
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (!data || !data.ok) throw new Error('submission rejected');
+          orderForm.hidden = true;
+          if (pricePanel) pricePanel.hidden = true;
+          if (orderSuccess) orderSuccess.hidden = false;
+        })
+        .catch(function () {
+          if (submitButton) submitButton.disabled = false;
+          if (submitError) submitError.hidden = false;
+        });
     });
 
     // once the customer has tried to advance past a step, keep its errors

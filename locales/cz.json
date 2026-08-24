@@ -129,7 +129,8 @@
         "deliveryRequired": "Vyberte prosím způsob dopravy.",
         "deliveryAddressRequired": "Uveďte prosím doručovací adresu.",
         "balikovnaPointRequired": "Uveďte prosím adresu balíkovny.",
-        "zasilkovnaPointRequired": "Uveďte prosím adresu zásilkovny."
+        "zasilkovnaPointRequired": "Uveďte prosím adresu zásilkovny.",
+        "submitFailed": "Odeslání se nepovedlo. Zkuste to prosím znovu, nebo nás kontaktujte přímo."
       }
     },
     "price": {
@@ -141,6 +142,10 @@
       "from": "od",
       "toggleAriaLabel": "Zobrazit rozpis ceny",
       "deliveryNote": "Obojek vzniká až po vaší objednávce, dodací lhůta 1-3 týdny podle aktuální vytíženosti. Přesný termín dodání upřesním v potvrzovacím mailu."
+    },
+    "success": {
+      "heading": "Děkujeme za objednávku!",
+      "body": "Ozveme se vám co nejdříve s potvrzením a informacemi k platbě a dodání."
     }
   },
   "hero": {

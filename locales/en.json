@@ -129,7 +129,8 @@
         "deliveryRequired": "Please choose a delivery method.",
         "deliveryAddressRequired": "Please enter a delivery address.",
         "balikovnaPointRequired": "Please enter the Balíkovna pick-up point address.",
-        "zasilkovnaPointRequired": "Please enter the Zásilkovna pick-up point address."
+        "zasilkovnaPointRequired": "Please enter the Zásilkovna pick-up point address.",
+        "submitFailed": "Something went wrong sending your order. Please try again, or contact us directly."
       }
     },
     "price": {
@@ -141,6 +142,10 @@
       "from": "from",
       "toggleAriaLabel": "Show price breakdown",
       "deliveryNote": "Collars made to order only, delivery usually takes 1-3 weeks, depending on my current workload. I will give you the estimated delivery date in the confirmation email."
+    },
+    "success": {
+      "heading": "Thank you for your order!",
+      "body": "We'll be in touch soon to confirm your order and arrange payment and delivery."
     }
   },
   "hero": {
