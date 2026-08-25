@@ -472,6 +472,15 @@ button { font-family: inherit; cursor: pointer; }
   padding: 0;
 }
 
+/* marks a required field/section's legend or label — a CSS-generated
+   character rather than extra markup, so it survives i18n.js overwriting
+   the element's textContent on every language switch */
+.is-required::after {
+  content: " *";
+  color: var(--primary-deep);
+  font-weight: 800;
+}
+
 .form-note { font-size: 0.95rem; color: var(--text); opacity: 0.75; margin: 6px 0 0; }
 .form-note--soft {
   background: var(--primary-pale);
@@ -1035,7 +1044,7 @@ button { font-family: inherit; cursor: pointer; }
 .about-photo { position: relative; z-index: 1; margin-bottom: -94px; }
 .about-text { position: relative; z-index: 2; }
 .about-photo-img {
-  width: 100%;
+  width: 90%;
   height: 523px;
   object-fit: contain;
   object-position: bottom;
@@ -1046,7 +1055,7 @@ button { font-family: inherit; cursor: pointer; }
 .badge {
   position: absolute;
   bottom: -20px;
-  right: -130px;
+  right: -80px;
   width: 396px;
   height: auto;
   transform: rotate(-9deg);
@@ -1087,7 +1096,7 @@ button { font-family: inherit; cursor: pointer; }
   justify-content: space-between;
   gap: 24px;
 }
-.footer-logo { height: 56px; filter: brightness(0) invert(1); opacity: 0.9; }
+.footer-logo { height: 100px; filter: brightness(0) invert(1); opacity: 0.9; }
 .footer-links {
   display: flex;
   align-items: center;

@@ -45,6 +45,7 @@
 
       <nav class="nav-side nav-right">
         <a href="index.html#services" data-i18n="nav.services">Services</a>
+        <a href="collars.html" data-i18n="nav.dogCollars">Dog collars</a>
         <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
       </nav>
 
@@ -74,6 +75,7 @@
       <a href="index.html#feed" data-i18n="nav.feed">What I do</a>
       <a href="index.html#about" data-i18n="nav.about">About</a>
       <a href="index.html#services" data-i18n="nav.services">Services</a>
+      <a href="collars.html" data-i18n="nav.dogCollars">Dog collars</a>
       <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
       <div class="lang-switch">
         <button type="button" class="lang-switch-trigger" aria-haspopup="true" aria-expanded="false">
@@ -192,7 +194,7 @@
 
           <!-- A — Width -->
           <fieldset class="form-section" id="section-width">
-            <legend class="form-legend" data-i18n="collarPage.form.width.legend">Šířka</legend>
+            <legend class="form-legend is-required" data-i18n="collarPage.form.width.legend">Šířka</legend>
             <div class="option-grid">
               <label class="option-card option-card--image" for="width-25">
                 <img class="option-card-img" src="public/25mm%20example.png" alt="" loading="lazy">
@@ -210,7 +212,7 @@
 
           <!-- B — Hardware -->
           <fieldset class="form-section" id="section-hardware">
-            <legend class="form-legend" data-i18n="collarPage.form.hardware.legend">Kování</legend>
+            <legend class="form-legend is-required" data-i18n="collarPage.form.hardware.legend">Kování</legend>
             <!-- populated at runtime from hardware/catalogue.json — see
                  renderHardwareCatalogue() in script.js. Same pattern as the
                  fabric grid below: static shell, dynamic contents, plus
@@ -224,7 +226,7 @@
 
           <!-- C — Fabric -->
         <fieldset class="form-section" id="section-fabric">
-          <legend class="form-legend" data-i18n="collarPage.form.fabric.legend">Látka</legend>
+          <legend class="form-legend is-required" data-i18n="collarPage.form.fabric.legend">Látka</legend>
           <p class="form-note" data-i18n="collarPage.form.fabric.note">Všechny látky jsou deadstock, z druhé ruky nebo zbytky — bez výjimky.</p>
           <p class="form-note" data-i18n="collarPage.form.fabric.widthFilterNote">Nabídka vzorů se může lišit podle zvolené šířky.</p>
 
@@ -291,7 +293,7 @@
               <div class="nametag-example-row">
                 <div class="nametag-example-text">
                   <div class="field">
-                    <label for="nametag-text" data-i18n="collarPage.form.nametag.textLabel">Jméno a/nebo telefonní číslo k vyšití</label>
+                    <label for="nametag-text" class="is-required" data-i18n="collarPage.form.nametag.textLabel">Jméno a/nebo telefonní číslo k vyšití</label>
                     <textarea id="nametag-text" name="nametagText" rows="2" maxlength="50" aria-describedby="error-nametag-text"></textarea>
                     <p class="field-error" id="error-nametag-text" role="alert" hidden data-i18n="collarPage.form.errors.nametagTextRequired">Uveďte prosím text k vyšití.</p>
                   </div>
@@ -323,7 +325,7 @@
               </div>
 
               <div class="field" id="nametag-bg-custom-detail" hidden>
-                <label for="nametag-bg-text" data-i18n="collarPage.form.nametag.backgroundCustomLabel">Jakou barvu podkladu byste chtěli?</label>
+                <label for="nametag-bg-text" class="is-required" data-i18n="collarPage.form.nametag.backgroundCustomLabel">Jakou barvu podkladu byste chtěli?</label>
                 <input type="text" id="nametag-bg-text" name="nametagBackgroundText" maxlength="60" aria-describedby="error-nametag-bg-text">
                 <p class="field-error" id="error-nametag-bg-text" role="alert" hidden data-i18n="collarPage.form.errors.nametagBackgroundTextRequired">Uveďte prosím požadovanou barvu podkladu.</p>
               </div>
@@ -348,7 +350,7 @@
               </div>
 
               <div class="field" id="embroidery-color-custom-detail" hidden>
-                <label for="embroidery-color-text" data-i18n="collarPage.form.nametag.colorCustomLabel">Jaká barva výšivky by vás zajímala?</label>
+                <label for="embroidery-color-text" class="is-required" data-i18n="collarPage.form.nametag.colorCustomLabel">Jaká barva výšivky by vás zajímala?</label>
                 <input type="text" id="embroidery-color-text" name="embroideryColorText" maxlength="60" aria-describedby="error-embroidery-color-text">
                 <p class="field-error" id="error-embroidery-color-text" role="alert" hidden data-i18n="collarPage.form.errors.embroideryColorTextRequired">Uveďte prosím požadovanou barvu výšivky.</p>
               </div>
@@ -369,7 +371,7 @@
               </div>
 
               <div class="field" id="nametag-font-custom-detail" hidden>
-                <label for="nametag-font-text" data-i18n="collarPage.form.nametag.fontCustomLabel">Jaké písmo byste chtěli?</label>
+                <label for="nametag-font-text" class="is-required" data-i18n="collarPage.form.nametag.fontCustomLabel">Jaké písmo byste chtěli?</label>
                 <input type="text" id="nametag-font-text" name="nametagFontText" maxlength="60" aria-describedby="error-nametag-font-text">
                 <p class="field-error" id="error-nametag-font-text" role="alert" hidden data-i18n="collarPage.form.errors.nametagFontTextRequired">Uveďte prosím požadovaný styl písma.</p>
               </div>
@@ -390,7 +392,7 @@
 
           <!-- F — Delivery -->
           <fieldset class="form-section" id="section-delivery">
-            <legend class="form-legend" data-i18n="collarPage.form.delivery.legend">Doprava</legend>
+            <legend class="form-legend is-required" data-i18n="collarPage.form.delivery.legend">Doprava</legend>
             <div class="option-grid">
               <label class="option-card" for="delivery-pickup">
                 <input type="radio" name="delivery" id="delivery-pickup" value="pickup" checked>
@@ -411,12 +413,12 @@
             </div>
             <p class="field-error" id="error-delivery" role="alert" hidden data-i18n="collarPage.form.errors.deliveryRequired">Vyberte prosím způsob dopravy.</p>
             <div class="field" id="delivery-address-field" hidden>
-              <label for="delivery-address" data-i18n="collarPage.form.delivery.addressLabel">Doručovací adresa (ulice, město, PSČ)</label>
+              <label for="delivery-address" class="is-required" data-i18n="collarPage.form.delivery.addressLabel">Doručovací adresa (ulice, město, PSČ)</label>
               <textarea id="delivery-address" name="deliveryAddress" rows="2" aria-describedby="error-delivery-address"></textarea>
               <p class="field-error" id="error-delivery-address" role="alert" hidden data-i18n="collarPage.form.errors.deliveryAddressRequired">Uveďte prosím doručovací adresu.</p>
             </div>
             <div class="field" id="delivery-zasilkovna-point-field" hidden>
-              <label for="delivery-zasilkovna-point" data-i18n="collarPage.form.delivery.zasilkovnaPointLabel">Adresa zásilkovny</label>
+              <label for="delivery-zasilkovna-point" class="is-required" data-i18n="collarPage.form.delivery.zasilkovnaPointLabel">Adresa zásilkovny</label>
               <input type="text" id="delivery-zasilkovna-point" name="deliveryZasilkovnaPoint" aria-describedby="error-delivery-zasilkovna-point">
               <p class="field-help">
                 <span data-i18n="collarPage.form.delivery.zasilkovnaPointHelp">Adresu nejbližší zásilkovny najdete zde:</span>
@@ -425,7 +427,7 @@
               <p class="field-error" id="error-delivery-zasilkovna-point" role="alert" hidden data-i18n="collarPage.form.errors.zasilkovnaPointRequired">Uveďte prosím adresu zásilkovny.</p>
             </div>
             <div class="field" id="delivery-balikovna-point-field" hidden>
-              <label for="delivery-balikovna-point" data-i18n="collarPage.form.delivery.balikovnaPointLabel">Adresa balíkovny</label>
+              <label for="delivery-balikovna-point" class="is-required" data-i18n="collarPage.form.delivery.balikovnaPointLabel">Adresa balíkovny</label>
               <input type="text" id="delivery-balikovna-point" name="deliveryBalikovnaPoint" aria-describedby="error-delivery-balikovna-point">
               <p class="field-help">
                 <span data-i18n="collarPage.form.delivery.balikovnaPointHelp">Adresu nejbližší balíkovny najdete zde:</span>
@@ -439,17 +441,17 @@
           <div class="form-section" id="section-contact">
             <h2 class="form-legend" data-i18n="collarPage.form.contact.legend">Kontaktní údaje</h2>
             <div class="field">
-              <label for="contact-name" data-i18n="collarPage.form.contact.nameLabel">Celé jméno</label>
+              <label for="contact-name" class="is-required" data-i18n="collarPage.form.contact.nameLabel">Celé jméno</label>
               <input type="text" id="contact-name" name="contactName" required aria-describedby="error-contact-name">
               <p class="field-error" id="error-contact-name" role="alert" hidden data-i18n="collarPage.form.errors.nameRequired">Uveďte prosím celé jméno.</p>
             </div>
             <div class="field">
-              <label for="contact-email" data-i18n="collarPage.form.contact.emailLabel">E-mailová adresa</label>
+              <label for="contact-email" class="is-required" data-i18n="collarPage.form.contact.emailLabel">E-mailová adresa</label>
               <input type="email" id="contact-email" name="contactEmail" required aria-describedby="error-contact-email">
               <p class="field-error" id="error-contact-email" role="alert" hidden data-i18n="collarPage.form.errors.emailInvalid">Zadejte prosím platnou e-mailovou adresu.</p>
             </div>
             <div class="field">
-              <label for="contact-phone" data-i18n="collarPage.form.contact.phoneLabel">Telefonní číslo</label>
+              <label for="contact-phone" class="is-required" data-i18n="collarPage.form.contact.phoneLabel">Telefonní číslo</label>
               <input type="tel" id="contact-phone" name="contactPhone" required aria-describedby="error-contact-phone">
               <p class="field-error" id="error-contact-phone" role="alert" hidden data-i18n="collarPage.form.errors.phoneRequired">Uveďte prosím telefonní číslo.</p>
             </div>

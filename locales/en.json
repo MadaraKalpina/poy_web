@@ -6,6 +6,7 @@
     "feed": "My Work",
     "about": "About",
     "services": "Services",
+    "dogCollars": "Dog collars",
     "contact": "Contact"
   },
   "collarPage": {
@@ -271,6 +272,7 @@
     "collarBuilderCta": "Build your collar",
     "mendingPricelistCta": "See price list",
     "alterationsPricelistCta": "See price list",
+    "contactCta": "Reach out",
     "cards": [
       {
         "imgAlt": "Custom dog collar",

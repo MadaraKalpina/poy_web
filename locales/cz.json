@@ -6,6 +6,7 @@
     "feed": "Moje práce",
     "about": "O mně",
     "services": "Služby",
+    "dogCollars": "Obojky pro psy",
     "contact": "Kontakt"
   },
   "collarPage": {
@@ -271,6 +272,7 @@
     "collarBuilderCta": "Sestavit obojek",
     "mendingPricelistCta": "Zobrazit ceník",
     "alterationsPricelistCta": "Zobrazit ceník",
+    "contactCta": "Napište mi",
     "cards": [
       {
         "imgAlt": "Obojek pro psa na míru",
