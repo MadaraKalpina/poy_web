@@ -30,7 +30,25 @@
 
 /* ---------- reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* overflow-anchor: none — disables the browser's scroll anchoring for
+   the whole page. Scroll anchoring tries to keep on-screen content from
+   visually jumping when something above the viewport changes size, by
+   nudging scrollY to compensate. Our own sticky header changes size *as
+   a function of* scrollY (see .site-header/.header-row-logo below), so
+   the two fight each other: header shrinks → anchoring nudges scrollY →
+   our scroll handler re-evaluates against the new scrollY → header
+   height changes again → anchoring nudges again. That feedback loop is
+   what read as constant blinking/jumping, worst during a slow scroll
+   (more frames for the loop to run in). Confirmed via an instrumented
+   Playwright scroll test: without this, scrollY visibly oscillated frame
+   to frame during any scroll through the header's shrink range even
+   though the simulated input only ever scrolled in one direction; with
+   it, scrollY was perfectly monotonic and the header shrank exactly
+   once per crossing. Setting `overflow-anchor: none` scoped only to
+   `.site-header` was NOT sufficient — Chrome's anchor node is chosen
+   from content below the header, not the header itself, so the property
+   has to be set here, on the actual scrolling element, to take effect. */
+html { scroll-behavior: smooth; overflow-anchor: none; }
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -155,23 +173,54 @@ button { font-family: inherit; cursor: pointer; }
   z-index: 50;
 }
 
+/* anchor-nav targets on the landing page — without this, jumping to
+   #about/#services/#feed/#contact (nav links, cross-page links like
+   collars.html's) lands the section flush with the very top of the
+   viewport, which the sticky header then overlaps, hiding the heading
+   the click was supposed to reveal. scroll-margin-top shifts the landing
+   spot down by the header's live height (the same --header-height custom
+   property the price panel uses, kept in sync by script.js) plus a
+   little breathing room, so the heading always ends up visible just
+   below the header regardless of its current shrunk/unshrunk state. The
+   203px fallback matches the header's unscrolled height, for the moment
+   before script.js has run (e.g. landing directly on a fragment URL). */
+#about, #services, #feed, #contact {
+  scroll-margin-top: calc(var(--header-height, 203px) + 16px);
+}
+
 /* Row 1 — logo only, centered, no color block. Shrinks to half size once
    the page is scrolled (see script.js), freeing up vertical space; the
-   blue nav row below is untouched by this. */
+   blue nav row below is untouched by this.
+   The row's own `height` is the only thing that animates via layout (one
+   property, not two) — the logo itself shrinks via `transform: scale()`,
+   which is compositor-only and never triggers layout, so the browser has
+   far less work to redo on every animation frame while this sticky header
+   is transitioning during an active scroll. Padding is fixed (not part of
+   the transition) since flex centering handles vertical alignment on its
+   own; height values below are 14+130+8=152 unscrolled, 7+65+4=76 scrolled
+   (border-box, per the global reset), preserving the original sizing. */
 .header-row-logo {
   display: flex;
   justify-content: center;
   align-items: center;
   background: var(--cream);
-  padding: 14px 0 8px;
-  transition: padding 0.25s ease;
+  height: 152px;
+  overflow: hidden;
+  transition: height 0.25s ease;
+  will-change: height;
 }
 .logo-link { display: flex; }
-.logo-img { height: 130px; width: auto; transition: height 0.25s ease; }
+.logo-img {
+  height: 130px;
+  width: auto;
+  transform-origin: center;
+  transition: transform 0.25s ease;
+  will-change: transform;
+}
 .logo-link-mobile { display: none; }
 
-.site-header.is-scrolled .header-row-logo { padding: 7px 0 4px; }
-.site-header.is-scrolled .header-row-logo .logo-img { height: 65px; }
+.site-header.is-scrolled .header-row-logo { height: 76px; }
+.site-header.is-scrolled .header-row-logo .logo-img { transform: scale(0.5); }
 
 /* Row 2 — nav links + language switcher, on the blue color block */
 .header-row-nav {

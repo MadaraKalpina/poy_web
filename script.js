@@ -10,16 +10,60 @@ document.addEventListener('DOMContentLoaded', function () {
     var updateHeaderHeight = function () {
       document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
     };
-    var updateScrolled = function () {
-      header.classList.toggle('is-scrolled', window.scrollY > 10);
-      updateHeaderHeight();
+
+    // hysteresis: enter the "scrolled" (shrunk) state only past
+    // SCROLL_ENTER, leave it only once scrollY drops back below
+    // SCROLL_EXIT. A single hard threshold (the old `scrollY > 10`) let
+    // scrollY hovering right at the boundary — trackpad momentum,
+    // rubber-band overscroll, slow/sub-pixel scroll deltas — flip
+    // is-scrolled on/off repeatedly within one scroll gesture, and each
+    // flip restarted the CSS shrink/grow transition on the logo from
+    // wherever it currently was, which is what read as the header
+    // "blinking" partway through its shrink.
+    var SCROLL_ENTER = 40;
+    var SCROLL_EXIT = 6;
+    var isScrolled = false;
+    var scrollTicking = false;
+
+    // only touch the DOM (class + the offsetHeight read below, which
+    // forces a synchronous layout) when the state actually flips — not on
+    // every rAF tick while scrolling. Reading window.scrollY itself is
+    // free (no layout flush), but re-reading offsetHeight on every single
+    // scroll frame — even the ~59 out of every 60 frames where nothing
+    // about the header changed — was still forcing a reflow each time,
+    // which is exactly what a slow scroll gives you enough frames to
+    // actually perceive as stutter (a fast flick blows through the same
+    // frames too quickly to notice).
+    var applyScrollState = function () {
+      var y = window.scrollY;
+      if (!isScrolled && y > SCROLL_ENTER) {
+        isScrolled = true;
+        header.classList.add('is-scrolled');
+        updateHeaderHeight();
+      } else if (isScrolled && y < SCROLL_EXIT) {
+        isScrolled = false;
+        header.classList.remove('is-scrolled');
+        updateHeaderHeight();
+      }
+      scrollTicking = false;
     };
-    updateScrolled();
+
+    // coalesce to at most one state check per animation frame, instead of
+    // once per raw scroll event — scroll fires far more often than the
+    // display can paint
+    var onScroll = function () {
+      if (!scrollTicking) {
+        scrollTicking = true;
+        window.requestAnimationFrame(applyScrollState);
+      }
+    };
+
+    updateHeaderHeight();
     // the logo-shrink on scroll animates via CSS transition, so the height
     // read right at toggle-time is still the pre-transition value — catch
     // the settled height once that transition finishes
     header.addEventListener('transitionend', updateHeaderHeight);
-    window.addEventListener('scroll', updateScrolled, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', updateHeaderHeight);
   }
 
