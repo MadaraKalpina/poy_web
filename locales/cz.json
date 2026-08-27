@@ -114,6 +114,17 @@
         "legend": "Poznámky",
         "label": "Chcete nám sdělit ještě něco? Zvláštní přání, dotazy nebo doplňující info."
       },
+      "source": {
+        "label": "Kde jste se o Poy dozvěděli?",
+        "placeholder": "Vyberte možnost",
+        "options": {
+          "instagram": "Instagram",
+          "tiktok": "TikTok",
+          "facebook": "Facebook",
+          "familyFriends": "Rodina a přátelé",
+          "other": "Jiné"
+        }
+      },
       "submit": "Odeslat objednávku",
       "errors": {
         "fabricRequired": "Vyberte prosím jednu látku.",

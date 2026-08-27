@@ -652,7 +652,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // sends the notification emails — replace the placeholder URL/token below
   // once that's deployed.
   var orderForm = document.getElementById('collar-order-form');
-  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzXN-QtbUgBsNnLDC7bFrGixRv2uhyhDkHDop7JbB91GA_OxgfzOY3JCNp5l2vlT7rn/exec';
+  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyXU7AGBL6jFJ8z9HEoBv73GRdlqDZGlhbjWPRAi9cwyhsI9lHNq9Ok6FHXe2EU6XrH/exec';
   var APPS_SCRIPT_TOKEN = 'poy-collar-order-form';
 
   if (orderForm) {
@@ -884,6 +884,7 @@ document.addEventListener('DOMContentLoaded', function () {
         contactEmail: getFieldValue('contact-email'),
         contactPhone: getFieldValue('contact-phone'),
         contactInstagram: instagram,
+        hearAboutSource: getFieldValue('hear-about-source'),
         notes: getFieldValue('order-notes')
       };
     };

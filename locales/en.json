@@ -114,6 +114,17 @@
         "legend": "Notes",
         "label": "Anything else? Special requests, questions, or extra info."
       },
+      "source": {
+        "label": "Where did you hear about Poy?",
+        "placeholder": "Select an option",
+        "options": {
+          "instagram": "Instagram",
+          "tiktok": "TikTok",
+          "facebook": "Facebook",
+          "familyFriends": "Family & friends",
+          "other": "Other"
+        }
+      },
       "submit": "Submit order",
       "errors": {
         "fabricRequired": "Please choose a fabric.",

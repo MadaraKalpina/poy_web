@@ -20,7 +20,8 @@ var SHEET_COLUMNS = [
   'nametagChoice', 'nametagText', 'nametagBackground', 'nametagBackgroundText',
   'embroideryColor', 'embroideryColorText', 'nametagFont', 'nametagFontText',
   'delivery', 'deliveryAddress', 'deliveryZasilkovnaPoint', 'deliveryBalikovnaPoint',
-  'contactName', 'contactEmail', 'contactPhone', 'contactInstagram', 'notes'
+  'contactName', 'contactEmail', 'contactPhone', 'contactInstagram',
+  'hearAboutSource', 'notes'
 ];
 
 function doPost(e) {
@@ -71,7 +72,7 @@ var CUSTOMER_LABELS = {
       delivery: 'Doprava', deliveryAddress: 'Doručovací adresa',
       deliveryZasilkovnaPoint: 'Adresa zásilkovny', deliveryBalikovnaPoint: 'Adresa balíkovny',
       contactName: 'Jméno', contactPhone: 'Telefon', contactInstagram: 'Instagram',
-      notes: 'Poznámky'
+      notes: 'Poznámky', hearAboutSource: 'Kde jste se o nás dozvěděli'
     },
     values: {
       width: { '25': '25 mm', '40': '40 mm' },
@@ -82,6 +83,10 @@ var CUSTOMER_LABELS = {
       delivery: {
         pickup: 'Osobní odběr, Praha 6', zasilkovna: 'Zásilkovna',
         balikovna_home: 'Balíkovna — domů na adresu', balikovna_box: 'Balíkovna — do Balíkovny'
+      },
+      hearAboutSource: {
+        instagram: 'Instagram', tiktok: 'TikTok', facebook: 'Facebook',
+        family_friends: 'Rodina a přátelé', other: 'Jiné'
       }
     }
   },
@@ -94,7 +99,7 @@ var CUSTOMER_LABELS = {
       delivery: 'Delivery', deliveryAddress: 'Delivery address',
       deliveryZasilkovnaPoint: 'Zásilkovna pick-up point', deliveryBalikovnaPoint: 'Balíkovna pick-up point',
       contactName: 'Name', contactPhone: 'Phone', contactInstagram: 'Instagram',
-      notes: 'Notes'
+      notes: 'Notes', hearAboutSource: 'How did you hear about us'
     },
     values: {
       width: { '25': '25 mm', '40': '40 mm' },
@@ -105,6 +110,10 @@ var CUSTOMER_LABELS = {
       delivery: {
         pickup: 'In-person pickup, Prague 6', zasilkovna: 'Zásilkovna',
         balikovna_home: 'Balíkovna — home delivery', balikovna_box: 'Balíkovna — pick-up point'
+      },
+      hearAboutSource: {
+        instagram: 'Instagram', tiktok: 'TikTok', facebook: 'Facebook',
+        family_friends: 'Family & friends', other: 'Other'
       }
     }
   }
@@ -149,6 +158,7 @@ function buildCustomerOrderSummary(data, isEnglish) {
   addLine('contactName');
   addLine('contactPhone');
   addLine('contactInstagram');
+  addLine('hearAboutSource');
   addLine('notes');
 
   return lines.join('\n');

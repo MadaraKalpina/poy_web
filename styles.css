@@ -555,6 +555,7 @@ button { font-family: inherit; cursor: pointer; }
 .field input[type="email"],
 .field input[type="tel"],
 .field input[type="number"],
+.field select,
 .field textarea {
   width: 100%;
   border: 2px solid var(--primary-pale);
@@ -567,8 +568,10 @@ button { font-family: inherit; cursor: pointer; }
   transition: border-color 0.15s ease;
 }
 .field input:focus,
+.field select:focus,
 .field textarea:focus { outline: none; border-color: var(--primary-deep); }
 .field textarea { min-height: 70px; resize: vertical; }
+.field select { cursor: pointer; }
 
 /* validation — inline, next to the field it belongs to, never a generic
    top-of-page banner. --primary-deep doubles as the "error" color since
