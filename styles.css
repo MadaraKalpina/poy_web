@@ -944,6 +944,27 @@ button { font-family: inherit; cursor: pointer; }
 .mending-cta { margin-top: 1.5em; }
 
 /* ===========================================================
+   Legal / Terms & Conditions
+   =========================================================== */
+.legal-section { background: var(--cream); padding: 40px 0 72px; }
+.legal-content { max-width: 720px; margin: 0 auto; }
+.legal-content h2 { color: var(--secondary-deep); font-size: 1.25rem; margin-top: 1.6em; }
+.legal-content h2:first-child { margin-top: 0; }
+.legal-content h3 { color: var(--primary-deep); font-size: 1.05rem; margin-top: 1.2em; margin-bottom: 0.5em; }
+.legal-content p { font-size: 0.95rem; }
+.legal-content ul { list-style: disc; padding-left: 1.4em; margin: 0 0 1em; }
+.legal-content li { font-size: 0.95rem; margin-bottom: 0.3em; }
+.legal-note {
+  background: var(--white);
+  border: 2px solid var(--primary-pale);
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-size: 0.88rem;
+  font-style: italic;
+  margin-top: 2em;
+}
+
+/* ===========================================================
    Reviews
    =========================================================== */
 .reviews { background: var(--primary); padding: 72px 0; }
@@ -1090,22 +1111,22 @@ button { font-family: inherit; cursor: pointer; }
   padding: 40px 0 28px;
 }
 .footer-inner {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
 }
 .footer-logo { height: 100px; filter: brightness(0) invert(1); opacity: 0.9; }
-.footer-links {
+
+/* four equal columns: logo / dog collars & pricelists / legal / contact */
+.footer-col {
   display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
   font-weight: 700;
   font-size: 1rem;
 }
-.footer-links a:hover { color: var(--accent); }
+.footer-col a:hover { color: var(--accent); }
 
 .footer-socials { display: flex; gap: 10px; }
 .social-icon {
@@ -1122,9 +1143,9 @@ button { font-family: inherit; cursor: pointer; }
 .social-icon svg { width: 18px; height: 18px; }
 /* clear invert on hover: solid cream badge with a dark icon, swapping
    which color is foreground vs background rather than fading either out */
-.footer-links a.social-icon:hover { background: var(--cream); color: var(--secondary-deep); }
+.footer-col a.social-icon:hover { background: var(--cream); color: var(--secondary-deep); }
 .footer-note {
-  width: 100%;
+  grid-column: 1 / -1;
   text-align: center;
   margin-top: 24px;
   font-size: 0.95rem;
@@ -1165,6 +1186,9 @@ button { font-family: inherit; cursor: pointer; }
   .price-panel[data-expanded="true"] .price-toggle-icon { transform: rotate(180deg); }
   .price-details[hidden] { display: none; }
   .price-details { max-height: 45vh; overflow-y: auto; }
+
+  /* 4 equal columns get cramped on tablet widths — pair them up instead */
+  .footer-inner { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 640px) {
@@ -1214,7 +1238,8 @@ button { font-family: inherit; cursor: pointer; }
 
   .card-grid { grid-template-columns: 1fr; }
   .contact-actions { flex-direction: column; align-items: center; }
-  .footer-inner { justify-content: center; text-align: center; }
+  .footer-inner { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  .footer-col { align-items: center; }
 
   /* shrink further than the tablet size above; nudged left (photo size
      itself unchanged) so the badge below has room to grow into the space

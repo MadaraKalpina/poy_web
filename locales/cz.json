@@ -241,6 +241,233 @@
     "closingNote": "Pokud jste zde svůj případ nenajdete, napište mi a dohodneme se ❤️",
     "emailCta": "Email hello@atelierpoy.cz"
   },
+  "terms": {
+    "metaTitle": "Poy — Obchodní podmínky",
+    "metaDescription": "Obchodní podmínky upravující objednávky a zakázky Atelier Poy — obojky a vodítka na míru, opravy oblečení, úpravy a zakázkové šití.",
+    "kicker": "obchodní podmínky",
+    "title": "Obchodní podmínky Atelier Poy",
+    "intro": {
+      "heading": "1. Úvodní ustanovení",
+      "paragraphs": [
+        "Tyto obchodní podmínky upravují vzájemná práva a povinnosti mezi prodávajícím/zhotovitelem a kupujícím/objednatelem vznikající v souvislosti s objednávkou zboží nebo služeb prostřednictvím internetových stránek www.atelierpoy.cz, e-mailu, sociálních sítí (Instagram, Facebook) nebo osobně.",
+        "Odesláním objednávky, potvrzením zakázky v písemné komunikaci (e-mail, SMS, zpráva na sociální síti) nebo osobním předáním věci či materiálu k realizaci zakázky kupující/objednatel potvrzuje, že se s těmito obchodními podmínkami seznámil, souhlasí s nimi a zavazuje se je dodržovat.",
+        "Atelier Poy provozuje Barbora Oravová jako fyzická osoba samostatně, bez zaměstnanců či dalších spolupracovníků na výrobě či administrativě. Tato skutečnost se promítá zejména do dodacích lhůt a dostupnosti komunikace (viz čl. 12)."
+      ]
+    },
+    "seller": {
+      "heading": "1a. Prodávající / zhotovitel",
+      "name": "Barbora Oravová, se sídlem Hlinsko 73, Hlinsko, 751 31",
+      "ico": "IČO 17884535 (neplátce DPH)",
+      "contact": "E-mail: hello@atelierpoy.cz, Tel.: +420 722 523 771",
+      "bank": "Bankovní spojení – číslo účtu (CZ): 3431867013/3030",
+      "iban": "IBAN: CZ79 3030 0000 0034 3186 7013, SWIFT: AIRACZPP"
+    },
+    "buyer": {
+      "heading": "1b. Kupující / objednatel",
+      "text": "Fyzická nebo právnická osoba, která si u prodávajícího objednává zboží nebo služby (opravu, úpravu, zakázkovou výrobu). Kupující, který není spotřebitelem, uzavírá smlouvu v rámci své podnikatelské činnosti; jeho vztah s prodávajícím se v otázkách neupravených těmito podmínkami řídí občanským zákoníkem."
+    },
+    "commissions": {
+      "heading": "2. Druhy zakázek",
+      "intro": "Atelier Poy nabízí zejména:",
+      "items": [
+        "obojky a vodítka pro psy vyráběné na míru dle požadavků zákazníka;",
+        "opravy a úpravy oblečení a dalších textilních výrobků dodaných zákazníkem;",
+        "zakázkové šití oděvů a textilních produktů dle individuální specifikace zákazníka."
+      ],
+      "outro": "Výrobky jsou z podstatné části vyráběny z upcyklovaných či použitých materiálů (deadstock látky, látky ze second-handů, darované kusy apod.) – k tomu více v čl. 6."
+    },
+    "order": {
+      "heading": "3. Objednávka a uzavření smlouvy",
+      "paragraphs": [
+        "Objednávku lze učinit prostřednictvím objednávkového formuláře na webu, e-mailem, přes sociální sítě nebo osobně. U oprav, úprav a zakázkového šití je vždy potřeba předchozí domluva přesné specifikace (rozsah práce, materiál, termín).",
+        "Smlouva je uzavřena okamžikem, kdy prodávající objednávku potvrdí. Prodávající si vyhrazuje právo objednávku odmítnout nebo navrhnout úpravu, zejména není-li specifikace dostatečně jasná, není-li ji z kapacitních důvodů možné v požadovaném termínu realizovat, nebo se týká materiálu, který již není k dispozici."
+      ]
+    },
+    "price": {
+      "heading": "4. Cena a platební podmínky",
+      "paragraphs": [
+        "U všech typů zakázek (obojky a vodítka, opravy a úpravy, zakázkové šití) požaduje prodávající úhradu celé ceny předem, před zahájením výroby či prací – vzhledem k individuálnímu charakteru zboží vyráběného na míru. Výroba/práce na zakázce je zahájena až po připsání platby na účet prodávajícího.",
+        "Ukáže-li se v průběhu realizace, že skutečný rozsah prací je větší, než bylo dohodnuto (např. skryté poškození materiálu zjištěné až při opravě), prodávající o tom zákazníka neprodleně informuje a na dodatečné práci i ceně se předem domluví; bez souhlasu zákazníka nebudou dodatečné práce účtovány.",
+        "Dojde-li na webových stránkách ke zjevné chybě v uvedené ceně (technická chyba, chyba lidského faktoru nebo přenosu dat), není prodávající povinen zakázku za tuto cenu realizovat. Prodávající v takovém případě nabídne zákazníkovi realizaci za cenu obvyklou; zákazník má právo tuto nabídku odmítnout, a objednávka je pak zrušena."
+      ]
+    },
+    "materials": {
+      "heading": "5. Materiál, individuální charakter výrobků a rozměry",
+      "paragraphs": [
+        "Výrobky Atelier Poy jsou z velké části šity z upcyklovaného či použitého textilu a nových komponentů. Barva, vzor, struktura i drobné nedokonalosti materiálu (např. stopy předchozího použití, mírné barevné odchylky) jsou přirozeným znakem takového materiálu a nejsou vadou zboží.",
+        "Fotografie na webu a sociálních sítích jsou ilustrativní. Vzhledem k jedinečnosti použitých materiálů nelze zaručit dostupnost totožné látky či vzoru ani pro budoucí, opakovanou objednávku.",
+        "U obojků, vodítek a zakázkového šití zákazník poskytuje rozměry (např. obvod krku a hrudníku psa, tělesné míry) na vlastní odpovědnost, případně dle návodu na měření uvedeného na webu. Za nesprávnost zákazníkem dodaných rozměrů prodávající neodpovídá; případná úprava či přešití z tohoto důvodu může být zpoplatněno.",
+        "Design, barevnou kombinaci a celkové provedení zakázky zákazník odsouhlasí před zahájením výroby (např. e-mailem či zprávou). Na takto odsouhlasený vzhled výrobku nelze později uplatnit reklamaci jako na vadu."
+      ]
+    },
+    "repairs": {
+      "heading": "6. Opravy a úpravy vlastního oblečení zákazníka",
+      "paragraphs": [
+        "Při předání věci k opravě či úpravě prodávající podle možností zaznamená stav věci (např. fotograficky) a upozorní na viditelné vady, opotřebení nebo omezení, která mohou ovlivnit výsledek (např. opotřebovaná látka, poškozené švy). Za tato předchozí omezení a jejich vliv na výsledek prodávající neodpovídá.",
+        "Ukáže-li se v průběhu prací, že věc nelze opravit nebo upravit tak, jak bylo zamýšleno, prodávající o tom zákazníka informuje a domluví se s ním na dalším postupu (např. částečná realizace nebo vrácení věci bez zásahu); uhrazená cena bude v takovém případě přiměřeně vypořádána.",
+        "Prodávající odpovídá za škodu způsobenou na věci zákazníka při provádění zakázky do výše prokazatelné hodnoty věci. Toto omezení se netýká škody způsobené úmyslně nebo z hrubé nedbalosti a nevztahuje se na vady či opotřebení, které věc měla už před předáním."
+      ]
+    },
+    "delivery": {
+      "heading": "7. Dodací podmínky a doprava",
+      "paragraphs": [
+        "Zboží je vyráběno individuálně na základě objednávky. Hotové výrobky jsou zhotoveny a odeslány přibližně do 1–3 týdnů od přijetí platby; výjimku tvoří vánoční a letní období (dovolené, svátky) a další okolnosti dle čl. 12, kdy se lhůta může prodloužit.",
+        "Zboží je kupujícímu dodáno na adresu zásilkovny/balíkovny uvedenou v objednávce; není-li tato pobočka v danou chvíli dostupná, zásilka je zaslána na nejbližší dostupnou pobočku.",
+        "Okamžikem předání zásilky zvolenému dopravci přechází odpovědnost za další průběh přepravy na dopravce. Prodávající neodpovídá za délku doručení ani za zpoždění vzniklá na straně dopravce nebo z okolností, které nemůže ovlivnit.",
+        "Doprava je možná těmito způsoby: Balíkovna (na adresu nebo do Balíkovny), Zásilkovna, osobní odběr (Praha 6 nebo dle domluvy v rámci Prahy). Cena dopravy je uvedena na webových stránkách a je pevně stanovena.",
+        "Kupující je povinen při převzetí zkontrolovat neporušenost obalu a případné závady neprodleně oznámit přepravci a zásilku nepřevzít. Podpisem dodacího listu kupující stvrzuje, že zásilka byla v pořádku; na pozdější reklamaci porušenosti obalu nebude brán zřetel.",
+        "Každý odeslaný balíček nese na krabičce logo Atelier Poy. Obdrží-li zákazník balíček bez tohoto loga, doporučujeme zkontrolovat přímo na výdejním místě, zda se skutečně jedná o jeho objednávku."
+      ]
+    },
+    "collection": {
+      "heading": "8. Vyzvednutí zakázky a nevyzvednuté věci",
+      "paragraphs": [
+        "O dokončení zakázky (opravy a úpravy oděvů, zakázkové šití) prodávající zákazníka informuje (e-mailem, SMS nebo zprávou).",
+        "Nevyzvedne-li si zákazník hotovou zakázku ani po opakované výzvě (nejméně dva pokusy o kontakt) do 5 měsíců od vyrozumění o jejím dokončení, je prodávající oprávněn s věcí naložit dle vlastního uvážení."
+      ]
+    },
+    "withdrawal": {
+      "heading": "9. Odstoupení od smlouvy",
+      "paragraphs": [
+        "Veškeré zboží a služby Atelier Poy (obojky a vodítka na míru, zakázkové šití, opravy a úpravy) jsou vyráběny či prováděny podle individuálních požadavků zákazníka nebo přizpůsobeny jeho osobním potřebám.",
+        "V souladu s § 1837 písm. d) zákona č. 89/2012 Sb., občanský zákoník, nemá kupující/objednatel jako spotřebitel právo od takto uzavřené smlouvy odstoupit ve lhůtě 14 dnů bez udání důvodu.",
+        "Objednávku lze zrušit pouze na základě vzájemné dohody s prodávajícím, a to před zahájením výroby či prací. Byla-li výroba nebo práce na zakázce již zahájena, je prodávající oprávněn účtovat vynaložené náklady a odvedenou práci."
+      ]
+    },
+    "defects": {
+      "heading": "10. Odpovědnost za vady, záruka a reklamace",
+      "paragraphs": [
+        "Záruční doba na zboží dodané prodávajícím kupujícímu-spotřebiteli činí 24 měsíců od převzetí zboží. Záruka se nevztahuje na opotřebení věci způsobené jejím běžným užíváním, na vlastnosti materiálu popsané v čl. 5, ani na vzhled a rozměry, které zákazník před zahájením výroby odsouhlasil.",
+        "Reklamaci uplatňuje kupující u prodávajícího na kontaktech uvedených v čl. 1a; přitom co nejvýstižněji popíše závadu, doloží doklad o koupi a uvede kontaktní údaje (telefon, e-mail).",
+        "Reklamace bude vyřízena bez zbytečného odkladu, nejpozději do 30 dnů ode dne jejího uplatnění, nedohodnou-li se strany na delší lhůtě. Reklamované zboží musí být před odesláním řádně čisté; znečištěné, chlupaté nebo hygienicky závadné výrobky nebudou k reklamaci přijaty.",
+        "Jiné vady prodávající dle své volby odstraní opravou nebo dodáním nové věci, přičemž volba nesmí kupujícímu způsobit nepřiměřené náklady. Nárok na reklamaci zaniká, pokud vadu způsobilo nesprávné zacházení, používání v rozporu s doporučenou péčí, nadměrné zatěžování věci, nebo pokud o vadě kupující věděl již při převzetí."
+      ]
+    },
+    "safety": {
+      "heading": "11. Bezpečnostní upozornění k obojkům a vodítkům",
+      "paragraphs": [
+        "Obojky a vodítka Atelier Poy jsou určeny především jako módní a identifikační doplněk a jsou šity ručně z textilních materiálů; nejedná se o bezpečnostní ani výcvikové vybavení certifikované na maximální zátěž či útěkuvzdorné vlastnosti.",
+        "Zákazník je povinen zvolit vhodný typ a velikost pro svého psa, pravidelně kontrolovat stav a upnutí obojku či vodítka a přizpůsobit jejich používání povaze a chování psa (např. silnému tahání). Prodávající neodpovídá za škodu vzniklou nevhodným výběrem, běžným opotřebením ani nedostatečnou kontrolou stavu výrobku ze strany zákazníka."
+      ]
+    },
+    "forceMajeure": {
+      "heading": "12. Vyšší moc a dostupnost",
+      "paragraphs": [
+        "Atelier Poy je jednoosobovým podnikem bez zaměstnanců. Uvedené lhůty (výroba, odpovědi na dotazy, vyřízení reklamace) jsou proto orientační a mohou se prodloužit z důvodu nemoci, dovolené či jiných osobních okolností prodávajícího; o takovém prodloužení bude zákazník informován.",
+        "Prodávající se zavazuje reagovat na dotazy a zprávy v přiměřené lhůtě, zpravidla do 5 pracovních dnů."
+      ]
+    },
+    "privacy": {
+      "heading": "13. Ochrana osobních údajů",
+      "paragraphs": [
+        "Zpracování osobních údajů se řídí samostatnými zásadami ochrany osobních údajů (GDPR) dostupnými na webových stránkách www.atelierpoy.cz."
+      ]
+    },
+    "disputes": {
+      "heading": "14. Mimosoudní řešení sporů",
+      "paragraphs": [
+        "Smluvní strany se zavazují řešit případné spory přednostně smírnou cestou. Dojde-li mezi prodávajícím a kupujícím-spotřebitelem ke sporu, který se nepodaří vyřešit dohodou, může kupující podat návrh na mimosoudní řešení spotřebitelského sporu České obchodní inspekci (www.coi.cz, adr.coi.cz).",
+        "Není-li kupující spotřebitelem a spor se nepodaří vyřešit smírnou cestou, je k jeho řešení dle § 89a zákona č. 99/1963 Sb., občanský soudní řád, místně příslušný obecný soud prodávajícího."
+      ]
+    },
+    "final": {
+      "heading": "15. Závěrečná ustanovení",
+      "paragraphs": [
+        "Právní vztahy těmito podmínkami neupravené se řídí právním řádem České republiky, zejména zákonem č. 89/2012 Sb., občanský zákoník.",
+        "Prodávající si vyhrazuje právo tyto obchodní podmínky v přiměřeném rozsahu měnit. Pro konkrétní zakázku jsou vždy rozhodné podmínky platné v okamžiku jejího potvrzení.",
+        "Je-li některé ustanovení těchto obchodních podmínek neplatné nebo neúčinné, nedotýká se to platnosti ostatních ustanovení."
+      ],
+      "effectiveDate": "Tyto obchodní podmínky nabývají účinnosti dnem jejich zveřejnění na www.atelierpoy.cz.",
+      "translationNote": "Poznámka: Tyto obchodní podmínky jsou v českém jazyce vyhotoveny jako původní a rozhodné znění. Anglická jazyková verze je pouze překladem pro pohodlí zahraničních zákazníků; v případě jakéhokoli rozporu mezi jazykovými verzemi je rozhodné toto české znění."
+    }
+  },
+  "privacyPolicy": {
+    "metaTitle": "Poy — Podmínky ochrany osobních údajů",
+    "metaDescription": "Zásady zpracování osobních údajů (GDPR) pro zákazníky Atelier Poy.",
+    "kicker": "ochrana osobních údajů",
+    "title": "Podmínky ochrany osobních údajů (GDPR)",
+    "basics": {
+      "heading": "I. Základní ustanovení",
+      "intro": "Správcem osobních údajů podle čl. 4 bod 7 nařízení Evropského parlamentu a Rady (EU) 2016/679 o ochraně fyzických osob v souvislosti se zpracováním osobních údajů a o volném pohybu těchto údajů (dále jen: „GDPR”) je Barbora Oravová IČ 17884535 se sídlem Hlinsko 73, Hlinsko, 751 31 (dále jen: „správce“).",
+      "contactIntro": "Kontaktní údaje správce jsou",
+      "contactItems": [
+        "email: hello@atelierpoy.cz",
+        "telefon: +420 722 523 771"
+      ],
+      "definition": "Osobními údaji se rozumí veškeré informace o identifikované nebo identifikovatelné fyzické osobě; identifikovatelnou fyzickou osobou je fyzická osoba, kterou lze přímo či nepřímo identifikovat, zejména odkazem na určitý identifikátor, například jméno, identifikační číslo, lokační údaje, síťový identifikátor nebo na jeden či více zvláštních prvků fyzické, fyziologické, genetické, psychické, ekonomické, kulturní nebo společenské identity této fyzické osoby.",
+      "noDpo": "Správce nejmenoval pověřence pro ochranu osobních údajů."
+    },
+    "sources": {
+      "heading": "II. Zdroje a kategorie zpracovávaných osobních údajů",
+      "paragraphs": [
+        "Správce zpracovává osobní údaje, které jste mu poskytl/a nebo osobní údaje, které správce získal na základě plnění Vaší objednávky.",
+        "Správce zpracovává Vaše identifikační a kontaktní údaje a údaje nezbytné pro plnění smlouvy."
+      ]
+    },
+    "grounds": {
+      "heading": "III. Zákonný důvod a účel zpracování osobních údajů",
+      "groundsIntro": "Zákonným důvodem zpracování osobních údajů je",
+      "groundsItems": [
+        "plnění smlouvy mezi Vámi a správcem podle čl. 6 odst. 1 písm. b) GDPR,",
+        "Váš souhlas se zpracováním pro účely poskytování přímého marketingu (zejména pro zasílání obchodních sdělení a newsletterů) podle čl. 6 odst. 1 písm. a) GDPR ve spojení s § 7 odst. 2 zákona č. 480/2004 Sb., o některých službách informační společnosti v případě, že nedošlo k objednávce zboží nebo služby."
+      ],
+      "purposeIntro": "Účelem zpracování osobních údajů je",
+      "purposeItems": [
+        "vyřízení Vaší objednávky a výkon práv a povinností vyplývajících ze smluvního vztahu mezi Vámi a správcem; při objednávce jsou vyžadovány osobní údaje, které jsou nutné pro úspěšné vyřízení objednávky (jméno a adresa, kontakt), poskytnutí osobních údajů je nutným požadavkem pro uzavření a plnění smlouvy, bez poskytnutí osobních údajů není možné smlouvu uzavřít či jí ze strany správce plnit,",
+        "zasílání obchodních sdělení a činění dalších marketingových aktivit."
+      ],
+      "outro": "Ze strany správce nedochází k automatickému individuálnímu rozhodování ve smyslu čl. 22 GDPR."
+    },
+    "retention": {
+      "heading": "IV. Doba uchovávání údajů",
+      "intro": "Správce uchovává osobní údaje",
+      "items": [
+        "po dobu nezbytnou k výkonu práv a povinností vyplývajících ze smluvního vztahu mezi Vámi a správcem a uplatňování nároků z těchto smluvních vztahů (po dobu 3 let od ukončení smluvního vztahu),",
+        "po dobu, po kterou trvá souhlas se zpracováním osobních údajů pro účely marketingu – dokud není souhlas odvolán, nejdéle 3 let, jsou-li osobní údaje zpracovávány na základě souhlasu."
+      ],
+      "outro": "Po uplynutí doby uchovávání osobních údajů správce osobní údaje vymaže."
+    },
+    "recipients": {
+      "heading": "V. Příjemci osobních údajů (subdodavatelé správce)",
+      "intro": "Příjemci osobních údajů jsou osoby",
+      "items": [
+        "podílející se na dodání zboží / služeb / realizaci plateb na základě smlouvy,",
+        "zajišťující služby provozování e-shopu a další služby v souvislosti s provozováním e-shopu,",
+        "zajišťující marketingové služby."
+      ],
+      "outro": "Správce má v úmyslu předat osobní údaje do třetí země (do země mimo EU) nebo mezinárodní organizaci. Příjemci osobních údajů ve třetích zemích jsou poskytovatelé mailingových služeb / cloudových služeb."
+    },
+    "rights": {
+      "heading": "VI. Vaše práva",
+      "intro": "Za podmínek stanovených v GDPR máte",
+      "items": [
+        "právo na přístup ke svým osobním údajům dle čl. 15 GDPR,",
+        "právo opravu osobních údajů dle čl. 16 GDPR, popřípadě omezení zpracování dle čl. 18 GDPR,",
+        "právo na výmaz osobních údajů dle čl. 17 GDPR,",
+        "právo vznést námitku proti zpracování dle čl. 21 GDPR a",
+        "právo na přenositelnost údajů dle čl. 20 GDPR,",
+        "právo odvolat souhlas se zpracováním písemně nebo elektronicky na adresu nebo email správce uvedený v čl. I těchto podmínek."
+      ],
+      "outro": "Dále máte právo podat stížnost u Úřadu pro ochranu osobních údajů v případě, že se domníváte, že bylo porušeno Vaší právo na ochranu osobních údajů."
+    },
+    "security": {
+      "heading": "VII. Podmínky zabezpečení osobních údajů",
+      "paragraphs": [
+        "Správce prohlašuje, že přijal veškerá vhodná technická a organizační opatření k zabezpečení osobních údajů.",
+        "Správce přijal technická opatření k zabezpečení datových úložišť a úložišť osobních údajů v listinné podobě.",
+        "Správce prohlašuje, že k osobním údajům mají přístup pouze jím pověřené osoby."
+      ]
+    },
+    "final": {
+      "heading": "VIII. Závěrečná ustanovení",
+      "paragraphs": [
+        "Odesláním objednávky z internetového objednávkového formuláře potvrzujete, že jste seznámen/a s podmínkami ochrany osobních údajů a že je v celém rozsahu přijímáte.",
+        "S těmito podmínkami souhlasíte zaškrtnutím souhlasu prostřednictvím internetového formuláře. Zaškrtnutím souhlasu potvrzujete, že jste seznámen/a s podmínkami ochrany osobních údajů a že je v celém rozsahu přijímáte.",
+        "Správce je oprávněn tyto podmínky změnit. Novou verzi podmínek ochrany osobních údajů zveřejní na svých internetových stránkách a zároveň Vám zašle novou verzi těchto podmínek Vaši e-mailovou adresu, kterou jste správci poskytl/a."
+      ],
+      "effectiveDate": "Tyto podmínky nabývají účinnosti dnem 22. 8. 2026."
+    }
+  },
   "hero": {
     "title": "Dávám textilu nový život",
     "subtitle": "U Poy začíná každý výrobek jako látka s příběhem — a já jí dám nový. Vyrobím dokonalý obojek na míru vašemu pejskovi. A s člověčím oblečením to umím taky - opravím a upravím vám vaše oblíbené kousky. Vždy s péčí a láskou.",
@@ -333,6 +560,11 @@
     "facebookLink": "Facebook",
     "tiktokLink": "TikTok",
     "emailLink": "hello@atelierpoy.cz",
+    "mendingPricelistLink": "Ceník oprav",
+    "alterationsPricelistLink": "Ceník úprav",
+    "termsLink": "Obchodní podmínky",
+    "privacyLink": "Ochrana osobních údajů",
+    "location": "Praha 6",
     "note": "Vyrobeno v Praze · © 2026 Poy ·"
   }
 }

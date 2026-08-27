@@ -241,6 +241,233 @@
     "closingNote": "If you can't find your specific case here, please write me an e-mail and we'll sort it out ❤️",
     "emailCta": "Email hello@atelierpoy.cz"
   },
+  "terms": {
+    "metaTitle": "Poy — Terms and Conditions",
+    "metaDescription": "Terms and Conditions governing orders and commissions with Atelier Poy — custom dog collars, clothing repairs, alterations, and custom sewing.",
+    "kicker": "terms & conditions",
+    "title": "Terms and Conditions of Atelier Poy",
+    "intro": {
+      "heading": "1. Introductory Provisions",
+      "paragraphs": [
+        "These Terms and Conditions govern the mutual rights and obligations between the Seller/Contractor and the Buyer/Customer arising in connection with an order for goods or services placed through the website www.atelierpoy.cz, by e-mail, via social media (Instagram, Facebook), or in person.",
+        "By submitting an order, confirming a commission in written communication (e-mail, SMS, a message on social media), or personally handing over an item or material for a commission, the Buyer/Customer confirms that they have read these Terms and Conditions, agree to them, and undertake to comply with them.",
+        "Atelier Poy is operated by Barbora Oravová as a sole trader, without employees or other collaborators in production or administration. This is reflected in particular in delivery times and the availability of communication (see Article 12)."
+      ]
+    },
+    "seller": {
+      "heading": "1a. Seller / Contractor",
+      "name": "Barbora Oravová, registered address: Hlinsko 73, Hlinsko, 751 31, Czech Republic",
+      "ico": "Company ID (IČO): 17884535 (not a VAT payer)",
+      "contact": "E-mail: hello@atelierpoy.cz, Tel.: +420 722 523 771",
+      "bank": "Bank account (CZK): 3431867013/3030",
+      "iban": "IBAN: CZ79 3030 0000 0034 3186 7013, SWIFT: AIRACZPP"
+    },
+    "buyer": {
+      "heading": "1b. Buyer / Customer",
+      "text": "A natural or legal person who orders goods or services (repair, alteration, custom production) from the Seller. A Buyer who is not a consumer enters into the contract in connection with their own business activity; matters not covered by these Terms and Conditions are governed by the Czech Civil Code."
+    },
+    "commissions": {
+      "heading": "2. Types of Commissions",
+      "intro": "Atelier Poy offers in particular:",
+      "items": [
+        "custom-made dog collars and leads produced to the customer's specifications;",
+        "repairs and alterations of clothing and other textile items supplied by the customer;",
+        "custom sewing of garments and textile products according to the customer's individual specification."
+      ],
+      "outro": "Products are, to a substantial extent, made from upcycled or used materials (deadstock fabric, fabric from second-hand shops, donated pieces, etc.) – see Article 6 for further detail."
+    },
+    "order": {
+      "heading": "3. Order and Conclusion of the Contract",
+      "paragraphs": [
+        "An order may be placed through the order form on the website, by e-mail, via social media, or in person. For repairs, alterations, and custom sewing, a prior agreement on the exact specification (scope of work, material, deadline) is always required.",
+        "The contract is concluded at the moment the Seller confirms the order. The Seller reserves the right to decline an order or to propose a modification, in particular if the specification is not sufficiently clear, if it cannot be carried out within the requested time due to capacity constraints, or if it concerns material that is no longer available."
+      ]
+    },
+    "price": {
+      "heading": "4. Price and Payment Terms",
+      "paragraphs": [
+        "For all types of commissions (collars and leads, repairs and alterations, custom sewing), the Seller requires payment of the full price in advance, before production or work begins, given the individual, made-to-order nature of the goods. Production or work on the commission begins only once payment has been credited to the Seller's account.",
+        "If it becomes apparent during the work that the actual scope is greater than agreed (e.g. hidden damage to the material discovered only during a repair), the Seller will inform the customer without delay and agree on any additional work and price in advance; no additional work will be charged without the customer's consent.",
+        "If an obvious error occurs in the price stated on the website (due to a technical error, human error, or a data-transfer error), the Seller is not obliged to carry out the commission at that price. In such a case, the Seller will offer the customer the commission at the usual price; the customer may decline this offer, in which case the order will be cancelled."
+      ]
+    },
+    "materials": {
+      "heading": "5. Materials, Individual Nature of the Products, and Measurements",
+      "paragraphs": [
+        "Atelier Poy products are, to a large extent, sewn from upcycled or used textiles and new components. Colour, pattern, texture, and minor imperfections in the material (e.g. traces of previous use, slight colour variation) are a natural feature of such material and do not constitute a defect in the goods.",
+        "Photographs on the website and social media are illustrative only. Given the uniqueness of the materials used, availability of an identical fabric or pattern cannot be guaranteed even for a future, repeat order.",
+        "For collars, leads, and custom sewing, the customer provides measurements (e.g. the dog's neck and chest circumference, body measurements) at their own responsibility, ideally following the measuring guide on the website. The Seller is not liable for measurements incorrectly provided by the customer; any resulting alteration or re-making may be subject to a charge.",
+        "The customer approves the design, colour combination, and overall execution of the commission before production begins (e.g. by e-mail or message). A complaint cannot later be made about the appearance of the product as if it were a defect once that appearance has been approved."
+      ]
+    },
+    "repairs": {
+      "heading": "6. Repairs and Alterations of the Customer's Own Clothing",
+      "paragraphs": [
+        "When an item is handed over for repair or alteration, the Seller will, where practicable, record its condition (e.g. by photograph) and point out any visible defects, wear, or limitations that may affect the outcome (e.g. worn fabric, damaged seams). The Seller is not liable for such pre-existing limitations or their effect on the result.",
+        "If it becomes apparent during the work that the item cannot be repaired or altered as intended, the Seller will inform the customer and agree with them on how to proceed (e.g. partial completion or return of the item without further work); the price already paid will be settled accordingly in such a case.",
+        "The Seller is liable for damage caused to the customer's item while carrying out the commission up to the item's demonstrable value. This limitation does not apply to damage caused intentionally or through gross negligence, and does not extend to defects or wear that the item already had before it was handed over."
+      ]
+    },
+    "delivery": {
+      "heading": "7. Delivery Terms and Shipping",
+      "paragraphs": [
+        "Goods are produced individually based on the order. Finished products are made and dispatched within approximately 1–3 weeks of payment being received; the Christmas and summer periods (holidays) and the circumstances described in Article 12 are exceptions, during which this period may be extended.",
+        "Goods are delivered to the Zásilkovna/Balíkovna pick-up point address stated in the order; if that particular point is unavailable at the time, the shipment will be sent to the nearest available point.",
+        "Once the shipment is handed over to the chosen carrier, responsibility for the further course of transport passes to the carrier. The Seller is not liable for the length of delivery or for any delays arising on the part of the carrier or from circumstances beyond the Seller's control.",
+        "Delivery is available by the following methods: Balíkovna (to an address or a Balíkovna point), Zásilkovna, or personal collection (Prague 6, or elsewhere in Prague by arrangement). The shipping price is stated on the website and is fixed.",
+        "Upon receipt, the customer must check that the packaging is intact and report any defects to the carrier immediately, refusing to accept the shipment if necessary. By signing the delivery note, the customer confirms that the shipment was in order; a later complaint about damaged packaging will not be considered.",
+        "Every package sent by Atelier Poy carries the Atelier Poy logo on the box. If a customer receives a package without this logo, we recommend checking directly at the pick-up point that it is indeed their order."
+      ]
+    },
+    "collection": {
+      "heading": "8. Collection of the Commission and Uncollected Items",
+      "paragraphs": [
+        "The Seller will notify the customer once the commission (repairs and alterations of clothing, custom sewing) is complete (by e-mail, SMS, or message).",
+        "If the customer fails to collect a completed commission, even after repeated attempts to make contact (at least two), within 5 months of being notified of its completion, the Seller is entitled to deal with the item at their own discretion."
+      ]
+    },
+    "withdrawal": {
+      "heading": "9. Withdrawal from the Contract",
+      "paragraphs": [
+        "All goods and services offered by Atelier Poy (custom collars and leads, custom sewing, repairs and alterations) are made or carried out according to the customer's individual requirements or adapted to their personal needs.",
+        "In accordance with Section 1837(d) of Act No. 89/2012 Coll., the Czech Civil Code, a consumer Buyer/Customer does not have the right to withdraw from a contract concluded in this way within 14 days without giving a reason.",
+        "An order may only be cancelled by mutual agreement with the Seller, and only before production or work has begun. If production or work on the commission has already begun, the Seller is entitled to charge for costs incurred and work already carried out."
+      ]
+    },
+    "defects": {
+      "heading": "10. Liability for Defects, Warranty, and Complaints",
+      "paragraphs": [
+        "The warranty period for goods supplied by the Seller to a consumer Buyer is 24 months from receipt of the goods. The warranty does not cover wear and tear caused by normal use, the material characteristics described in Article 5, or the appearance and dimensions that the customer approved before production began.",
+        "The customer makes a complaint to the Seller using the contact details given in Article 1a, describing the defect as precisely as possible, providing proof of purchase, and giving contact details (phone, e-mail).",
+        "The complaint will be resolved without undue delay, no later than 30 days from the date it is made, unless the parties agree on a longer period. Goods submitted for a complaint must be properly clean; soiled, hairy, or hygienically unacceptable items will not be accepted for a complaint.",
+        "At the Seller's discretion, other defects will be remedied by repair or by supplying a new item, provided the chosen option does not cause the customer unreasonable costs. The right to make a complaint lapses if the defect was caused by improper handling, use contrary to the recommended care instructions, excessive strain on the item, or if the customer was aware of the defect at the time of receipt."
+      ]
+    },
+    "safety": {
+      "heading": "11. Safety Notice for Collars and Leads",
+      "paragraphs": [
+        "Atelier Poy collars and leads are intended primarily as a fashion and identification accessory and are hand-sewn from textile materials; they are not safety or training equipment certified for maximum load or escape-proof properties.",
+        "The customer is responsible for choosing a suitable type and size for their dog, regularly checking the condition and fit of the collar or lead, and adapting its use to the dog's nature and behaviour (e.g. strong pulling). The Seller is not liable for damage arising from an unsuitable choice, normal wear, or the customer's failure to check the condition of the product."
+      ]
+    },
+    "forceMajeure": {
+      "heading": "12. Force Majeure and Availability",
+      "paragraphs": [
+        "Atelier Poy is a one-person business with no employees. The time periods stated (production, responses to enquiries, handling of complaints) are therefore indicative and may be extended due to the Seller's illness, holiday, or other personal circumstances; the customer will be informed of any such extension.",
+        "The Seller undertakes to respond to enquiries and messages within a reasonable period, generally within 5 business days."
+      ]
+    },
+    "privacy": {
+      "heading": "13. Personal Data Protection",
+      "paragraphs": [
+        "The processing of personal data is governed by a separate privacy policy (GDPR) available on the website www.atelierpoy.cz."
+      ]
+    },
+    "disputes": {
+      "heading": "14. Out-of-Court Dispute Resolution",
+      "paragraphs": [
+        "The parties undertake to resolve any disputes primarily by amicable means. If a consumer dispute arises between the Seller and a consumer Buyer that cannot be resolved by agreement, the Buyer may submit a proposal for out-of-court resolution to the Czech Trade Inspection Authority (Česká obchodní inspekce, www.coi.cz, adr.coi.cz).",
+        "If the Buyer is not a consumer and the dispute cannot be resolved amicably, disputes will be resolved before the general court with local jurisdiction over the Seller, pursuant to Section 89a of Act No. 99/1963 Coll., the Code of Civil Procedure."
+      ]
+    },
+    "final": {
+      "heading": "15. Final Provisions",
+      "paragraphs": [
+        "Legal relationships not governed by these Terms and Conditions are governed by the law of the Czech Republic, in particular Act No. 89/2012 Coll., the Civil Code.",
+        "The Seller reserves the right to amend these Terms and Conditions to a reasonable extent. For any given commission, the Terms and Conditions in effect at the time the order is confirmed shall apply.",
+        "If any provision of these Terms and Conditions is or becomes invalid or ineffective, this shall not affect the validity of the remaining provisions."
+      ],
+      "effectiveDate": "These Terms and Conditions take effect on the date of their publication on www.atelierpoy.cz.",
+      "translationNote": "Note: This is an English translation of the Terms and Conditions for the customer's convenience; the legal relationship between the Seller and the Buyer is governed by Czech law, and the Czech-language version of these Terms and Conditions is the authoritative version in the event of any discrepancy."
+    }
+  },
+  "privacyPolicy": {
+    "metaTitle": "Poy — Personal Data Protection Policy",
+    "metaDescription": "Personal data processing policy (GDPR) for Atelier Poy customers.",
+    "kicker": "privacy policy",
+    "title": "Personal Data Protection Policy (GDPR)",
+    "basics": {
+      "heading": "I. Basic Provisions",
+      "intro": "The controller of personal data pursuant to Article 4(7) of Regulation (EU) 2016/679 of the European Parliament and of the Council on the protection of natural persons with regard to the processing of personal data and on the free movement of such data (hereinafter referred to as \"GDPR\") is Barbora Oravová, Company ID (IČ): 17884535, with registered office at Hlinsko 73, Hlinsko, 751 31, Czech Republic (hereinafter referred to as the \"Controller\").",
+      "contactIntro": "The Controller's contact details are:",
+      "contactItems": [
+        "Email: hello@atelierpoy.cz",
+        "Phone: +420 722 523 771"
+      ],
+      "definition": "Personal data means any information relating to an identified or identifiable natural person; an identifiable natural person is one who can be identified, directly or indirectly, in particular by reference to an identifier such as a name, an identification number, location data, an online identifier, or to one or more factors specific to the physical, physiological, genetic, mental, economic, cultural or social identity of that natural person.",
+      "noDpo": "The Controller has not appointed a Data Protection Officer."
+    },
+    "sources": {
+      "heading": "II. Sources and Categories of Personal Data Processed",
+      "paragraphs": [
+        "The Controller processes personal data that you have provided or that the Controller has obtained on the basis of the fulfilment of your order.",
+        "The Controller processes your identification and contact data and any data necessary for the performance of the contract."
+      ]
+    },
+    "grounds": {
+      "heading": "III. Legal Grounds and Purpose of Personal Data Processing",
+      "groundsIntro": "The legal grounds for the processing of personal data are:",
+      "groundsItems": [
+        "the performance of a contract between you and the Controller pursuant to Article 6(1)(b) GDPR;",
+        "your consent to the processing for the purposes of providing direct marketing (in particular for sending commercial communications and newsletters) pursuant to Article 6(1)(a) GDPR in conjunction with Section 7(2) of Act No. 480/2004 Coll., on Certain Information Society Services, where no order for goods or services has been placed."
+      ],
+      "purposeIntro": "The purpose of the processing of personal data is:",
+      "purposeItems": [
+        "the fulfilment of your order and the exercise of rights and obligations arising from the contractual relationship between you and the Controller; when placing an order, personal data that is necessary for the successful processing of the order is required (name and address, contact details); the provision of personal data is a necessary requirement for the conclusion and performance of the contract; without the provision of personal data, it is not possible to conclude the contract or for it to be performed by the Controller;",
+        "sending commercial communications and carrying out other marketing activities."
+      ],
+      "outro": "The Controller does not engage in automated individual decision-making within the meaning of Article 22 GDPR."
+    },
+    "retention": {
+      "heading": "IV. Data Retention Period",
+      "intro": "The Controller retains personal data:",
+      "items": [
+        "for the period necessary to exercise the rights and obligations arising from the contractual relationship between you and the Controller and to assert claims arising from such contractual relationships (for a period of 3 years from the termination of the contractual relationship);",
+        "for the duration of the consent to the processing of personal data for marketing purposes – until the consent is withdrawn, for a maximum of 3 years, where personal data is processed on the basis of consent."
+      ],
+      "outro": "Upon expiry of the data retention period, the Controller shall delete the personal data."
+    },
+    "recipients": {
+      "heading": "V. Recipients of Personal Data (Sub-processors of the Controller)",
+      "intro": "Recipients of personal data are persons:",
+      "items": [
+        "involved in the delivery of goods/services or the processing of payments on the basis of the contract;",
+        "providing e-shop operation services and other services connected with the operation of the e-shop;",
+        "providing marketing services."
+      ],
+      "outro": "The Controller intends to transfer personal data to a third country (a country outside the EU) or to an international organisation. The recipients of personal data in third countries are providers of mailing services / cloud services."
+    },
+    "rights": {
+      "heading": "VI. Your Rights",
+      "intro": "Under the conditions set out in the GDPR, you have:",
+      "items": [
+        "the right of access to your personal data pursuant to Article 15 GDPR;",
+        "the right to rectification of personal data pursuant to Article 16 GDPR, or restriction of processing pursuant to Article 18 GDPR;",
+        "the right to erasure of personal data pursuant to Article 17 GDPR;",
+        "the right to object to processing pursuant to Article 21 GDPR; and",
+        "the right to data portability pursuant to Article 20 GDPR;",
+        "the right to withdraw your consent to processing in writing or electronically to the address or email of the Controller stated in Article I of this Policy."
+      ],
+      "outro": "You also have the right to lodge a complaint with the Office for Personal Data Protection (Úřad pro ochranu osobních údajů) if you believe that your right to the protection of personal data has been violated."
+    },
+    "security": {
+      "heading": "VII. Personal Data Security Conditions",
+      "paragraphs": [
+        "The Controller declares that it has adopted all appropriate technical and organisational measures to secure personal data.",
+        "The Controller has adopted technical measures to secure data storage and the storage of personal data in paper form.",
+        "The Controller declares that only persons authorised by the Controller have access to personal data."
+      ]
+    },
+    "final": {
+      "heading": "VIII. Final Provisions",
+      "paragraphs": [
+        "By submitting an order via the online order form, you confirm that you have familiarised yourself with this Personal Data Protection Policy and that you accept it in its entirety.",
+        "You agree to this Policy by ticking the consent box on the online form. By ticking the consent box, you confirm that you have familiarised yourself with this Personal Data Protection Policy and that you accept it in its entirety.",
+        "The Controller is entitled to amend this Policy. The Controller shall publish a new version of the Policy on its website and shall also send the new version of this Policy to the email address that you provided to the Controller."
+      ],
+      "effectiveDate": "This Policy takes effect on 22 August 2026."
+    }
+  },
   "hero": {
     "title": "I give textiles a new life",
     "subtitle": "At Poy, every piece starts as fabric with a story — and I give it a new one. I'll make the perfect collar tailored to your dog. And I can do the same for human clothing too — I'll fix and alter your favorite pieces. Always with care and love.",
@@ -333,6 +560,11 @@
     "facebookLink": "Facebook",
     "tiktokLink": "TikTok",
     "emailLink": "hello@atelierpoy.cz",
+    "mendingPricelistLink": "Mending price list",
+    "alterationsPricelistLink": "Alterations price list",
+    "termsLink": "Terms & Conditions",
+    "privacyLink": "Privacy Policy",
+    "location": "Prague 6",
     "note": "Made in Prague · © 2026 Poy ·"
   }
 }
