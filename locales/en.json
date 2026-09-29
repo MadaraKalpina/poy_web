@@ -63,7 +63,7 @@
         "legend": "Nametag",
         "exampleImgAlt": "Example of a finished nametag",
         "without": "Without a nametag",
-        "with": "With a hand embroidered nametag",
+        "with": "With an embroidered nametag",
         "textLabel": "Name and/or phone number to embroider",
         "spaceNote": "On 25mm width, name and/or phone number is about all that fits. On 40mm there's room for a little more — if you have a special wish, mention it in the notes below.",
         "phoneCheckReminder": "Before submitting, please double-check the phone number to embroider.",
@@ -217,6 +217,7 @@
           { "name": "Hemming of jeans with the original hem", "price": "400 CZK" },
           { "name": "Tightening or widening at the waist", "price": "400–700 CZK" },
           { "name": "Tightening or widening of side seams", "price": "300–600 CZK" }
+          { "name": "Patching up a hole in the crotch area", "price": "400-600 CZK" }
         ]
       },
       "dresses": {
@@ -563,7 +564,7 @@
   "contact": {
     "kicker": "say hello",
     "title": "Let's make something",
-    "text": "Dog without a collar? Clothes that need a little love? Write to me — we'll figure something out",
+    "text": "Dog without a collar? Clothes that need a little love? Send me a message ♡",
     "emailButton": "Email hello@atelierpoy.cz"
   },
   "footer": {
