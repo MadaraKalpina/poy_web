@@ -171,14 +171,27 @@
               <label for="neck-circumference" data-i18n="collarPage.form.measurements.neckLabel">Obvod krku pejska (cm)</label>
               <input type="number" id="neck-circumference" name="neckCircumference" min="1" step="0.5" aria-describedby="error-neck-circumference">
               <p class="field-error" id="error-neck-circumference" role="alert" hidden data-i18n="collarPage.form.errors.neckInvalid">Zadejte prosím kladné číslo.</p>
+              <p class="form-note form-note--soft" data-i18n="collarPage.form.measurements.fitNote">
+                Obojky jsou nastavitelné — měřte na tělo, mezi obojek a krk pejska by měl pohodlně projít jeden prst.
+              </p>
             </div>
             <div class="field">
               <label for="dog-breed" data-i18n="collarPage.form.measurements.breedLabel">Plemeno pejska</label>
               <input type="text" id="dog-breed" name="breed">
             </div>
-            <p class="form-note form-note--soft" data-i18n="collarPage.form.measurements.fitNote">
-              Obojky jsou nastavitelné — měřte na tělo, mezi obojek a krk pejska by měl pohodlně projít jeden prst.
-            </p>
+            <!-- Pull strength — a 3-stop range (step 1, so it only snaps to
+                 the labelled stops). The last stop ("strong") adds the
+                 reinforcement surcharge in the price panel (script.js). -->
+            <div class="field">
+              <label for="pull-strength" data-i18n="collarPage.form.measurements.pullLabel">Jak moc váš pejsek tahá na vodítku?</label>
+              <input type="range" class="pull-slider" id="pull-strength" name="pullStrength" min="0" max="2" step="1" value="0" aria-describedby="pull-strength-note">
+              <div class="pull-slider-labels" aria-hidden="true">
+                <span data-i18n="collarPage.form.measurements.pullNone">vůbec</span>
+                <span data-i18n="collarPage.form.measurements.pullSome">trochu</span>
+                <span data-i18n="collarPage.form.measurements.pullStrong">hodně</span>
+              </div>
+              <p class="form-note form-note--soft" id="pull-strength-note" hidden data-i18n="collarPage.form.measurements.pullNote">Extra silní pejsci dostanou zesílené některé části obojku *+50 Kč</p>
+            </div>
           </div>
 
           <div class="step-nav">
@@ -194,17 +207,21 @@
 
           <!-- A — Width -->
           <fieldset class="form-section" id="section-width">
-            <legend class="form-legend is-required" data-i18n="collarPage.form.width.legend">Šířka</legend>
+            <legend class="form-legend is-required" data-i18n="collarPage.form.width.legend">Šířka obojku</legend>
             <div class="option-grid">
               <label class="option-card option-card--image" for="width-25">
+                <span class="option-card-head">
+                  <input type="radio" name="width" id="width-25" value="25">
+                  <span class="option-card-title" data-i18n="collarPage.form.width.options.25.label">25 mm</span>
+                </span>
                 <img class="option-card-img" src="public/25mm%20example.png" alt="" loading="lazy">
-                <input type="radio" name="width" id="width-25" value="25">
-                <span class="option-card-title" data-i18n="collarPage.form.width.options.25.label">25 mm</span>
               </label>
               <label class="option-card option-card--image" for="width-40">
+                <span class="option-card-head">
+                  <input type="radio" name="width" id="width-40" value="40">
+                  <span class="option-card-title" data-i18n="collarPage.form.width.options.40.label">40 mm</span>
+                </span>
                 <img class="option-card-img" src="public/40mm%20example.png" alt="" loading="lazy">
-                <input type="radio" name="width" id="width-40" value="40">
-                <span class="option-card-title" data-i18n="collarPage.form.width.options.40.label">40 mm</span>
               </label>
             </div>
             <p class="field-error" id="error-width" role="alert" hidden data-i18n="collarPage.form.errors.widthRequired">Vyberte prosím šířku.</p>
@@ -338,10 +355,6 @@
                     <input type="radio" name="embroideryColor" id="embroidery-color-black" value="black" checked>
                     <span class="option-card-title" data-i18n="collarPage.form.nametag.colorBlack">Černá</span>
                   </label>
-                  <label class="option-card" for="embroidery-color-matching">
-                    <input type="radio" name="embroideryColor" id="embroidery-color-matching" value="matching">
-                    <span class="option-card-title" data-i18n="collarPage.form.nametag.colorMatching">Podle zvoleného vzoru</span>
-                  </label>
                   <label class="option-card" for="embroidery-color-custom">
                     <input type="radio" name="embroideryColor" id="embroidery-color-custom" value="custom">
                     <span class="option-card-title" data-i18n="collarPage.form.nametag.colorCustom">Vlastní přání</span>
@@ -358,22 +371,31 @@
               <!-- Embroidery style / font -->
               <div class="field">
                 <p class="field-label" data-i18n="collarPage.form.nametag.fontLegend">Styl výšivky</p>
-                <div class="option-grid">
-                  <label class="option-card" for="nametag-font-handwritten">
-                    <input type="radio" name="nametagFont" id="nametag-font-handwritten" value="handwritten" checked>
-                    <span class="option-card-title" data-i18n="collarPage.form.nametag.fontHandwritten">Ručně psané / kurzíva</span>
+                <!-- 3 font types with an embroidered sample photo each (same
+                     card layout as the width cards) -->
+                <div class="option-grid option-grid--three">
+                  <label class="option-card option-card--image" for="nametag-font-cursive">
+                    <span class="option-card-head">
+                      <input type="radio" name="nametagFont" id="nametag-font-cursive" value="cursive" checked>
+                      <span class="option-card-title" data-i18n="collarPage.form.nametag.fontCursive">Psací</span>
+                    </span>
+                    <img class="option-card-img option-card-img--natural" src="public/font-cursive.jpg" alt="" loading="lazy">
                   </label>
-                  <label class="option-card" for="nametag-font-custom">
-                    <input type="radio" name="nametagFont" id="nametag-font-custom" value="custom">
-                    <span class="option-card-title" data-i18n="collarPage.form.nametag.fontCustom">Vlastní přání</span>
+                  <label class="option-card option-card--image" for="nametag-font-serif">
+                    <span class="option-card-head">
+                      <input type="radio" name="nametagFont" id="nametag-font-serif" value="serif">
+                      <span class="option-card-title" data-i18n="collarPage.form.nametag.fontSerif">Patkové</span>
+                    </span>
+                    <img class="option-card-img option-card-img--natural" src="public/font-serif.jpg" alt="" loading="lazy">
+                  </label>
+                  <label class="option-card option-card--image" for="nametag-font-sans-serif">
+                    <span class="option-card-head">
+                      <input type="radio" name="nametagFont" id="nametag-font-sans-serif" value="sans_serif">
+                      <span class="option-card-title" data-i18n="collarPage.form.nametag.fontSansSerif">Bezpatkové</span>
+                    </span>
+                    <img class="option-card-img option-card-img--natural" src="public/font-sans-serif.jpg" alt="" loading="lazy">
                   </label>
                 </div>
-              </div>
-
-              <div class="field" id="nametag-font-custom-detail" hidden>
-                <label for="nametag-font-text" class="is-required" data-i18n="collarPage.form.nametag.fontCustomLabel">Jaké písmo byste chtěli?</label>
-                <input type="text" id="nametag-font-text" name="nametagFontText" maxlength="60" aria-describedby="error-nametag-font-text">
-                <p class="field-error" id="error-nametag-font-text" role="alert" hidden data-i18n="collarPage.form.errors.nametagFontTextRequired">Uveďte prosím požadovaný styl písma.</p>
               </div>
             </div>
           </fieldset>
@@ -501,7 +523,7 @@
       <!-- Live price panel — sticky sidebar on desktop, fixed bottom bar
            (collapsed to just the total, expandable) on mobile. Visible
            from Step 1 onward, before width (Step 2) is chosen, so it
-           starts in a "from 500 Kč" placeholder state — see updatePrice()
+           starts in a "from 600 Kč" placeholder state — see updatePrice()
            in script.js. #price-currency/#price-from are normal data-i18n
            spans the price math reads from at calculation time, so the
            Kč/CZK suffix and od/from label always match the active
@@ -509,7 +531,7 @@
       <aside class="price-panel" id="price-panel">
         <button type="button" class="price-summary" id="price-toggle" aria-expanded="false" aria-controls="price-details" data-i18n-attr="aria-label:collarPage.price.toggleAriaLabel">
           <span class="price-summary-label" data-i18n="collarPage.price.total">Celkem</span>
-          <span class="price-summary-total" id="price-total">od 500&nbsp;Kč</span>
+          <span class="price-summary-total" id="price-total">od 600&nbsp;Kč</span>
           <svg class="price-toggle-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -520,9 +542,13 @@
               <span data-i18n="collarPage.price.base">Základní cena</span>
               <span id="price-base">—</span>
             </li>
+            <li class="price-line" id="price-line-reinforcement" hidden>
+              <span data-i18n="collarPage.price.reinforcement">Zesílení obojku</span>
+              <span id="price-reinforcement">+50&nbsp;Kč</span>
+            </li>
             <li class="price-line" id="price-line-nametag" hidden>
               <span data-i18n="collarPage.price.nametag">Jmenovka</span>
-              <span id="price-nametag">+100&nbsp;Kč</span>
+              <span id="price-nametag">+200&nbsp;Kč</span>
             </li>
             <li class="price-line" id="price-line-delivery" hidden>
               <span data-i18n="collarPage.price.delivery">Doprava</span>

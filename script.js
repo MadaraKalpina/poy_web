@@ -541,7 +541,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   setupCustomToggle('nametagBackground', 'nametag-bg-custom-detail');
   setupCustomToggle('embroideryColor', 'embroidery-color-custom-detail');
-  setupCustomToggle('nametagFont', 'nametag-font-custom-detail');
 
   // Collar order page — each shipping option reveals its own address field:
   // Balíkovna home delivery needs a street address, while Zásilkovna and
@@ -566,22 +565,40 @@ document.addEventListener('DOMContentLoaded', function () {
     applyDeliveryAddressToggle();
   }
 
+  // Collar order page — the reinforcement (+50 Kč) note under the
+  // pull-strength slider only shows on the last stop ("a lot")
+  var pullSlider = document.getElementById('pull-strength');
+  var pullNote = document.getElementById('pull-strength-note');
+
+  if (pullSlider && pullNote) {
+    var applyPullNoteToggle = function () {
+      pullNote.hidden = pullSlider.value !== '2';
+    };
+    pullSlider.addEventListener('input', applyPullNoteToggle);
+    applyPullNoteToggle();
+  }
+
   // Collar order page — live price panel. Visible from Step 1 onward, so
   // it has to cope with no width being chosen yet (that field lives on
-  // Step 2) — shows a "from 500 Kč" placeholder in that case rather than
+  // Step 2) — shows a "from 600 Kč" placeholder in that case rather than
   // silently assuming 25mm.
   var priceBase = document.getElementById('price-base');
   var priceTotal = document.getElementById('price-total');
   var priceCurrency = document.getElementById('price-currency');
   var priceFrom = document.getElementById('price-from');
+  var priceLineReinforcement = document.getElementById('price-line-reinforcement');
+  var priceReinforcement = document.getElementById('price-reinforcement');
   var priceLineNametag = document.getElementById('price-line-nametag');
   var priceNametag = document.getElementById('price-nametag');
   var priceLineDelivery = document.getElementById('price-line-delivery');
   var priceDelivery = document.getElementById('price-delivery');
 
   if (priceBase && priceTotal && priceCurrency) {
-    var WIDTH_BASE_PRICE = { '25': 500, '40': 600 };
-    var NAMETAG_PRICE = 100;
+    var WIDTH_BASE_PRICE = { '25': 600, '40': 700 };
+    var NAMETAG_PRICE = 200;
+    // "a lot" (value 2) on the pull-strength slider = reinforced collar
+    var REINFORCEMENT_PRICE = 50;
+    var pullStrengthInput = document.getElementById('pull-strength');
     var DELIVERY_PRICE = { pickup: 0, zasilkovna: 89, balikovna_home: 109, balikovna_box: 79 };
 
     var formatPrice = function (amount, withSign) {
@@ -593,12 +610,18 @@ document.addEventListener('DOMContentLoaded', function () {
     var updatePrice = function () {
       var widthChecked = document.querySelector('input[name="width"]:checked');
 
+      // known from Step 1, so it's shown (and counted) even before a width is picked
+      var needsReinforcement = !!pullStrengthInput && pullStrengthInput.value === '2';
+      var reinforcementCost = needsReinforcement ? REINFORCEMENT_PRICE : 0;
+      priceLineReinforcement.hidden = !needsReinforcement;
+      priceReinforcement.textContent = formatPrice(reinforcementCost, true);
+
       if (!widthChecked) {
         var minBase = Math.min(WIDTH_BASE_PRICE['25'], WIDTH_BASE_PRICE['40']);
         priceBase.textContent = '—';
         priceLineNametag.hidden = true;
         priceLineDelivery.hidden = true;
-        priceTotal.textContent = (priceFrom ? priceFrom.textContent + ' ' : '') + formatPrice(minBase, false);
+        priceTotal.textContent = (priceFrom ? priceFrom.textContent + ' ' : '') + formatPrice(minBase + reinforcementCost, false);
         return;
       }
 
@@ -609,7 +632,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var hasNametag = !!nametagChecked && nametagChecked.value === 'with';
       var nametagCost = hasNametag ? NAMETAG_PRICE : 0;
       var deliveryCost = DELIVERY_PRICE[deliveryChecked ? deliveryChecked.value : 'pickup'] || 0;
-      var total = base + nametagCost + deliveryCost;
+      var total = base + reinforcementCost + nametagCost + deliveryCost;
 
       priceBase.textContent = formatPrice(base, false);
       priceLineNametag.hidden = !hasNametag;
@@ -622,6 +645,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('input[name="width"], input[name="nametagChoice"], input[name="delivery"]').forEach(function (input) {
       input.addEventListener('change', updatePrice);
     });
+    if (pullStrengthInput) pullStrengthInput.addEventListener('input', updatePrice);
     // currency suffix (Kč/CZK) comes from a data-i18n span, so re-read it
     // whenever the language switch finishes applying new strings
     document.addEventListener('poy:langchange', updatePrice);
@@ -735,7 +759,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
       validateCustomTextField('nametagBackground', 'nametag-bg-text', 'error-nametag-bg-text');
       validateCustomTextField('embroideryColor', 'embroidery-color-text', 'error-embroidery-color-text');
-      validateCustomTextField('nametagFont', 'nametag-font-text', 'error-nametag-font-text');
 
       return firstInvalid;
     };
@@ -865,6 +888,7 @@ document.addEventListener('DOMContentLoaded', function () {
         lang: localStorage.getItem('poy-lang') || 'cz',
         neckCircumference: getFieldValue('neck-circumference'),
         breed: getFieldValue('dog-breed'),
+        pullStrength: { '0': 'none', '1': 'some', '2': 'strong' }[getFieldValue('pull-strength')] || '',
         width: getCheckedValue('width'),
         hardware: getCheckedLabel('hardware', 'hardware-chip', 'hardware-name'),
         fabric: getCheckedLabel('fabric', 'fabric-chip', 'fabric-name'),
@@ -875,7 +899,6 @@ document.addEventListener('DOMContentLoaded', function () {
         embroideryColor: getCheckedValue('embroideryColor'),
         embroideryColorText: getFieldValue('embroidery-color-text'),
         nametagFont: getCheckedValue('nametagFont'),
-        nametagFontText: getFieldValue('nametag-font-text'),
         delivery: getCheckedValue('delivery'),
         deliveryAddress: getFieldValue('delivery-address'),
         deliveryZasilkovnaPoint: getFieldValue('delivery-zasilkovna-point'),

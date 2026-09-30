@@ -27,7 +27,7 @@
     },
     "form": {
       "width": {
-        "legend": "Width",
+        "legend": "Collar width",
         "options": {
           "25": { "label": "25 mm" },
           "40": { "label": "40 mm" }
@@ -73,19 +73,23 @@
         "backgroundCustomLabel": "What background color would you like?",
         "colorLegend": "Embroidery color",
         "colorBlack": "Black",
-        "colorMatching": "Matching the chosen pattern",
         "colorCustom": "Custom",
         "colorCustomLabel": "What embroidery color would you like?",
         "fontLegend": "Embroidery style",
-        "fontHandwritten": "Handwritten / cursive",
-        "fontCustom": "Custom",
-        "fontCustomLabel": "What font would you like?"
+        "fontCursive": "Cursive",
+        "fontSerif": "Serif",
+        "fontSansSerif": "Sans serif"
       },
       "measurements": {
         "legend": "Dog's measurements",
         "neckLabel": "Your dog's neck circumference (cm)",
         "breedLabel": "Dog's breed",
-        "fitNote": "Collars are adjustable — measure snuggly and you should be able to fit one finger comfortably between the collar and your dog's neck."
+        "fitNote": "Collars are adjustable — measure snuggly and you should be able to fit one finger comfortably between the collar and your dog's neck.",
+        "pullLabel": "How much does your dog pull on the leash?",
+        "pullNone": "never",
+        "pullSome": "a bit",
+        "pullStrong": "a lot",
+        "pullNote": "Extra strong doggos get parts of the collar reinforced *+50 CZK"
       },
       "delivery": {
         "legend": "Delivery",
@@ -131,7 +135,6 @@
         "nametagTextRequired": "Please enter the text to embroider.",
         "embroideryColorTextRequired": "Please enter the embroidery color you'd like.",
         "nametagBackgroundTextRequired": "Please enter the background color you'd like.",
-        "nametagFontTextRequired": "Please enter the font style you'd like.",
         "neckInvalid": "Please enter a positive number.",
         "nameRequired": "Please enter your full name.",
         "phoneRequired": "Please enter your phone number.",
@@ -148,6 +151,7 @@
     "price": {
       "total": "Total",
       "base": "Base price",
+      "reinforcement": "Collar reinforcement",
       "nametag": "Nametag",
       "delivery": "Delivery",
       "currency": "CZK",

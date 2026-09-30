@@ -531,8 +531,10 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .form-note { font-size: 0.95rem; color: var(--text); opacity: 0.75; margin: 6px 0 0; }
+/* informational note — light blue rather than pink, so it doesn't read as
+   a warning */
 .form-note--soft {
-  background: var(--primary-pale);
+  background: rgba(96, 113, 175, 0.08); /* --secondary at low alpha */
   border-radius: 10px;
   padding: 8px 12px;
   opacity: 1;
@@ -540,6 +542,21 @@ button { font-family: inherit; cursor: pointer; }
 .field-help { font-size: 0.95rem; opacity: 0.65; margin: 4px 0 0; }
 .field-help a { text-decoration: underline; text-underline-offset: 2px; }
 .field-help a:hover { color: var(--primary-deep); }
+
+/* pull-strength slider (collars.html step 1) — 3 stops, labels spread
+   underneath so each sits under its stop */
+.pull-slider {
+  display: block;
+  width: 100%;
+  margin: 8px 0 2px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+.pull-slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+}
 
 .field { margin-bottom: 10px; }
 .field:last-child { margin-bottom: 0; }
@@ -602,6 +619,7 @@ button { font-family: inherit; cursor: pointer; }
   gap: 8px;
 }
 .option-grid--two { grid-template-columns: repeat(2, 1fr); }
+.option-grid--three { grid-template-columns: repeat(3, 1fr); }
 .option-grid--compact { gap: 6px; margin-top: 6px; }
 
 .option-card {
@@ -618,18 +636,23 @@ button { font-family: inherit; cursor: pointer; }
 .option-card input { accent-color: var(--primary-deep); margin-right: 4px; }
 .option-card:has(input:checked) { border-color: var(--primary-deep); background: var(--primary-pale); }
 .option-card-title { font-weight: 700; font-size: 1rem; }
-.option-card-price { font-size: 0.95rem; opacity: 0.75; }
-/* width example photos — bleeds to the card's edges (negative margin
-   cancels .option-card's own padding), same idea as the fabric/hardware
-   swatch photos */
-.option-card--image { padding-top: 0; overflow: hidden; }
+.option-card-price { font-size: 0.95rem; opacity: 0.75; }/* width example cards — radio + label on top so it reads as a choice
+   first, then the example photo bleeding to the card's side and bottom
+   edges (negative margin cancels .option-card's own padding), same idea
+   as the fabric/hardware swatch photos */
+.option-card--image { padding-bottom: 0; overflow: hidden; }
+.option-card-head { display: flex; align-items: center; gap: 4px; }
 .option-card-img {
   width: calc(100% + 20px);
-  margin: 0 -10px 6px;
+  max-width: none; /* global img max-width: 100% would clip the bleed and leave a strip on the right */
+  margin: 6px -10px 0;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
 }
+/* font sample photos are wide nametag shots — keep their own shape so the
+   4:3 crop doesn't cut off the ends of the embroidered text */
+.option-card-img--natural { aspect-ratio: auto; }
 /* 40mm-silver lock: JS disables the input and adds this class so the
    reason (the note above the group) is visible, not just a mystery gray */
 .option-card.is-disabled { opacity: 0.5; cursor: not-allowed; background: var(--cream); }
@@ -887,8 +910,8 @@ button { font-family: inherit; cursor: pointer; }
 .nametag-example-text { flex: 1; min-width: 0; }
 .nametag-example-text .field { margin-bottom: 0; }
 .nametag-example-img {
-  width: 140px;
-  height: 140px;
+  width: 210px;
+  height: 96px;
   object-fit: cover;
   border-radius: 12px;
   flex-shrink: 0;

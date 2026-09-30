@@ -18,10 +18,12 @@ var OWNER_EMAIL = 'atelierpoy@gmail.com';
 var SHEET_COLUMNS = [
   'neckCircumference', 'breed', 'width', 'hardware', 'fabric',
   'nametagChoice', 'nametagText', 'nametagBackground', 'nametagBackgroundText',
-  'embroideryColor', 'embroideryColorText', 'nametagFont', 'nametagFontText',
+  'embroideryColor', 'embroideryColorText', 'nametagFont', 'nametagFontText' /* no longer sent (custom font option removed) — kept so later Sheet columns don't shift */,
   'delivery', 'deliveryAddress', 'deliveryZasilkovnaPoint', 'deliveryBalikovnaPoint',
   'contactName', 'contactEmail', 'contactPhone', 'contactInstagram',
-  'hearAboutSource', 'notes'
+  'hearAboutSource', 'notes',
+  // added later — kept at the end so existing Sheet columns don't shift
+  'pullStrength'
 ];
 
 function doPost(e) {
@@ -65,7 +67,7 @@ function sendOwnerEmail(data) {
 var CUSTOMER_LABELS = {
   cz: {
     fields: {
-      neckCircumference: 'Obvod krku', breed: 'Plemeno', width: 'Šířka',
+      neckCircumference: 'Obvod krku', breed: 'Plemeno', pullStrength: 'Tahá na vodítku', width: 'Šířka',
       hardware: 'Kování', fabric: 'Látka', nametagChoice: 'Jmenovka',
       nametagText: 'Text k vyšití', nametagBackground: 'Barva podkladu',
       embroideryColor: 'Barva výšivky', nametagFont: 'Styl výšivky',
@@ -76,10 +78,14 @@ var CUSTOMER_LABELS = {
     },
     values: {
       width: { '25': '25 mm', '40': '40 mm' },
+      pullStrength: { none: 'Vůbec', some: 'Trochu', strong: 'Hodně (zesílený obojek +50 Kč)' },
       nametagChoice: { without: 'Bez jmenovky', with: 'S jmenovkou' },
       nametagBackground: { white: 'Bílá', custom: 'Vlastní' },
-      embroideryColor: { black: 'Černá', matching: 'Podle zvoleného vzoru', custom: 'Vlastní' },
-      nametagFont: { handwritten: 'Ručně psané / kurzíva', custom: 'Vlastní' },
+      embroideryColor: { black: 'Černá', custom: 'Vlastní' },
+      nametagFont: {
+        cursive: 'Psací', serif: 'Patkové',
+        sans_serif: 'Bezpatkové'
+      },
       delivery: {
         pickup: 'Osobní odběr, Praha 6', zasilkovna: 'Zásilkovna',
         balikovna_home: 'Balíkovna — domů na adresu', balikovna_box: 'Balíkovna — do Balíkovny'
@@ -92,7 +98,7 @@ var CUSTOMER_LABELS = {
   },
   en: {
     fields: {
-      neckCircumference: 'Neck circumference', breed: 'Breed', width: 'Width',
+      neckCircumference: 'Neck circumference', breed: 'Breed', pullStrength: 'Pulls on the leash', width: 'Width',
       hardware: 'Hardware', fabric: 'Fabric', nametagChoice: 'Nametag',
       nametagText: 'Embroidered text', nametagBackground: 'Background color',
       embroideryColor: 'Embroidery color', nametagFont: 'Embroidery style',
@@ -103,10 +109,14 @@ var CUSTOMER_LABELS = {
     },
     values: {
       width: { '25': '25 mm', '40': '40 mm' },
+      pullStrength: { none: 'Never', some: 'A bit', strong: 'A lot (reinforced collar +50 CZK)' },
       nametagChoice: { without: 'Without a nametag', with: 'With a nametag' },
       nametagBackground: { white: 'White', custom: 'Custom' },
-      embroideryColor: { black: 'Black', matching: 'Matching the chosen pattern', custom: 'Custom' },
-      nametagFont: { handwritten: 'Handwritten / cursive', custom: 'Custom' },
+      embroideryColor: { black: 'Black', custom: 'Custom' },
+      nametagFont: {
+        cursive: 'Cursive', serif: 'Serif',
+        sans_serif: 'Sans serif'
+      },
       delivery: {
         pickup: 'In-person pickup, Prague 6', zasilkovna: 'Zásilkovna',
         balikovna_home: 'Balíkovna — home delivery', balikovna_box: 'Balíkovna — pick-up point'
@@ -135,6 +145,7 @@ function buildCustomerOrderSummary(data, isEnglish) {
 
   addLine('neckCircumference');
   addLine('breed');
+  addLine('pullStrength');
   addLine('width');
   addLine('hardware');
   addLine('fabric');
@@ -147,7 +158,6 @@ function buildCustomerOrderSummary(data, isEnglish) {
     addLine('embroideryColor');
     if (data.embroideryColor === 'custom') addLine('embroideryColorText');
     addLine('nametagFont');
-    if (data.nametagFont === 'custom') addLine('nametagFontText');
   }
 
   addLine('delivery');

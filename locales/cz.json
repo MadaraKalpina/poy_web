@@ -27,7 +27,7 @@
     },
     "form": {
       "width": {
-        "legend": "Šířka",
+        "legend": "Šířka obojku",
         "options": {
           "25": { "label": "25 mm" },
           "40": { "label": "40 mm" }
@@ -73,19 +73,23 @@
         "backgroundCustomLabel": "Jakou barvu podkladu byste chtěli?",
         "colorLegend": "Barva výšivky",
         "colorBlack": "Černá",
-        "colorMatching": "Podle zvoleného vzoru",
         "colorCustom": "Vlastní přání",
         "colorCustomLabel": "Jaká barva výšivky by vás zajímala?",
         "fontLegend": "Styl výšivky",
-        "fontHandwritten": "Ručně psané / kurzíva",
-        "fontCustom": "Vlastní přání",
-        "fontCustomLabel": "Jaké písmo byste chtěli?"
+        "fontCursive": "Psací",
+        "fontSerif": "Patkové",
+        "fontSansSerif": "Bezpatkové"
       },
       "measurements": {
         "legend": "Míry pejska",
         "neckLabel": "Obvod krku pejska (cm)",
         "breedLabel": "Plemeno pejska",
-        "fitNote": "Obojky jsou nastavitelné — měřte na tělo, mezi obojek a krk pejska by se měl pohodlně vejít jeden prst."
+        "fitNote": "Obojky jsou nastavitelné — měřte na tělo, mezi obojek a krk pejska by se měl pohodlně vejít jeden prst.",
+        "pullLabel": "Jak moc váš pejsek tahá na vodítku?",
+        "pullNone": "vůbec",
+        "pullSome": "trochu",
+        "pullStrong": "hodně",
+        "pullNote": "Extra silní pejsci dostanou zesílené některé části obojku *+50 Kč"
       },
       "delivery": {
         "legend": "Doprava",
@@ -131,7 +135,6 @@
         "nametagTextRequired": "Uveďte prosím text k vyšití.",
         "embroideryColorTextRequired": "Uveďte prosím požadovanou barvu výšivky.",
         "nametagBackgroundTextRequired": "Uveďte prosím požadovanou barvu podkladu.",
-        "nametagFontTextRequired": "Uveďte prosím požadovaný styl písma.",
         "neckInvalid": "Zadejte prosím kladné číslo.",
         "nameRequired": "Uveďte prosím celé jméno.",
         "phoneRequired": "Uveďte prosím telefonní číslo.",
@@ -148,6 +151,7 @@
     "price": {
       "total": "Celkem",
       "base": "Základní cena",
+      "reinforcement": "Zesílení obojku",
       "nametag": "Jmenovka",
       "delivery": "Doprava",
       "currency": "Kč",
