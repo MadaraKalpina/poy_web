@@ -18,7 +18,7 @@ var OWNER_EMAIL = 'atelierpoy@gmail.com';
 var SHEET_COLUMNS = [
   'neckCircumference', 'breed', 'width', 'hardware', 'fabric',
   'nametagChoice', 'nametagText', 'nametagBackground', 'nametagBackgroundText',
-  'embroideryColor', 'embroideryColorText', 'nametagFont', 'nametagFontText' /* no longer sent (custom font option removed) — kept so later Sheet columns don't shift */,
+  'embroideryColor', 'embroideryColorText', 'nametagFont',
   'delivery', 'deliveryAddress', 'deliveryZasilkovnaPoint', 'deliveryBalikovnaPoint',
   'contactName', 'contactEmail', 'contactPhone', 'contactInstagram',
   'hearAboutSource', 'notes',

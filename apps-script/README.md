@@ -14,7 +14,7 @@ want to change what's collected or how the emails read.
    order:
 
    ```
-   Timestamp	Neck (cm)	Breed	Width	Hardware	Fabric	Nametag?	Nametag text	Background	Background (custom)	Embroidery color	Embroidery color (custom)	Font	Font (custom)	Delivery method	Delivery address	Zásilkovna point	Balíkovna point	Name	Email	Phone	Instagram	Notes
+   Timestamp	Neck (cm)	Breed	Width	Hardware	Fabric	Nametag?	Nametag text	Background	Background (custom)	Embroidery color	Embroidery color (custom)	Font	Delivery method	Delivery address	Zásilkovna point	Balíkovna point	Name	Email	Phone	Instagram	Where did you hear about us	Notes	Pulls on leash
    ```
 
    (Type it into cell A1 then hit Tab between each — or paste the whole line
