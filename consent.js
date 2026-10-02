@@ -29,10 +29,15 @@
     ad_personalization: 'denied'
   });
 
+  // the choice made on this page wins over storage, so it still applies
+  // when localStorage is blocked (some private windows)
+  var pageChoice = null;
   function readChoice() {
+    if (pageChoice) return pageChoice;
     try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
   }
   function saveChoice(choice) {
+    pageChoice = choice;
     try { localStorage.setItem(STORAGE_KEY, choice); } catch (e) { /* private mode — banner just shows again next visit */ }
   }
 
@@ -87,9 +92,25 @@
     });
   }
 
+  // Events from before the visitor has chosen (e.g. someone landing on the
+  // builder from Instagram who starts typing before touching the banner)
+  // wait here, in memory only — sent on Accept, thrown away on Reject, and
+  // gone if they leave the page undecided. Nothing reaches Google first.
+  var pendingEvents = [];
+  var MAX_PENDING = 50;
+
   window.poyTrack = function (eventName, params) {
-    if (readChoice() === 'granted') gtag('event', eventName, params || {});
+    var choice = readChoice();
+    if (choice === 'granted') gtag('event', eventName, params || {});
+    else if (choice !== 'denied' && pendingEvents.length < MAX_PENDING) {
+      pendingEvents.push([eventName, params || {}]);
+    }
   };
+
+  function flushPendingEvents() {
+    pendingEvents.forEach(function (ev) { gtag('event', ev[0], ev[1]); });
+    pendingEvents = [];
+  }
 
   // Language switches. i18n.js fires poy:langchange on every page load too
   // (applying the saved language), so only a real change counts.
@@ -98,8 +119,9 @@
     var lang = e.detail && e.detail.lang;
     if (!lang || lang === lastLang) return;
     lastLang = lang;
-    if (readChoice() !== 'granted') return;
-    gtag('set', 'user_properties', { site_language: lang });
+    // undecided visitors: the config sent on Accept already reads the
+    // current language, so only the event itself needs holding
+    if (readChoice() === 'granted') gtag('set', 'user_properties', { site_language: lang });
     window.poyTrack('language_change', { language: lang });
   });
 
@@ -158,7 +180,13 @@
     btn.addEventListener('click', function () {
       var choice = btn.getAttribute('data-cookie-choice');
       saveChoice(choice);
-      if (choice === 'granted') loadAnalytics(); else disableAnalytics();
+      if (choice === 'granted') {
+        loadAnalytics();
+        flushPendingEvents();
+      } else {
+        pendingEvents = [];
+        disableAnalytics();
+      }
       hideBanner();
     });
   });
