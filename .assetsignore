@@ -1,0 +1,13 @@
+.git
+.gitignore
+.assetsignore
+wrangler.jsonc
+.wrangler
+node_modules
+inspo/
+apps-script/
+*.HEIC
+*.heic
+*.heif
+*.HEIF
+*.md
