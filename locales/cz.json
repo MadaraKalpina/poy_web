@@ -474,8 +474,17 @@
         "Správce prohlašuje, že k osobním údajům mají přístup pouze jím pověřené osoby."
       ]
     },
+    "cookies": {
+      "heading": "VIII. Cookies a analytika návštěvnosti",
+      "paragraphs": [
+        "Web si ve vašem prohlížeči ukládá pouze to, co je nezbytné pro jeho fungování: zvolený jazyk a vaši volbu ohledně cookies. K tomu souhlas není potřeba.",
+        "Pouze s vaším souhlasem používáme službu Google Analytics 4 (poskytovatel Google Ireland Limited) k měření návštěvnosti – které stránky si prohlížíte, odkud na web přicházíte, typ zařízení a přibližnou polohu (město/země). Google Analytics k tomu ukládá cookies _ga a _ga_*, s platností až 2 roky. Údaje vyhodnocujeme pouze souhrnně a nepoužíváme je k reklamě.",
+        "Údaje mohou být zpracovány i společností Google LLC v USA, a to na základě rámce EU–USA pro ochranu osobních údajů (Data Privacy Framework). Údaje v Google Analytics uchováváme 14 měsíců.",
+        "Právním základem je váš souhlas (čl. 6 odst. 1 písm. a) GDPR). Souhlas můžete kdykoli odvolat nebo změnit tlačítkem „Nastavení cookies“ v patičce webu."
+      ]
+    },
     "final": {
-      "heading": "VIII. Závěrečná ustanovení",
+      "heading": "IX. Závěrečná ustanovení",
       "paragraphs": [
         "Odesláním objednávky z internetového objednávkového formuláře potvrzujete, že jste seznámen/a s podmínkami ochrany osobních údajů a že je v celém rozsahu přijímáte.",
         "S těmito podmínkami souhlasíte zaškrtnutím souhlasu prostřednictvím internetového formuláře. Zaškrtnutím souhlasu potvrzujete, že jste seznámen/a s podmínkami ochrany osobních údajů a že je v celém rozsahu přijímáte.",
@@ -580,7 +589,15 @@
     "alterationsPricelistLink": "Ceník úprav",
     "termsLink": "Obchodní podmínky",
     "privacyLink": "Ochrana osobních údajů",
+    "cookieSettings": "Nastavení cookies",
     "location": "Praha 6",
     "note": "Vyrobeno v Praze · © 2026 Poy ·"
+  },
+  "cookies": {
+    "title": "Cookies 🍪",
+    "text": "Rádi bychom používali analytické cookies (Google Analytics), abychom věděli, jak web používáte, a mohli ho zlepšovat. Bez vašeho souhlasu je nespustíme.",
+    "moreLink": "Více informací",
+    "accept": "Přijmout",
+    "reject": "Odmítnout"
   }
 }

@@ -992,6 +992,9 @@ button { font-family: inherit; cursor: pointer; }
   border-top: 1px solid var(--primary-pale);
 }
 .price-lines .price-line:first-child { border-top: none; }
+/* display: flex above would otherwise override the hidden attribute that
+   updatePrice() uses for the optional lines (reinforcement/nametag/delivery) */
+.price-line[hidden] { display: none; }
 
 /* ===========================================================
    Mending price list
@@ -1202,6 +1205,51 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 1rem;
 }
 .footer-col a:hover { color: var(--accent); }
+/* "Cookie settings" — a <button> (it opens the banner, it isn't a link)
+   dressed to match the footer links around it */
+.footer-link-button {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+.footer-link-button:hover { color: var(--accent); }
+
+/* cookie consent banner (consent.js) — bottom-left card on desktop, full
+   width on phones; sits above the collar page's fixed price bar (z 40) */
+.cookie-banner {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 60;
+  width: min(420px, calc(100% - 32px));
+  background: var(--white);
+  color: var(--text);
+  border: 2px solid var(--primary-pale);
+  border-radius: 20px;
+  box-shadow: 0 8px 28px rgba(23,28,58,0.18);
+  padding: 18px 20px;
+}
+.cookie-banner[hidden] { display: none; }
+.cookie-banner-title { font-weight: 800; font-size: 1.05rem; margin: 0 0 6px; }
+.cookie-banner-text { font-size: 0.95rem; margin: 0 0 14px; line-height: 1.45; }
+.cookie-banner-text a { text-decoration: underline; text-underline-offset: 2px; }
+.cookie-banner-text a:hover { color: var(--primary-deep); }
+.cookie-banner-actions { display: flex; gap: 10px; }
+.cookie-btn { flex: 1; justify-content: center; padding: 11px 16px; font-size: 0.85rem; }
+@media (max-width: 640px) {
+  .cookie-banner {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    border-width: 2px 0 0;
+    padding-bottom: calc(18px + env(safe-area-inset-bottom));
+  }
+}
 
 .footer-socials { display: flex; gap: 10px; }
 .social-icon {

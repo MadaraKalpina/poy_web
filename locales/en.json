@@ -474,8 +474,17 @@
         "The Controller declares that only persons authorised by the Controller have access to personal data."
       ]
     },
+    "cookies": {
+      "heading": "VIII. Cookies and Website Analytics",
+      "paragraphs": [
+        "The website only stores what it needs to work in your browser: your chosen language and your cookie choice. No consent is required for this.",
+        "Only with your consent, we use Google Analytics 4 (provided by Google Ireland Limited) to measure traffic – which pages you view, where you came to the website from, your device type and approximate location (city/country). For this, Google Analytics stores the cookies _ga and _ga_*, valid for up to 2 years. We only look at this data in aggregate and do not use it for advertising.",
+        "The data may also be processed by Google LLC in the USA, under the EU–US Data Privacy Framework. We keep data in Google Analytics for 14 months.",
+        "The legal basis is your consent (Art. 6(1)(a) GDPR). You can withdraw or change your consent at any time using the “Cookie settings” button in the website footer."
+      ]
+    },
     "final": {
-      "heading": "VIII. Final Provisions",
+      "heading": "IX. Final Provisions",
       "paragraphs": [
         "By submitting an order via the online order form, you confirm that you have familiarised yourself with this Personal Data Protection Policy and that you accept it in its entirety.",
         "You agree to this Policy by ticking the consent box on the online form. By ticking the consent box, you confirm that you have familiarised yourself with this Personal Data Protection Policy and that you accept it in its entirety.",
@@ -580,7 +589,15 @@
     "alterationsPricelistLink": "Alterations price list",
     "termsLink": "Terms & Conditions",
     "privacyLink": "Privacy Policy",
+    "cookieSettings": "Cookie settings",
     "location": "Prague 6",
     "note": "Made in Prague · © 2026 Poy ·"
+  },
+  "cookies": {
+    "title": "Cookies 🍪",
+    "text": "We'd like to use analytics cookies (Google Analytics) to understand how the site is used and make it better. We won't turn them on without your consent.",
+    "moreLink": "More information",
+    "accept": "Accept",
+    "reject": "Reject"
   }
 }

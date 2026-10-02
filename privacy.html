@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title data-i18n="privacyPolicy.metaTitle">Poy — Personal Data Protection Policy</title>
 <meta name="description" content="Personal data processing policy (GDPR) for Atelier Poy customers." data-i18n-attr="content:privacyPolicy.metaDescription">
-<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
 
@@ -171,7 +171,14 @@
         <p data-i18n="privacyPolicy.security.paragraphs.1"></p>
         <p data-i18n="privacyPolicy.security.paragraphs.2"></p>
 
-        <h2 data-i18n="privacyPolicy.final.heading">VIII. Final Provisions</h2>
+        <!-- #cookies is the target of the cookie banner's "more information" link -->
+        <h2 id="cookies" data-i18n="privacyPolicy.cookies.heading">VIII. Cookies and Website Analytics</h2>
+        <p data-i18n="privacyPolicy.cookies.paragraphs.0"></p>
+        <p data-i18n="privacyPolicy.cookies.paragraphs.1"></p>
+        <p data-i18n="privacyPolicy.cookies.paragraphs.2"></p>
+        <p data-i18n="privacyPolicy.cookies.paragraphs.3"></p>
+
+        <h2 data-i18n="privacyPolicy.final.heading">IX. Final Provisions</h2>
         <p data-i18n="privacyPolicy.final.paragraphs.0"></p>
         <p data-i18n="privacyPolicy.final.paragraphs.1"></p>
         <p data-i18n="privacyPolicy.final.paragraphs.2"></p>
@@ -199,6 +206,7 @@
     <div class="footer-col">
       <a href="terms.html" data-i18n="footer.termsLink">Terms &amp; Conditions</a>
       <a href="privacy.html" data-i18n="footer.privacyLink">Privacy Policy</a>
+      <button type="button" class="footer-link-button" data-cookie-settings data-i18n="footer.cookieSettings">Nastavení cookies</button>
     </div>
     <div class="footer-col">
       <!-- PLACEHOLDER: swap for the real email before launch -->
@@ -230,7 +238,8 @@
   </div>
 </footer>
 
-<script src="script.js?v=4"></script>
+<script src="consent.js?v=1"></script>
+<script src="script.js?v=5"></script>
 <script src="i18n.js?v=2"></script>
 </body>
 </html>

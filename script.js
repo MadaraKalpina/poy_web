@@ -944,6 +944,14 @@ document.addEventListener('DOMContentLoaded', function () {
           orderForm.hidden = true;
           if (pricePanel) pricePanel.hidden = true;
           if (orderSuccess) orderSuccess.hidden = false;
+          // GA4 conversion (consent.js) — only sent if analytics was accepted
+          if (window.poyTrack) {
+            window.poyTrack('collar_order_sent', {
+              collar_width: getCheckedValue('width'),
+              nametag: getCheckedValue('nametagChoice'),
+              delivery: getCheckedValue('delivery')
+            });
+          }
         })
         .catch(function () {
           if (submitButton) {
