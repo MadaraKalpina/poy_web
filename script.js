@@ -592,6 +592,9 @@ document.addEventListener('DOMContentLoaded', function () {
   var priceNametag = document.getElementById('price-nametag');
   var priceLineDelivery = document.getElementById('price-line-delivery');
   var priceDelivery = document.getElementById('price-delivery');
+  // latest full total in Kč (null until a width is chosen) — read by the
+  // order submit handler below for the GA4 collar_order_sent value
+  var orderTotal = null;
 
   if (priceBase && priceTotal && priceCurrency) {
     var WIDTH_BASE_PRICE = { '25': 600, '40': 700 };
@@ -622,6 +625,7 @@ document.addEventListener('DOMContentLoaded', function () {
         priceLineNametag.hidden = true;
         priceLineDelivery.hidden = true;
         priceTotal.textContent = (priceFrom ? priceFrom.textContent + ' ' : '') + formatPrice(minBase + reinforcementCost, false);
+        orderTotal = null;
         return;
       }
 
@@ -633,6 +637,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var nametagCost = hasNametag ? NAMETAG_PRICE : 0;
       var deliveryCost = DELIVERY_PRICE[deliveryChecked ? deliveryChecked.value : 'pickup'] || 0;
       var total = base + reinforcementCost + nametagCost + deliveryCost;
+      orderTotal = total;
 
       priceBase.textContent = formatPrice(base, false);
       priceLineNametag.hidden = !hasNametag;
@@ -825,8 +830,21 @@ document.addEventListener('DOMContentLoaded', function () {
     var formSteps = Array.prototype.slice.call(document.querySelectorAll('.form-step'));
     var stepProgressItems = Array.prototype.slice.call(document.querySelectorAll('.step-progress-item'));
 
+    // GA4 builder funnel (consent.js) — no-ops unless analytics was accepted
+    var STEP_NAMES = { 1: 'dog', 2: 'collar', 3: 'nametag', 4: 'delivery' };
+    var track = function (eventName, params) {
+      if (window.poyTrack) window.poyTrack(eventName, params);
+    };
+    var trackStepView = function (n) {
+      track('builder_step_view', { step_number: n, step_name: STEP_NAMES[n] });
+    };
+    var trackStepError = function (n, invalidEl) {
+      track('builder_step_error', { step_number: n, field_name: invalidEl.id || invalidEl.name || '' });
+    };
+
     var showStep = function (n) {
       currentStep = n;
+      trackStepView(n);
       formSteps.forEach(function (stepEl) {
         stepEl.hidden = Number(stepEl.getAttribute('data-step')) !== n;
       });
@@ -845,7 +863,11 @@ document.addEventListener('DOMContentLoaded', function () {
         var num = Number(stepEl.getAttribute('data-step'));
         attemptedSteps[num] = true;
         var firstInvalid = stepValidators[num] ? stepValidators[num]() : null;
-        if (firstInvalid) { focusInvalid(firstInvalid); return; }
+        if (firstInvalid) {
+          trackStepError(num, firstInvalid);
+          focusInvalid(firstInvalid);
+          return;
+        }
         showStep(num + 1);
       });
     });
@@ -854,9 +876,23 @@ document.addEventListener('DOMContentLoaded', function () {
       btn.addEventListener('click', function () {
         var stepEl = btn.closest('.form-step');
         var num = Number(stepEl.getAttribute('data-step'));
+        track('builder_step_back', { step_number: num });
         showStep(num - 1);
       });
     });
+
+    // step 1 is visible on load without going through showStep()
+    trackStepView(1);
+
+    // first interaction with any field = the visitor actually started building
+    var builderStarted = false;
+    var trackBuilderStart = function () {
+      if (builderStarted) return;
+      builderStarted = true;
+      track('builder_start');
+    };
+    orderForm.addEventListener('input', trackBuilderStart);
+    orderForm.addEventListener('change', trackBuilderStart);
 
     // Gathers every field into one plain object for the Apps Script POST —
     // reads the same ids/names the validators above already reference, plus
@@ -916,7 +952,11 @@ document.addEventListener('DOMContentLoaded', function () {
       event.preventDefault();
       attemptedSteps[4] = true;
       var firstInvalid = validateStep4();
-      if (firstInvalid) { focusInvalid(firstInvalid); return; }
+      if (firstInvalid) {
+        trackStepError(4, firstInvalid);
+        focusInvalid(firstInvalid);
+        return;
+      }
 
       var submitButton = document.getElementById('submit-button');
       var submitError = document.getElementById('error-submit');
@@ -944,16 +984,24 @@ document.addEventListener('DOMContentLoaded', function () {
           orderForm.hidden = true;
           if (pricePanel) pricePanel.hidden = true;
           if (orderSuccess) orderSuccess.hidden = false;
-          // GA4 conversion (consent.js) — only sent if analytics was accepted
-          if (window.poyTrack) {
-            window.poyTrack('collar_order_sent', {
-              collar_width: getCheckedValue('width'),
-              nametag: getCheckedValue('nametagChoice'),
-              delivery: getCheckedValue('delivery')
-            });
+          // GA4 conversion — fabric/hardware as catalogue codes, not the
+          // visible labels, so one fabric doesn't split into a CZ and an EN row
+          var orderEvent = {
+            collar_width: getCheckedValue('width'),
+            nametag: getCheckedValue('nametagChoice'),
+            delivery: getCheckedValue('delivery'),
+            fabric: getCheckedValue('fabric'),
+            hardware: getCheckedValue('hardware'),
+            hear_about_source: getFieldValue('hear-about-source')
+          };
+          if (orderTotal !== null) {
+            orderEvent.value = orderTotal;
+            orderEvent.currency = 'CZK';
           }
+          track('collar_order_sent', orderEvent);
         })
         .catch(function () {
+          track('builder_submit_error');
           if (submitButton) {
             submitButton.disabled = false;
             submitButton.classList.remove('is-loading');
