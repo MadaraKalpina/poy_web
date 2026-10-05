@@ -154,7 +154,7 @@
 "image": "c12 yellow meadow.png"
 },
   {
-"code": "13c",
+"code": "14c",
 "category": "floral",
 "name_cz": "růže na černé",
 "name_en": "roses on black",
@@ -168,7 +168,7 @@
 "image": "rosesonblack.png"
 },
     {
-"code": "14c",
+"code": "15c",
 "category": "floral",
 "name_cz": "ovoce a květy",
 "name_en": "fruits and flowers",
@@ -339,7 +339,7 @@
 },
   {
 "code": "11b",
-"category": "bluegingham",
+"category": "stripes",
 "name_cz": "modré kostky",
 "name_en": "blue gingham",
 "note_cz": "NOVINKA",
