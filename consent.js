@@ -151,9 +151,10 @@
     if (platform) window.poyTrack('social_click', { platform: platform, link_location: linkLocation(link) });
   });
 
-  // Banner markup — both buttons deliberately look the same (rejecting has
-  // to be as easy as accepting). Czech defaults (the site's default language), swapped
-  // for the active language by i18n.js via data-i18n like everything else.
+  // Banner markup — Accept is the primary button, Reject the secondary
+  // (outlined) one, but both sit side by side at the same size so rejecting
+  // stays as easy as accepting. Czech defaults (the site's default language),
+  // swapped for the active language by i18n.js via data-i18n like everything else.
   var banner = document.createElement('div');
   banner.className = 'cookie-banner';
   banner.id = 'cookie-banner';
@@ -168,7 +169,7 @@
       '<a href="privacy.html#cookies" data-i18n="cookies.moreLink">Více informací</a>' +
     '</p>' +
     '<div class="cookie-banner-actions">' +
-      '<button type="button" class="btn btn-navy cookie-btn" data-cookie-choice="denied" data-i18n="cookies.reject">Odmítnout</button>' +
+      '<button type="button" class="btn btn-outline cookie-btn" data-cookie-choice="denied" data-i18n="cookies.reject">Odmítnout</button>' +
       '<button type="button" class="btn btn-navy cookie-btn" data-cookie-choice="granted" data-i18n="cookies.accept">Přijmout</button>' +
     '</div>';
   document.body.appendChild(banner);

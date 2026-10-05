@@ -576,6 +576,32 @@ document.addEventListener('DOMContentLoaded', function () {
     };
     pullSlider.addEventListener('input', applyPullNoteToggle);
     applyPullNoteToggle();
+
+    // The slider is a required question, but a range input always holds a
+    // value — so it starts .is-untouched (thumb hidden, see styles.css) and
+    // counts as answered from the first click/drag/key press. Clicking it
+    // at its current spot ("vůbec") fires no input event, hence pointerdown
+    // and keydown too; a synthetic change lets the step validator and the
+    // builder_start tracking see that first touch.
+    var markPullTouched = function () {
+      if (!pullSlider.classList.contains('is-untouched')) return;
+      pullSlider.classList.remove('is-untouched');
+      pullSlider.dispatchEvent(new Event('change', { bubbles: true }));
+    };
+    ['pointerdown', 'keydown', 'input'].forEach(function (type) {
+      pullSlider.addEventListener(type, markPullTouched);
+    });
+    // a value restored by the browser (back button) means it was answered
+    if (pullSlider.value !== '0') pullSlider.classList.remove('is-untouched');
+
+    // the stop labels under the slider pick that stop when clicked
+    document.querySelectorAll('[data-pull-value]').forEach(function (label) {
+      label.addEventListener('click', function () {
+        pullSlider.value = label.getAttribute('data-pull-value');
+        pullSlider.dispatchEvent(new Event('input', { bubbles: true }));
+        markPullTouched();
+      });
+    });
   }
 
   // Collar order page — live price panel. Visible from Step 1 onward, so
@@ -698,19 +724,31 @@ document.addEventListener('DOMContentLoaded', function () {
       if (container) container.classList.toggle('is-invalid', isInvalid);
     };
 
-    // Step 1 — dog's neck circumference + breed
-    // both fields are optional — the only thing still checked is that a
-    // neck circumference, if the customer bothers to type one, is a sane
-    // positive number rather than 0/negative
+    // Step 1 — dog's neck circumference, breed and pull strength, all
+    // required; the neck also has to be a sane positive number
     var validateStep1 = function () {
       var firstInvalid = null;
       var markInvalid = function (el) { if (!firstInvalid && el) firstInvalid = el; };
 
       var neckInput = document.getElementById('neck-circumference');
       var neckValue = neckInput.value.trim();
-      var neckInvalid = neckValue !== '' && Number(neckValue) <= 0;
+      var neckMissing = neckValue === '';
+      var neckInvalid = !neckMissing && Number(neckValue) <= 0;
+      var neckRequiredError = document.getElementById('error-neck-required');
+      if (neckRequiredError) neckRequiredError.hidden = !neckMissing;
       setFieldError(neckInput, document.getElementById('error-neck-circumference'), neckInvalid);
-      if (neckInvalid) markInvalid(neckInput);
+      if (neckMissing) setFieldError(neckInput, null, true);
+      if (neckMissing || neckInvalid) markInvalid(neckInput);
+
+      var breedInput = document.getElementById('dog-breed');
+      var breedInvalid = !breedInput.value.trim();
+      setFieldError(breedInput, document.getElementById('error-dog-breed'), breedInvalid);
+      if (breedInvalid) markInvalid(breedInput);
+
+      var pullInput = document.getElementById('pull-strength');
+      var pullInvalid = pullInput.classList.contains('is-untouched');
+      setFieldError(pullInput, document.getElementById('error-pull-strength'), pullInvalid);
+      if (pullInvalid) markInvalid(pullInput);
 
       return firstInvalid;
     };
