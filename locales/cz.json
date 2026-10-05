@@ -483,9 +483,10 @@
         "Web si ve vašem prohlížeči ukládá pouze to, co je nezbytné pro jeho fungování: zvolený jazyk a vaši volbu ohledně cookies. K tomu souhlas není potřeba.",
         "Pouze s vaším souhlasem používáme službu Google Analytics 4 (poskytovatel Google Ireland Limited) k měření návštěvnosti – které stránky si prohlížíte, odkud na web přicházíte, typ zařízení a přibližnou polohu (město/země). Google Analytics k tomu ukládá cookies _ga a _ga_*, s platností až 2 roky. Údaje vyhodnocujeme pouze souhrnně a nepoužíváme je k reklamě.",
         "Údaje mohou být zpracovány i společností Google LLC v USA, a to na základě rámce EU–USA pro ochranu osobních údajů (Data Privacy Framework). Údaje v Google Analytics uchováváme 14 měsíců.",
-        "Právním základem je váš souhlas (čl. 6 odst. 1 písm. a) GDPR). Souhlas můžete kdykoli odvolat nebo změnit tlačítkem „Nastavení cookies“ v patičce webu.",
+        "Právním základem je váš souhlas (čl. 6 odst. 1 písm. a) GDPR). Souhlas můžete kdykoli odvolat nebo změnit tlačítkem „Změnit nastavení cookies“ níže.",
         "Bez ohledu na volbu cookies používáme také službu Cloudflare Web Analytics (poskytovatel Cloudflare, Inc.), která počítá pouze souhrnnou návštěvnost. Nepoužívá cookies ani jiné ukládání ve vašem prohlížeči a nesleduje jednotlivé návštěvníky (podle IP adresy ani jiných identifikátorů), proto k ní souhlas není potřeba."
-      ]
+      ],
+      "settingsButton": "Změnit nastavení cookies"
     },
     "final": {
       "heading": "IX. Závěrečná ustanovení",
@@ -593,7 +594,7 @@
     "alterationsPricelistLink": "Ceník úprav",
     "termsLink": "Obchodní podmínky",
     "privacyLink": "Ochrana osobních údajů",
-    "cookieSettings": "Nastavení cookies",
+    
     "location": "Praha 6",
     "note": "Vyrobeno v Praze · © 2026 Poy ·"
   },

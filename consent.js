@@ -2,8 +2,9 @@
 // Czech law (and the EU ePrivacy rules) only allow analytics cookies after
 // the visitor actively opts in, so GA's script isn't even downloaded until
 // they click "Accept" — no cookies, no requests to Google before that.
-// The choice is remembered in localStorage; the footer's "Cookie settings"
-// button (data-cookie-settings) reopens the banner to change it.
+// The choice is remembered in localStorage; the "Change cookie settings"
+// button in the privacy page's cookies section (data-cookie-settings)
+// reopens the banner to change it.
 //
 // Loaded on every page *before* script.js / i18n.js, so the banner markup
 // below is already in the DOM when i18n.js applies the CZ/EN strings.

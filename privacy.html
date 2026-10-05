@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title data-i18n="privacyPolicy.metaTitle">Poy — Personal Data Protection Policy</title>
 <meta name="description" content="Personal data processing policy (GDPR) for Atelier Poy customers." data-i18n-attr="content:privacyPolicy.metaDescription">
-<link rel="stylesheet" href="styles.css?v=7">
+<link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
 
@@ -177,6 +177,9 @@
         <p data-i18n="privacyPolicy.cookies.paragraphs.1"></p>
         <p data-i18n="privacyPolicy.cookies.paragraphs.2"></p>
         <p data-i18n="privacyPolicy.cookies.paragraphs.3"></p>
+        <!-- the only place to change the cookie choice after the banner
+             (data-cookie-settings → consent.js reopens the banner) -->
+        <p><button type="button" class="btn btn-outline cookie-settings-btn" data-cookie-settings data-i18n="privacyPolicy.cookies.settingsButton">Změnit nastavení cookies</button></p>
         <p data-i18n="privacyPolicy.cookies.paragraphs.4"></p>
 
         <h2 data-i18n="privacyPolicy.final.heading">IX. Final Provisions</h2>
@@ -207,7 +210,6 @@
     <div class="footer-col">
       <a href="terms.html" data-i18n="footer.termsLink">Terms &amp; Conditions</a>
       <a href="privacy.html" data-i18n="footer.privacyLink">Privacy Policy</a>
-      <button type="button" class="footer-link-button" data-cookie-settings data-i18n="footer.cookieSettings">Nastavení cookies</button>
     </div>
     <div class="footer-col">
       <!-- PLACEHOLDER: swap for the real email before launch -->
@@ -239,7 +241,7 @@
   </div>
 </footer>
 
-<script src="consent.js?v=4"></script>
+<script src="consent.js?v=5"></script>
 <script src="script.js?v=7"></script>
 <script src="i18n.js?v=2"></script>
 </body>
