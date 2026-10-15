@@ -351,20 +351,6 @@
 ],
 "image": "b10 blue on white.png"
 },
-  {
-"code": "11b",
-"category": "stripes",
-"name_cz": "modré kostky",
-"name_en": "blue gingham",
-"note_cz": "NOVINKA",
-"note_en": "NEW",
-"status": "active",
-"widths": [
-"25",
-"40"
-],
-"image": "bluegingham.png"
-},
 {
 "code": "1a",
 "category": "mono",
